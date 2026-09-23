@@ -4,20 +4,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4511e">
+  <meta name="description" content="Open Recruitment Pengurus DPW & DPD Muda Bergerak Sulawesi Selatan.">
 
-  <title>OPREC MB SULSEL | Muda Bergerak</title>
-
-  <meta name="description" content="Open Recruitment Pengurus DPW & DPD Muda Bergerak Sulawesi Selatan. Ruangnya Anak Muda Sulsel.">
+  <title>OPREC MB SULSEL — Ruangnya Anak Muda Sulsel</title>
 
   <style>
-    /* =========================
-       RESET & GLOBAL
-    ========================= */
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+    :root {
+      --orange: #f4511e;
+      --orange-dark: #c9340d;
+      --black: #101010;
+      --dark: #171717;
+      --cream: #f6f1e9;
+      --white: #ffffff;
+      --muted: #a8a8a8;
+      --line: rgba(255,255,255,0.14);
+    }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     html {
@@ -25,38 +34,51 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #111111;
-      color: #ffffff;
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
       line-height: 1.6;
     }
 
     a {
+      color: inherit;
       text-decoration: none;
     }
 
-    img {
-      max-width: 100%;
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
     }
 
     .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 8%;
+      width: min(1120px, 92%);
+      margin: auto;
     }
 
-    /* =========================
-       HEADER
-    ========================= */
+    .topbar {
+      background: var(--orange);
+      color: #111;
+      padding: 9px 0;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-align: center;
+      text-transform: uppercase;
+    }
 
     header {
-      background: #111111;
-      border-bottom: 1px solid #333333;
-      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(16,16,16,.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
     }
 
-    .header-content {
+    .nav {
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -67,414 +89,462 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      min-width: 0;
     }
 
-    .brand-logo {
+    .brand img {
       width: 58px;
       height: 58px;
-      object-fit: contain;
       display: block;
+      object-fit: contain;
+      object-position: center;
+      background: transparent;
     }
 
-    .brand-fallback {
-      display: none;
-      width: 58px;
-      height: 58px;
+    .brand-copy {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: .04em;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: var(--orange);
+      font-size: 10px;
+      margin-top: 4px;
+      letter-spacing: .12em;
+    }
+
+    .nav-links {
+      display: flex;
       align-items: center;
-      justify-content: center;
-      background: #ff7518;
-      color: #111111;
-      font-size: 14px;
-      font-weight: 900;
-      text-align: center;
-      border-radius: 8px;
-      line-height: 1.1;
+      gap: 22px;
+      font-size: 13px;
+      font-weight: 600;
     }
 
-    .brand-name {
-      color: #ffffff;
-      font-size: 17px;
+    .nav-links a:hover {
+      color: var(--orange);
+    }
+
+    .nav-button {
+      background: var(--orange);
+      color: #111;
+      padding: 11px 16px;
+      border-radius: 999px;
+      font-size: 12px;
       font-weight: 800;
-      letter-spacing: 0.5px;
     }
-
-    .brand-subtitle {
-      color: #999999;
-      font-size: 10px;
-      margin-top: 2px;
-    }
-
-    .header-status {
-      color: #ff7518;
-      font-size: 10px;
-      font-weight: bold;
-      letter-spacing: 0.8px;
-      text-align: right;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
 
     .hero {
       position: relative;
       overflow: hidden;
-      padding: 95px 0 85px;
+      padding: 86px 0 90px;
       background:
-        radial-gradient(
-          circle at 90% 10%,
-          rgba(255, 117, 24, 0.18),
-          transparent 35%
-        ),
-        linear-gradient(135deg, #111111, #292929);
+        radial-gradient(circle at 85% 20%, rgba(244,81,30,.22), transparent 28%),
+        linear-gradient(135deg, #171717, #101010 70%);
     }
 
     .hero::after {
-      content: "MB";
+      content: "";
       position: absolute;
-      right: -20px;
-      bottom: -80px;
-      color: rgba(255, 117, 24, 0.06);
-      font-size: 280px;
-      font-weight: 900;
-      pointer-events: none;
+      width: 340px;
+      height: 340px;
+      border: 1px solid rgba(244,81,30,.25);
+      border-radius: 50%;
+      right: -140px;
+      bottom: -180px;
     }
 
-    .hero-content {
+    .hero-grid {
       position: relative;
       z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 55px;
     }
 
-    .hero-label {
-      display: inline-block;
-      color: #ff7518;
+    .eyebrow {
+      color: var(--orange);
       font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 1.5px;
-      margin-bottom: 24px;
-    }
-
-    .hero h1 {
-      max-width: 900px;
-      font-size: clamp(42px, 8vw, 86px);
-      font-weight: 900;
-      line-height: 0.98;
-      text-transform: uppercase;
-      letter-spacing: -2px;
-      margin-bottom: 30px;
-    }
-
-    .hero h1 span {
-      color: #ff7518;
-    }
-
-    .hero-description {
-      max-width: 650px;
-      color: #dddddd;
-      font-size: 17px;
-      margin-bottom: 35px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 15px 25px;
-      background: #ff7518;
-      color: #111111;
-      font-size: 13px;
-      font-weight: 900;
-      border-radius: 5px;
-      transition: 0.2s ease;
-    }
-
-    .button:hover {
-      background: #ffffff;
-      transform: translateY(-2px);
-    }
-
-    .button-outline {
-      display: inline-block;
-      padding: 14px 24px;
-      margin-left: 8px;
-      border: 1px solid #666666;
-      color: #ffffff;
-      font-size: 13px;
       font-weight: 800;
-      border-radius: 5px;
-      transition: 0.2s ease;
-    }
-
-    .button-outline:hover {
-      border-color: #ff7518;
-      color: #ff7518;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 45px;
-    }
-
-    .hero-tags span {
-      padding: 7px 12px;
-      border: 1px solid #555555;
-      border-radius: 30px;
-      color: #cccccc;
-      font-size: 11px;
-      font-weight: bold;
-    }
-
-    /* =========================
-       SECTIONS
-    ========================= */
-
-    .section {
-      padding: 70px 0;
-    }
-
-    .section-dark {
-      background: #171717;
-    }
-
-    .section-label {
-      color: #ff7518;
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 1.5px;
-      margin-bottom: 12px;
-    }
-
-    .section h2 {
-      max-width: 700px;
-      font-size: clamp(30px, 5vw, 48px);
-      line-height: 1.05;
+      letter-spacing: .16em;
       text-transform: uppercase;
       margin-bottom: 20px;
     }
 
-    .section-intro {
-      max-width: 650px;
-      color: #bbbbbb;
-      font-size: 15px;
+    h1,
+    h2,
+    h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.08;
     }
 
-    /* =========================
-       CARDS
-    ========================= */
+    h1 {
+      font-size: clamp(43px, 7vw, 82px);
+      font-weight: 700;
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+    }
 
-    .cards {
+    h1 span {
+      color: var(--orange);
+    }
+
+    .hero-description {
+      max-width: 520px;
+      margin-top: 25px;
+      color: #c5c5c5;
+      font-size: 16px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 13px 22px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 800;
+      transition: .2s ease;
+    }
+
+    .button-primary {
+      background: var(--orange);
+      color: #111;
+    }
+
+    .button-primary:hover {
+      background: #ff7043;
+      transform: translateY(-2px);
+    }
+
+    .button-outline {
+      border-color: #555;
+      color: white;
+    }
+
+    .button-outline:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .hero-card {
+      position: relative;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255,255,255,.045);
+      transform: rotate(2deg);
+    }
+
+    .hero-card::before {
+      content: "MB";
+      position: absolute;
+      top: -35px;
+      right: -18px;
+      color: rgba(244,81,30,.13);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 160px;
+      font-weight: 800;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .hero-card img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-height: 350px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .card-label {
+      position: relative;
+      z-index: 2;
+      border-top: 1px solid var(--line);
+      margin-top: 20px;
+      padding-top: 17px;
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    section {
+      padding: 85px 0;
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin-bottom: 42px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 5vw, 56px);
+      letter-spacing: -.04em;
+    }
+
+    .section-heading p {
+      color: #aaa;
+      margin-top: 17px;
+      max-width: 590px;
+    }
+
+    .orange {
+      color: var(--orange);
+    }
+
+    .cream-section {
+      background: var(--cream);
+      color: #151515;
+    }
+
+    .cream-section .section-heading p {
+      color: #666;
+    }
+
+    .opportunity-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 35px;
+      gap: 16px;
     }
 
-    .card {
-      padding: 30px 25px;
-      background: #222222;
-      border: 1px solid #3b3b3b;
-      border-radius: 10px;
-      transition: 0.2s ease;
+    .opportunity-card {
+      padding: 28px;
+      border: 1px solid #ddd4c8;
+      border-radius: 18px;
+      background: rgba(255,255,255,.55);
     }
 
-    .card:hover {
-      border-color: #ff7518;
-      transform: translateY(-3px);
-    }
-
-    .card-number {
-      color: #ff7518;
+    .number {
+      color: var(--orange);
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 42px;
-      font-weight: 900;
-      margin-bottom: 10px;
+      font-weight: 700;
     }
 
-    .card h3 {
-      color: #ffffff;
-      font-size: 21px;
-      margin-bottom: 10px;
+    .opportunity-card h3 {
+      font-size: 22px;
+      margin: 22px 0 10px;
     }
 
-    .card p {
-      color: #aaaaaa;
+    .opportunity-card p {
+      color: #666;
       font-size: 14px;
     }
 
-    /* =========================
-       TIMELINE
-    ========================= */
-
     .timeline {
-      max-width: 800px;
-      margin-top: 35px;
+      display: grid;
+      gap: 0;
+      max-width: 850px;
     }
 
     .timeline-item {
       display: grid;
-      grid-template-columns: 150px 1fr;
+      grid-template-columns: 155px 1fr;
       gap: 25px;
-      padding: 22px 0;
-      border-bottom: 1px solid #333333;
+      padding: 25px 0;
+      border-bottom: 1px solid var(--line);
     }
 
     .timeline-date {
-      color: #ff7518;
-      font-size: 14px;
-      font-weight: 900;
-    }
-
-    .timeline-content h3 {
-      color: #ffffff;
-      font-size: 17px;
-      margin-bottom: 5px;
-    }
-
-    .timeline-content p {
-      color: #aaaaaa;
-      font-size: 14px;
-    }
-
-    /* =========================
-       REQUIREMENTS
-    ========================= */
-
-    .requirements {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      margin-top: 30px;
-    }
-
-    .requirement-item {
-      padding: 20px;
-      background: #222222;
-      border-left: 3px solid #ff7518;
-      border-radius: 5px;
-    }
-
-    .requirement-item h3 {
-      font-size: 16px;
-      margin-bottom: 5px;
-    }
-
-    .requirement-item p {
-      color: #aaaaaa;
-      font-size: 13px;
-    }
-
-    /* =========================
-       CTA
-    ========================= */
-
-    .cta {
-      padding: 80px 0;
-      background: #ff7518;
-      color: #111111;
-      text-align: center;
-    }
-
-    .cta h2 {
-      max-width: 800px;
-      margin: 0 auto 20px;
-      font-size: clamp(32px, 6vw, 60px);
-      font-weight: 900;
-      line-height: 1;
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .04em;
       text-transform: uppercase;
     }
 
+    .timeline-content h3 {
+      font-size: 22px;
+      margin-bottom: 7px;
+    }
+
+    .timeline-content p {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .requirement-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .requirement-card {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #191919;
+    }
+
+    .requirement-card h3 {
+      color: var(--orange);
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+
+    .requirement-card ul {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .requirement-card li {
+      color: #c0c0c0;
+      font-size: 14px;
+      padding-left: 23px;
+      position: relative;
+    }
+
+    .requirement-card li::before {
+      content: "↗";
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+      font-weight: 800;
+    }
+
+    .cta {
+      padding: 65px 0;
+      background: var(--orange);
+      color: #111;
+    }
+
+    .cta-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .cta h2 {
+      font-size: clamp(30px, 5vw, 55px);
+      max-width: 650px;
+      letter-spacing: -.05em;
+    }
+
     .cta p {
-      max-width: 550px;
-      margin: 0 auto 30px;
-      font-size: 15px;
+      margin-top: 13px;
+      font-size: 14px;
+      max-width: 560px;
     }
 
     .cta .button {
-      background: #111111;
-      color: #ffffff;
+      background: #111;
+      color: white;
+      white-space: nowrap;
     }
-
-    .cta .button:hover {
-      background: #ffffff;
-      color: #111111;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
 
     footer {
-      padding: 35px 0;
       background: #0b0b0b;
-      color: #888888;
-      text-align: center;
+      padding: 38px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-content p {
+      color: #777;
       font-size: 12px;
     }
 
-    .footer-title {
-      color: #ff7518;
-      font-size: 16px;
-      font-weight: 900;
-      margin-bottom: 8px;
+    .footer-logo {
+      width: 65px;
+      height: 65px;
+      object-fit: contain;
     }
 
-    /* =========================
-       RESPONSIVE
-    ========================= */
+    .footer-tag {
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
 
-    @media (max-width: 768px) {
-      .container {
-        padding: 0 6%;
-      }
-
-      .header-status {
+    @media (max-width: 800px) {
+      .nav-links {
         display: none;
       }
 
       .hero {
-        padding: 65px 0 60px;
+        padding: 60px 0;
       }
 
-      .hero h1 {
-        letter-spacing: -1px;
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
       }
 
-      .hero-description {
-        font-size: 15px;
+      .hero-card {
+        max-width: 420px;
+        margin: auto;
       }
 
-      .button,
-      .button-outline {
-        display: block;
-        width: 100%;
-        text-align: center;
-        margin: 8px 0;
-      }
-
-      .cards {
+      .opportunity-grid {
         grid-template-columns: 1fr;
       }
 
-      .requirements {
+      .requirement-grid {
         grid-template-columns: 1fr;
+      }
+
+      .cta-content {
+        align-items: flex-start;
+        flex-direction: column;
       }
 
       .timeline-item {
         grid-template-columns: 1fr;
-        gap: 5px;
+        gap: 8px;
       }
+    }
 
-      .section {
-        padding: 55px 0;
-      }
-
-      .brand-logo,
-      .brand-fallback {
+    @media (max-width: 450px) {
+      .brand img {
         width: 48px;
         height: 48px;
       }
 
-      .brand-name {
-        font-size: 14px;
+      .brand-copy {
+        font-size: 11px;
+      }
+
+      h1 {
+        font-size: 43px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .hero-card {
+        padding: 18px;
+      }
+
+      .footer-content {
+        align-items: flex-start;
+        flex-direction: column;
       }
     }
   </style>
@@ -482,346 +552,289 @@
 
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================= -->
+  <div class="topbar">
+    Open Recruitment · DPW & DPD · Muda Bergerak Sulawesi Selatan
+  </div>
 
   <header>
-    <div class="container">
-      <div class="header-content">
-
-        <div class="brand">
-
-          <!--
-            Pastikan file logo bernama:
-            logo-mb.png
-
-            dan berada di folder yang sama
-            dengan index.html.
-          -->
-
-          <img
-            src="logo-mb.png"
-            alt="Logo Muda Bergerak"
-            class="brand-logo"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-          >
-
-          <div class="brand-fallback">
-            MB<br>SULSEL
-          </div>
-
-          <div>
-            <div class="brand-name">MUDA BERGERAK</div>
-            <div class="brand-subtitle">SULAWESI SELATAN</div>
-          </div>
-
+    <div class="container nav">
+      <a class="brand" href="#beranda" aria-label="Beranda Muda Bergerak">
+        <img src="./logo-mb.png" alt="Logo Muda Bergerak Sulawesi Selatan">
+        <div class="brand-copy">
+          MUDA BERGERAK
+          <span>SULAWESI SELATAN</span>
         </div>
+      </a>
 
-        <div class="header-status">
-          OPEN RECRUITMENT
-        </div>
-
-      </div>
+      <nav class="nav-links">
+        <a href="#tentang">Tentang</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#ketentuan">Ketentuan</a>
+        <a class="nav-button" href="#daftar">Daftar Sekarang ↗</a>
+      </nav>
     </div>
   </header>
 
+  <main>
 
-  <!-- =========================
-       HERO
-  ========================= -->
+    <section class="hero" id="beranda">
+      <div class="container hero-grid">
 
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
+        <div>
+          <div class="eyebrow">Open Recruitment 2026</div>
 
-        <div class="hero-label">
-          OPEN RECRUITMENT 2026
+          <h1>
+            Ruangnya<br>
+            <span>Anak Muda</span><br>
+            Sulsel.
+          </h1>
+
+          <p class="hero-description">
+            Tempat kamu bertumbuh, berkolaborasi, dan mulai mengambil peran
+            bersama Muda Bergerak Sulawesi Selatan.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#daftar">
+              Mulai Perjalanan ↗
+            </a>
+
+            <a class="button button-outline" href="#timeline">
+              Lihat Timeline
+            </a>
+          </div>
         </div>
 
-        <h1>
-          Ruangnya Anak Muda <span>Sulsel.</span>
-        </h1>
+        <div class="hero-card">
+          <img
+            src="./logo-mb.png"
+            alt="Logo asli Muda Bergerak Sulawesi Selatan"
+          >
 
-        <p class="hero-description">
-          Tempat kamu bertumbuh, berkolaborasi,
-          dan mulai mengambil peran.
-          Saatnya anak muda Sulawesi Selatan
-          bergerak bersama.
-        </p>
+          <div class="card-label">
+            Open Recruitment · DPW & DPD
+          </div>
+        </div>
 
-        <a href="#informasi" class="button">
-          GAS DAFTAR →
+      </div>
+    </section>
+
+    <section class="cream-section" id="tentang">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Kenapa ikut?</div>
+
+          <h2>
+            Bukan cuma<br>
+            <span class="orange">bergabung.</span>
+          </h2>
+
+          <p>
+            Muda Bergerak adalah ruang bagi anak muda Sulawesi Selatan
+            untuk belajar, membangun koneksi, menyampaikan gagasan,
+            dan mengambil peran di lingkungan masing-masing.
+          </p>
+        </div>
+
+        <div class="opportunity-grid">
+
+          <div class="opportunity-card">
+            <div class="number">01</div>
+            <h3>Bertumbuh</h3>
+            <p>
+              Kembangkan kapasitas, pengalaman, dan cara berpikir
+              bersama anak muda lainnya.
+            </p>
+          </div>
+
+          <div class="opportunity-card">
+            <div class="number">02</div>
+            <h3>Berkolaborasi</h3>
+            <p>
+              Bangun jaringan dan kerja sama lintas latar belakang
+              untuk menciptakan kegiatan yang berarti.
+            </p>
+          </div>
+
+          <div class="opportunity-card">
+            <div class="number">03</div>
+            <h3>Berdampak</h3>
+            <p>
+              Mulai dari lingkungan sekitar dan hadir membawa gagasan
+              serta solusi untuk masyarakat.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Mark your calendar</div>
+
+          <h2>
+            Timeline<br>
+            <span class="orange">Perjalananmu.</span>
+          </h2>
+
+          <p>
+            Catat setiap tanggalnya. Pastikan kamu mengikuti informasi
+            dan tahapan rekrutmen sesuai jadwal.
+          </p>
+        </div>
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-date">01–08 Oktober</div>
+
+            <div class="timeline-content">
+              <h3>Open Recruitment</h3>
+              <p>
+                Pendaftaran, The Quiz, serta verifikasi data dan dokumen peserta.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">10 Oktober</div>
+
+            <div class="timeline-content">
+              <h3>Kenal Lebih Dekat — Online</h3>
+              <p>
+                Sesi online untuk seluruh peserta rekrutmen.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">11 Oktober</div>
+
+            <div class="timeline-content">
+              <h3>Kenal Lebih Dekat — Offline</h3>
+              <p>
+                Sesi offline untuk peserta wilayah Makassar dan Gowa.
+                Peserta wilayah lainnya mengikuti sesi online pada 10 Oktober.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">17 Oktober</div>
+
+            <div class="timeline-content">
+              <h3>Final Result</h3>
+              <p>
+                Pengumuman hasil akhir rekrutmen Pengurus DPW dan DPD
+                Muda Bergerak Sulawesi Selatan.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="ketentuan">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Know before you join</div>
+
+          <h2>
+            Siapkan dirimu.<br>
+            <span class="orange">Ambil peranmu.</span>
+          </h2>
+
+          <p>
+            Perhatikan ketentuan wilayah sebelum memilih posisi
+            kepengurusan yang ingin kamu ikuti.
+          </p>
+        </div>
+
+        <div class="requirement-grid">
+
+          <div class="requirement-card">
+            <h3>Pengurus DPW</h3>
+
+            <ul>
+              <li>Terbuka bagi anak muda yang berdomisili di Kota Makassar.</li>
+              <li>Siap berkontribusi dalam lingkup Sulawesi Selatan.</li>
+              <li>Memiliki komitmen untuk bekerja sama dalam organisasi.</li>
+              <li>Bersedia mengikuti seluruh proses rekrutmen.</li>
+            </ul>
+          </div>
+
+          <div class="requirement-card">
+            <h3>Pengurus DPD</h3>
+
+            <ul>
+              <li>Memilih wilayah kabupaten atau kota sesuai domisili.</li>
+              <li>Siap berkontribusi di wilayah kepengurusan yang dipilih.</li>
+              <li>Memiliki semangat kolaborasi dan kerja nyata.</li>
+              <li>Bersedia mengikuti seluruh proses rekrutmen.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="daftar">
+      <div class="container cta-content">
+
+        <div>
+          <h2>
+            Sudah waktunya<br>
+            kamu ambil peran.
+          </h2>
+
+          <p>
+            Jangan hanya jadi penonton. Tumbuh, bergerak, dan bangun
+            ruang kolaborasi bersama Muda Bergerak Sulawesi Selatan.
+          </p>
+        </div>
+
+        <!-- Ganti URL di bawah dengan link formulir pendaftaran resmi -->
+        <a
+          class="button"
+          href="#"
+          onclick="alert('Link pendaftaran akan segera dibuka.'); return false;"
+        >
+          Daftar Sekarang ↗
         </a>
 
-        <a href="#timeline" class="button-outline">
-          LIHAT ALUR →
-        </a>
-
-        <div class="hero-tags">
-          <span>BELAJAR</span>
-          <span>BERKEMBANG</span>
-          <span>BERKOLABORASI</span>
-          <span>BERGERAK</span>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-
-  <!-- =========================
-       INFORMASI RECRUITMENT
-  ========================= -->
-
-  <section class="section" id="informasi">
-    <div class="container">
-
-      <div class="section-label">
-        ABOUT THE RECRUITMENT
-      </div>
-
-      <h2>
-        Satu ruang.
-        Banyak kemungkinan.
-      </h2>
-
-      <p class="section-intro">
-        Open Recruitment Pengurus DPW & DPD
-        Muda Bergerak Sulawesi Selatan.
-        Saatnya anak muda mengambil peran
-        di wilayahnya masing-masing.
-      </p>
-
-      <div class="cards">
-
-        <div class="card">
-          <div class="card-number">24</div>
-          <h3>Kabupaten/Kota</h3>
-          <p>
-            Ruang kolaborasi anak muda
-            di seluruh Sulawesi Selatan.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-number">DPW</div>
-          <h3>Tingkat Provinsi</h3>
-          <p>
-            Calon pengurus DPW wajib
-            berdomisili di Kota Makassar.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-number">DPD</div>
-          <h3>Tingkat Kabupaten/Kota</h3>
-          <p>
-            Bergerak dan berkontribusi
-            sesuai wilayah yang dipilih.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- =========================
-       TIMELINE
-  ========================= -->
-
-  <section class="section section-dark" id="timeline">
-    <div class="container">
-
-      <div class="section-label">
-        SAVE THE DATE
-      </div>
-
-      <h2>
-        Alur Recruitment
-      </h2>
-
-      <p class="section-intro">
-        Ikuti seluruh rangkaian proses
-        dan pastikan kamu tidak melewatkan
-        informasi dari admin.
-      </p>
-
-      <div class="timeline">
-
-        <div class="timeline-item">
-          <div class="timeline-date">
-            1–8 OKTOBER
-          </div>
-
-          <div class="timeline-content">
-            <h3>Open Recruitment</h3>
-            <p>
-              Pendaftaran, The Quiz, dan
-              Verifikasi Data & Dokumen.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">
-            10 OKTOBER
-          </div>
-
-          <div class="timeline-content">
-            <h3>Kenal Lebih Dekat — Online</h3>
-            <p>
-              Sesi online untuk seluruh peserta.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">
-            11 OKTOBER
-          </div>
-
-          <div class="timeline-content">
-            <h3>Kenal Lebih Dekat — Offline</h3>
-            <p>
-              Khusus peserta berdomisili
-              di Kota Makassar dan Kabupaten Gowa.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-date">
-            17 OKTOBER
-          </div>
-
-          <div class="timeline-content">
-            <h3>Final Result</h3>
-            <p>
-              Pengumuman hasil akhir proses recruitment.
-            </p>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- =========================
-       KETENTUAN
-  ========================= -->
-
-  <section class="section">
-    <div class="container">
-
-      <div class="section-label">
-        BEFORE YOU JOIN
-      </div>
-
-      <h2>
-        Siapkan diri kamu.
-      </h2>
-
-      <p class="section-intro">
-        Pastikan data dan dokumen yang
-        kamu siapkan sesuai dengan
-        ketentuan recruitment.
-      </p>
-
-      <div class="requirements">
-
-        <div class="requirement-item">
-          <h3>Data Diri</h3>
-          <p>
-            Nama lengkap, nomor WhatsApp,
-            pendidikan, pekerjaan, dan domisili.
-          </p>
-        </div>
-
-        <div class="requirement-item">
-          <h3>Pilihan Struktur</h3>
-          <p>
-            Pilih DPW atau DPD sesuai
-            ketentuan wilayah organisasi.
-          </p>
-        </div>
-
-        <div class="requirement-item">
-          <h3>Dokumen</h3>
-          <p>
-            KTP, CV atau profil,
-            dan pas foto.
-          </p>
-        </div>
-
-        <div class="requirement-item">
-          <h3>Komitmen</h3>
-          <p>
-            Bersedia mengikuti rangkaian
-            proses dan menjaga nilai organisasi.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- =========================
-       CALL TO ACTION
-  ========================= -->
-
-  <section class="cta">
-    <div class="container">
-
-      <h2>
-        Kamu siap bergerak?
-      </h2>
-
-      <p>
-        Ini bukan cuma tentang bergabung.
-        Ini tentang belajar, bertumbuh,
-        dan mulai mengambil peran.
-      </p>
-
-      <a href="#informasi" class="button">
-        MULAI PERJALANAN →
-      </a>
-
-    </div>
-  </section>
-
-
-  <!-- =========================
-       FOOTER
-  ========================= -->
+  </main>
 
   <footer>
-    <div class="container">
+    <div class="container footer-content">
 
-      <div class="footer-title">
-        MUDA BERGERAK SULAWESI SELATAN
+      <div class="brand">
+        <img
+          class="footer-logo"
+          src="./logo-mb.png"
+          alt="Logo Muda Bergerak Sulawesi Selatan"
+        >
+
+        <div>
+          <div class="footer-tag">MUDA BERGERAK SULSEL</div>
+          <p>Ruangnya Anak Muda Sulsel.</p>
+        </div>
       </div>
-
-      <p>
-        Ruangnya Anak Muda Sulsel.
-      </p>
-
-      <br>
 
       <p>
         © 2026 Muda Bergerak Sulawesi Selatan.
-        All rights reserved.
       </p>
 
     </div>
   </footer>
-
 
 </body>
 </html>
