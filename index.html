@@ -15,29 +15,62 @@
   --orange2:#ff6b35;
   --black:#0e0e0e;
   --dark:#171717;
-  --dark2:#202020;
   --white:#fff;
   --muted:#a5a5a5;
   --line:rgba(255,255,255,.12);
   --cream:#f7f1e8;
   --green:#35c878;
-  --red:#ef5350;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   background:var(--black);
   color:var(--white);
   font-family:"DM Sans",Arial,sans-serif;
   line-height:1.6;
 }
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-a{text-decoration:none;color:inherit}
-img{max-width:100%;display:block}
 
-.container{width:min(1120px,92%);margin:auto}
+button,
+input,
+select,
+textarea{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+img{
+  max-width:100%;
+  display:block;
+  user-select:none;
+  -webkit-user-select:none;
+  -webkit-user-drag:none;
+}
+
+.container{
+  width:min(1120px,92%);
+  margin:auto;
+}
+
+/* =========================
+   TOP BAR
+========================= */
 
 .topbar{
   background:var(--orange);
@@ -50,11 +83,15 @@ img{max-width:100%;display:block}
   text-transform:uppercase;
 }
 
+/* =========================
+   HEADER
+========================= */
+
 header{
   position:sticky;
   top:0;
   z-index:100;
-  background:rgba(14,14,14,.95);
+  background:rgba(14,14,14,.96);
   backdrop-filter:blur(15px);
   border-bottom:1px solid var(--line);
 }
@@ -74,9 +111,10 @@ header{
 }
 
 .brand img{
-  width:56px;
-  height:56px;
+  width:52px;
+  height:52px;
   object-fit:contain;
+  pointer-events:none;
 }
 
 .brand-name{
@@ -102,7 +140,9 @@ header{
   font-weight:700;
 }
 
-.nav-links a:hover{color:var(--orange)}
+.nav-links a:hover{
+  color:var(--orange);
+}
 
 .nav-cta{
   background:var(--orange);
@@ -111,22 +151,33 @@ header{
   border-radius:30px;
 }
 
+/* =========================
+   HERO
+========================= */
+
 .hero{
   position:relative;
   overflow:hidden;
-  padding:90px 0;
+  padding:105px 0 115px;
   background:
-    radial-gradient(circle at 85% 20%,rgba(244,81,30,.25),transparent 30%),
-    linear-gradient(135deg,#191919,#0e0e0e 70%);
+    radial-gradient(
+      circle at 90% 15%,
+      rgba(244,81,30,.16),
+      transparent 30%
+    ),
+    linear-gradient(135deg,#191919,#0e0e0e 75%);
 }
 
-.hero-grid{
+.hero::before,
+.hero::after{
+  display:none!important;
+  content:none;
+}
+
+.hero-content{
   position:relative;
   z-index:2;
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:55px;
-  align-items:center;
+  max-width:800px;
 }
 
 .eyebrow{
@@ -138,31 +189,36 @@ header{
   margin-bottom:18px;
 }
 
-h1,h2,h3{
+h1,
+h2,
+h3{
   font-family:"Space Grotesk",sans-serif;
   line-height:1.05;
 }
 
 h1{
-  font-size:clamp(43px,7vw,82px);
-  letter-spacing:-.055em;
+  font-size:clamp(48px,8vw,92px);
+  letter-spacing:-.06em;
   text-transform:uppercase;
 }
 
-h1 span,h2 span{color:var(--orange)}
+h1 span,
+h2 span{
+  color:var(--orange);
+}
 
 .hero-text{
-  max-width:570px;
+  max-width:600px;
   color:#c7c7c7;
   font-size:16px;
-  margin-top:24px;
+  margin-top:26px;
 }
 
 .actions{
   display:flex;
   flex-wrap:wrap;
   gap:12px;
-  margin-top:30px;
+  margin-top:32px;
 }
 
 .btn{
@@ -199,31 +255,13 @@ h1 span,h2 span{color:var(--orange)}
   color:var(--orange);
 }
 
-.hero-card{
-  padding:25px;
-  background:rgba(255,255,255,.04);
-  border:1px solid var(--line);
-  border-radius:24px;
-  transform:rotate(2deg);
-}
+/* =========================
+   SECTIONS
+========================= */
 
-.hero-card img{
-  width:100%;
-  max-height:330px;
-  object-fit:contain;
+section{
+  padding:80px 0;
 }
-
-.hero-card-label{
-  margin-top:20px;
-  padding-top:15px;
-  border-top:1px solid var(--line);
-  color:var(--orange);
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.1em;
-}
-
-section{padding:80px 0}
 
 .cream{
   background:var(--cream);
@@ -247,7 +285,13 @@ section{padding:80px 0}
   font-size:15px;
 }
 
-.cream .heading p{color:#666}
+.cream .heading p{
+  color:#666;
+}
+
+/* =========================
+   CARDS
+========================= */
 
 .cards{
   display:grid;
@@ -274,7 +318,14 @@ section{padding:80px 0}
   font-size:21px;
 }
 
-.card p{color:#666;font-size:14px}
+.card p{
+  color:#666;
+  font-size:14px;
+}
+
+/* =========================
+   TIMELINE
+========================= */
 
 .timeline{
   max-width:850px;
@@ -303,6 +354,10 @@ section{padding:80px 0}
   color:#aaa;
   font-size:14px;
 }
+
+/* =========================
+   REQUIREMENTS
+========================= */
 
 .requirements{
   display:grid;
@@ -344,6 +399,10 @@ section{padding:80px 0}
   font-weight:800;
 }
 
+/* =========================
+   CTA
+========================= */
+
 .cta{
   background:var(--orange);
   color:#111;
@@ -374,6 +433,10 @@ section{padding:80px 0}
   white-space:nowrap;
 }
 
+/* =========================
+   FOOTER
+========================= */
+
 footer{
   padding:35px 0;
   background:#090909;
@@ -386,9 +449,14 @@ footer{
   gap:20px;
 }
 
-.footer-inner p{color:#777;font-size:12px}
+.footer-inner p{
+  color:#777;
+  font-size:12px;
+}
 
-/* MODAL */
+/* =========================
+   MODAL
+========================= */
 
 .modal{
   position:fixed;
@@ -402,7 +470,9 @@ footer{
   backdrop-filter:blur(8px);
 }
 
-.modal.show{display:flex}
+.modal.show{
+  display:flex;
+}
 
 .modal-box{
   width:min(700px,100%);
@@ -441,7 +511,9 @@ footer{
   color:var(--orange);
 }
 
-/* FORM */
+/* =========================
+   FORM
+========================= */
 
 .form-section{
   margin-bottom:25px;
@@ -468,7 +540,9 @@ footer{
   gap:6px;
 }
 
-.field.full{grid-column:1/-1}
+.field.full{
+  grid-column:1/-1;
+}
 
 .field label{
   color:#ccc;
@@ -515,7 +589,9 @@ footer{
   font-size:12px;
 }
 
-.role-info.show{display:block}
+.role-info.show{
+  display:block;
+}
 
 .checkbox{
   display:flex;
@@ -542,15 +618,14 @@ footer{
   border-top:1px solid var(--line);
 }
 
-/* SUCCESS */
+/* =========================
+   SUCCESS
+========================= */
 
 .success{
-  display:none;
   text-align:center;
   padding:30px 10px;
 }
-
-.success.show{display:block}
 
 .success-icon{
   width:70px;
@@ -566,7 +641,9 @@ footer{
   font-size:30px;
 }
 
-.success h2{font-size:30px}
+.success h2{
+  font-size:30px;
+}
 
 .code{
   display:inline-block;
@@ -581,7 +658,9 @@ footer{
   letter-spacing:.1em;
 }
 
-/* STATUS MODAL */
+/* =========================
+   STATUS
+========================= */
 
 .status-card{
   padding:20px;
@@ -605,11 +684,18 @@ footer{
   font-size:13px;
 }
 
-.status-row:last-child{border-bottom:0}
+.status-row:last-child{
+  border-bottom:0;
+}
 
-.status-label{color:#777}
+.status-label{
+  color:#777;
+}
 
-.status-value{font-weight:700;text-align:right}
+.status-value{
+  font-weight:700;
+  text-align:right;
+}
 
 .badge{
   display:inline-block;
@@ -630,7 +716,9 @@ footer{
   font-size:12px;
 }
 
-/* QUIZ */
+/* =========================
+   QUIZ
+========================= */
 
 .quiz-progress{
   height:5px;
@@ -669,67 +757,127 @@ footer{
   border-color:var(--orange);
 }
 
-.quiz-option.selected{
-  border-color:var(--orange);
-  background:rgba(244,81,30,.12);
-  color:#fff;
-}
-
 .quiz-number{
   color:#777;
   font-size:11px;
   margin-bottom:8px;
 }
 
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media(max-width:800px){
-  .nav-links{display:none}
-  .hero{padding:60px 0}
-  .hero-grid{grid-template-columns:1fr;gap:35px}
-  .hero-card{max-width:430px;margin:auto}
-  .cards{grid-template-columns:1fr}
-  .requirements{grid-template-columns:1fr}
-  .cta-inner{align-items:flex-start;flex-direction:column}
-  .timeline-item{grid-template-columns:1fr;gap:7px}
+
+  .nav-links{
+    display:none;
+  }
+
+  .hero{
+    padding:70px 0 80px;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .requirements{
+    grid-template-columns:1fr;
+  }
+
+  .cta-inner{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .timeline-item{
+    grid-template-columns:1fr;
+    gap:7px;
+  }
 }
 
 @media(max-width:520px){
-  section{padding:60px 0}
-  .form-grid{grid-template-columns:1fr}
-  .field.full{grid-column:auto}
-  .form-actions{flex-direction:column}
-  .form-actions .btn{width:100%}
-  .brand img{width:48px;height:48px}
-  .hero h1{font-size:43px}
-  .modal-box{padding:20px}
-  .footer-inner{align-items:flex-start;flex-direction:column}
+
+  section{
+    padding:60px 0;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .field.full{
+    grid-column:auto;
+  }
+
+  .form-actions{
+    flex-direction:column;
+  }
+
+  .form-actions .btn{
+    width:100%;
+  }
+
+  .brand img{
+    width:48px;
+    height:48px;
+  }
+
+  .hero h1{
+    font-size:46px;
+  }
+
+  .modal-box{
+    padding:20px;
+  }
+
+  .footer-inner{
+    align-items:flex-start;
+    flex-direction:column;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- =========================
+     TOP BAR
+========================= -->
+
 <div class="topbar">
   OPEN RECRUITMENT · PENGURUS DPW & DPD · SULAWESI SELATAN
 </div>
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
   <div class="container nav">
 
     <a href="#beranda" class="brand">
-      <img src="./logo-mb.png" alt="Logo Muda Bergerak Sulawesi Selatan">
+
+      <!-- LOGO HANYA DI HEADER -->
+      <img
+        src="./logo-mb.png"
+        alt="Logo Muda Bergerak Sulawesi Selatan"
+        draggable="false"
+        oncontextmenu="return false;"
+      >
+
       <div class="brand-name">
         MUDA BERGERAK
         <span>SULAWESI SELATAN</span>
       </div>
+
     </a>
 
     <nav class="nav-links">
       <a href="#tentang">Tentang</a>
       <a href="#timeline">Timeline</a>
       <a href="#ketentuan">Ketentuan</a>
-      <a href="#status">Cek Status</a>
+      <a href="#status" id="statusNav">Cek Status</a>
       <a href="#daftar" class="nav-cta">Daftar ↗</a>
     </nav>
 
@@ -738,18 +886,24 @@ footer{
 
 <main>
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero" id="beranda">
-  <div class="container hero-grid">
 
-    <div>
-      <div class="eyebrow">Open Recruitment 2026</div>
+  <div class="container">
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        OPEN RECRUITMENT 2026
+      </div>
 
       <h1>
-        Ruangnya<br>
-        <span>Anak Muda</span><br>
-        Sulsel.
+        RUANGNYA<br>
+        <span>ANAK MUDA</span><br>
+        SULSEL.
       </h1>
 
       <p class="hero-text">
@@ -758,34 +912,42 @@ footer{
       </p>
 
       <div class="actions">
-        <button class="btn btn-primary" onclick="openRegistration()">
+
+        <button
+          class="btn btn-primary"
+          onclick="openRegistration()"
+        >
           Mulai Pendaftaran ↗
         </button>
 
-        <a class="btn btn-outline" href="#timeline">
+        <a
+          class="btn btn-outline"
+          href="#timeline"
+        >
           Lihat Timeline
         </a>
-      </div>
-    </div>
 
-    <div class="hero-card">
-      <img src="./logo-mb.png" alt="Muda Bergerak Sulawesi Selatan">
-
-      <div class="hero-card-label">
-        OPEN RECRUITMENT · DPW & DPD
       </div>
+
     </div>
 
   </div>
+
 </section>
 
-<!-- ABOUT -->
+<!-- =========================
+     TENTANG
+========================= -->
 
 <section class="cream" id="tentang">
+
   <div class="container">
 
     <div class="heading">
-      <div class="eyebrow">Kenapa ikut?</div>
+
+      <div class="eyebrow">
+        KENAPA IKUT?
+      </div>
 
       <h2>
         Bukan cuma<br>
@@ -797,13 +959,16 @@ footer{
         bertumbuh, berkolaborasi, dan mengambil peran
         sesuai wilayah serta struktur yang dipilih.
       </p>
+
     </div>
 
     <div class="cards">
 
       <div class="card">
         <div class="card-number">01</div>
+
         <h3>Bertumbuh</h3>
+
         <p>
           Kembangkan kapasitas, pengalaman, dan cara berpikir
           bersama anak muda lainnya.
@@ -812,7 +977,9 @@ footer{
 
       <div class="card">
         <div class="card-number">02</div>
+
         <h3>Berkolaborasi</h3>
+
         <p>
           Bangun jaringan dan ruang kerja sama lintas latar belakang.
         </p>
@@ -820,7 +987,9 @@ footer{
 
       <div class="card">
         <div class="card-number">03</div>
+
         <h3>Berdampak</h3>
+
         <p>
           Mulai dari lingkungan sekitar dan hadir membawa gagasan
           serta kontribusi nyata.
@@ -828,16 +997,24 @@ footer{
       </div>
 
     </div>
+
   </div>
+
 </section>
 
-<!-- TIMELINE -->
+<!-- =========================
+     TIMELINE
+========================= -->
 
 <section id="timeline">
+
   <div class="container">
 
     <div class="heading">
-      <div class="eyebrow">Save the date</div>
+
+      <div class="eyebrow">
+        SAVE THE DATE
+      </div>
 
       <h2>
         Timeline<br>
@@ -847,62 +1024,103 @@ footer{
       <p>
         Catat tanggalnya dan ikuti setiap proses rekrutmen.
       </p>
+
     </div>
 
     <div class="timeline">
 
       <div class="timeline-item">
-        <div class="timeline-date">01–08 OKTOBER</div>
+
+        <div class="timeline-date">
+          01–08 OKTOBER
+        </div>
+
         <div>
-          <h3>Open Recruitment</h3>
+          <h3>
+            Open Recruitment
+          </h3>
+
           <p>
             Pendaftaran, The Quiz, serta verifikasi data dan dokumen.
           </p>
         </div>
+
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-date">10 OKTOBER</div>
+
+        <div class="timeline-date">
+          10 OKTOBER
+        </div>
+
         <div>
-          <h3>Kenal Lebih Dekat — Online</h3>
+          <h3>
+            Kenal Lebih Dekat — Online
+          </h3>
+
           <p>
             Sesi online untuk peserta sesuai jadwal yang diberikan.
           </p>
         </div>
+
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-date">11 OKTOBER</div>
+
+        <div class="timeline-date">
+          11 OKTOBER
+        </div>
+
         <div>
-          <h3>Kenal Lebih Dekat — Offline</h3>
+          <h3>
+            Kenal Lebih Dekat — Offline
+          </h3>
+
           <p>
-            Sesi offline untuk peserta yang berdomisili di Kota Makassar
-            dan Kabupaten Gowa.
+            Sesi offline untuk peserta yang berdomisili
+            di Kota Makassar dan Kabupaten Gowa.
           </p>
         </div>
+
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-date">17 OKTOBER</div>
+
+        <div class="timeline-date">
+          17 OKTOBER
+        </div>
+
         <div>
-          <h3>Final Result</h3>
+          <h3>
+            Final Result
+          </h3>
+
           <p>
             Pengumuman hasil akhir proses rekrutmen.
           </p>
         </div>
+
       </div>
 
     </div>
+
   </div>
+
 </section>
 
-<!-- KETENTUAN -->
+<!-- =========================
+     KETENTUAN
+========================= -->
 
 <section id="ketentuan">
+
   <div class="container">
 
     <div class="heading">
-      <div class="eyebrow">Before you join</div>
+
+      <div class="eyebrow">
+        BEFORE YOU JOIN
+      </div>
 
       <h2>
         Pilih ruangmu.<br>
@@ -912,94 +1130,174 @@ footer{
       <p>
         Pastikan pilihan struktur sesuai dengan ketentuan wilayah.
       </p>
+
     </div>
 
     <div class="requirements">
 
       <div class="req">
-        <h3>Pengurus DPW</h3>
+
+        <h3>
+          Pengurus DPW
+        </h3>
 
         <ul>
-          <li>Wajib berdomisili di Kota Makassar.</li>
-          <li>Siap berkontribusi dalam lingkup Sulawesi Selatan.</li>
-          <li>Bersedia mengikuti seluruh proses recruitment.</li>
-          <li>Memiliki komitmen untuk bekerja sama dalam organisasi.</li>
+
+          <li>
+            Wajib berdomisili di Kota Makassar.
+          </li>
+
+          <li>
+            Siap berkontribusi dalam lingkup Sulawesi Selatan.
+          </li>
+
+          <li>
+            Bersedia mengikuti seluruh proses recruitment.
+          </li>
+
+          <li>
+            Memiliki komitmen untuk bekerja sama dalam organisasi.
+          </li>
+
         </ul>
+
       </div>
 
       <div class="req">
-        <h3>Pengurus DPD</h3>
+
+        <h3>
+          Pengurus DPD
+        </h3>
 
         <ul>
-          <li>Memilih Kabupaten/Kota sesuai wilayah domisili.</li>
-          <li>Siap berkontribusi di wilayah yang dipilih.</li>
-          <li>Bersedia mengikuti seluruh proses recruitment.</li>
-          <li>Memiliki semangat kolaborasi dan kerja nyata.</li>
+
+          <li>
+            Memilih Kabupaten/Kota sesuai wilayah domisili.
+          </li>
+
+          <li>
+            Siap berkontribusi di wilayah yang dipilih.
+          </li>
+
+          <li>
+            Bersedia mengikuti seluruh proses recruitment.
+          </li>
+
+          <li>
+            Memiliki semangat kolaborasi dan kerja nyata.
+          </li>
+
         </ul>
+
       </div>
 
     </div>
+
   </div>
+
 </section>
 
-<!-- CTA -->
+<!-- =========================
+     CTA
+========================= -->
 
 <section class="cta" id="daftar">
+
   <div class="container cta-inner">
 
     <div>
-      <h2>Sudah waktunya kamu ambil peran.</h2>
+
+      <h2>
+        Sudah waktunya kamu ambil peran.
+      </h2>
 
       <p>
         Isi data, ikuti The Quiz, dan lanjutkan perjalananmu
         dalam proses Open Recruitment Muda Bergerak Sulawesi Selatan.
       </p>
+
     </div>
 
-    <button class="btn" onclick="openRegistration()">
+    <button
+      class="btn"
+      onclick="openRegistration()"
+    >
       DAFTAR SEKARANG ↗
     </button>
 
   </div>
+
 </section>
 
 </main>
 
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
+
   <div class="container footer-inner">
 
     <div class="brand">
-      <img src="./logo-mb.png" alt="Logo Muda Bergerak">
+
+      <img
+        src="./logo-mb.png"
+        alt="Logo Muda Bergerak"
+        draggable="false"
+        oncontextmenu="return false;"
+      >
+
       <div class="brand-name">
         MUDA BERGERAK
         <span>SULAWESI SELATAN</span>
       </div>
+
     </div>
 
-    <p>© 2026 Muda Bergerak Sulawesi Selatan.</p>
+    <p>
+      © 2026 Muda Bergerak Sulawesi Selatan.
+    </p>
 
   </div>
+
 </footer>
 
 
-<!-- ================================
+<!-- =====================================================
      MODAL PENDAFTARAN
-================================ -->
+===================================================== -->
 
 <div class="modal" id="registrationModal">
 
   <div class="modal-box">
 
     <div class="modal-top">
+
       <div>
-        <div class="eyebrow">Let's get started</div>
-        <h2>Pendaftaran Oprec</h2>
+
+        <div class="eyebrow">
+          LET'S GET STARTED
+        </div>
+
+        <h2>
+          Pendaftaran Oprec
+        </h2>
+
       </div>
 
-      <button class="close" onclick="closeModal('registrationModal')">×</button>
+      <button
+        class="close"
+        onclick="closeModal('registrationModal')"
+      >
+        ×
+      </button>
+
     </div>
 
     <form id="registrationForm">
+
+      <!-- DATA DIRI -->
 
       <div class="form-section">
 
@@ -1010,32 +1308,84 @@ footer{
         <div class="form-grid">
 
           <div class="field full">
-            <label>Nama Lengkap *</label>
-            <input id="nama" type="text" required placeholder="Nama lengkap kamu">
+
+            <label>
+              Nama Lengkap *
+            </label>
+
+            <input
+              id="nama"
+              type="text"
+              required
+              placeholder="Nama lengkap kamu"
+            >
+
           </div>
 
           <div class="field">
-            <label>Nomor WhatsApp *</label>
-            <input id="whatsapp" type="tel" required placeholder="08xxxxxxxxxx">
+
+            <label>
+              Nomor WhatsApp *
+            </label>
+
+            <input
+              id="whatsapp"
+              type="tel"
+              required
+              placeholder="08xxxxxxxxxx"
+            >
+
           </div>
 
           <div class="field">
-            <label>Email *</label>
-            <input id="email" type="email" required placeholder="nama@email.com">
+
+            <label>
+              Email *
+            </label>
+
+            <input
+              id="email"
+              type="email"
+              required
+              placeholder="nama@email.com"
+            >
+
           </div>
 
           <div class="field">
-            <label>Tanggal Lahir *</label>
-            <input id="lahir" type="date" required>
+
+            <label>
+              Tanggal Lahir *
+            </label>
+
+            <input
+              id="lahir"
+              type="date"
+              required
+            >
+
           </div>
 
           <div class="field">
-            <label>Pendidikan / Pekerjaan *</label>
-            <input id="pekerjaan" type="text" required placeholder="Contoh: Mahasiswa / Karyawan">
+
+            <label>
+              Pendidikan / Pekerjaan *
+            </label>
+
+            <input
+              id="pekerjaan"
+              type="text"
+              required
+              placeholder="Contoh: Mahasiswa / Karyawan"
+            >
+
           </div>
 
         </div>
+
       </div>
+
+      <!-- PILIHAN STRUKTUR -->
 
       <div class="form-section">
 
@@ -1046,22 +1396,54 @@ footer{
         <div class="form-grid">
 
           <div class="field full">
-            <label>Pilihan Struktur *</label>
 
-            <select id="struktur" required onchange="updateRegion()">
-              <option value="">Pilih struktur</option>
-              <option value="DPW">Pengurus DPW</option>
-              <option value="DPD">Pengurus DPD</option>
+            <label>
+              Pilihan Struktur *
+            </label>
+
+            <select
+              id="struktur"
+              required
+              onchange="updateRegion()"
+            >
+
+              <option value="">
+                Pilih struktur
+              </option>
+
+              <option value="DPW">
+                Pengurus DPW
+              </option>
+
+              <option value="DPD">
+                Pengurus DPD
+              </option>
+
             </select>
 
-            <div class="role-info" id="roleInfo"></div>
+            <div
+              class="role-info"
+              id="roleInfo"
+            ></div>
+
           </div>
 
           <div class="field full">
-            <label>Domisili Kabupaten / Kota *</label>
 
-            <select id="domisili" required onchange="checkRegion()">
-              <option value="">Pilih domisili</option>
+            <label>
+              Domisili Kabupaten / Kota *
+            </label>
+
+            <select
+              id="domisili"
+              required
+              onchange="checkRegion()"
+            >
+
+              <option value="">
+                Pilih domisili
+              </option>
+
               <option>Makassar</option>
               <option>Gowa</option>
               <option>Takalar</option>
@@ -1086,15 +1468,20 @@ footer{
               <option>Luwu Utara</option>
               <option>Luwu Timur</option>
               <option>Parepare</option>
+
             </select>
 
             <small class="help">
               Pilihan domisili akan menentukan format Kenal Lebih Dekat.
             </small>
+
           </div>
 
         </div>
+
       </div>
+
+      <!-- PROFIL -->
 
       <div class="form-section">
 
@@ -1105,17 +1492,37 @@ footer{
         <div class="form-grid">
 
           <div class="field full">
-            <label>Pengalaman Organisasi</label>
-            <textarea id="organisasi" placeholder="Ceritakan singkat pengalaman organisasi, komunitas, kepanitiaan, atau kegiatan sosial kamu."></textarea>
+
+            <label>
+              Pengalaman Organisasi
+            </label>
+
+            <textarea
+              id="organisasi"
+              placeholder="Ceritakan singkat pengalaman organisasi, komunitas, kepanitiaan, atau kegiatan sosial kamu."
+            ></textarea>
+
           </div>
 
           <div class="field full">
-            <label>Kenapa ingin bergabung?</label>
-            <textarea id="alasan" required placeholder="Tulis alasan kamu dengan singkat dan jujur."></textarea>
+
+            <label>
+              Kenapa ingin bergabung? *
+            </label>
+
+            <textarea
+              id="alasan"
+              required
+              placeholder="Tulis alasan kamu dengan singkat dan jujur."
+            ></textarea>
+
           </div>
 
         </div>
+
       </div>
+
+      <!-- DOKUMEN -->
 
       <div class="form-section">
 
@@ -1126,42 +1533,98 @@ footer{
         <div class="form-grid">
 
           <div class="field">
-            <label>KTP *</label>
-            <input id="ktp" type="file" accept="image/*,.pdf" required>
-            <small class="help">JPG, PNG atau PDF</small>
+
+            <label>
+              KTP *
+            </label>
+
+            <input
+              id="ktp"
+              type="file"
+              accept="image/*,.pdf"
+              required
+            >
+
+            <small class="help">
+              JPG, PNG atau PDF
+            </small>
+
           </div>
 
           <div class="field">
-            <label>CV / Profile *</label>
-            <input id="cv" type="file" accept="image/*,.pdf" required>
-            <small class="help">JPG, PNG atau PDF</small>
+
+            <label>
+              CV / Profile *
+            </label>
+
+            <input
+              id="cv"
+              type="file"
+              accept="image/*,.pdf"
+              required
+            >
+
+            <small class="help">
+              JPG, PNG atau PDF
+            </small>
+
           </div>
 
           <div class="field full">
-            <label>Pas Foto *</label>
-            <input id="foto" type="file" accept="image/*" required>
-            <small class="help">JPG atau PNG</small>
+
+            <label>
+              Pas Foto *
+            </label>
+
+            <input
+              id="foto"
+              type="file"
+              accept="image/*"
+              required
+            >
+
+            <small class="help">
+              JPG atau PNG
+            </small>
+
           </div>
 
         </div>
+
       </div>
 
+      <!-- PERNYATAAN -->
+
       <label class="checkbox">
-        <input id="agreement" type="checkbox" required>
+
+        <input
+          id="agreement"
+          type="checkbox"
+          required
+        >
+
         <span>
-          Saya menyatakan bahwa data yang saya isi adalah benar dan bersedia
-          mengikuti seluruh rangkaian proses Open Recruitment Muda Bergerak
-          Sulawesi Selatan.
+          Saya menyatakan bahwa data yang saya isi adalah benar
+          dan bersedia mengikuti seluruh rangkaian proses
+          Open Recruitment Muda Bergerak Sulawesi Selatan.
         </span>
+
       </label>
 
       <div class="form-actions">
 
-        <button type="button" class="btn btn-outline" onclick="closeModal('registrationModal')">
+        <button
+          type="button"
+          class="btn btn-outline"
+          onclick="closeModal('registrationModal')"
+        >
           Batal
         </button>
 
-        <button type="submit" class="btn btn-primary">
+        <button
+          type="submit"
+          class="btn btn-primary"
+        >
           LANJUT KE THE QUIZ →
         </button>
 
@@ -1170,58 +1633,92 @@ footer{
     </form>
 
   </div>
+
 </div>
 
 
-<!-- ================================
+<!-- =====================================================
      MODAL QUIZ
-================================ -->
+===================================================== -->
 
 <div class="modal" id="quizModal">
 
   <div class="modal-box">
 
     <div class="modal-top">
+
       <div>
-        <div class="eyebrow">The Quiz</div>
-        <h2>Let's see how you think.</h2>
+
+        <div class="eyebrow">
+          THE QUIZ
+        </div>
+
+        <h2>
+          Let's see how you think.
+        </h2>
+
       </div>
 
-      <button class="close" onclick="closeModal('quizModal')">×</button>
+      <button
+        class="close"
+        onclick="closeModal('quizModal')"
+      >
+        ×
+      </button>
+
     </div>
 
     <div class="quiz-progress">
-      <div class="quiz-progress-bar" id="quizProgress"></div>
+
+      <div
+        class="quiz-progress-bar"
+        id="quizProgress"
+      ></div>
+
     </div>
 
     <div id="quizContent"></div>
 
   </div>
+
 </div>
 
 
-<!-- ================================
+<!-- =====================================================
      MODAL SUCCESS
-================================ -->
+===================================================== -->
 
 <div class="modal" id="successModal">
 
   <div class="modal-box">
 
-    <div class="success show">
+    <div class="success">
 
-      <div class="success-icon">✓</div>
+      <div class="success-icon">
+        ✓
+      </div>
 
-      <div class="eyebrow">You're in the process.</div>
+      <div class="eyebrow">
+        YOU'RE IN THE PROCESS.
+      </div>
 
-      <h2>Pendaftaran Terkirim.</h2>
+      <h2>
+        Pendaftaran Terkirim.
+      </h2>
 
       <p style="color:#aaa;margin-top:12px">
-        Data kamu sudah tercatat dan masuk ke tahap verifikasi.
+
+        Data kamu sudah tercatat dan masuk
+        ke tahap verifikasi.
+
         Simpan kode pendaftaran ini.
+
       </p>
 
-      <div class="code" id="registrationCode">
+      <div
+        class="code"
+        id="registrationCode"
+      >
         MB-2026-000000
       </div>
 
@@ -1229,164 +1726,208 @@ footer{
         Gunakan kode ini untuk mengecek status pendaftaran.
       </p>
 
-      <div class="actions" style="justify-content:center">
-        <button class="btn btn-primary" onclick="closeAll();openStatus()">
+      <div
+        class="actions"
+        style="justify-content:center"
+      >
+
+        <button
+          class="btn btn-primary"
+          onclick="closeAll();openStatus()"
+        >
           CEK STATUS
         </button>
 
-        <button class="btn btn-outline" onclick="closeAll()">
+        <button
+          class="btn btn-outline"
+          onclick="closeAll()"
+        >
           SELESAI
         </button>
+
       </div>
 
     </div>
 
   </div>
+
 </div>
 
 
-<!-- ================================
+<!-- =====================================================
      MODAL STATUS
-================================ -->
+===================================================== -->
 
 <div class="modal" id="statusModal">
 
   <div class="modal-box">
 
     <div class="modal-top">
+
       <div>
-        <div class="eyebrow">Participant Status</div>
-        <h2>Cek Status</h2>
+
+        <div class="eyebrow">
+          PARTICIPANT STATUS
+        </div>
+
+        <h2>
+          Cek Status
+        </h2>
+
       </div>
 
-      <button class="close" onclick="closeModal('statusModal')">×</button>
+      <button
+        class="close"
+        onclick="closeModal('statusModal')"
+      >
+        ×
+      </button>
+
     </div>
 
     <div class="field">
-      <label>Kode Pendaftaran</label>
 
-      <input id="statusCodeInput" type="text" placeholder="Contoh: MB-2026-123456">
+      <label>
+        Kode Pendaftaran
+      </label>
 
-      <button class="btn btn-primary" style="margin-top:10px" onclick="checkStatus()">
+      <input
+        id="statusCodeInput"
+        type="text"
+        placeholder="Contoh: MB-2026-123456"
+      >
+
+      <button
+        class="btn btn-primary"
+        style="margin-top:10px"
+        onclick="checkStatus()"
+      >
         CEK STATUS
       </button>
+
     </div>
 
     <div id="statusResult"></div>
 
   </div>
+
 </div>
 
 
 <script>
 
-/* =========================================
+/* =====================================================
    DATA QUIZ
-========================================= */
+===================================================== */
 
 const quizQuestions = [
 
 {
- question:"Dalam sebuah kegiatan, tim kamu mengalami perbedaan pendapat. Apa yang kamu lakukan?",
- options:[
-  ["Memaksakan pendapat sendiri.",1],
-  ["Menghindari pembahasan agar tidak terjadi konflik.",4],
-  ["Membiarkan orang lain menentukan semuanya.",7],
-  ["Mendengar semua pendapat lalu mencari titik temu bersama.",10]
- ]
+  question:"Dalam sebuah kegiatan, tim kamu mengalami perbedaan pendapat. Apa yang kamu lakukan?",
+  options:[
+    ["Memaksakan pendapat sendiri.",1],
+    ["Menghindari pembahasan agar tidak terjadi konflik.",4],
+    ["Membiarkan orang lain menentukan semuanya.",7],
+    ["Mendengar semua pendapat lalu mencari titik temu bersama.",10]
+  ]
 },
 
 {
- question:"Kamu mendapatkan tugas organisasi dengan deadline yang cukup dekat.",
- options:[
-  ["Menunggu sampai ada yang mengingatkan.",1],
-  ["Mengerjakan kalau sudah benar-benar terdesak.",4],
-  ["Membagi tugas tetapi tidak mengecek progres.",7],
-  ["Menyusun prioritas, mengerjakan, dan memastikan selesai tepat waktu.",10]
- ]
+  question:"Kamu mendapatkan tugas organisasi dengan deadline yang cukup dekat.",
+  options:[
+    ["Menunggu sampai ada yang mengingatkan.",1],
+    ["Mengerjakan kalau sudah benar-benar terdesak.",4],
+    ["Membagi tugas tetapi tidak mengecek progres.",7],
+    ["Menyusun prioritas, mengerjakan, dan memastikan selesai tepat waktu.",10]
+  ]
 },
 
 {
- question:"Ada anggota baru yang belum mengenal siapa-siapa.",
- options:[
-  ["Membiarkannya beradaptasi sendiri.",1],
-  ["Menyapanya jika kebetulan bertemu.",4],
-  ["Mengajaknya bergabung dalam beberapa kegiatan.",7],
-  ["Menyambut, mengenalkan ke anggota lain, dan membuatnya merasa punya ruang.",10]
- ]
+  question:"Ada anggota baru yang belum mengenal siapa-siapa.",
+  options:[
+    ["Membiarkannya beradaptasi sendiri.",1],
+    ["Menyapanya jika kebetulan bertemu.",4],
+    ["Mengajaknya bergabung dalam beberapa kegiatan.",7],
+    ["Menyambut, mengenalkan ke anggota lain, dan membuatnya merasa punya ruang.",10]
+  ]
 },
 
 {
- question:"Program yang kamu rancang mendapat kritik dari masyarakat.",
- options:[
-  ["Menganggap kritik sebagai serangan.",1],
-  ["Mengabaikannya.",4],
-  ["Menerima kritik tetapi tidak melakukan perubahan.",7],
-  ["Mendengarkan, mengevaluasi, dan memperbaiki hal yang memang perlu diperbaiki.",10]
- ]
+  question:"Program yang kamu rancang mendapat kritik dari masyarakat.",
+  options:[
+    ["Menganggap kritik sebagai serangan.",1],
+    ["Mengabaikannya.",4],
+    ["Menerima kritik tetapi tidak melakukan perubahan.",7],
+    ["Mendengarkan, mengevaluasi, dan memperbaiki hal yang memang perlu diperbaiki.",10]
+  ]
 },
 
 {
- question:"Dalam kerja tim, ada anggota yang tidak menyelesaikan tugasnya.",
- options:[
-  ["Langsung menyalahkannya di grup.",1],
-  ["Mengambil alih semua tugasnya.",4],
-  ["Menunggu sampai tugas tersebut selesai sendiri.",7],
-  ["Menghubungi, memahami kendalanya, lalu mencari solusi bersama.",10]
- ]
+  question:"Dalam kerja tim, ada anggota yang tidak menyelesaikan tugasnya.",
+  options:[
+    ["Langsung menyalahkannya di grup.",1],
+    ["Mengambil alih semua tugasnya.",4],
+    ["Menunggu sampai tugas tersebut selesai sendiri.",7],
+    ["Menghubungi, memahami kendalanya, lalu mencari solusi bersama.",10]
+  ]
 },
 
 {
- question:"Kamu memiliki ide kegiatan tetapi belum pernah menjalankannya.",
- options:[
-  ["Tidak jadi karena takut gagal.",1],
-  ["Menunggu orang lain memulai.",4],
-  ["Menceritakan ide tanpa membuat rencana.",7],
-  ["Membuat konsep sederhana dan mengajak orang lain mengembangkannya.",10]
- ]
+  question:"Kamu memiliki ide kegiatan tetapi belum pernah menjalankannya.",
+  options:[
+    ["Tidak jadi karena takut gagal.",1],
+    ["Menunggu orang lain memulai.",4],
+    ["Menceritakan ide tanpa membuat rencana.",7],
+    ["Membuat konsep sederhana dan mengajak orang lain mengembangkannya.",10]
+  ]
 },
 
 {
- question:"Kamu melihat persoalan di lingkungan sekitar yang belum mendapat perhatian.",
- options:[
-  ["Menganggap itu bukan urusanmu.",1],
-  ["Membicarakannya di media sosial saja.",4],
-  ["Mencari tahu persoalannya lebih jauh.",7],
-  ["Mengidentifikasi masalah, berdiskusi dengan pihak terkait, lalu mencari langkah yang bisa dilakukan.",10]
- ]
+  question:"Kamu melihat persoalan di lingkungan sekitar yang belum mendapat perhatian.",
+  options:[
+    ["Menganggap itu bukan urusanmu.",1],
+    ["Membicarakannya di media sosial saja.",4],
+    ["Mencari tahu persoalannya lebih jauh.",7],
+    ["Mengidentifikasi masalah, berdiskusi dengan pihak terkait, lalu mencari langkah yang bisa dilakukan.",10]
+  ]
 },
 
 {
- question:"Ketika diberikan tanggung jawab baru yang belum kamu kuasai.",
- options:[
-  ["Menolak karena belum bisa.",1],
-  ["Mencoba sebisanya tanpa bertanya.",4],
-  ["Mencari tutorial atau referensi.",7],
-  ["Belajar, bertanya kepada yang lebih berpengalaman, lalu menjalankan tanggung jawab tersebut.",10]
- ]
+  question:"Ketika diberikan tanggung jawab baru yang belum kamu kuasai.",
+  options:[
+    ["Menolak karena belum bisa.",1],
+    ["Mencoba sebisanya tanpa bertanya.",4],
+    ["Mencari tutorial atau referensi.",7],
+    ["Belajar, bertanya kepada yang lebih berpengalaman, lalu menjalankan tanggung jawab tersebut.",10]
+  ]
 },
 
 {
- question:"Bagaimana menurutmu cara menjaga organisasi tetap berjalan sehat?",
- options:[
-  ["Semua keputusan cukup ditentukan beberapa orang.",1],
-  ["Yang penting kegiatan tetap berjalan.",4],
-  ["Komunikasi dilakukan ketika ada masalah.",7],
-  ["Komunikasi terbuka, pembagian peran jelas, dan evaluasi dilakukan secara berkala.",10]
- ]
+  question:"Bagaimana menurutmu cara menjaga organisasi tetap berjalan sehat?",
+  options:[
+    ["Semua keputusan cukup ditentukan beberapa orang.",1],
+    ["Yang penting kegiatan tetap berjalan.",4],
+    ["Komunikasi dilakukan ketika ada masalah.",7],
+    ["Komunikasi terbuka, pembagian peran jelas, dan evaluasi dilakukan secara berkala.",10]
+  ]
 },
 
 {
- question:"Jika kamu bergabung, apa yang paling ingin kamu bawa?",
- options:[
-  ["Sekadar pengalaman baru.",1],
-  ["Relasi sebanyak mungkin.",4],
-  ["Ide dan kemampuan yang saya miliki.",7],
-  ["Kemauan belajar, kolaborasi, dan kontribusi yang bisa dijalankan bersama.",10]
- ]
+  question:"Jika kamu bergabung, apa yang paling ingin kamu bawa?",
+  options:[
+    ["Sekadar pengalaman baru.",1],
+    ["Relasi sebanyak mungkin.",4],
+    ["Ide dan kemampuan yang saya miliki.",7],
+    ["Kemauan belajar, kolaborasi, dan kontribusi yang bisa dijalankan bersama.",10]
+  ]
 }
 
 ];
+
+
+/* =====================================================
+   STATE
+===================================================== */
 
 let currentQuestion=0;
 let quizScore=0;
@@ -1394,43 +1935,70 @@ let quizAnswers=[];
 let participantData=null;
 
 
-/* =========================================
+/* =====================================================
    MODAL
-========================================= */
+===================================================== */
 
 function openModal(id){
-  document.getElementById(id).classList.add("show");
+
+  document
+    .getElementById(id)
+    .classList.add("show");
+
   document.body.style.overflow="hidden";
 }
 
+
 function closeModal(id){
-  document.getElementById(id).classList.remove("show");
+
+  document
+    .getElementById(id)
+    .classList.remove("show");
 
   if(!document.querySelector(".modal.show")){
     document.body.style.overflow="";
   }
+
 }
 
+
 function closeAll(){
-  document.querySelectorAll(".modal").forEach(m=>m.classList.remove("show"));
+
+  document
+    .querySelectorAll(".modal")
+    .forEach(function(modal){
+      modal.classList.remove("show");
+    });
+
   document.body.style.overflow="";
 }
 
 
-/* =========================================
+/* =====================================================
    REGISTRATION
-========================================= */
+===================================================== */
 
 function openRegistration(){
-  document.getElementById("registrationForm").reset();
-  document.getElementById("roleInfo").classList.remove("show");
+
+  document
+    .getElementById("registrationForm")
+    .reset();
+
+  document
+    .getElementById("roleInfo")
+    .classList.remove("show");
+
   openModal("registrationModal");
 }
 
+
 function updateRegion(){
 
-  const structure=document.getElementById("struktur").value;
-  const info=document.getElementById("roleInfo");
+  const structure=
+    document.getElementById("struktur").value;
+
+  const info=
+    document.getElementById("roleInfo");
 
   if(structure==="DPW"){
 
@@ -1439,14 +2007,18 @@ function updateRegion(){
 
     info.classList.add("show");
 
-  }else if(structure==="DPD"){
+  }
+
+  else if(structure==="DPD"){
 
     info.innerHTML=
       "<strong>Pengurus DPD:</strong> pilih Kabupaten/Kota sesuai wilayah domisili.";
 
     info.classList.add("show");
 
-  }else{
+  }
+
+  else{
 
     info.classList.remove("show");
 
@@ -1454,127 +2026,207 @@ function updateRegion(){
 
 }
 
+
 function checkRegion(){
 
-  const structure=document.getElementById("struktur").value;
-  const city=document.getElementById("domisili").value;
+  const structure=
+    document.getElementById("struktur").value;
 
-  if(structure==="DPW" && city && city!=="Makassar"){
+  const city=
+    document.getElementById("domisili").value;
 
-    alert("Untuk pilihan Pengurus DPW, domisili wajib Kota Makassar.");
+  if(
+    structure==="DPW" &&
+    city &&
+    city!=="Makassar"
+  ){
 
-    document.getElementById("domisili").value="";
+    alert(
+      "Untuk pilihan Pengurus DPW, domisili wajib Kota Makassar."
+    );
 
+    document
+      .getElementById("domisili")
+      .value="";
   }
 
 }
 
 
-/* =========================================
+/* =====================================================
    FORM SUBMIT
-========================================= */
+===================================================== */
 
-document.getElementById("registrationForm").addEventListener("submit",function(e){
+document
+  .getElementById("registrationForm")
+  .addEventListener("submit",function(e){
 
-  e.preventDefault();
+    e.preventDefault();
 
-  const structure=document.getElementById("struktur").value;
-  const city=document.getElementById("domisili").value;
+    const structure=
+      document.getElementById("struktur").value;
 
-  if(structure==="DPW" && city!=="Makassar"){
-    alert("Pengurus DPW wajib berdomisili di Kota Makassar.");
-    return;
-  }
+    const city=
+      document.getElementById("domisili").value;
 
-  participantData={
-    nama:document.getElementById("nama").value.trim(),
-    whatsapp:document.getElementById("whatsapp").value.trim(),
-    email:document.getElementById("email").value.trim(),
-    lahir:document.getElementById("lahir").value,
-    pekerjaan:document.getElementById("pekerjaan").value.trim(),
-    struktur:structure,
-    domisili:city,
-    organisasi:document.getElementById("organisasi").value.trim(),
-    alasan:document.getElementById("alasan").value.trim(),
-    ktp:document.getElementById("ktp").files[0]?.name || "",
-    cv:document.getElementById("cv").files[0]?.name || "",
-    foto:document.getElementById("foto").files[0]?.name || "",
-    status:"Menunggu Verifikasi",
-    created:new Date().toISOString()
-  };
+    if(
+      structure==="DPW" &&
+      city!=="Makassar"
+    ){
 
-  currentQuestion=0;
-  quizScore=0;
-  quizAnswers=[];
+      alert(
+        "Pengurus DPW wajib berdomisili di Kota Makassar."
+      );
 
-  closeModal("registrationModal");
+      return;
+    }
 
-  setTimeout(function(){
-    openModal("quizModal");
-    renderQuiz();
-  },200);
+    participantData={
 
-});
+      nama:
+        document.getElementById("nama").value.trim(),
+
+      whatsapp:
+        document.getElementById("whatsapp").value.trim(),
+
+      email:
+        document.getElementById("email").value.trim(),
+
+      lahir:
+        document.getElementById("lahir").value,
+
+      pekerjaan:
+        document.getElementById("pekerjaan").value.trim(),
+
+      struktur:
+        structure,
+
+      domisili:
+        city,
+
+      organisasi:
+        document.getElementById("organisasi").value.trim(),
+
+      alasan:
+        document.getElementById("alasan").value.trim(),
+
+      ktp:
+        document.getElementById("ktp").files[0]?.name || "",
+
+      cv:
+        document.getElementById("cv").files[0]?.name || "",
+
+      foto:
+        document.getElementById("foto").files[0]?.name || "",
+
+      status:
+        "Menunggu Verifikasi",
+
+      created:
+        new Date().toISOString()
+    };
+
+    currentQuestion=0;
+    quizScore=0;
+    quizAnswers=[];
+
+    closeModal("registrationModal");
+
+    setTimeout(function(){
+
+      openModal("quizModal");
+
+      renderQuiz();
+
+    },200);
+
+  });
 
 
-/* =========================================
+/* =====================================================
    QUIZ
-========================================= */
+===================================================== */
 
 function renderQuiz(){
 
-  const q=quizQuestions[currentQuestion];
+  const q=
+    quizQuestions[currentQuestion];
 
-  const progress=((currentQuestion)/quizQuestions.length)*100;
+  const progress=
+    (currentQuestion /
+    quizQuestions.length)*100;
 
-  document.getElementById("quizProgress").style.width=progress+"%";
+  document
+    .getElementById("quizProgress")
+    .style.width=
+    progress+"%";
 
   let html="";
 
   html+=`
+
     <div class="quiz-number">
-      PERTANYAAN ${currentQuestion+1} / ${quizQuestions.length}
+      PERTANYAAN ${currentQuestion+1}
+      / ${quizQuestions.length}
     </div>
 
     <div class="quiz-question">
       ${q.question}
     </div>
+
   `;
 
   q.options.forEach(function(option,index){
 
     html+=`
+
       <button
         class="quiz-option"
-        onclick="answerQuiz(${index},${option[1]})">
-        ${String.fromCharCode(65+index)}. ${option[0]}
+        onclick="answerQuiz(${index},${option[1]})"
+      >
+        ${String.fromCharCode(65+index)}.
+        ${option[0]}
       </button>
+
     `;
 
   });
 
-  document.getElementById("quizContent").innerHTML=html;
-
+  document
+    .getElementById("quizContent")
+    .innerHTML=html;
 }
 
 
 function answerQuiz(index,score){
 
   quizAnswers.push({
-    question:currentQuestion+1,
-    answer:index,
-    score:score
+
+    question:
+      currentQuestion+1,
+
+    answer:
+      index,
+
+    score:
+      score
+
   });
 
   quizScore+=score;
 
   currentQuestion++;
 
-  if(currentQuestion<quizQuestions.length){
+  if(
+    currentQuestion <
+    quizQuestions.length
+  ){
 
     renderQuiz();
 
-  }else{
+  }
+
+  else{
 
     finishQuiz();
 
@@ -1583,25 +2235,27 @@ function answerQuiz(index,score){
 }
 
 
-/* =========================================
+/* =====================================================
    FINISH QUIZ
-========================================= */
+===================================================== */
 
 function finishQuiz(){
 
-  document.getElementById("quizProgress").style.width="100%";
+  document
+    .getElementById("quizProgress")
+    .style.width="100%";
 
-  const registrationCode=generateCode();
+  const registrationCode=
+    generateCode();
 
-  participantData.code=registrationCode;
-  participantData.score=quizScore;
-  participantData.quizAnswers=quizAnswers;
+  participantData.code=
+    registrationCode;
 
-  /*
-    Penyimpanan sementara di browser.
-    Untuk penggunaan publik dengan database,
-    bagian ini nantinya dihubungkan ke backend.
-  */
+  participantData.score=
+    quizScore;
+
+  participantData.quizAnswers=
+    quizAnswers;
 
   localStorage.setItem(
     "mbParticipant_"+registrationCode,
@@ -1610,10 +2264,15 @@ function finishQuiz(){
 
   closeModal("quizModal");
 
-  document.getElementById("registrationCode").textContent=registrationCode;
+  document
+    .getElementById("registrationCode")
+    .textContent=
+    registrationCode;
 
   setTimeout(function(){
+
     openModal("successModal");
+
   },200);
 
 }
@@ -1621,169 +2280,318 @@ function finishQuiz(){
 
 function generateCode(){
 
-  const number=Math.floor(100000+Math.random()*900000);
+  const number=
+    Math.floor(
+      100000+
+      Math.random()*900000
+    );
 
   return "MB-2026-"+number;
-
 }
 
 
-/* =========================================
+/* =====================================================
    STATUS
-========================================= */
+===================================================== */
 
 function openStatus(){
 
-  document.getElementById("statusCodeInput").value="";
+  document
+    .getElementById("statusCodeInput")
+    .value="";
 
-  document.getElementById("statusResult").innerHTML="";
+  document
+    .getElementById("statusResult")
+    .innerHTML="";
 
   openModal("statusModal");
-
 }
 
 
 function checkStatus(){
 
-  const code=document
-    .getElementById("statusCodeInput")
-    .value
-    .trim()
-    .toUpperCase();
+  const code=
+    document
+      .getElementById("statusCodeInput")
+      .value
+      .trim()
+      .toUpperCase();
 
-  const result=document.getElementById("statusResult");
+  const result=
+    document.getElementById("statusResult");
 
   if(!code){
 
     result.innerHTML=`
+
       <div class="notice">
         Masukkan kode pendaftaran terlebih dahulu.
       </div>
+
     `;
 
     return;
-
   }
 
-  const data=localStorage.getItem("mbParticipant_"+code);
+  const data=
+    localStorage.getItem(
+      "mbParticipant_"+code
+    );
 
   if(!data){
 
     result.innerHTML=`
+
       <div class="notice">
-        Kode pendaftaran tidak ditemukan pada perangkat ini.
+        Kode pendaftaran tidak ditemukan
+        pada perangkat ini.
       </div>
+
     `;
 
     return;
+  }
+
+  const p=
+    JSON.parse(data);
+
+  let interview=
+    "Menunggu jadwal";
+
+  if(
+    p.domisili==="Makassar" ||
+    p.domisili==="Gowa"
+  ){
+
+    interview=
+      "Offline · 11 Oktober";
 
   }
 
-  const p=JSON.parse(data);
+  else{
 
-  let interview="Menunggu jadwal";
+    interview=
+      "Online · 10 Oktober";
 
-  if(p.domisili==="Makassar" || p.domisili==="Gowa"){
-    interview="Offline · 11 Oktober";
-  }else{
-    interview="Online · 10 Oktober";
   }
 
   result.innerHTML=`
 
-    <div class="status-card" style="margin-top:20px">
+    <div
+      class="status-card"
+      style="margin-top:20px"
+    >
 
       <div class="status-code">
         ${p.code}
       </div>
 
       <div class="status-row">
-        <span class="status-label">Nama</span>
-        <span class="status-value">${escapeHTML(p.nama)}</span>
-      </div>
 
-      <div class="status-row">
-        <span class="status-label">Struktur</span>
-        <span class="status-value">${escapeHTML(p.struktur)}</span>
-      </div>
-
-      <div class="status-row">
-        <span class="status-label">Wilayah</span>
-        <span class="status-value">${escapeHTML(p.domisili)}</span>
-      </div>
-
-      <div class="status-row">
-        <span class="status-label">Skor The Quiz</span>
-        <span class="status-value">${p.score}/100</span>
-      </div>
-
-      <div class="status-row">
-        <span class="status-label">Status</span>
-        <span class="status-value">
-          <span class="badge">${escapeHTML(p.status)}</span>
+        <span class="status-label">
+          Nama
         </span>
+
+        <span class="status-value">
+          ${escapeHTML(p.nama)}
+        </span>
+
       </div>
 
       <div class="status-row">
-        <span class="status-label">Kenal Lebih Dekat</span>
-        <span class="status-value">${interview}</span>
+
+        <span class="status-label">
+          Struktur
+        </span>
+
+        <span class="status-value">
+          ${escapeHTML(p.struktur)}
+        </span>
+
+      </div>
+
+      <div class="status-row">
+
+        <span class="status-label">
+          Wilayah
+        </span>
+
+        <span class="status-value">
+          ${escapeHTML(p.domisili)}
+        </span>
+
+      </div>
+
+      <div class="status-row">
+
+        <span class="status-label">
+          Skor The Quiz
+        </span>
+
+        <span class="status-value">
+          ${p.score}/100
+        </span>
+
+      </div>
+
+      <div class="status-row">
+
+        <span class="status-label">
+          Status
+        </span>
+
+        <span class="status-value">
+
+          <span class="badge">
+            ${escapeHTML(p.status)}
+          </span>
+
+        </span>
+
+      </div>
+
+      <div class="status-row">
+
+        <span class="status-label">
+          Kenal Lebih Dekat
+        </span>
+
+        <span class="status-value">
+          ${interview}
+        </span>
+
       </div>
 
       <div class="notice">
-        Informasi verifikasi dan jadwal resmi akan disampaikan
-        melalui WhatsApp sesuai proses recruitment.
+
+        Informasi verifikasi dan jadwal resmi
+        akan disampaikan melalui WhatsApp
+        sesuai proses recruitment.
+
       </div>
 
     </div>
+
   `;
 
 }
 
 
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
 function escapeHTML(value){
 
   return String(value)
+
     .replaceAll("&","&amp;")
     .replaceAll("<","&lt;")
     .replaceAll(">","&gt;")
     .replaceAll('"',"&quot;")
     .replaceAll("'","&#039;");
-
 }
 
 
-/* =========================================
+/* =====================================================
    STATUS NAVIGATION
-========================================= */
+===================================================== */
 
-document.querySelectorAll('a[href="#status"]').forEach(function(link){
+document
+  .querySelectorAll('a[href="#status"]')
+  .forEach(function(link){
 
-  link.addEventListener("click",function(e){
+    link.addEventListener(
+      "click",
+      function(e){
 
-    e.preventDefault();
+        e.preventDefault();
 
-    openStatus();
+        openStatus();
+
+      }
+    );
 
   });
 
-});
+
+/* =====================================================
+   CLOSE MODAL OUTSIDE
+===================================================== */
+
+document
+  .querySelectorAll(".modal")
+  .forEach(function(modal){
+
+    modal.addEventListener(
+      "click",
+      function(e){
+
+        if(e.target===modal){
+
+          closeModal(modal.id);
+
+        }
+
+      }
+    );
+
+  });
 
 
-/* =========================================
-   CLOSE MODAL WHEN CLICK OUTSIDE
-========================================= */
+/* =====================================================
+   PROTEKSI GAMBAR / LOGO
+===================================================== */
 
-document.querySelectorAll(".modal").forEach(function(modal){
+document.addEventListener(
+  "contextmenu",
+  function(e){
 
-  modal.addEventListener("click",function(e){
+    if(
+      e.target &&
+      e.target.tagName==="IMG"
+    ){
 
-    if(e.target===modal){
-      closeModal(modal.id);
+      e.preventDefault();
+
     }
 
-  });
+  }
+);
 
-});
+
+document.addEventListener(
+  "dragstart",
+  function(e){
+
+    if(
+      e.target &&
+      e.target.tagName==="IMG"
+    ){
+
+      e.preventDefault();
+
+    }
+
+  }
+);
+
+
+document.addEventListener(
+  "selectstart",
+  function(e){
+
+    if(
+      e.target &&
+      e.target.tagName==="IMG"
+    ){
+
+      e.preventDefault();
+
+    }
+
+  }
+);
 
 </script>
 
