@@ -1,849 +1,670 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f4511e">
-<meta name="description" content="Open Recruitment Pengurus DPW & DPD Muda Bergerak Sulawesi Selatan.">
-<title>OPREC MB SULSEL — Ruangnya Anak Muda Sulsel</title>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
-
-:root {
-  --orange: #f4511e;
-  --orange2: #ff6b35;
-  --black: #0e0e0e;
-  --dark: #171717;
-  --white: #fff;
-  --muted: #a5a5a5;
-  --line: rgba(255,255,255,.12);
-  --cream: #f7f1e8;
-  --green: #35c878;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--black);
-  color: var(--white);
-  font-family: "DM Sans", Arial, sans-serif;
-  line-height: 1.6;
-}
-
-button, input, select, textarea {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-user-drag: none;
-}
-
-.container {
-  width: min(1120px, 92%);
-  margin: auto;
-}
-
-.topbar {
-  background: var(--orange);
-  color: #111;
-  padding: 8px 15px;
-  text-align: center;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(14,14,14,.96);
-  backdrop-filter: blur(15px);
-  border-bottom: 1px solid var(--line);
-}
-
-.nav {
-  min-height: 76px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.brand img {
-  width: 52px;
-  height: 52px;
-  object-fit: contain;
-  pointer-events: none;
-}
-
-.brand-name {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.brand-name span {
-  display: block;
-  color: var(--orange);
-  font-size: 9px;
-  letter-spacing: .12em;
-  margin-top: 3px;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.nav-links a:hover {
-  color: var(--orange);
-}
-
-.nav-cta {
-  background: var(--orange);
-  color: #111 !important;
-  padding: 10px 16px;
-  border-radius: 30px;
-}
-
-.hero {
-  position: relative;
-  overflow: hidden;
-  padding: 105px 0 115px;
-  background:
-    radial-gradient(circle at 90% 15%, rgba(244,81,30,.16), transparent 30%),
-    linear-gradient(135deg, #191919, #0e0e0e 75%);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-}
-
-.eyebrow {
-  color: var(--orange);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  margin-bottom: 18px;
-}
-
-h1, h2, h3 {
-  font-family: "Space Grotesk", sans-serif;
-  line-height: 1.05;
-}
-
-h1 {
-  font-size: clamp(48px, 8vw, 92px);
-  letter-spacing: -.06em;
-  text-transform: uppercase;
-}
-
-h1 span, h2 span {
-  color: var(--orange);
-}
-
-.hero-text {
-  max-width: 620px;
-  color: #c7c7c7;
-  font-size: 16px;
-  margin-top: 26px;
-}
-
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 32px;
-}
-
-.btn {
-  min-height: 48px;
-  border: 0;
-  border-radius: 999px;
-  padding: 13px 22px;
-  font-size: 13px;
-  font-weight: 800;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: .2s;
-}
-
-.btn-primary {
-  background: var(--orange);
-  color: #111;
-}
-
-.btn-primary:hover {
-  background: var(--orange2);
-  transform: translateY(-2px);
-}
-
-.btn-outline {
-  border: 1px solid #555;
-  background: transparent;
-  color: #fff;
-}
-
-.btn-outline:hover {
-  border-color: var(--orange);
-  color: var(--orange);
-}
-
-section {
-  padding: 80px 0;
-}
-
-.cream {
-  background: var(--cream);
-  color: #151515;
-}
-
-.heading {
-  max-width: 800px;
-  margin-bottom: 40px;
-}
-
-.heading h2 {
-  font-size: clamp(32px, 5vw, 55px);
-  letter-spacing: -.045em;
-}
-
-.heading p {
-  color: #aaa;
-  max-width: 700px;
-  margin-top: 15px;
-  font-size: 15px;
-}
-
-.cream .heading p {
-  color: #666;
-}
-
-/* VISI MISI */
-
-.vision-box {
-  background: #fff;
-  border: 1px solid #ddd5ca;
-  border-radius: 20px;
-  padding: 30px;
-  margin-bottom: 18px;
-}
-
-.vision-box h3,
-.mission-box h3 {
-  color: var(--orange);
-  font-size: 25px;
-  margin-bottom: 15px;
-}
-
-.vision-box p {
-  color: #444;
-  font-size: 15px;
-  line-height: 1.9;
-}
-
-.mission-box {
-  background: #fff;
-  border: 1px solid #ddd5ca;
-  border-radius: 20px;
-  padding: 30px;
-}
-
-.mission-list {
-  list-style: none;
-  display: grid;
-  gap: 18px;
-  counter-reset: mission;
-}
-
-.mission-list li {
-  position: relative;
-  padding-left: 45px;
-  color: #444;
-  font-size: 14px;
-  line-height: 1.8;
-  counter-increment: mission;
-}
-
-.mission-list li::before {
-  content: counter(mission, decimal-leading-zero);
-  position: absolute;
-  left: 0;
-  top: 1px;
-  color: var(--orange);
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 17px;
-  font-weight: 800;
-}
-
-/* TIMELINE */
-
-.timeline {
-  max-width: 850px;
-}
-
-.timeline-item {
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 25px;
-  padding: 25px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.timeline-date {
-  color: var(--orange);
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.timeline-item h3 {
-  font-size: 21px;
-  margin-bottom: 6px;
-}
-
-.timeline-item p {
-  color: #aaa;
-  font-size: 14px;
-}
-
-/* REQUIREMENTS */
-
-.requirements {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-}
-
-.req {
-  padding: 28px;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: var(--dark);
-}
-
-.req h3 {
-  color: var(--orange);
-  font-size: 22px;
-  margin-bottom: 16px;
-}
-
-.req ul {
-  list-style: none;
-  display: grid;
-  gap: 10px;
-}
-
-.req li {
-  position: relative;
-  padding-left: 22px;
-  color: #bbb;
-  font-size: 14px;
-}
-
-.req li::before {
-  content: "↗";
-  position: absolute;
-  left: 0;
-  color: var(--orange);
-  font-weight: 800;
-}
-
-/* CTA */
-
-.cta {
-  background: var(--orange);
-  color: #111;
-}
-
-.cta-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-}
-
-.cta h2 {
-  font-size: clamp(32px, 5vw, 56px);
-  max-width: 650px;
-  letter-spacing: -.05em;
-}
-
-.cta p {
-  max-width: 580px;
-  margin-top: 12px;
-  font-size: 14px;
-}
-
-.cta .btn {
-  background: #111;
-  color: #fff;
-  white-space: nowrap;
-}
-
-/* FOOTER */
-
-footer {
-  padding: 35px 0;
-  background: #090909;
-}
-
-.footer-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.footer-inner p {
-  color: #777;
-  font-size: 12px;
-}
-
-/* MODAL */
-
-.modal {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 18px;
-  background: rgba(0,0,0,.82);
-  backdrop-filter: blur(8px);
-}
-
-.modal.show {
-  display: flex;
-}
-
-.modal-box {
-  width: min(700px, 100%);
-  max-height: 92vh;
-  overflow: auto;
-  background: #191919;
-  border: 1px solid #383838;
-  border-radius: 22px;
-  padding: 28px;
-}
-
-.modal-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 15px;
-  margin-bottom: 25px;
-}
-
-.modal-top h2 {
-  font-size: 28px;
-}
-
-.close {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1px solid #444;
-  background: transparent;
-  color: #fff;
-  font-size: 20px;
-}
-
-.close:hover {
-  border-color: var(--orange);
-  color: var(--orange);
-}
-
-/* FORM */
-
-.form-section {
-  margin-bottom: 25px;
-}
-
-.form-section-title {
-  color: var(--orange);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  margin-bottom: 15px;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.field.full {
-  grid-column: 1 / -1;
-}
-
-.field label {
-  color: #ccc;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.field input,
-.field select,
-.field textarea {
-  width: 100%;
-  padding: 12px 13px;
-  border: 1px solid #414141;
-  border-radius: 10px;
-  background: #101010;
-  color: #fff;
-  outline: none;
-}
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus {
-  border-color: var(--orange);
-}
-
-.field textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-
-.field input[type="file"] {
-  font-size: 11px;
-}
-
-.help {
-  color: #777;
-  font-size: 10px;
-}
-
-.role-info {
-  display: none;
-  margin-top: 10px;
-  padding: 12px;
-  border-radius: 10px;
-  background: rgba(244,81,30,.1);
-  border: 1px solid rgba(244,81,30,.3);
-  color: #ddd;
-  font-size: 12px;
-}
-
-.role-info.show {
-  display: block;
-}
-
-.checkbox {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-top: 15px;
-  color: #aaa;
-  font-size: 12px;
-}
-
-.checkbox input {
-  width: 17px;
-  height: 17px;
-  accent-color: var(--orange);
-  flex-shrink: 0;
-}
-
-.form-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 25px;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
-}
-
-/* SUCCESS */
-
-.success {
-  text-align: center;
-  padding: 30px 10px;
-}
-
-.success-icon {
-  width: 70px;
-  height: 70px;
-  margin: 0 auto 20px;
-  border-radius: 50%;
-  background: rgba(53,200,120,.12);
-  border: 1px solid var(--green);
-  color: var(--green);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-}
-
-.success h2 {
-  font-size: 30px;
-}
-
-.code {
-  display: inline-block;
-  margin: 20px 0;
-  padding: 12px 20px;
-  background: #101010;
-  border: 1px dashed var(--orange);
-  border-radius: 10px;
-  color: var(--orange);
-  font-family: monospace;
-  font-weight: 800;
-  letter-spacing: .1em;
-}
-
-/* STATUS */
-
-.status-card {
-  padding: 20px;
-  border: 1px solid var(--line);
-  border-radius: 15px;
-  background: #111;
-}
-
-.status-code {
-  color: var(--orange);
-  font-family: monospace;
-  font-weight: 800;
-}
-
-.status-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 13px;
-}
-
-.status-row:last-child {
-  border-bottom: 0;
-}
-
-.status-label {
-  color: #777;
-}
-
-.status-value {
-  font-weight: 700;
-  text-align: right;
-}
-
-.badge {
-  display: inline-block;
-  padding: 5px 10px;
-  border-radius: 20px;
-  font-size: 10px;
-  font-weight: 800;
-  background: rgba(244,81,30,.12);
-  color: var(--orange);
-}
-
-.notice {
-  margin-top: 18px;
-  padding: 14px;
-  border-radius: 10px;
-  background: #202020;
-  color: #aaa;
-  font-size: 12px;
-}
-
-/* QUIZ */
-
-.quiz-progress {
-  height: 5px;
-  background: #333;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 25px;
-}
-
-.quiz-progress-bar {
-  height: 100%;
-  width: 0;
-  background: var(--orange);
-  transition: .3s;
-}
-
-.quiz-question {
-  font-size: 21px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.quiz-option {
-  width: 100%;
-  text-align: left;
-  padding: 15px;
-  margin-bottom: 10px;
-  border: 1px solid #3d3d3d;
-  border-radius: 12px;
-  background: #111;
-  color: #ddd;
-  transition: .2s;
-}
-
-.quiz-option:hover {
-  border-color: var(--orange);
-  background: #1e1e1e;
-}
-
-.quiz-number {
-  color: #777;
-  font-size: 11px;
-  margin-bottom: 8px;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 800px) {
-  .nav-links {
-    display: none;
-  }
-
-  .hero {
-    padding: 70px 0 80px;
-  }
-
-  .requirements {
-    grid-template-columns: 1fr;
-  }
-
-  .cta-inner {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .timeline-item {
-    grid-template-columns: 1fr;
-    gap: 7px;
-  }
-}
-
-@media (max-width: 520px) {
-  section {
-    padding: 60px 0;
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .field.full {
-    grid-column: auto;
-  }
-
-  .form-actions {
-    flex-direction: column;
-  }
-
-  .form-actions .btn {
-    width: 100%;
-  }
-
-  .brand img {
-    width: 48px;
-    height: 48px;
-  }
-
-  .hero h1 {
-    font-size: 46px;
-  }
-
-  .modal-box {
-    padding: 20px;
-  }
-
-  .footer-inner {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .vision-box,
-  .mission-box {
-    padding: 22px;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f97316">
+  <title>OPREC MB SULSEL — Ruangnya Anak Muda Sulsel</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+    :root {
+      --orange:#f97316;
+      --orange-dark:#c2410c;
+      --black:#0b0b0d;
+      --black-2:#151519;
+      --white:#fff;
+      --muted:#a1a1aa;
+      --line:rgba(255,255,255,.12);
+      --cream:#fff7ed;
+      --text:#18181b;
+      --green:#22c55e;
+      --red:#ef4444;
+      --yellow:#facc15;
+    }
+
+    * { box-sizing:border-box; margin:0; padding:0; }
+
+    html { scroll-behavior:smooth; }
+
+    body {
+      background:var(--black);
+      color:var(--white);
+      font-family:"DM Sans",sans-serif;
+      line-height:1.6;
+    }
+
+    body.modal-open { overflow:hidden; }
+
+    button,input,select,textarea { font:inherit; }
+
+    button { cursor:pointer; }
+
+    a {
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img {
+      max-width:100%;
+      user-select:none;
+      -webkit-user-drag:none;
+    }
+
+    .container {
+      width:min(1120px,calc(100% - 36px));
+      margin:auto;
+    }
+
+    .hidden { display:none!important; }
+
+    header {
+      position:sticky;
+      top:0;
+      z-index:20;
+      border-bottom:1px solid var(--line);
+      background:rgba(11,11,13,.94);
+      backdrop-filter:blur(16px);
+    }
+
+    .nav {
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-family:"Space Grotesk",sans-serif;
+      font-weight:700;
+    }
+
+    .brand img {
+      width:42px;
+      height:42px;
+      object-fit:contain;
+    }
+
+    .brand span { font-size:14px; }
+
+    nav {
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+
+    nav a {
+      color:#d4d4d8;
+      font-size:13px;
+      font-weight:600;
+    }
+
+    nav a:hover { color:var(--orange); }
+
+    .hero {
+      padding:100px 0 90px;
+      background:
+        radial-gradient(circle at 90% 10%,rgba(249,115,22,.22),transparent 32%),
+        radial-gradient(circle at 0% 80%,rgba(249,115,22,.08),transparent 30%);
+    }
+
+    .eyebrow {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:var(--orange);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:1.6px;
+      text-transform:uppercase;
+      margin-bottom:22px;
+    }
+
+    .eyebrow:before {
+      content:"";
+      width:28px;
+      height:2px;
+      background:var(--orange);
+    }
+
+    h1,h2,h3 {
+      font-family:"Space Grotesk",sans-serif;
+      line-height:1.12;
+    }
+
+    h1 {
+      max-width:790px;
+      font-size:clamp(42px,8vw,86px);
+      letter-spacing:-3px;
+    }
+
+    h1 span { color:var(--orange); }
+
+    .lead {
+      max-width:650px;
+      color:#c4c4cc;
+      font-size:17px;
+      margin-top:24px;
+    }
+
+    .actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:30px;
+    }
+
+    .btn {
+      border:1px solid transparent;
+      border-radius:999px;
+      padding:13px 20px;
+      font-weight:800;
+      font-size:13px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      transition:.2s;
+    }
+
+    .btn-primary {
+      background:var(--orange);
+      color:#fff;
+    }
+
+    .btn-primary:hover {
+      background:#fb923c;
+      transform:translateY(-1px);
+    }
+
+    .btn-outline {
+      border-color:rgba(255,255,255,.25);
+      color:#fff;
+      background:transparent;
+    }
+
+    .btn-outline:hover {
+      border-color:var(--orange);
+      color:var(--orange);
+    }
+
+    .btn-dark {
+      background:var(--black);
+      color:#fff;
+    }
+
+    .btn-danger {
+      background:#7f1d1d;
+      color:#fff;
+    }
+
+    .btn-small {
+      padding:9px 13px;
+      font-size:12px;
+    }
+
+    section { padding:82px 0; }
+
+    .section-light {
+      background:var(--cream);
+      color:var(--text);
+    }
+
+    .section-title {
+      font-size:clamp(30px,5vw,54px);
+      letter-spacing:-1.5px;
+    }
+
+    .section-copy {
+      color:#71717a;
+      max-width:650px;
+      margin-top:15px;
+    }
+
+    .section-light .eyebrow {
+      color:var(--orange-dark);
+    }
+
+    .section-light .eyebrow:before {
+      background:var(--orange-dark);
+    }
+
+    .grid-2 {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:22px;
+    }
+
+    .grid-3 {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .card {
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:25px;
+      background:rgba(255,255,255,.025);
+    }
+
+    .section-light .card {
+      border-color:#fed7aa;
+      background:#fff;
+    }
+
+    .card h3 {
+      font-size:20px;
+      margin-bottom:10px;
+    }
+
+    .card p {
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .section-light .card p {
+      color:#71717a;
+    }
+
+    .number {
+      color:var(--orange);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:1px;
+      margin-bottom:10px;
+    }
+
+    .timeline {
+      display:grid;
+      gap:14px;
+      margin-top:30px;
+    }
+
+    .timeline-item {
+      display:grid;
+      grid-template-columns:150px 1fr;
+      gap:20px;
+      padding:20px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(255,255,255,.025);
+    }
+
+    .timeline-date {
+      color:var(--orange);
+      font-weight:800;
+      font-size:13px;
+    }
+
+    .timeline-item h3 {
+      font-size:19px;
+      margin-bottom:5px;
+    }
+
+    .timeline-item p {
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .requirements {
+      display:grid;
+      gap:12px;
+      margin-top:25px;
+    }
+
+    .requirement {
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      padding:15px 0;
+      border-bottom:1px solid #fed7aa;
+    }
+
+    .requirement b {
+      color:var(--orange-dark);
+    }
+
+    .requirement p {
+      color:#52525b;
+      font-size:14px;
+    }
+
+    .cta {
+      padding:70px 0;
+      background:linear-gradient(115deg,#f97316,#c2410c);
+    }
+
+    .cta h2 {
+      font-size:clamp(30px,5vw,58px);
+      max-width:700px;
+      letter-spacing:-1.5px;
+    }
+
+    .cta p {
+      max-width:650px;
+      margin-top:15px;
+      color:#ffedd5;
+    }
+
+    footer {
+      border-top:1px solid var(--line);
+      padding:30px 0;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .footer-row {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .modal {
+      position:fixed;
+      inset:0;
+      z-index:100;
+      background:rgba(0,0,0,.78);
+      backdrop-filter:blur(8px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+    }
+
+    .modal.show { display:flex; }
+
+    .modal-box {
+      width:min(760px,100%);
+      max-height:92vh;
+      overflow:auto;
+      border:1px solid #3f3f46;
+      border-radius:24px;
+      background:#18181b;
+      padding:25px;
+    }
+
+    .modal-header {
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:15px;
+      margin-bottom:22px;
+    }
+
+    .modal-header h2 {
+      font-size:28px;
+    }
+
+    .close {
+      border:0;
+      background:#27272a;
+      color:#fff;
+      width:36px;
+      height:36px;
+      border-radius:50%;
+      font-size:20px;
+    }
+
+    .form-grid {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:15px;
+    }
+
+    .field {
+      display:flex;
+      flex-direction:column;
+      gap:7px;
+    }
+
+    .field.full { grid-column:1/-1; }
+
+    label {
+      color:#e4e4e7;
+      font-size:12px;
+      font-weight:700;
+    }
+
+    input,select,textarea {
+      width:100%;
+      border:1px solid #3f3f46;
+      border-radius:12px;
+      padding:12px 13px;
+      background:#09090b;
+      color:#fff;
+      outline:none;
+    }
+
+    input:focus,select:focus,textarea:focus {
+      border-color:var(--orange);
+    }
+
+    textarea {
+      min-height:100px;
+      resize:vertical;
+    }
+
+    .helper {
+      color:#a1a1aa;
+      font-size:11px;
+    }
+
+    .form-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:20px;
+    }
+
+    .notice {
+      padding:13px 15px;
+      border-radius:12px;
+      font-size:13px;
+      margin-bottom:15px;
+    }
+
+    .notice.error {
+      background:#450a0a;
+      color:#fecaca;
+      border:1px solid #7f1d1d;
+    }
+
+    .notice.success {
+      background:#052e16;
+      color:#bbf7d0;
+      border:1px solid #166534;
+    }
+
+    .notice.info {
+      background:#172554;
+      color:#bfdbfe;
+      border:1px solid #1d4ed8;
+    }
+
+    .quiz-question {
+      border:1px solid #3f3f46;
+      padding:17px;
+      border-radius:16px;
+      margin-bottom:13px;
+    }
+
+    .quiz-question p {
+      font-weight:700;
+      font-size:14px;
+      margin-bottom:12px;
+    }
+
+    .quiz-options {
+      display:grid;
+      gap:8px;
+    }
+
+    .quiz-options label {
+      display:flex;
+      gap:9px;
+      align-items:flex-start;
+      font-weight:500;
+      border:1px solid #3f3f46;
+      border-radius:10px;
+      padding:10px;
+    }
+
+    .quiz-options input {
+      width:auto;
+      margin-top:4px;
+      accent-color:var(--orange);
+    }
+
+    .admin-shell {
+      margin-top:20px;
+    }
+
+    .admin-top {
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:20px;
+    }
+
+    .admin-stats {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+      margin-bottom:20px;
+    }
+
+    .stat {
+      border:1px solid #3f3f46;
+      background:#09090b;
+      border-radius:15px;
+      padding:15px;
+    }
+
+    .stat b {
+      display:block;
+      font-size:25px;
+      color:var(--orange);
+    }
+
+    .stat span {
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .table-wrap {
+      overflow:auto;
+      border:1px solid #3f3f46;
+      border-radius:15px;
+    }
+
+    table {
+      width:100%;
+      border-collapse:collapse;
+      min-width:760px;
+    }
+
+    th,td {
+      padding:12px;
+      border-bottom:1px solid #27272a;
+      text-align:left;
+      font-size:12px;
+    }
+
+    th {
+      color:#fdba74;
+      background:#09090b;
+    }
+
+    td {
+      color:#d4d4d8;
+    }
+
+    .status-pill {
+      display:inline-block;
+      border-radius:999px;
+      padding:4px 8px;
+      font-size:10px;
+      background:#3f3f46;
+    }
+
+    .status-pill.green {
+      background:#14532d;
+      color:#bbf7d0;
+    }
+
+    .status-pill.yellow {
+      background:#713f12;
+      color:#fef08a;
+    }
+
+    .status-pill.red {
+      background:#7f1d1d;
+      color:#fecaca;
+    }
+
+    @media (max-width:800px) {
+      nav { display:none; }
+
+      .hero {
+        padding:75px 0 65px;
+      }
+
+      h1 {
+        letter-spacing:-1.8px;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns:1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns:1fr;
+        gap:6px;
+      }
+
+      .form-grid {
+        grid-template-columns:1fr;
+      }
+
+      .field.full {
+        grid-column:auto;
+      }
+
+      .admin-stats {
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="topbar">
-  OPEN RECRUITMENT · PENGURUS DPW & DPD · SULAWESI SELATAN
-</div>
-
 <header>
   <div class="container nav">
 
-    <a href="#beranda" class="brand">
-      <img
-        src="./logo-mb.png"
-        alt="Logo Muda Bergerak Sulawesi Selatan"
-        draggable="false"
-        oncontextmenu="return false;"
-      >
-
-      <div class="brand-name">
-        MUDA BERGERAK
-        <span>SULAWESI SELATAN</span>
-      </div>
+    <a class="brand" href="#">
+      <img src="./logo-mb.png" alt="Logo Muda Bergerak">
+      <span>MB SULSEL</span>
     </a>
 
-    <nav class="nav-links">
+    <nav>
       <a href="#tentang">Visi Misi</a>
       <a href="#timeline">Timeline</a>
       <a href="#ketentuan">Ketentuan</a>
-      <a href="#status" id="statusNav">Cek Status</a>
-      <a href="#daftar" class="nav-cta">Daftar ↗</a>
+      <a href="#" id="statusNav">Cek Status</a>
+      <a href="#" id="registerNav">Daftar</a>
     </nav>
 
   </div>
@@ -851,198 +672,72 @@ footer {
 
 <main>
 
-<section class="hero" id="beranda">
-  <div class="container">
-    <div class="hero-content">
+  <section class="hero">
+    <div class="container">
 
-      <div class="eyebrow">
-        OPEN RECRUITMENT 2026
-      </div>
+      <div class="eyebrow">OPEN RECRUITMENT 2026</div>
 
       <h1>
-        RUANGNYA<br>
-        <span>ANAK MUDA</span><br>
-        SULSEL.
+        <span>RUANGNYA</span><br>
+        ANAK MUDA SULSEL.
       </h1>
 
-      <p class="hero-text">
-        Wadah bagi anak muda untuk belajar, berkembang, berdinamika,
-        berkolaborasi, dan mengambil peran bersama Muda Bergerak
-        Sulawesi Selatan.
+      <p class="lead">
+        Saatnya anak muda Sulawesi Selatan punya ruang untuk belajar,
+        berkembang, berkolaborasi, dan ambil peran.
       </p>
 
       <div class="actions">
-        <button class="btn btn-primary" onclick="openRegistration()">
-          Mulai Pendaftaran ↗
+        <button class="btn btn-primary" id="heroRegister">
+          Mulai Daftar
         </button>
 
-        <a class="btn btn-outline" href="#tentang">
-          Lihat Visi Misi
-        </a>
+        <button class="btn btn-outline" id="ctaStatus">
+          Cek Status Pendaftaran
+        </button>
       </div>
 
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- VISI DAN MISI -->
 
-<section class="cream" id="tentang">
+  <section id="tentang" class="section-light">
 
-  <div class="container">
+    <div class="container">
 
-    <div class="heading">
-      <div class="eyebrow">
-        TENTANG MUDA BERGERAK
-      </div>
+      <div class="eyebrow">TENTANG MUDA BERGERAK</div>
 
-      <h2>
-        Visi &<br>
-        <span>Misi Kami.</span>
+      <h2 class="section-title">
+        Bukan cuma daftar.<br>
+        Ini ruang untuk bergerak.
       </h2>
 
-      <p>
-        Landasan gerak Muda Bergerak Indonesia dalam membangun
-        organisasi yang inklusif, interaktif, transparan,
-        dan berorientasi pada kepentingan masyarakat.
-      </p>
-    </div>
-
-    <div class="vision-box">
-
-      <h3>Visi</h3>
-
-      <p>
-        Menjadikan Muda Bergerak Indonesia sebagai organisasi yang
-        inklusif dan interaktif terhadap masyarakat untuk meningkatkan
-        kolaborasi agar mampu menjadi wadah untuk belajar, berkembang
-        dan berdinamika bagi seluruh masyarakat muda Indonesia
-        dengan mengedepankan Transparansi.
+      <p class="section-copy">
+        Muda Bergerak hadir sebagai ruang bagi anak muda untuk
+        belajar, bertumbuh, berdinamika, membangun kolaborasi,
+        serta menyampaikan gagasan dan aspirasi.
       </p>
 
-    </div>
+      <div class="grid-2" style="margin-top:30px">
 
-    <div class="mission-box">
-
-      <h3>Misi</h3>
-
-      <ol class="mission-list">
-
-        <li>
-          Menciptakan hubungan internal dan eksternal dengan
-          mengedepankan transparansi, kekeluargaan dan profesionalisme.
-        </li>
-
-        <li>
-          Mengabdi dan melayani masyarakat Indonesia pada fokus
-          politik, ekonomi, pendidikan, kesehatan, dan lingkungan
-          masyarakat.
-        </li>
-
-        <li>
-          Menyediakan platform serta wadah yang digunakan untuk
-          menyampaikan aspirasi dan melayani masyarakat secara solutif.
-        </li>
-
-        <li>
-          Berkolaborasi dengan membangun kerja sama strategis
-          bersama kelompok-kelompok muda untuk kepentingan
-          masyarakat banyak.
-        </li>
-
-      </ol>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- TIMELINE -->
-
-<section id="timeline">
-
-  <div class="container">
-
-    <div class="heading">
-
-      <div class="eyebrow">
-        SAVE THE DATE
-      </div>
-
-      <h2>
-        Timeline<br>
-        <span>Perjalananmu.</span>
-      </h2>
-
-      <p>
-        Catat tanggalnya dan ikuti setiap proses rekrutmen.
-      </p>
-
-    </div>
-
-    <div class="timeline">
-
-      <div class="timeline-item">
-
-        <div class="timeline-date">
-          01–08 OKTOBER
-        </div>
-
-        <div>
-          <h3>Open Recruitment</h3>
-
+        <div class="card">
+          <div class="number">01 — VISI</div>
+          <h3>Ruang yang inklusif & interaktif</h3>
           <p>
-            Pendaftaran, The Quiz, serta verifikasi data dan dokumen.
+            Membangun wadah anak muda yang terbuka,
+            aktif berdiskusi, dan mampu mengambil peran
+            dalam berbagai isu di masyarakat.
           </p>
         </div>
 
-      </div>
-
-      <div class="timeline-item">
-
-        <div class="timeline-date">
-          10 OKTOBER
-        </div>
-
-        <div>
-          <h3>Kenal Lebih Dekat — Online</h3>
-
+        <div class="card">
+          <div class="number">02 — MISI</div>
+          <h3>Belajar, berkembang & berdampak</h3>
           <p>
-            Sesi online untuk peserta sesuai jadwal yang diberikan.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="timeline-item">
-
-        <div class="timeline-date">
-          11 OKTOBER
-        </div>
-
-        <div>
-          <h3>Kenal Lebih Dekat — Offline</h3>
-
-          <p>
-            Sesi offline untuk peserta yang berdomisili di Kota
-            Makassar dan Kabupaten Gowa.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="timeline-item">
-
-        <div class="timeline-date">
-          17 OKTOBER
-        </div>
-
-        <div>
-          <h3>Final Result</h3>
-
-          <p>
-            Pengumuman hasil akhir proses rekrutmen.
+            Mendorong transparansi, kekeluargaan,
+            profesionalisme, kolaborasi, serta kepedulian
+            terhadap politik, ekonomi, pendidikan,
+            kesehatan, dan lingkungan.
           </p>
         </div>
 
@@ -1050,323 +745,459 @@ footer {
 
     </div>
 
-  </div>
+  </section>
 
-</section>
 
-<!-- KETENTUAN -->
+  <section id="timeline">
 
-<section id="ketentuan">
+    <div class="container">
 
-  <div class="container">
+      <div class="eyebrow">JADWAL</div>
 
-    <div class="heading">
+      <h2 class="section-title">
+        Timeline Oprec
+      </h2>
 
-      <div class="eyebrow">
-        BEFORE YOU JOIN
+      <p class="section-copy">
+        Ikuti setiap tahap sesuai jadwal yang telah ditentukan.
+      </p>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-date">1–8 OKTOBER</div>
+
+          <div>
+            <h3>Open Recruitment + The Quiz</h3>
+            <p>
+              Pengisian data, upload berkas, pengerjaan quiz,
+              dan proses verifikasi data peserta.
+            </p>
+          </div>
+        </div>
+
+
+        <div class="timeline-item">
+          <div class="timeline-date">10 OKTOBER</div>
+
+          <div>
+            <h3>Kenal Lebih Dekat — Online</h3>
+            <p>
+              Tahap interview online bagi peserta dari wilayah
+              di luar Makassar dan Gowa.
+            </p>
+          </div>
+        </div>
+
+
+        <div class="timeline-item">
+          <div class="timeline-date">11 OKTOBER</div>
+
+          <div>
+            <h3>Kenal Lebih Dekat — Offline</h3>
+            <p>
+              Interview offline khusus peserta yang berdomisili
+              di Makassar dan Gowa.
+            </p>
+          </div>
+        </div>
+
+
+        <div class="timeline-item">
+          <div class="timeline-date">17 OKTOBER</div>
+
+          <div>
+            <h3>Final Result</h3>
+            <p>
+              Pengumuman hasil akhir proses rekrutmen
+              Pengurus DPW & DPD Muda Bergerak Sulawesi Selatan.
+            </p>
+          </div>
+        </div>
+
       </div>
 
+    </div>
+
+  </section>
+
+
+  <section id="ketentuan" class="section-light">
+
+    <div class="container">
+
+      <div class="eyebrow">KETENTUAN</div>
+
+      <h2 class="section-title">
+        Sebelum daftar,
+        pastikan kamu siap.
+      </h2>
+
+      <div class="requirements">
+
+        <div class="requirement">
+          <div>✓</div>
+          <div>
+            <b>Pengurus DPW</b>
+            <p>
+              Wajib berdomisili di Kota Makassar.
+            </p>
+          </div>
+        </div>
+
+        <div class="requirement">
+          <div>✓</div>
+          <div>
+            <b>Pengurus DPD</b>
+            <p>
+              Mengikuti wilayah Kabupaten/Kota yang dipilih
+              sesuai ketentuan organisasi.
+            </p>
+          </div>
+        </div>
+
+        <div class="requirement">
+          <div>✓</div>
+          <div>
+            <b>Siapkan data diri</b>
+            <p>
+              Nama lengkap, WhatsApp, email, tanggal lahir,
+              pendidikan/pekerjaan, domisili, dan pengalaman organisasi.
+            </p>
+          </div>
+        </div>
+
+        <div class="requirement">
+          <div>✓</div>
+          <div>
+            <b>Siapkan berkas</b>
+            <p>
+              KTP, CV, dan foto diri.
+            </p>
+          </div>
+        </div>
+
+        <div class="requirement">
+          <div>✓</div>
+          <div>
+            <b>Siap ikut The Quiz</b>
+            <p>
+              Setelah data dikirim, kamu akan langsung masuk
+              ke tahap quiz dengan 10 pertanyaan.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="cta">
+
+    <div class="container">
+
       <h2>
-        Pilih ruangmu.<br>
-        <span>Ambil peranmu.</span>
+        Ruangnya sudah dibuka.
+        Sekarang giliran kamu ambil peran.
       </h2>
 
       <p>
-        Pastikan pilihan struktur sesuai dengan ketentuan wilayah.
+        Jangan cuma jadi penonton. Isi data kamu,
+        ikuti prosesnya, dan tunjukkan apa yang bisa kamu bawa.
       </p>
 
-    </div>
+      <div class="actions">
 
-    <div class="requirements">
+        <button class="btn btn-dark" id="ctaRegister">
+          Daftar Sekarang
+        </button>
 
-      <div class="req">
-
-        <h3>Pengurus DPW</h3>
-
-        <ul>
-          <li>Wajib berdomisili di Kota Makassar.</li>
-          <li>Siap berkontribusi dalam lingkup Sulawesi Selatan.</li>
-          <li>Bersedia mengikuti seluruh proses rekrutmen.</li>
-          <li>Memiliki komitmen untuk bekerja sama dalam organisasi.</li>
-        </ul>
-
-      </div>
-
-      <div class="req">
-
-        <h3>Pengurus DPD</h3>
-
-        <ul>
-          <li>Memilih Kabupaten/Kota sesuai wilayah domisili.</li>
-          <li>Siap berkontribusi di wilayah yang dipilih.</li>
-          <li>Bersedia mengikuti seluruh proses rekrutmen.</li>
-          <li>Memiliki semangat kolaborasi dan kerja nyata.</li>
-        </ul>
+        <button class="btn btn-outline" id="ctaStatus2"
+          style="border-color:rgba(255,255,255,.5)">
+          Cek Status
+        </button>
 
       </div>
 
     </div>
 
-  </div>
-
-</section>
-
-<!-- CTA -->
-
-<section class="cta" id="daftar">
-
-  <div class="container cta-inner">
-
-    <div>
-
-      <h2>
-        Sudah waktunya kamu ambil peran.
-      </h2>
-
-      <p>
-        Isi data, ikuti The Quiz, dan lanjutkan perjalananmu
-        dalam proses Open Recruitment Muda Bergerak Sulawesi Selatan.
-      </p>
-
-    </div>
-
-    <button class="btn" onclick="openRegistration()">
-      DAFTAR SEKARANG ↗
-    </button>
-
-  </div>
-
-</section>
+  </section>
 
 </main>
 
-<!-- FOOTER -->
 
 <footer>
 
-  <div class="container footer-inner">
+  <div class="container footer-row">
 
-    <div class="brand">
-
-      <img
-        src="./logo-mb.png"
-        alt="Logo Muda Bergerak"
-        draggable="false"
-        oncontextmenu="return false;"
-      >
-
-      <div class="brand-name">
-        MUDA BERGERAK
-        <span>SULAWESI SELATAN</span>
-      </div>
-
+    <div>
+      © 2026 Muda Bergerak Sulawesi Selatan
     </div>
 
-    <p>
-      © 2026 Muda Bergerak Sulawesi Selatan.
-    </p>
+    <div>
+      OPREC MB SULSEL
+    </div>
 
   </div>
 
 </footer>
 
-<!-- MODAL PENDAFTARAN -->
 
-<div class="modal" id="registrationModal">
+<!-- =========================================================
+     MODAL REGISTRASI
+========================================================= -->
+
+<div class="modal" id="registerModal">
 
   <div class="modal-box">
 
-    <div class="modal-top">
+    <div class="modal-header">
 
       <div>
-        <div class="eyebrow">LET'S GET STARTED</div>
-        <h2>Pendaftaran Oprec</h2>
+        <div class="eyebrow">TAHAP 01</div>
+        <h2>Isi Data Kamu</h2>
       </div>
 
-      <button class="close" onclick="closeModal('registrationModal')">
-        ×
-      </button>
+      <button class="close" data-close="registerModal">×</button>
 
     </div>
 
-    <form id="registrationForm">
+    <div id="registerNotice"></div>
 
-      <div class="form-section">
+    <form id="registerForm">
 
-        <div class="form-section-title">
-          01 · Data Diri
+      <div class="form-grid">
+
+        <div class="field full">
+          <label>Nama Lengkap</label>
+          <input
+            type="text"
+            id="nama"
+            required
+            placeholder="Nama lengkap">
         </div>
 
-        <div class="form-grid">
 
-          <div class="field full">
-            <label for="nama">Nama Lengkap *</label>
-            <input id="nama" type="text" required>
-          </div>
-
-          <div class="field">
-            <label for="whatsapp">Nomor WhatsApp *</label>
-            <input id="whatsapp" type="tel" placeholder="08xxxxxxxxxx" required>
-          </div>
-
-          <div class="field">
-            <label for="email">Email *</label>
-            <input id="email" type="email" required>
-          </div>
-
-          <div class="field">
-            <label for="tanggalLahir">Tanggal Lahir *</label>
-            <input id="tanggalLahir" type="date" required>
-          </div>
-
-          <div class="field">
-            <label for="pendidikan">Pendidikan/Pekerjaan *</label>
-            <input id="pendidikan" type="text" required>
-          </div>
-
+        <div class="field">
+          <label>Nomor WhatsApp</label>
+          <input
+            type="tel"
+            id="whatsapp"
+            required
+            placeholder="08xxxxxxxxxx">
         </div>
 
-      </div>
 
-      <div class="form-section">
-
-        <div class="form-section-title">
-          02 · Pilihan Struktur
+        <div class="field">
+          <label>Email</label>
+          <input
+            type="email"
+            id="email"
+            required
+            placeholder="nama@email.com">
         </div>
 
-        <div class="form-grid">
 
-          <div class="field">
-            <label for="struktur">Pilihan Struktur *</label>
+        <div class="field">
+          <label>Tanggal Lahir</label>
+          <input
+            type="date"
+            id="tanggalLahir"
+            required>
+        </div>
 
-            <select id="struktur" required onchange="updateRoleInfo()">
-              <option value="">Pilih struktur</option>
-              <option value="DPW">Pengurus DPW</option>
-              <option value="DPD">Pengurus DPD</option>
-            </select>
-          </div>
 
-          <div class="field">
-            <label for="domisili">Domisili *</label>
+        <div class="field">
+          <label>Pendidikan / Pekerjaan</label>
+          <input
+            type="text"
+            id="pendidikan"
+            required
+            placeholder="Contoh: Mahasiswa / Karyawan">
+        </div>
 
-            <select id="domisili" required>
-              <option value="">Pilih domisili</option>
-              <option value="Makassar">Kota Makassar</option>
-              <option value="Gowa">Kabupaten Gowa</option>
-              <option value="Takalar">Kabupaten Takalar</option>
-              <option value="Maros">Kabupaten Maros</option>
-              <option value="Bantaeng">Kabupaten Bantaeng</option>
-              <option value="Barru">Kabupaten Barru</option>
-              <option value="Bone">Kabupaten Bone</option>
-              <option value="Bulukumba">Kabupaten Bulukumba</option>
-              <option value="Enrekang">Kabupaten Enrekang</option>
-              <option value="Jeneponto">Kabupaten Jeneponto</option>
-              <option value="Kepulauan Selayar">Kepulauan Selayar</option>
-              <option value="Luwu">Kabupaten Luwu</option>
-              <option value="Luwu Timur">Luwu Timur</option>
-              <option value="Luwu Utara">Luwu Utara</option>
-              <option value="Pangkep">Pangkajene dan Kepulauan</option>
-              <option value="Pinrang">Kabupaten Pinrang</option>
-              <option value="Sidrap">Sidenreng Rappang</option>
-              <option value="Sinjai">Kabupaten Sinjai</option>
-              <option value="Soppeng">Kabupaten Soppeng</option>
-              <option value="Tana Toraja">Tana Toraja</option>
-              <option value="Toraja Utara">Toraja Utara</option>
-              <option value="Wajo">Kabupaten Wajo</option>
-              <option value="Parepare">Kota Parepare</option>
-              <option value="Palopo">Kota Palopo</option>
-            </select>
-          </div>
+
+        <div class="field">
+          <label>Pilih Struktur</label>
+
+          <select id="struktur" required>
+
+            <option value="">
+              Pilih struktur
+            </option>
+
+            <option value="DPW">
+              Pengurus DPW
+            </option>
+
+            <option value="DPD">
+              Pengurus DPD
+            </option>
+
+          </select>
 
         </div>
 
-        <div class="role-info" id="roleInfo"></div>
 
-      </div>
+        <div class="field">
+          <label>Wilayah Domisili</label>
 
-      <div class="form-section">
+          <select id="wilayah" required>
 
-        <div class="form-section-title">
-          03 · Pengalaman & Motivasi
+            <option value="">
+              Pilih Kabupaten/Kota
+            </option>
+
+            <option value="Makassar">Makassar</option>
+            <option value="Gowa">Gowa</option>
+            <option value="Takalar">Takalar</option>
+            <option value="Jeneponto">Jeneponto</option>
+            <option value="Bantaeng">Bantaeng</option>
+            <option value="Bulukumba">Bulukumba</option>
+            <option value="Sinjai">Sinjai</option>
+            <option value="Maros">Maros</option>
+            <option value="Pangkep">Pangkep</option>
+            <option value="Barru">Barru</option>
+            <option value="Parepare">Parepare</option>
+            <option value="Pinrang">Pinrang</option>
+            <option value="Enrekang">Enrekang</option>
+            <option value="Sidrap">Sidrap</option>
+            <option value="Wajo">Wajo</option>
+            <option value="Soppeng">Soppeng</option>
+            <option value="Bone">Bone</option>
+            <option value="Selayar">Kepulauan Selayar</option>
+            <option value="Palopo">Palopo</option>
+            <option value="Luwu">Luwu</option>
+            <option value="Luwu Timur">Luwu Timur</option>
+            <option value="Luwu Utara">Luwu Utara</option>
+            <option value="Tana Toraja">Tana Toraja</option>
+            <option value="Toraja Utara">Toraja Utara</option>
+
+          </select>
+
         </div>
 
-        <div class="form-grid">
 
-          <div class="field full">
-            <label for="pengalaman">Pengalaman Organisasi</label>
+        <div class="field full">
 
-            <textarea
-              id="pengalaman"
-              placeholder="Ceritakan pengalaman organisasi, komunitas, kepanitiaan, atau kegiatan sosial."
-            ></textarea>
-          </div>
+          <label>
+            Pengalaman Organisasi
+          </label>
 
-          <div class="field full">
-            <label for="motivasi">Kenapa ingin bergabung? *</label>
+          <textarea
+            id="pengalaman"
+            required
+            placeholder="Ceritakan singkat pengalaman organisasi kamu..."></textarea>
 
-            <textarea
-              id="motivasi"
+        </div>
+
+
+        <div class="field full">
+
+          <label>
+            Motivasi Bergabung
+          </label>
+
+          <textarea
+            id="motivasi"
+            required
+            placeholder="Kenapa kamu ingin bergabung di Muda Bergerak?"></textarea>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            KTP
+          </label>
+
+          <input
+            type="file"
+            id="ktp"
+            accept="image/*,.pdf"
+            required>
+
+          <span class="helper">
+            JPG, PNG, atau PDF
+          </span>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            CV
+          </label>
+
+          <input
+            type="file"
+            id="cv"
+            accept="image/*,.pdf"
+            required>
+
+          <span class="helper">
+            JPG, PNG, atau PDF
+          </span>
+
+        </div>
+
+
+        <div class="field full">
+
+          <label>
+            Foto Diri
+          </label>
+
+          <input
+            type="file"
+            id="foto"
+            accept="image/*"
+            required>
+
+        </div>
+
+
+        <div class="field full">
+
+          <label style="display:flex;gap:10px;align-items:flex-start">
+
+            <input
+              type="checkbox"
+              id="persetujuan"
               required
-              placeholder="Ceritakan alasan dan motivasi kamu."
-            ></textarea>
-          </div>
+              style="width:auto;margin-top:4px">
+
+            <span>
+              Saya menyatakan bahwa data yang saya berikan
+              adalah benar dan bersedia mengikuti seluruh
+              proses rekrutmen Muda Bergerak.
+            </span>
+
+          </label>
 
         </div>
 
       </div>
 
-      <div class="form-section">
-
-        <div class="form-section-title">
-          04 · Dokumen
-        </div>
-
-        <div class="form-grid">
-
-          <div class="field">
-            <label for="ktp">KTP *</label>
-            <input id="ktp" type="file" accept="image/*,.pdf" required>
-            <span class="help">JPG, PNG, atau PDF</span>
-          </div>
-
-          <div class="field">
-            <label for="cv">CV/Profile *</label>
-            <input id="cv" type="file" accept="image/*,.pdf" required>
-            <span class="help">JPG, PNG, atau PDF</span>
-          </div>
-
-          <div class="field full">
-            <label for="pasFoto">Pas Foto *</label>
-            <input id="pasFoto" type="file" accept="image/*" required>
-            <span class="help">Format JPG atau PNG</span>
-          </div>
-
-        </div>
-
-      </div>
-
-      <label class="checkbox">
-        <input id="persetujuan" type="checkbox" required>
-
-        <span>
-          Saya menyatakan bahwa data yang diisi adalah benar dan
-          bersedia mengikuti seluruh proses Open Recruitment
-          Muda Bergerak Sulawesi Selatan.
-        </span>
-      </label>
 
       <div class="form-actions">
 
         <button
-          type="button"
-          class="btn btn-outline"
-          onclick="closeModal('registrationModal')"
-        >
-          Batal
+          type="submit"
+          class="btn btn-primary">
+          Lanjut ke The Quiz →
         </button>
 
-        <button type="submit" class="btn btn-primary">
-          Lanjut ke The Quiz ↗
+        <button
+          type="button"
+          class="btn btn-outline"
+          data-close="registerModal">
+          Batal
         </button>
 
       </div>
@@ -1377,554 +1208,2045 @@ footer {
 
 </div>
 
-<!-- MODAL QUIZ -->
+
+<!-- =========================================================
+     MODAL QUIZ
+========================================================= -->
 
 <div class="modal" id="quizModal">
 
   <div class="modal-box">
 
-    <div class="modal-top">
+    <div class="modal-header">
 
       <div>
-        <div class="eyebrow">THE QUIZ</div>
-        <h2>Kenali Cara Berpikirmu</h2>
+        <div class="eyebrow">TAHAP 02</div>
+
+        <h2>
+          THE QUIZ
+        </h2>
+
+        <p class="helper" style="margin-top:8px">
+          10 pertanyaan • Total skor 100
+        </p>
+
       </div>
 
-      <button class="close" onclick="closeModal('quizModal')">
+      <button class="close" data-close="quizModal">
         ×
       </button>
 
     </div>
 
-    <div class="quiz-progress">
-      <div class="quiz-progress-bar" id="quizProgressBar"></div>
-    </div>
+    <div id="quizNotice"></div>
 
-    <div class="quiz-number" id="quizNumber"></div>
+    <form id="quizForm">
 
-    <div class="quiz-question" id="quizQuestion"></div>
+      <div id="questions"></div>
 
-    <div id="quizOptions"></div>
+      <div class="form-actions">
+
+        <button
+          type="submit"
+          class="btn btn-primary">
+          Kirim Jawaban & Daftar
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-outline"
+          data-close="quizModal">
+          Kembali
+        </button>
+
+      </div>
+
+    </form>
 
   </div>
 
 </div>
 
-<!-- MODAL SUKSES -->
+
+<!-- =========================================================
+     MODAL SUCCESS
+========================================================= -->
 
 <div class="modal" id="successModal">
 
   <div class="modal-box">
 
-    <div class="success">
-
-      <div class="success-icon">✓</div>
-
-      <div class="eyebrow">REGISTRASI SELESAI</div>
-
-      <h2>Selamat, Kamu Selesai!</h2>
-
-      <p style="color:#aaa;margin-top:12px;">
-        Simpan kode peserta kamu untuk mengecek status pendaftaran
-        pada perangkat yang sama.
-      </p>
-
-      <div class="code" id="participantCode"></div>
-
-      <p style="color:#aaa;font-size:12px;">
-        Skor The Quiz kamu:
-      </p>
-
-      <div
-        id="participantScore"
-        style="font-size:35px;font-weight:800;color:var(--orange);margin:10px 0;"
-      ></div>
-
-      <button
-        class="btn btn-primary"
-        onclick="closeModal('successModal');openStatus()"
-      >
-        Cek Status Peserta
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
-
-<!-- MODAL STATUS -->
-
-<div class="modal" id="statusModal">
-
-  <div class="modal-box">
-
-    <div class="modal-top">
+    <div class="modal-header">
 
       <div>
-        <div class="eyebrow">PARTICIPANT AREA</div>
-        <h2>Cek Status</h2>
+        <div class="eyebrow">BERHASIL</div>
+        <h2>Data Kamu Sudah Masuk! 🚀</h2>
       </div>
 
-      <button class="close" onclick="closeModal('statusModal')">
+      <button class="close" data-close="successModal">
         ×
       </button>
 
     </div>
 
-    <div class="field">
+    <div class="notice success">
 
-      <label for="statusCodeInput">
-        Masukkan Kode Peserta
-      </label>
-
-      <input
-        id="statusCodeInput"
-        type="text"
-        placeholder="Contoh: MB-2026-ABC123"
-        style="text-transform:uppercase;"
-      >
+      Pendaftaran kamu berhasil dikirim.
 
     </div>
 
-    <button
-      class="btn btn-primary"
-      style="margin-top:15px;width:100%;"
-      onclick="checkStatus()"
-    >
-      Cek Sekarang
-    </button>
+    <div class="card">
 
-    <div id="statusResult" style="margin-top:20px;"></div>
+      <div class="number">
+        KODE PESERTA
+      </div>
 
-    <div class="notice">
-      Catatan: versi ini menyimpan data secara lokal pada browser
-      dan perangkat yang digunakan. Integrasi database, dashboard
-      admin, dan notifikasi WhatsApp membutuhkan backend.
+      <h3
+        id="successCode"
+        style="font-size:32px;color:var(--orange)">
+      </h3>
+
+      <p
+        id="successScore"
+        style="margin-top:8px">
+      </p>
+
+      <p style="margin-top:10px">
+        Simpan kode peserta ini.
+        Kamu bisa menggunakannya untuk mengecek
+        status pendaftaran.
+      </p>
+
+    </div>
+
+    <div class="form-actions">
+
+      <button
+        class="btn btn-primary"
+        id="successStatus">
+        Cek Status
+      </button>
+
+      <button
+        class="btn btn-outline"
+        data-close="successModal">
+        Selesai
+      </button>
+
     </div>
 
   </div>
 
 </div>
 
-<script>
-/* =========================
-   DATA QUIZ
-========================= */
 
-const questions = [
-  {
-    question: "Apa alasan utama kamu ingin bergabung dengan Muda Bergerak?",
-    options: [
-      ["Ingin mendapatkan pengalaman baru", 4],
-      ["Ingin membangun relasi", 7],
-      ["Ingin belajar dan berkembang bersama", 10],
-      ["Sekadar mencoba", 1]
-    ]
-  },
-  {
-    question: "Bagaimana sikapmu ketika bekerja dalam sebuah tim?",
-    options: [
-      ["Menunggu arahan orang lain", 4],
-      ["Bekerja sesuai tugas saja", 7],
-      ["Aktif berkomunikasi dan membantu tim", 10],
-      ["Lebih suka bekerja sendiri", 1]
-    ]
-  },
-  {
-    question: "Apa yang kamu lakukan ketika memiliki perbedaan pendapat?",
-    options: [
-      ["Menghindari pembahasan", 1],
-      ["Mempertahankan pendapat sendiri", 4],
-      ["Mendengarkan dan mencari jalan tengah", 10],
-      ["Menyerahkan semuanya kepada orang lain", 7]
-    ]
-  },
-  {
-    question: "Menurutmu, apa arti transparansi dalam organisasi?",
-    options: [
-      ["Keterbukaan informasi dan proses", 10],
-      ["Informasi hanya untuk pengurus inti", 1],
-      ["Tidak terlalu penting", 4],
-      ["Cukup dilakukan sesekali", 7]
-    ]
-  },
-  {
-    question: "Bagaimana kamu menyikapi kritik?",
-    options: [
-      ["Menganggapnya sebagai serangan", 1],
-      ["Mendengarkan dan mengevaluasi diri", 10],
-      ["Menerima jika sesuai keinginan", 7],
-      ["Menghindari orang yang mengkritik", 4]
-    ]
-  },
-  {
-    question: "Apa yang paling penting dalam kolaborasi?",
-    options: [
-      ["Kepentingan pribadi", 1],
-      ["Komunikasi dan tujuan bersama", 10],
-      ["Siapa yang paling berpengaruh", 4],
-      ["Hasil tanpa proses", 7]
-    ]
-  },
-  {
-    question: "Ketika diberikan tanggung jawab baru, kamu akan...",
-    options: [
-      ["Menghindarinya", 1],
-      ["Menerima jika tidak sulit", 4],
-      ["Mempelajari dan menjalankannya dengan serius", 10],
-      ["Menunggu orang lain mengerjakan", 7]
-    ]
-  },
-  {
-    question: "Apa bentuk kontribusi yang bisa kamu berikan?",
-    options: [
-      ["Ide, waktu, tenaga, dan kemampuan", 10],
-      ["Hanya hadir ketika dibutuhkan", 4],
-      ["Mengikuti kegiatan tanpa terlibat", 1],
-      ["Membantu jika ada keuntungan pribadi", 7]
-    ]
-  },
-  {
-    question: "Bagaimana cara kamu menghadapi masalah di masyarakat?",
-    options: [
-      ["Membiarkannya", 1],
-      ["Membahasnya tanpa tindakan", 4],
-      ["Mencari solusi melalui kolaborasi", 10],
-      ["Menunggu pihak lain menyelesaikannya", 7]
-    ]
-  },
-  {
-    question: "Apa komitmen yang ingin kamu bangun melalui organisasi?",
-    options: [
-      ["Mengembangkan diri dan memberi manfaat", 10],
-      ["Mencari pengalaman saja", 7],
-      ["Mengikuti tren", 1],
-      ["Mendapatkan relasi pribadi", 4]
-    ]
-  }
-];
+<!-- =========================================================
+     MODAL CEK STATUS
+========================================================= -->
 
-let currentQuestion = 0;
-let totalScore = 0;
-let registrationData = {};
+<div class="modal" id="statusModal">
 
-/* =========================
-   MODAL
-========================= */
+  <div class="modal-box">
 
-function openModal(id) {
-  document.getElementById(id).classList.add("show");
-  document.body.style.overflow = "hidden";
-}
+    <div class="modal-header">
 
-function closeModal(id) {
-  document.getElementById(id).classList.remove("show");
-  document.body.style.overflow = "";
-}
-
-function openRegistration() {
-  openModal("registrationModal");
-}
-
-function openStatus() {
-  openModal("statusModal");
-}
-
-document.querySelectorAll(".modal").forEach(modal => {
-  modal.addEventListener("click", function(event) {
-    if (event.target === modal) {
-      closeModal(modal.id);
-    }
-  });
-});
-
-/* =========================
-   ROLE INFO
-========================= */
-
-function updateRoleInfo() {
-  const structure = document.getElementById("struktur").value;
-  const info = document.getElementById("roleInfo");
-
-  if (structure === "DPW") {
-    info.textContent =
-      "Pengurus DPW wajib berdomisili di Kota Makassar.";
-    info.classList.add("show");
-  } else if (structure === "DPD") {
-    info.textContent =
-      "Pengurus DPD memilih wilayah Kabupaten/Kota sesuai domisili.";
-    info.classList.add("show");
-  } else {
-    info.textContent = "";
-    info.classList.remove("show");
-  }
-}
-
-/* =========================
-   FORM PENDAFTARAN
-========================= */
-
-document.getElementById("registrationForm").addEventListener("submit", function(event) {
-
-  event.preventDefault();
-
-  const structure = document.getElementById("struktur").value;
-  const domicile = document.getElementById("domisili").value;
-
-  if (structure === "DPW" && domicile !== "Makassar") {
-    alert("Pendaftar Pengurus DPW wajib berdomisili di Kota Makassar.");
-    return;
-  }
-
-  registrationData = {
-    nama: document.getElementById("nama").value.trim(),
-    whatsapp: document.getElementById("whatsapp").value.trim(),
-    email: document.getElementById("email").value.trim(),
-    tanggalLahir: document.getElementById("tanggalLahir").value,
-    pendidikan: document.getElementById("pendidikan").value.trim(),
-    struktur: structure,
-    domisili: domicile,
-    pengalaman: document.getElementById("pengalaman").value.trim(),
-    motivasi: document.getElementById("motivasi").value.trim(),
-    waktuDaftar: new Date().toLocaleString("id-ID")
-  };
-
-  currentQuestion = 0;
-  totalScore = 0;
-
-  closeModal("registrationModal");
-  openModal("quizModal");
-  renderQuestion();
-
-});
-
-/* =========================
-   QUIZ
-========================= */
-
-function renderQuestion() {
-
-  const question = questions[currentQuestion];
-
-  document.getElementById("quizNumber").textContent =
-    `PERTANYAAN ${currentQuestion + 1} DARI ${questions.length}`;
-
-  document.getElementById("quizQuestion").textContent =
-    question.question;
-
-  document.getElementById("quizProgressBar").style.width =
-    `${((currentQuestion) / questions.length) * 100}%`;
-
-  const optionsContainer = document.getElementById("quizOptions");
-  optionsContainer.innerHTML = "";
-
-  question.options.forEach((option, index) => {
-
-    const button = document.createElement("button");
-
-    button.className = "quiz-option";
-    button.textContent = `${String.fromCharCode(65 + index)}. ${option[0]}`;
-
-    button.addEventListener("click", function() {
-      selectAnswer(option[1]);
-    });
-
-    optionsContainer.appendChild(button);
-
-  });
-
-}
-
-function selectAnswer(score) {
-
-  totalScore += score;
-  currentQuestion++;
-
-  if (currentQuestion < questions.length) {
-    renderQuestion();
-  } else {
-    finishQuiz();
-  }
-
-}
-
-/* =========================
-   SELESAI QUIZ
-========================= */
-
-function finishQuiz() {
-
-  document.getElementById("quizProgressBar").style.width = "100%";
-
-  const code =
-    "MB-2026-" +
-    Math.random().toString(36).substring(2, 8).toUpperCase();
-
-  const domicile = registrationData.domisili;
-
-  let interviewSchedule = "";
-
-  if (domicile === "Makassar" || domicile === "Gowa") {
-    interviewSchedule = "Offline · 11 Oktober";
-  } else {
-    interviewSchedule = "Online · 10 Oktober";
-  }
-
-  const participant = {
-    ...registrationData,
-    code: code,
-    score: totalScore,
-    status: "Menunggu Verifikasi",
-    interview: interviewSchedule
-  };
-
-  localStorage.setItem(
-    "mbParticipant_" + code,
-    JSON.stringify(participant)
-  );
-
-  closeModal("quizModal");
-
-  document.getElementById("participantCode").textContent = code;
-  document.getElementById("participantScore").textContent =
-    `${totalScore} / 100`;
-
-  openModal("successModal");
-
-}
-
-/* =========================
-   STATUS PESERTA
-========================= */
-
-function checkStatus() {
-
-  const input = document
-    .getElementById("statusCodeInput")
-    .value
-    .trim()
-    .toUpperCase();
-
-  const result = document.getElementById("statusResult");
-
-  if (!input) {
-    result.innerHTML = `
-      <div class="notice">
-        Masukkan kode peserta terlebih dahulu.
-      </div>
-    `;
-    return;
-  }
-
-  const saved = localStorage.getItem("mbParticipant_" + input);
-
-  if (!saved) {
-    result.innerHTML = `
-      <div class="notice" style="border:1px solid #743b30;">
-        Kode peserta tidak ditemukan pada perangkat ini.
-      </div>
-    `;
-    return;
-  }
-
-  const participant = JSON.parse(saved);
-
-  result.innerHTML = `
-    <div class="status-card">
-
-      <div class="status-code">
-        ${escapeHTML(participant.code)}
+      <div>
+        <div class="eyebrow">CEK STATUS</div>
+        <h2>Cek Pendaftaran</h2>
       </div>
 
-      <div class="status-row">
-        <span class="status-label">Nama</span>
-        <span class="status-value">${escapeHTML(participant.nama)}</span>
+      <button class="close" data-close="statusModal">
+        ×
+      </button>
+
+    </div>
+
+    <div id="statusNotice"></div>
+
+    <form id="statusForm">
+
+      <div class="field">
+
+        <label>
+          Kode Peserta
+        </label>
+
+        <input
+          type="text"
+          id="statusCode"
+          required
+          placeholder="Contoh: MB26-ABC123"
+          style="text-transform:uppercase">
+
       </div>
 
-      <div class="status-row">
-        <span class="status-label">Struktur</span>
-        <span class="status-value">${escapeHTML(participant.struktur)}</span>
+      <div class="form-actions">
+
+        <button
+          type="submit"
+          class="btn btn-primary">
+          Cek Sekarang
+        </button>
+
       </div>
 
-      <div class="status-row">
-        <span class="status-label">Domisili</span>
-        <span class="status-value">${escapeHTML(participant.domisili)}</span>
+    </form>
+
+    <div id="statusResult"></div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     MODAL LOGIN ADMIN
+========================================================= -->
+
+<div class="modal" id="adminLoginModal">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <div>
+        <div class="eyebrow">ADMIN</div>
+        <h2>Login Dashboard</h2>
       </div>
 
-      <div class="status-row">
-        <span class="status-label">Skor The Quiz</span>
-        <span class="status-value">${participant.score} / 100</span>
+      <button class="close" data-close="adminLoginModal">
+        ×
+      </button>
+
+    </div>
+
+    <div id="adminLoginNotice"></div>
+
+    <form id="adminLoginForm">
+
+      <div class="field">
+
+        <label>Email Admin</label>
+
+        <input
+          type="email"
+          id="adminEmail"
+          required
+          placeholder="admin@email.com">
+
       </div>
 
-      <div class="status-row">
-        <span class="status-label">Status</span>
-        <span class="status-value">
-          <span class="badge">${escapeHTML(participant.status)}</span>
-        </span>
+      <div class="field" style="margin-top:15px">
+
+        <label>Password</label>
+
+        <input
+          type="password"
+          id="adminPassword"
+          required
+          placeholder="Password">
+
       </div>
 
-      <div class="status-row">
-        <span class="status-label">Jadwal Kenal Lebih Dekat</span>
-        <span class="status-value">${escapeHTML(participant.interview)}</span>
+      <div class="form-actions">
+
+        <button
+          type="submit"
+          class="btn btn-primary">
+          Login
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     MODAL ADMIN DASHBOARD
+========================================================= -->
+
+<div class="modal" id="adminModal">
+
+  <div class="modal-box"
+       style="width:min(1100px,100%)">
+
+    <div class="modal-header">
+
+      <div>
+        <div class="eyebrow">DASHBOARD</div>
+        <h2>Admin Muda Bergerak</h2>
+      </div>
+
+      <button class="close" data-close="adminModal">
+        ×
+      </button>
+
+    </div>
+
+    <div id="adminNotice"></div>
+
+    <div class="admin-shell">
+
+      <div class="admin-top">
+
+        <div>
+          <b>
+            Kelola Peserta
+          </b>
+
+          <div class="helper">
+            Verifikasi dokumen, status, dan interview.
+          </div>
+        </div>
+
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+
+          <button
+            class="btn btn-outline btn-small"
+            id="refreshAdmin">
+            Refresh
+          </button>
+
+          <button
+            class="btn btn-danger btn-small"
+            id="logoutAdmin">
+            Logout
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="admin-stats">
+
+        <div class="stat">
+          <b id="statTotal">0</b>
+          <span>Total Peserta</span>
+        </div>
+
+        <div class="stat">
+          <b id="statPending">0</b>
+          <span>Menunggu Verifikasi</span>
+        </div>
+
+        <div class="stat">
+          <b id="statVerified">0</b>
+          <span>Terverifikasi</span>
+        </div>
+
+      </div>
+
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>Kode</th>
+              <th>Nama</th>
+              <th>Struktur</th>
+              <th>Wilayah</th>
+              <th>Skor</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+
+          </thead>
+
+          <tbody id="adminTableBody"></tbody>
+
+        </table>
+
       </div>
 
     </div>
-  `;
 
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     MODAL EDIT ADMIN
+========================================================= -->
+
+<div class="modal" id="editModal">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <div>
+        <div class="eyebrow">KELOLA PESERTA</div>
+        <h2>Update Status</h2>
+      </div>
+
+      <button class="close" data-close="editModal">
+        ×
+      </button>
+
+    </div>
+
+    <div id="editNotice"></div>
+
+    <form id="editForm">
+
+      <input type="hidden" id="editId">
+
+
+      <div class="field">
+
+        <label>Status Pendaftaran</label>
+
+        <select id="editStatus">
+
+          <option value="Menunggu Verifikasi">
+            Menunggu Verifikasi
+          </option>
+
+          <option value="Terverifikasi">
+            Terverifikasi
+          </option>
+
+          <option value="Perlu Perbaikan">
+            Perlu Perbaikan
+          </option>
+
+          <option value="Ditolak">
+            Ditolak
+          </option>
+
+          <option value="Disetujui">
+            Disetujui
+          </option>
+
+          <option value="Lolos">
+            Lolos
+          </option>
+
+          <option value="Tidak Lolos">
+            Tidak Lolos
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field" style="margin-top:15px">
+
+        <label>Status Dokumen</label>
+
+        <select id="editDocumentStatus">
+
+          <option value="Belum Diverifikasi">
+            Belum Diverifikasi
+          </option>
+
+          <option value="Sedang Diverifikasi">
+            Sedang Diverifikasi
+          </option>
+
+          <option value="Terverifikasi">
+            Terverifikasi
+          </option>
+
+          <option value="Perlu Perbaikan">
+            Perlu Perbaikan
+          </option>
+
+          <option value="Ditolak">
+            Ditolak
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field" style="margin-top:15px">
+
+        <label>
+          Jadwal Interview
+        </label>
+
+        <input
+          type="text"
+          id="editInterview"
+          placeholder="Contoh: 11 Oktober 2026, 14.00 WITA">
+
+      </div>
+
+
+      <div class="field" style="margin-top:15px">
+
+        <label>
+          Metode Interview
+        </label>
+
+        <select id="editMethod">
+
+          <option value="">
+            Belum ditentukan
+          </option>
+
+          <option value="Online">
+            Online
+          </option>
+
+          <option value="Offline">
+            Offline
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field" style="margin-top:15px">
+
+        <label>
+          Lokasi Interview
+        </label>
+
+        <input
+          type="text"
+          id="editLocation"
+          placeholder="Contoh: Sekretariat DPW MB Sulsel">
+
+      </div>
+
+
+      <div class="field" style="margin-top:15px">
+
+        <label>
+          Catatan Admin
+        </label>
+
+        <textarea
+          id="editNote"
+          placeholder="Catatan untuk peserta..."></textarea>
+
+      </div>
+
+
+      <div class="form-actions">
+
+        <button
+          type="submit"
+          class="btn btn-primary">
+          Simpan Perubahan
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-outline"
+          data-close="editModal">
+          Batal
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   SUPABASE
+========================================================= */
+
+const SUPABASE_URL =
+  "https://qccenzvpncfkkbncfnkh.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_iN8EDDpe6JwELDU7GiWifw_5rFBZHr1";
+
+const db =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
+/* =========================================================
+   HELPER
+========================================================= */
+
+const $ = id =>
+  document.getElementById(id);
+
+
+function openModal(id) {
+
+  const modal = $(id);
+
+  if (!modal) return;
+
+  modal.classList.add("show");
+
+  document.body.classList.add("modal-open");
 }
 
-/* =========================
-   KEAMANAN DASAR LOGO
-========================= */
 
-document.addEventListener("contextmenu", function(event) {
+function closeModal(id) {
 
-  if (event.target.tagName === "IMG") {
-    event.preventDefault();
+  const modal = $(id);
+
+  if (!modal) return;
+
+  modal.classList.remove("show");
+
+  if (!document.querySelector(".modal.show")) {
+    document.body.classList.remove("modal-open");
+  }
+}
+
+
+function notice(id,message,type="info") {
+
+  const el = $(id);
+
+  if (!el) return;
+
+  if (!message) {
+    el.innerHTML = "";
+    return;
   }
 
-});
+  el.innerHTML =
+    `<div class="notice ${type}">
+      ${escapeHTML(message)}
+    </div>`;
+}
 
-document.addEventListener("dragstart", function(event) {
-
-  if (event.target.tagName === "IMG") {
-    event.preventDefault();
-  }
-
-});
-
-document.addEventListener("selectstart", function(event) {
-
-  if (event.target.tagName === "IMG") {
-    event.preventDefault();
-  }
-
-});
-
-/* =========================
-   ESCAPE HTML
-========================= */
 
 function escapeHTML(value) {
 
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
 
-/* =========================
-   NAVIGASI STATUS
-========================= */
 
-document.getElementById("statusNav").addEventListener("click", function(event) {
-  event.preventDefault();
-  openStatus();
-});
+function fileName(id) {
+
+  const input = $(id);
+
+  if (!input || !input.files || !input.files.length) {
+    return "";
+  }
+
+  return input.files[0].name;
+}
+
+
+/* =========================================================
+   DATA QUIZ
+========================================================= */
+
+const quizQuestions = [
+
+  {
+    q:"Ketika melihat masalah di lingkungan sekitar, apa yang paling tepat dilakukan?",
+    options:[
+      ["Membiarkannya karena bukan urusan saya",1],
+      ["Mengeluh di media sosial saja",4],
+      ["Mengajak orang lain mencari solusi",7],
+      ["Turun langsung dan membangun solusi bersama",10]
+    ]
+  },
+
+  {
+    q:"Apa arti organisasi bagi kamu?",
+    options:[
+      ["Tempat berkumpul",1],
+      ["Tempat menambah teman",4],
+      ["Tempat belajar dan berkembang",7],
+      ["Ruang untuk belajar, bergerak, dan memberi dampak",10]
+    ]
+  },
+
+  {
+    q:"Bagaimana sikap kamu ketika pendapatmu berbeda dengan anggota lain?",
+    options:[
+      ["Memaksakan pendapat",1],
+      ["Diam saja",4],
+      ["Mendengarkan pendapat lain",7],
+      ["Mendengarkan, berdiskusi, lalu mencari titik temu",10]
+    ]
+  },
+
+  {
+    q:"Apa yang kamu lakukan ketika mendapat tugas organisasi?",
+    options:[
+      ["Menunggu diingatkan",1],
+      ["Mengerjakan jika sempat",4],
+      ["Mengerjakan sesuai tanggung jawab",7],
+      ["Menyelesaikan dengan maksimal dan siap berkoordinasi",10]
+    ]
+  },
+
+  {
+    q:"Menurut kamu, transparansi dalam organisasi penting karena...",
+    options:[
+      ["Tidak terlalu penting",1],
+      ["Supaya tidak banyak pertanyaan",4],
+      ["Membangun kepercayaan",7],
+      ["Membangun kepercayaan, akuntabilitas, dan rasa memiliki",10]
+    ]
+  },
+
+  {
+    q:"Ketika program yang kamu buat tidak berjalan sesuai rencana, kamu akan...",
+    options:[
+      ["Menyalahkan orang lain",1],
+      ["Berhenti",4],
+      ["Mengevaluasi kekurangannya",7],
+      ["Evaluasi, perbaiki strategi, lalu bergerak lagi",10]
+    ]
+  },
+
+  {
+    q:"Apa yang paling penting ketika bekerja dalam tim?",
+    options:[
+      ["Menjadi yang paling menonjol",1],
+      ["Mengikuti saja",4],
+      ["Komunikasi",7],
+      ["Komunikasi, tanggung jawab, dan saling mendukung",10]
+    ]
+  },
+
+  {
+    q:"Bagaimana kamu melihat perbedaan latar belakang anggota?",
+    options:[
+      ["Bisa menjadi masalah",1],
+      ["Tidak perlu dibahas",4],
+      ["Sesuatu yang harus dihargai",7],
+      ["Kekuatan untuk membangun kolaborasi yang lebih luas",10]
+    ]
+  },
+
+  {
+    q:"Apa yang ingin kamu dapatkan dari Muda Bergerak?",
+    options:[
+      ["Nama dan posisi",1],
+      ["Teman baru",4],
+      ["Pengalaman organisasi",7],
+      ["Ruang belajar, jaringan, pengalaman, dan kesempatan memberi dampak",10]
+    ]
+  },
+
+  {
+    q:"Jika diberi kesempatan memimpin sebuah kegiatan, apa yang akan kamu lakukan?",
+    options:[
+      ["Menyerahkan semuanya kepada anggota",1],
+      ["Menunggu arahan",4],
+      ["Membagi tugas dan mengawasi proses",7],
+      ["Menyusun arah, membangun tim, menjalankan, dan mengevaluasi bersama",10]
+    ]
+  }
+
+];
+
+
+/* =========================================================
+   RENDER QUIZ
+========================================================= */
+
+function renderQuestions() {
+
+  const container = $("questions");
+
+  container.innerHTML = quizQuestions
+    .map((item,index) => {
+
+      const options =
+        item.options
+          .map((option,optionIndex) => {
+
+            return `
+              <label>
+                <input
+                  type="radio"
+                  name="q${index}"
+                  value="${option[1]}"
+                  required>
+
+                <span>
+                  ${escapeHTML(option[0])}
+                </span>
+              </label>
+            `;
+
+          })
+          .join("");
+
+      return `
+        <div class="quiz-question">
+
+          <p>
+            ${index + 1}. ${escapeHTML(item.q)}
+          </p>
+
+          <div class="quiz-options">
+            ${options}
+          </div>
+
+        </div>
+      `;
+
+    })
+    .join("");
+}
+
+
+function scoreQuiz(form) {
+
+  let total = 0;
+
+  for (let i=0;i<quizQuestions.length;i++) {
+
+    const selected =
+      form.querySelector(
+        `input[name="q${i}"]:checked`
+      );
+
+    if (!selected) {
+      return null;
+    }
+
+    total += Number(selected.value);
+  }
+
+  return total;
+}
+
+
+/* =========================================================
+   REGISTRATION STATE
+========================================================= */
+
+let pendingRegistration = null;
+
+let lastRegisteredCode = "";
+
+
+/* =========================================================
+   KODE PESERTA
+========================================================= */
+
+function generateCode() {
+
+  const chars =
+    "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+  let random = "";
+
+  for (let i=0;i<6;i++) {
+
+    random +=
+      chars.charAt(
+        Math.floor(
+          Math.random() * chars.length
+        )
+      );
+
+  }
+
+  return "MB26-" + random;
+}
+
+
+/* =========================================================
+   VALIDASI STRUKTUR & WILAYAH
+========================================================= */
+
+function validateStructureAndRegion() {
+
+  const struktur =
+    $("struktur").value;
+
+  const wilayah =
+    $("wilayah").value;
+
+  if (!struktur || !wilayah) {
+
+    notice(
+      "registerNotice",
+      "Lengkapi struktur dan wilayah domisili terlebih dahulu.",
+      "error"
+    );
+
+    return false;
+  }
+
+
+  if (
+    struktur === "DPW" &&
+    wilayah !== "Makassar"
+  ) {
+
+    notice(
+      "registerNotice",
+      "Pendaftar Pengurus DPW wajib berdomisili di Kota Makassar.",
+      "error"
+    );
+
+    return false;
+  }
+
+
+  return true;
+}
+
+
+/* =========================================================
+   SUBMIT REGISTRATION
+========================================================= */
+
+async function submitRegistration() {
+
+  if (!pendingRegistration) return;
+
+  const code =
+    generateCode();
+
+
+  const payload = {
+
+    kode_peserta:code,
+
+    nama_lengkap:
+      pendingRegistration.nama,
+
+    nomor_whatsapp:
+      pendingRegistration.whatsapp,
+
+    email:
+      pendingRegistration.email,
+
+    tanggal_lahir:
+      pendingRegistration.tanggal_lahir,
+
+    pendidikan_pekerjaan:
+      pendingRegistration.pendidikan,
+
+    struktur_pilihan:
+      pendingRegistration.struktur,
+
+    wilayah_domisili:
+      pendingRegistration.wilayah,
+
+    pengalaman_organisasi:
+      pendingRegistration.pengalaman,
+
+    motivasi:
+      pendingRegistration.motivasi,
+
+    skor_quiz:
+      pendingRegistration.skor,
+
+    persetujuan_data:true
+
+  };
+
+
+  const { error } =
+    await db
+      .from("pendaftar")
+      .insert(payload);
+
+
+  if (error) {
+
+    console.error(error);
+
+    notice(
+      "quizNotice",
+      "Pendaftaran gagal: " + error.message,
+      "error"
+    );
+
+    return;
+  }
+
+
+  lastRegisteredCode =
+    code;
+
+
+  closeModal("quizModal");
+
+
+  $("successCode")
+    .textContent =
+    code;
+
+
+  $("successScore")
+    .textContent =
+    `Skor quiz kamu: ${pendingRegistration.skor}/100`;
+
+
+  openModal("successModal");
+
+
+  $("registerForm").reset();
+
+  $("quizForm").reset();
+
+  pendingRegistration = null;
+}
+
+
+/* =========================================================
+   CEK STATUS
+========================================================= */
+
+async function checkStatus(code) {
+
+  notice(
+    "statusNotice",
+    "Memeriksa data...",
+    "info"
+  );
+
+
+  $("statusResult").innerHTML = "";
+
+
+  const {
+    data,
+    error
+  } = await db
+    .rpc(
+      "cek_status_peserta",
+      {
+        p_kode:
+          code.trim().toUpperCase()
+      }
+    );
+
+
+  if (error) {
+
+    notice(
+      "statusNotice",
+      error.message,
+      "error"
+    );
+
+    return;
+  }
+
+
+  if (!data || data.length === 0) {
+
+    notice(
+      "statusNotice",
+      "Kode peserta tidak ditemukan.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  const p = data[0];
+
+
+  notice(
+    "statusNotice",
+    "Data peserta ditemukan.",
+    "success"
+  );
+
+
+  $("statusResult").innerHTML = `
+
+    <div
+      class="card"
+      style="margin-top:15px">
+
+      <div class="number">
+        DATA PESERTA
+      </div>
+
+      <h3>
+        ${escapeHTML(p.nama_lengkap)}
+      </h3>
+
+      <p>
+        Kode:
+        ${escapeHTML(p.kode_peserta)}
+      </p>
+
+      <p>
+        Struktur:
+        ${escapeHTML(p.struktur_pilihan)}
+      </p>
+
+      <p>
+        Wilayah:
+        ${escapeHTML(p.wilayah_domisili)}
+      </p>
+
+      <p>
+        Skor Quiz:
+        ${escapeHTML(p.skor_quiz)}
+      </p>
+
+      <p>
+        Status Pendaftaran:
+        <b>
+          ${escapeHTML(p.status_pendaftaran)}
+        </b>
+      </p>
+
+      <p>
+        Status Dokumen:
+        <b>
+          ${escapeHTML(p.status_dokumen)}
+        </b>
+      </p>
+
+      <p>
+        Jadwal Interview:
+        ${escapeHTML(
+          p.jadwal_interview ||
+          "Belum ditentukan"
+        )}
+      </p>
+
+      <p>
+        Metode:
+        ${escapeHTML(
+          p.metode_interview ||
+          "Belum ditentukan"
+        )}
+      </p>
+
+      <p>
+        Lokasi:
+        ${escapeHTML(
+          p.lokasi_interview ||
+          "Belum ditentukan"
+        )}
+      </p>
+
+      <p>
+        Catatan Admin:
+        ${escapeHTML(
+          p.catatan_admin ||
+          "Belum ada catatan"
+        )}
+      </p>
+
+    </div>
+
+  `;
+}
+
+
+/* =========================================================
+   ADMIN
+========================================================= */
+
+function statusClass(status) {
+
+  if (
+    [
+      "Terverifikasi",
+      "Disetujui",
+      "Lolos"
+    ].includes(status)
+  ) {
+    return "green";
+  }
+
+
+  if (
+    [
+      "Perlu Perbaikan",
+      "Sedang Diverifikasi"
+    ].includes(status)
+  ) {
+    return "yellow";
+  }
+
+
+  if (
+    [
+      "Ditolak",
+      "Tidak Lolos"
+    ].includes(status)
+  ) {
+    return "red";
+  }
+
+
+  return "";
+}
+
+
+let adminParticipants = [];
+
+
+function renderAdminTable() {
+
+  $("adminTableBody").innerHTML =
+    adminParticipants
+      .map(p => `
+
+        <tr>
+
+          <td>
+            ${escapeHTML(p.kode_peserta)}
+          </td>
+
+          <td>
+            ${escapeHTML(p.nama_lengkap)}
+          </td>
+
+          <td>
+            ${escapeHTML(p.struktur_pilihan)}
+          </td>
+
+          <td>
+            ${escapeHTML(p.wilayah_domisili)}
+          </td>
+
+          <td>
+            ${escapeHTML(p.skor_quiz)}
+          </td>
+
+          <td>
+
+            <span
+              class="status-pill ${statusClass(
+                p.status_pendaftaran
+              )}">
+
+              ${escapeHTML(
+                p.status_pendaftaran
+              )}
+
+            </span>
+
+          </td>
+
+          <td>
+
+            <button
+              class="btn btn-primary btn-small"
+              onclick="openEdit('${p.id}')">
+
+              Kelola
+
+            </button>
+
+          </td>
+
+        </tr>
+
+      `)
+      .join("");
+
+
+  $("statTotal")
+    .textContent =
+    adminParticipants.length;
+
+
+  $("statPending")
+    .textContent =
+    adminParticipants.filter(
+      p =>
+        p.status_pendaftaran ===
+        "Menunggu Verifikasi"
+    ).length;
+
+
+  $("statVerified")
+    .textContent =
+    adminParticipants.filter(
+      p =>
+        p.status_pendaftaran ===
+        "Terverifikasi"
+    ).length;
+}
+
+
+async function loadAdminParticipants() {
+
+  notice(
+    "adminNotice",
+    "Memuat data peserta...",
+    "info"
+  );
+
+
+  const {
+    data,
+    error
+  } = await db
+    .from("pendaftar")
+    .select("*")
+    .order(
+      "created_at",
+      {
+        ascending:false
+      }
+    );
+
+
+  if (error) {
+
+    notice(
+      "adminNotice",
+      error.message,
+      "error"
+    );
+
+    return;
+  }
+
+
+  adminParticipants =
+    data || [];
+
+
+  renderAdminTable();
+
+
+  notice(
+    "adminNotice",
+    "Data peserta berhasil dimuat.",
+    "success"
+  );
+}
+
+
+async function openAdmin() {
+
+  const {
+    data:{
+      session
+    }
+  } =
+    await db.auth.getSession();
+
+
+  if (!session) {
+
+    openModal(
+      "adminLoginModal"
+    );
+
+    return;
+  }
+
+
+  openModal("adminModal");
+
+
+  await loadAdminParticipants();
+}
+
+
+/* =========================================================
+   EDIT PESERTA
+========================================================= */
+
+window.openEdit = function(id) {
+
+  const p =
+    adminParticipants.find(
+      item => item.id === id
+    );
+
+
+  if (!p) return;
+
+
+  $("editId").value =
+    p.id;
+
+
+  $("editStatus").value =
+    p.status_pendaftaran ||
+    "Menunggu Verifikasi";
+
+
+  $("editDocumentStatus").value =
+    p.status_dokumen ||
+    "Belum Diverifikasi";
+
+
+  $("editInterview").value =
+    p.jadwal_interview ||
+    "";
+
+
+  $("editMethod").value =
+    p.metode_interview ||
+    "";
+
+
+  $("editLocation").value =
+    p.lokasi_interview ||
+    "";
+
+
+  $("editNote").value =
+    p.catatan_admin ||
+    "";
+
+
+  notice(
+    "editNotice",
+    ""
+  );
+
+
+  openModal("editModal");
+};
+
+
+/* =========================================================
+   FORM REGISTRATION
+========================================================= */
+
+$("registerForm")
+  .addEventListener(
+    "submit",
+    event => {
+
+      event.preventDefault();
+
+
+      if (
+        !validateStructureAndRegion()
+      ) {
+        return;
+      }
+
+
+      pendingRegistration = {
+
+        nama:
+          $("nama").value.trim(),
+
+        whatsapp:
+          $("whatsapp").value.trim(),
+
+        email:
+          $("email").value.trim(),
+
+        tanggal_lahir:
+          $("tanggalLahir").value,
+
+        pendidikan:
+          $("pendidikan").value.trim(),
+
+        struktur:
+          $("struktur").value,
+
+        wilayah:
+          $("wilayah").value,
+
+        pengalaman:
+          $("pengalaman").value.trim(),
+
+        motivasi:
+          $("motivasi").value.trim(),
+
+        ktp:
+          fileName("ktp"),
+
+        cv:
+          fileName("cv"),
+
+        foto:
+          fileName("foto")
+
+      };
+
+
+      closeModal(
+        "registerModal"
+      );
+
+
+      renderQuestions();
+
+
+      notice(
+        "quizNotice",
+        ""
+      );
+
+
+      openModal(
+        "quizModal"
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   FORM QUIZ
+========================================================= */
+
+$("quizForm")
+  .addEventListener(
+    "submit",
+    event => {
+
+      event.preventDefault();
+
+
+      const score =
+        scoreQuiz(event.target);
+
+
+      if (score === null) {
+
+        notice(
+          "quizNotice",
+          "Jawab seluruh pertanyaan terlebih dahulu.",
+          "error"
+        );
+
+        return;
+      }
+
+
+      pendingRegistration.skor =
+        score;
+
+
+      submitRegistration();
+
+    }
+  );
+
+
+/* =========================================================
+   FORM STATUS
+========================================================= */
+
+$("statusForm")
+  .addEventListener(
+    "submit",
+    event => {
+
+      event.preventDefault();
+
+      checkStatus(
+        $("statusCode").value
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   ADMIN LOGIN
+========================================================= */
+
+$("adminLoginForm")
+  .addEventListener(
+    "submit",
+    async event => {
+
+      event.preventDefault();
+
+
+      notice(
+        "adminLoginNotice",
+        "Memproses login...",
+        "info"
+      );
+
+
+      const {
+        error
+      } =
+        await db.auth
+          .signInWithPassword({
+
+            email:
+              $("adminEmail")
+                .value
+                .trim(),
+
+            password:
+              $("adminPassword")
+                .value
+
+          });
+
+
+      if (error) {
+
+        notice(
+          "adminLoginNotice",
+          error.message,
+          "error"
+        );
+
+        return;
+      }
+
+
+      closeModal(
+        "adminLoginModal"
+      );
+
+
+      $("adminLoginForm")
+        .reset();
+
+
+      await openAdmin();
+
+    }
+  );
+
+
+/* =========================================================
+   ADMIN UPDATE
+========================================================= */
+
+$("editForm")
+  .addEventListener(
+    "submit",
+    async event => {
+
+      event.preventDefault();
+
+
+      const id =
+        $("editId").value;
+
+
+      const update = {
+
+        status_pendaftaran:
+          $("editStatus").value,
+
+        status_dokumen:
+          $("editDocumentStatus").value,
+
+        jadwal_interview:
+          $("editInterview")
+            .value
+            .trim() || null,
+
+        metode_interview:
+          $("editMethod")
+            .value || null,
+
+        lokasi_interview:
+          $("editLocation")
+            .value
+            .trim() || null,
+
+        catatan_admin:
+          $("editNote")
+            .value
+            .trim() || null,
+
+        updated_at:
+          new Date().toISOString()
+
+      };
+
+
+      const {
+        error
+      } =
+        await db
+          .from("pendaftar")
+          .update(update)
+          .eq("id",id);
+
+
+      if (error) {
+
+        notice(
+          "editNotice",
+          error.message,
+          "error"
+        );
+
+        return;
+      }
+
+
+      closeModal(
+        "editModal"
+      );
+
+
+      await loadAdminParticipants();
+
+
+      notice(
+        "adminNotice",
+        "Perubahan peserta berhasil disimpan.",
+        "success"
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   ADMIN REFRESH
+========================================================= */
+
+$("refreshAdmin")
+  .addEventListener(
+    "click",
+    loadAdminParticipants
+  );
+
+
+/* =========================================================
+   ADMIN LOGOUT
+========================================================= */
+
+$("logoutAdmin")
+  .addEventListener(
+    "click",
+    async () => {
+
+      await db.auth.signOut();
+
+      closeModal(
+        "adminModal"
+      );
+
+      alert(
+        "Admin berhasil logout."
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   OPEN REGISTER
+========================================================= */
+
+$("heroRegister")
+  .addEventListener(
+    "click",
+    () => {
+
+      notice(
+        "registerNotice",
+        ""
+      );
+
+      openModal(
+        "registerModal"
+      );
+
+    }
+  );
+
+
+$("ctaRegister")
+  .addEventListener(
+    "click",
+    () => {
+
+      notice(
+        "registerNotice",
+        ""
+      );
+
+      openModal(
+        "registerModal"
+      );
+
+    }
+  );
+
+
+$("registerNav")
+  .addEventListener(
+    "click",
+    event => {
+
+      event.preventDefault();
+
+      notice(
+        "registerNotice",
+        ""
+      );
+
+      openModal(
+        "registerModal"
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+function openStatus() {
+
+  notice(
+    "statusNotice",
+    ""
+  );
+
+
+  $("statusResult")
+    .innerHTML = "";
+
+
+  openModal(
+    "statusModal"
+  );
+}
+
+
+$("statusNav")
+  .addEventListener(
+    "click",
+    event => {
+
+      event.preventDefault();
+
+      openStatus();
+
+    }
+  );
+
+
+$("ctaStatus")
+  .addEventListener(
+    "click",
+    openStatus
+  );
+
+
+$("ctaStatus2")
+  .addEventListener(
+    "click",
+    openStatus
+  );
+
+
+/* =========================================================
+   SUCCESS → STATUS
+========================================================= */
+
+$("successStatus")
+  .addEventListener(
+    "click",
+    () => {
+
+      closeModal(
+        "successModal"
+      );
+
+
+      $("statusCode")
+        .value =
+        lastRegisteredCode;
+
+
+      openStatus();
+
+
+      checkStatus(
+        lastRegisteredCode
+      );
+
+    }
+  );
+
+
+/* =========================================================
+   CLOSE BUTTONS
+========================================================= */
+
+document
+  .querySelectorAll(
+    "[data-close]"
+  )
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        closeModal(
+          button.dataset.close
+        );
+
+      }
+    );
+
+  });
+
+
+/* =========================================================
+   CLICK OUTSIDE MODAL
+========================================================= */
+
+document
+  .querySelectorAll(".modal")
+  .forEach(modal => {
+
+    modal.addEventListener(
+      "click",
+      event => {
+
+        if (
+          event.target === modal
+        ) {
+
+          closeModal(
+            modal.id
+          );
+
+        }
+
+      }
+    );
+
+  });
+
+
+/* =========================================================
+   ESCAPE
+========================================================= */
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key === "Escape"
+    ) {
+
+      document
+        .querySelectorAll(
+          ".modal.show"
+        )
+        .forEach(modal => {
+
+          closeModal(
+            modal.id
+          );
+
+        });
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   ANTI RIGHT CLICK IMAGE
+========================================================= */
+
+document.addEventListener(
+  "contextmenu",
+  event => {
+
+    if (
+      event.target.tagName ===
+      "IMG"
+    ) {
+
+      event.preventDefault();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   ANTI DRAG IMAGE
+========================================================= */
+
+document.addEventListener(
+  "dragstart",
+  event => {
+
+    if (
+      event.target.tagName ===
+      "IMG"
+    ) {
+
+      event.preventDefault();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   SUPABASE AUTH
+========================================================= */
+
+db.auth.onAuthStateChange(
+  (event,session) => {
+
+    console.log(
+      "Auth event:",
+      event,
+      Boolean(session)
+    );
+
+  }
+);
+
+
+/* =========================================================
+   ADMIN VIA #admin
+========================================================= */
+
+if (
+  location.hash === "#admin"
+) {
+
+  setTimeout(
+    openAdmin,
+    500
+  );
+
+}
 
 </script>
 
