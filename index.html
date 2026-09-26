@@ -47,10 +47,7 @@ body.modal-open{
 overflow:hidden;
 }
 
-button,
-input,
-select,
-textarea{
+button,input,select,textarea{
 font:inherit;
 }
 
@@ -77,8 +74,6 @@ margin:auto;
 .hidden{
 display:none!important;
 }
-
-/* HEADER */
 
 header{
 position:sticky;
@@ -149,8 +144,6 @@ nav a:hover{
 color:var(--orange);
 }
 
-/* HERO */
-
 .hero{
 padding:100px 0 90px;
 background:
@@ -177,9 +170,7 @@ height:2px;
 background:var(--orange);
 }
 
-h1,
-h2,
-h3{
+h1,h2,h3{
 font-family:"Space Grotesk",sans-serif;
 line-height:1.12;
 }
@@ -267,8 +258,6 @@ background:#92400e;
 color:#fff;
 }
 
-/* SECTION */
-
 section{
 padding:82px 0;
 }
@@ -343,8 +332,6 @@ letter-spacing:1px;
 margin-bottom:10px;
 }
 
-/* TIMELINE */
-
 .timeline{
 display:grid;
 gap:14px;
@@ -377,8 +364,6 @@ color:var(--muted);
 font-size:14px;
 }
 
-/* REQUIREMENTS */
-
 .requirements{
 display:grid;
 gap:12px;
@@ -402,8 +387,6 @@ color:#52525b;
 font-size:14px;
 }
 
-/* CTA */
-
 .cta{
 padding:70px 0;
 background:linear-gradient(115deg,#f97316,#c2410c);
@@ -421,8 +404,6 @@ margin-top:15px;
 color:#ffedd5;
 }
 
-/* FOOTER */
-
 footer{
 border-top:1px solid var(--line);
 padding:30px 0;
@@ -437,8 +418,6 @@ align-items:center;
 gap:15px;
 flex-wrap:wrap;
 }
-
-/* MODAL */
 
 .modal{
 position:fixed;
@@ -488,8 +467,6 @@ border-radius:50%;
 font-size:20px;
 }
 
-/* FORM */
-
 .form-grid{
 display:grid;
 grid-template-columns:repeat(2,minmax(0,1fr));
@@ -512,9 +489,7 @@ font-size:12px;
 font-weight:700;
 }
 
-input,
-select,
-textarea{
+input,select,textarea{
 width:100%;
 border:1px solid #3f3f46;
 border-radius:12px;
@@ -524,9 +499,7 @@ color:#fff;
 outline:none;
 }
 
-input:focus,
-select:focus,
-textarea:focus{
+input:focus,select:focus,textarea:focus{
 border-color:var(--orange);
 }
 
@@ -546,8 +519,6 @@ flex-wrap:wrap;
 gap:10px;
 margin-top:20px;
 }
-
-/* NOTICE */
 
 .notice{
 padding:13px 15px;
@@ -573,8 +544,6 @@ background:#172554;
 color:#bfdbfe;
 border:1px solid #1d4ed8;
 }
-
-/* QUIZ */
 
 .quiz-question{
 border:1px solid #3f3f46;
@@ -609,8 +578,6 @@ width:auto;
 margin-top:4px;
 accent-color:var(--orange);
 }
-
-/* ADMIN */
 
 .admin-shell{
 margin-top:20px;
@@ -661,8 +628,7 @@ border-collapse:collapse;
 min-width:760px;
 }
 
-th,
-td{
+th,td{
 padding:12px;
 border-bottom:1px solid #27272a;
 text-align:left;
@@ -700,8 +666,6 @@ color:#fef08a;
 background:#7f1d1d;
 color:#fecaca;
 }
-
-/* DOCUMENT */
 
 .doc-box{
 margin-top:18px;
@@ -742,9 +706,14 @@ flex-wrap:wrap;
 justify-content:flex-end;
 }
 
-/* MOBILE */
+@media(max-width:800px){
+.doc-row{
+grid-template-columns:1fr;
+}
 
-@media (max-width:800px){
+.doc-actions{
+justify-content:flex-start;
+}
 
 nav{
 display:none;
@@ -758,8 +727,7 @@ h1{
 letter-spacing:-1.8px;
 }
 
-.grid-2,
-.grid-3{
+.grid-2,.grid-3{
 grid-template-columns:1fr;
 }
 
@@ -779,18 +747,9 @@ grid-column:auto;
 .admin-stats{
 grid-template-columns:1fr;
 }
-
-.doc-row{
-grid-template-columns:1fr;
 }
 
-.doc-actions{
-justify-content:flex-start;
-}
-}
-
-@media (max-width:600px){
-
+@media(max-width:600px){
 .brand img{
 width:38px;
 height:38px;
@@ -803,7 +762,6 @@ font-size:9px;
 .brand-text span{
 font-size:8px;
 }
-
 }
 </style>
 </head>
@@ -829,7 +787,7 @@ font-size:8px;
 <a href="#ketentuan">Ketentuan</a>
 <a href="#" id="statusNav">Cek Status</a>
 <a href="#" id="registerNav">Daftar</a>
-<a href="#" id="adminNav">Login Admin</a>
+<a href="#" id="adminNav">Admin</a>
 </nav>
 
 </div>
@@ -840,20 +798,19 @@ font-size:8px;
 <section class="hero">
 <div class="container">
 
-<div class="eyebrow">
-OPEN RECRUITMENT 2026
-</div>
+<div class="eyebrow">OPEN RECRUITMENT - 2026</div>
 
 <h1>
-MUDA BERGERAK<span>PROV. SULAWESI SELATAN</span>
+MUDA BERGERAK
+<span>PROV. SULAWESI SELATAN</span>
 </h1>
 
 <p class="lead">
-Saatnya anak muda Sulawesi Selatan belajar, berkembang, berkolaborasi, dan mengambil peran nyata bersama Muda Bergerak.
+Saatnya anak muda Sulawesi Selatan belajar, berkembang, berkolaborasi,
+dan mengambil peran nyata bersama Muda Bergerak.
 </p>
 
 <div class="actions">
-
 <button class="btn btn-primary" id="heroRegister">
 Daftar Sekarang →
 </button>
@@ -869,7 +826,6 @@ Cek Status Pendaftaran
 <button class="btn btn-outline" id="heroAdmin">
 Admin
 </button>
-
 </div>
 
 </div>
@@ -878,58 +834,58 @@ Admin
 <section id="tentang" class="section-light">
 <div class="container">
 
-<div class="eyebrow">
-Tentang Kami
-</div>
+<div class="eyebrow">Tentang Kami</div>
 
 <h2 class="section-title">
 Visi & Misi Kami.
 </h2>
 
 <p class="section-copy">
-Muda Bergerak hadir sebagai ruang kolaborasi anak muda yang inklusif, interaktif, dan terbuka untuk belajar serta berkembang bersama.
+Muda Bergerak hadir sebagai ruang kolaborasi anak muda yang inklusif,
+interaktif, dan terbuka untuk belajar serta berkembang bersama.
 </p>
 
 <div class="grid-2" style="margin-top:30px">
 
 <div class="card">
 
-<div class="number">
-VISI
-</div>
+<div class="number">VISI</div>
 
-<h3>
-Ruang Tumbuh Bersama
-</h3>
+<h3>Ruang Tumbuh Bersama</h3>
 
 <p>
-Menjadikan Muda Bergerak Indonesia sebagai organisasi yang inklusif dan interaktif terhadap masyarakat untuk meningkatkan kolaborasi agar mampu menjadi wadah untuk belajar, berkembang dan berdinamika bagi seluruh masyarakat muda Indonesia dengan mengedepankan Transparansi.
+Menjadikan Muda Bergerak Indonesia sebagai organisasi yang inklusif
+dan interaktif terhadap masyarakat untuk meningkatkan kolaborasi agar
+mampu menjadi wadah untuk belajar, berkembang dan berdinamika bagi
+seluruh masyarakat muda Indonesia dengan mengedepankan Transparansi.
 </p>
 
 </div>
 
 <div class="card">
 
-<div class="number">
-MISI
-</div>
+<div class="number">MISI</div>
 
 <ol style="padding-left:20px;color:#71717a;font-size:14px;display:grid;gap:10px">
 
 <li>
-Menciptakan hubungan internal dan eksternal dengan mengedepankan transparansi, kekeluargaan dan profesionalisme.
+Menciptakan hubungan internal dan eksternal dengan mengedepankan
+transparansi, kekeluargaan dan profesionalisme.
 </li>
 
 <li>
-Mengabdi dan melayani masyarakat Indonesia pada fokus politik, ekonomi, pendidikan, kesehatan, dan lingkungan masyarakat.
+Mengabdi dan melayani masyarakat Indonesia pada fokus politik,
+ekonomi, pendidikan, kesehatan, dan lingkungan masyarakat.
 </li>
 
 <li>
-Menyediakan platform serta wadah yang digunakan untuk menyampaikan aspirasi dan melayani masyarakat secara solutif.
+Menyediakan platform serta wadah yang digunakan untuk menyampaikan
+aspirasi dan melayani masyarakat secara solutif.
 </li>
 
 <li>
-Berkolaborasi dengan membangun kerjasama strategis bersama kelompok-kelompok muda untuk kepentingan masyarakat banyak.
+Berkolaborasi dengan membangun kerjasama strategis bersama
+kelompok-kelompok muda untuk kepentingan masyarakat banyak.
 </li>
 
 </ol>
@@ -943,66 +899,53 @@ Berkolaborasi dengan membangun kerjasama strategis bersama kelompok-kelompok mud
 <section id="nilai" class="section-light">
 <div class="container">
 
-<div class="eyebrow">
-Prinsip Kami
-</div>
+<div class="eyebrow">Prinsip Kami</div>
 
 <h2 class="section-title">
 Nilai Organisasi.
 </h2>
 
 <p class="section-copy">
-Nilai yang menjadi dasar gerak Muda Bergerak Indonesia dalam membangun organisasi dan memberi dampak bagi masyarakat.
+Nilai yang menjadi dasar gerak Muda Bergerak Indonesia dalam
+membangun organisasi dan memberi dampak bagi masyarakat.
 </p>
 
 <div class="grid-3" style="margin-top:30px">
 
 <div class="card">
-
-<div class="number">
-01
-</div>
-
-<h3>
-Transparansi
-</h3>
-
+<div class="number">01</div>
+<h3>Transparansi</h3>
 <p>
-Setiap individu di organisasi Muda Bergerak Indonesia ditekankan untuk menanam prinsip Transparansi, agar keterbukaan dalam melakukan segala kegiatan organisasi mendapatkan kepercayaan oleh masyarakat luas. Hal ini dapat diterapkan dengan cara keterbukaan informasi, komunikasi, dan pertanggung jawaban.
+Setiap individu di organisasi Muda Bergerak Indonesia ditekankan
+untuk menanam prinsip Transparansi, agar keterbukaan dalam melakukan
+segala kegiatan organisasi mendapatkan kepercayaan oleh masyarakat
+luas. Hal ini dapat diterapkan dengan cara keterbukaan informasi,
+komunikasi, dan pertanggung jawaban.
 </p>
-
 </div>
 
 <div class="card">
-
-<div class="number">
-02
-</div>
-
-<h3>
-Sinergi
-</h3>
-
+<div class="number">02</div>
+<h3>Sinergi</h3>
 <p>
-Memahami kelebihan dan kekurangan (kondisi internal) serta potensi dan ancaman (kondisi eksternal) dari setiap bagian muda bergerak guna menciptakan kolaborasi dan gerakan yang saling mengisi dan melengkapi.
+Memahami kelebihan dan kekurangan (kondisi internal) serta potensi
+dan ancaman (kondisi eksternal) dari setiap bagian muda bergerak
+guna menciptakan kolaborasi dan gerakan yang saling mengisi dan
+melengkapi.
 </p>
-
 </div>
 
 <div class="card">
-
-<div class="number">
-03
-</div>
-
-<h3>
-Progresif
-</h3>
-
+<div class="number">03</div>
+<h3>Progresif</h3>
 <p>
-Muda Bergerak berorientasi pada perkembangan, perubahan, serta kemajuan dalam melaksanakan fungsi pergerakan dengan harapan dapat membawa perubahan terhadap anak muda di Indonesia bisa lebih peka akan isu politik, ekonomi, pendidikan, kesehatan, dan lingkungan masyarakat untuk membangun rasa semangat gotong royong terhadap lingkungan.
+Muda Bergerak berorientasi pada perkembangan, perubahan, serta
+kemajuan dalam melaksanakan fungsi pergerakan dengan harapan dapat
+membawa perubahan terhadap anak muda di Indonesia bisa lebih peka
+akan isu politik, ekonomi, pendidikan, kesehatan, dan lingkungan
+masyarakat untuk membangun rasa semangat gotong royong terhadap
+lingkungan.
 </p>
-
 </div>
 
 </div>
@@ -1012,9 +955,7 @@ Muda Bergerak berorientasi pada perkembangan, perubahan, serta kemajuan dalam me
 <section id="timeline">
 <div class="container">
 
-<div class="eyebrow">
-Catat Tanggalnya
-</div>
+<div class="eyebrow">Catat Tanggalnya</div>
 
 <h2 class="section-title">
 Timeline Rekrutmen.
@@ -1027,75 +968,43 @@ Ikuti setiap tahap dan pastikan data yang kamu masukkan sudah benar.
 <div class="timeline">
 
 <div class="timeline-item">
-
-<div class="timeline-date">
-1–8 OKTOBER
-</div>
-
+<div class="timeline-date">1–8 OKTOBER</div>
 <div>
-<h3>
-Open Recruitment & The Quiz
-</h3>
-
+<h3>Open Recruitment & The Quiz</h3>
 <p>
 Pendaftaran, pengisian quiz, dan verifikasi awal data serta dokumen.
 </p>
 </div>
-
 </div>
 
 <div class="timeline-item">
-
-<div class="timeline-date">
-10 OKTOBER
-</div>
-
+<div class="timeline-date">10 OKTOBER</div>
 <div>
-<h3>
-Kenal Lebih Dekat — Online
-</h3>
-
+<h3>Kenal Lebih Dekat — Online</h3>
 <p>
 Interview online untuk peserta di luar Makassar dan Gowa sesuai ketentuan.
 </p>
 </div>
-
 </div>
 
 <div class="timeline-item">
-
-<div class="timeline-date">
-11 OKTOBER
-</div>
-
+<div class="timeline-date">11 OKTOBER</div>
 <div>
-<h3>
-Kenal Lebih Dekat — Offline
-</h3>
-
+<h3>Kenal Lebih Dekat — Offline</h3>
 <p>
 Interview offline untuk peserta wilayah Makassar dan Gowa.
 </p>
 </div>
-
 </div>
 
 <div class="timeline-item">
-
-<div class="timeline-date">
-17 OKTOBER
-</div>
-
+<div class="timeline-date">17 OKTOBER</div>
 <div>
-<h3>
-Final Result
-</h3>
-
+<h3>Final Result</h3>
 <p>
 Pengumuman hasil akhir rekrutmen.
 </p>
 </div>
-
 </div>
 
 </div>
@@ -1105,9 +1014,7 @@ Pengumuman hasil akhir rekrutmen.
 <section id="ketentuan" class="section-light">
 <div class="container">
 
-<div class="eyebrow">
-Sebelum Mendaftar
-</div>
+<div class="eyebrow">Sebelum Mendaftar</div>
 
 <h2 class="section-title">
 Ketentuan Pendaftaran.
@@ -1125,7 +1032,8 @@ Calon pengurus DPW wajib berdomisili di Kota Makassar.
 <div class="requirement">
 <b>02.</b>
 <p>
-Calon pengurus DPD memilih kabupaten/kota sesuai domisili atau wilayah yang ditentukan organisasi.
+Calon pengurus DPD memilih kabupaten/kota sesuai domisili
+atau wilayah yang ditentukan organisasi.
 </p>
 </div>
 
@@ -1139,7 +1047,8 @@ Data yang diisi harus benar dan dapat dipertanggungjawabkan.
 <div class="requirement">
 <b>04.</b>
 <p>
-Peserta wajib mengikuti tahap quiz, verifikasi, dan interview sesuai jadwal.
+Peserta wajib mengikuti tahap quiz, verifikasi, dan interview
+sesuai jadwal.
 </p>
 </div>
 
@@ -1162,7 +1071,8 @@ Ini ruangmu. Saatnya ambil peran.
 </h2>
 
 <p>
-Jangan hanya menjadi penonton. Mari belajar, bergerak, dan bertumbuh bersama.
+Jangan hanya menjadi penonton. Mari belajar, bergerak,
+dan bertumbuh bersama.
 </p>
 
 <div class="actions">
@@ -1183,7 +1093,6 @@ Cek Status
 </main>
 
 <footer>
-
 <div class="container footer-row">
 
 <div>
@@ -1196,7 +1105,9 @@ Cek Status
 
 <span>
 Instagram:
-<a href="https://www.instagram.com/mudabergeraksulsel" target="_blank" rel="noopener noreferrer">
+<a href="https://www.instagram.com/mudabergeraksulsel"
+target="_blank"
+rel="noopener noreferrer">
 @mudabergeraksulsel
 </a>
 </span>
@@ -1205,7 +1116,9 @@ Instagram:
 
 <span>
 CP. Jumardi:
-<a href="https://wa.me/6285314241908" target="_blank" rel="noopener noreferrer">
+<a href="https://wa.me/6285314241908"
+target="_blank"
+rel="noopener noreferrer">
 +62 853-1424-1908
 </a>
 (Ketua Bidang Keorganisasian)
@@ -1218,11 +1131,12 @@ Ruangnya Anak Muda Sulsel.
 </span>
 
 </div>
-
 </footer>
 
 
-<!-- MODAL PENDAFTARAN -->
+<!-- =========================
+     MODAL PENDAFTARAN
+========================= -->
 
 <div class="modal" id="registerModal">
 
@@ -1231,15 +1145,8 @@ Ruangnya Anak Muda Sulsel.
 <div class="modal-header">
 
 <div>
-
-<div class="eyebrow">
-Pendaftaran
-</div>
-
-<h2>
-Gabung Muda Bergerak
-</h2>
-
+<div class="eyebrow">Pendaftaran</div>
+<h2>Gabung Muda Bergerak</h2>
 </div>
 
 <button class="close" data-close="registerModal">
@@ -1255,7 +1162,6 @@ Gabung Muda Bergerak
 <div class="form-grid">
 
 <div class="field full">
-
 <label for="nama">
 Nama Lengkap *
 </label>
@@ -1263,10 +1169,9 @@ Nama Lengkap *
 <input
 id="nama"
 required
-maxlength="150"
->
-
+maxlength="150">
 </div>
+
 
 <div class="field">
 
@@ -1277,10 +1182,10 @@ Nomor WhatsApp *
 <input
 id="whatsapp"
 required
-placeholder="08xxxxxxxxxx"
->
+placeholder="08xxxxxxxxxx">
 
 </div>
+
 
 <div class="field">
 
@@ -1291,10 +1196,10 @@ Email *
 <input
 id="email"
 type="email"
-required
->
+required>
 
 </div>
+
 
 <div class="field">
 
@@ -1305,10 +1210,10 @@ Tanggal Lahir *
 <input
 id="tanggalLahir"
 type="date"
-required
->
+required>
 
 </div>
+
 
 <div class="field">
 
@@ -1318,10 +1223,10 @@ Pendidikan / Pekerjaan *
 
 <input
 id="pendidikan"
-required
->
+required>
 
 </div>
+
 
 <div class="field">
 
@@ -1346,6 +1251,7 @@ Pengurus DPD
 </select>
 
 </div>
+
 
 <div class="field">
 
@@ -1391,6 +1297,7 @@ DPW hanya untuk domisili Makassar.
 
 </div>
 
+
 <div class="field full">
 
 <label for="pengalaman">
@@ -1399,10 +1306,11 @@ Pengalaman Organisasi
 
 <textarea
 id="pengalaman"
-placeholder="Ceritakan pengalaman organisasi, komunitas, atau kegiatan sosial."
-></textarea>
+placeholder="Ceritakan pengalaman organisasi, komunitas, atau kegiatan sosial.">
+</textarea>
 
 </div>
+
 
 <div class="field full">
 
@@ -1413,10 +1321,11 @@ Motivasi Bergabung *
 <textarea
 id="motivasi"
 required
-placeholder="Kenapa kamu ingin bergabung dengan Muda Bergerak?"
-></textarea>
+placeholder="Kenapa kamu ingin bergabung dengan Muda Bergerak?">
+</textarea>
 
 </div>
+
 
 <div class="field full">
 
@@ -1428,14 +1337,14 @@ Dokumen KTP *
 id="ktp"
 type="file"
 accept=".jpg,.jpeg,.png,.pdf"
-required
->
+required>
 
 <span class="helper">
 Maksimal 2 MB. Format: JPG, PNG, PDF.
 </span>
 
 </div>
+
 
 <div class="field">
 
@@ -1447,14 +1356,14 @@ Dokumen CV *
 id="cv"
 type="file"
 accept=".jpg,.jpeg,.png,.pdf"
-required
->
+required>
 
 <span class="helper">
 Maksimal 2 MB. Format: JPG, PNG, PDF.
 </span>
 
 </div>
+
 
 <div class="field">
 
@@ -1466,32 +1375,30 @@ Foto *
 id="foto"
 type="file"
 accept="image/*"
-required
->
+required>
 
 <span class="helper">
-Semua format gambar yang dikenali browser. Maksimal 3 MB.
+Format gambar yang dikenali browser. Maksimal 3 MB.
 </span>
 
 </div>
 
 </div>
 
+
 <div class="form-actions">
 
 <button
-class="btn btn-primary"
-type="submit"
->
-Lanjut ke Quiz →
+type="button"
+class="btn btn-outline"
+data-close="registerModal">
+Batal
 </button>
 
 <button
-class="btn btn-outline"
-type="button"
-data-close="registerModal"
->
-Batal
+type="submit"
+class="btn btn-primary">
+Lanjut ke The Quiz →
 </button>
 
 </div>
@@ -1502,7 +1409,9 @@ Batal
 </div>
 
 
-<!-- MODAL QUIZ -->
+<!-- =========================
+     MODAL QUIZ
+========================= -->
 
 <div class="modal" id="quizModal">
 
@@ -1511,18 +1420,13 @@ Batal
 <div class="modal-header">
 
 <div>
-
-<div class="eyebrow">
-The Quiz
+<div class="eyebrow">The Quiz</div>
+<h2>Kenal Lebih Dekat</h2>
 </div>
 
-<h2>
-Kenal Cara Berpikirmu
-</h2>
-
-</div>
-
-<button class="close" data-close="quizModal">
+<button
+class="close"
+data-close="quizModal">
 ×
 </button>
 
@@ -1537,18 +1441,16 @@ Kenal Cara Berpikirmu
 <div class="form-actions">
 
 <button
-class="btn btn-primary"
-type="submit"
->
-Kirim Pendaftaran →
+type="button"
+class="btn btn-outline"
+data-close="quizModal">
+Batal
 </button>
 
 <button
-class="btn btn-outline"
-type="button"
-data-close="quizModal"
->
-Batal
+type="submit"
+class="btn btn-primary">
+Kirim Jawaban →
 </button>
 
 </div>
@@ -1559,7 +1461,9 @@ Batal
 </div>
 
 
-<!-- MODAL SUKSES -->
+<!-- =========================
+     MODAL SUKSES
+========================= -->
 
 <div class="modal" id="successModal">
 
@@ -1568,41 +1472,49 @@ Batal
 <div class="modal-header">
 
 <div>
-
-<div class="eyebrow">
-Pendaftaran Berhasil
+<div class="eyebrow">Berhasil</div>
+<h2>Pendaftaran Tersimpan.</h2>
 </div>
 
-<h2>
-Selamat, kamu sudah masuk!
-</h2>
-
-</div>
-
-<button class="close" data-close="successModal">
+<button
+class="close"
+data-close="successModal">
 ×
 </button>
 
 </div>
 
-<div class="notice success">
-
-Simpan kode peserta kamu. Gunakan kode ini untuk mengecek status pendaftaran.
-
-</div>
-
 <div class="card">
+
+<p>
+Pendaftaran kamu sudah masuk ke sistem.
+</p>
+
+<div style="margin-top:15px">
 
 <div class="number">
 KODE PESERTA
 </div>
 
-<h3
+<h2
 id="successCode"
-style="font-size:32px;color:#fb923c"
-></h3>
+style="color:var(--orange);font-size:32px;">
+-
+</h2>
 
-<p id="successScore"></p>
+</div>
+
+<p
+id="successScore"
+style="margin-top:12px;">
+-
+</p>
+
+<p
+id="successInterview"
+style="margin-top:5px;">
+-
+</p>
 
 </div>
 
@@ -1610,15 +1522,13 @@ style="font-size:32px;color:#fb923c"
 
 <button
 class="btn btn-primary"
-id="successStatus"
->
-Cek Status
+id="successStatus">
+Cek Status Pendaftaran
 </button>
 
 <button
 class="btn btn-outline"
-data-close="successModal"
->
+data-close="successModal">
 Tutup
 </button>
 
@@ -1628,7 +1538,9 @@ Tutup
 </div>
 
 
-<!-- MODAL STATUS -->
+<!-- =========================
+     MODAL STATUS
+========================= -->
 
 <div class="modal" id="statusModal">
 
@@ -1637,22 +1549,19 @@ Tutup
 <div class="modal-header">
 
 <div>
-
-<div class="eyebrow">
-Peserta
+<div class="eyebrow">Status</div>
+<h2>Cek Status Pendaftaran</h2>
 </div>
 
-<h2>
-Cek Status Pendaftaran
-</h2>
-
-</div>
-
-<button class="close" data-close="statusModal">
+<button
+class="close"
+data-close="statusModal">
 ×
 </button>
 
 </div>
+
+<div id="statusNotice"></div>
 
 <form id="statusForm">
 
@@ -1665,28 +1574,28 @@ Kode Peserta
 <input
 id="statusCode"
 placeholder="Contoh: MB26-ABC123"
-required
->
+required>
 
 </div>
 
 <div class="form-actions">
 
 <button
-class="btn btn-primary"
 type="submit"
->
-Periksa Status
+class="btn btn-primary">
+Cek Sekarang
+</button>
+
+<button
+type="button"
+class="btn btn-outline"
+data-close="statusModal">
+Tutup
 </button>
 
 </div>
 
 </form>
-
-<div
-id="statusNotice"
-style="margin-top:18px"
-></div>
 
 <div id="statusResult"></div>
 
@@ -1694,7 +1603,9 @@ style="margin-top:18px"
 </div>
 
 
-<!-- MODAL LOGIN ADMIN -->
+<!-- =========================
+     MODAL LOGIN ADMIN
+========================= -->
 
 <div class="modal" id="adminLoginModal">
 
@@ -1703,18 +1614,13 @@ style="margin-top:18px"
 <div class="modal-header">
 
 <div>
-
-<div class="eyebrow">
-Area Internal
+<div class="eyebrow">Admin</div>
+<h2>Login Admin</h2>
 </div>
 
-<h2>
-Login Admin
-</h2>
-
-</div>
-
-<button class="close" data-close="adminLoginModal">
+<button
+class="close"
+data-close="adminLoginModal">
 ×
 </button>
 
@@ -1733,15 +1639,11 @@ Email Admin
 <input
 id="adminEmail"
 type="email"
-required
->
+required>
 
 </div>
 
-<div
-class="field"
-style="margin-top:14px"
->
+<div class="field" style="margin-top:15px">
 
 <label for="adminPassword">
 Password
@@ -1750,18 +1652,23 @@ Password
 <input
 id="adminPassword"
 type="password"
-required
->
+required>
 
 </div>
 
 <div class="form-actions">
 
 <button
-class="btn btn-primary"
 type="submit"
->
-Login Admin
+class="btn btn-primary">
+Login
+</button>
+
+<button
+type="button"
+class="btn btn-outline"
+data-close="adminLoginModal">
+Batal
 </button>
 
 </div>
@@ -1772,57 +1679,58 @@ Login Admin
 </div>
 
 
-<!-- MODAL ADMIN -->
+<!-- =========================
+     MODAL ADMIN
+========================= -->
 
 <div class="modal" id="adminModal">
 
-<div
-class="modal-box"
-style="width:min(1100px,100%)"
->
+<div class="modal-box"
+style="width:min(1100px,100%);">
 
 <div class="modal-header">
 
 <div>
-
-<div class="eyebrow">
-Internal Dashboard
+<div class="eyebrow">Dashboard</div>
+<h2>Admin OPREC MB SULSEL</h2>
 </div>
 
-<h2>
-Dashboard Admin
-</h2>
-
-</div>
-
-<button class="close" data-close="adminModal">
+<button
+class="close"
+data-close="adminModal">
 ×
 </button>
 
 </div>
 
+<div id="adminNotice"></div>
+
+<div class="admin-shell">
+
 <div class="admin-top">
 
-<p class="helper">
-Data peserta dari database Supabase.
-</p>
+<div>
+<strong>
+Data Pendaftar
+</strong>
 
-<div
-class="form-actions"
-style="margin-top:0"
->
+<p class="helper">
+Kelola data, dokumen, verifikasi, dan jadwal interview.
+</p>
+</div>
+
+<div class="form-actions"
+style="margin-top:0;">
 
 <button
-class="btn btn-primary btn-small"
-id="refreshAdmin"
->
-Refresh
+class="btn btn-outline btn-small"
+id="refreshAdmin">
+↻ Refresh
 </button>
 
 <button
 class="btn btn-danger btn-small"
-id="logoutAdmin"
->
+id="logoutAdmin">
 Logout
 </button>
 
@@ -1830,47 +1738,26 @@ Logout
 
 </div>
 
+
 <div class="admin-stats">
 
 <div class="stat">
-
-<b id="statTotal">
-0
-</b>
-
-<span>
-Total Peserta
-</span>
-
+<b id="statTotal">0</b>
+<span>Total Pendaftar</span>
 </div>
 
 <div class="stat">
-
-<b id="statPending">
-0
-</b>
-
-<span>
-Menunggu Verifikasi
-</span>
-
+<b id="statPending">0</b>
+<span>Menunggu Verifikasi</span>
 </div>
 
 <div class="stat">
-
-<b id="statVerified">
-0
-</b>
-
-<span>
-Terverifikasi
-</span>
-
+<b id="statVerified">0</b>
+<span>Terverifikasi</span>
 </div>
 
 </div>
 
-<div id="adminNotice"></div>
 
 <div class="table-wrap">
 
@@ -1897,17 +1784,18 @@ Terverifikasi
 </div>
 
 </div>
+
+</div>
 </div>
 
 
-<!-- MODAL DETAIL PESERTA -->
+<!-- =========================
+     MODAL DETAIL PESERTA
+========================= -->
 
 <div class="modal" id="participantModal">
 
-<div
-class="modal-box"
-style="width:min(1000px,100%)"
->
+<div class="modal-box">
 
 <div class="modal-header">
 
@@ -1925,8 +1813,7 @@ Detail Pendaftar
 
 <button
 class="close"
-data-close="participantModal"
->
+data-close="participantModal">
 ×
 </button>
 
@@ -1939,7 +1826,7 @@ data-close="participantModal"
 <div class="doc-box">
 
 <div class="number">
-VERIFIKASI BERKAS
+DOKUMEN PESERTA
 </div>
 
 <div id="documentList"></div>
@@ -1950,7 +1837,9 @@ VERIFIKASI BERKAS
 </div>
 
 
-<!-- MODAL EDIT -->
+<!-- =========================
+     MODAL EDIT ADMIN
+========================= -->
 
 <div class="modal" id="editModal">
 
@@ -1965,15 +1854,14 @@ Kelola Peserta
 </div>
 
 <h2>
-Perbarui Status
+Update Data
 </h2>
 
 </div>
 
 <button
 class="close"
-data-close="editModal"
->
+data-close="editModal">
 ×
 </button>
 
@@ -1984,9 +1872,9 @@ data-close="editModal"
 <form id="editForm">
 
 <input
-type="hidden"
 id="editId"
->
+type="hidden">
+
 
 <div class="field">
 
@@ -1994,21 +1882,22 @@ id="editId"
 Status Pendaftaran
 </label>
 
-<select
-id="editStatus"
-required
->
+<select id="editStatus">
 
 <option>
 Menunggu Verifikasi
 </option>
 
 <option>
-Perlu Perbaikan
+Sedang Diverifikasi
 </option>
 
 <option>
 Terverifikasi
+</option>
+
+<option>
+Perlu Perbaikan
 </option>
 
 <option>
@@ -2027,19 +1916,15 @@ Tidak Lolos
 
 </div>
 
-<div
-class="field"
-style="margin-top:14px"
->
+
+<div class="field"
+style="margin-top:15px;">
 
 <label for="editDocumentStatus">
 Status Dokumen
 </label>
 
-<select
-id="editDocumentStatus"
-required
->
+<select id="editDocumentStatus">
 
 <option>
 Belum Diverifikasi
@@ -2050,7 +1935,7 @@ Sedang Diverifikasi
 </option>
 
 <option>
-Disetujui
+Terverifikasi
 </option>
 
 <option>
@@ -2061,14 +1946,17 @@ Perlu Perbaikan
 Ditolak
 </option>
 
+<option>
+Disetujui
+</option>
+
 </select>
 
 </div>
 
-<div
-class="field"
-style="margin-top:14px"
->
+
+<div class="field"
+style="margin-top:15px;">
 
 <label for="editInterview">
 Jadwal Interview
@@ -2076,15 +1964,13 @@ Jadwal Interview
 
 <input
 id="editInterview"
-placeholder="Contoh: 10 Oktober 2026, 19.00 WITA"
->
+placeholder="Contoh: 11 Oktober 2026, 15.00 WITA">
 
 </div>
 
-<div
-class="field"
-style="margin-top:14px"
->
+
+<div class="field"
+style="margin-top:15px;">
 
 <label for="editMethod">
 Metode Interview
@@ -2093,14 +1979,14 @@ Metode Interview
 <select id="editMethod">
 
 <option value="">
-Belum ditentukan
+Pilih metode
 </option>
 
-<option>
+<option value="Online">
 Online
 </option>
 
-<option>
+<option value="Offline">
 Offline
 </option>
 
@@ -2108,26 +1994,23 @@ Offline
 
 </div>
 
-<div
-class="field"
-style="margin-top:14px"
->
+
+<div class="field"
+style="margin-top:15px;">
 
 <label for="editLocation">
-Lokasi Interview
+Lokasi / Link Interview
 </label>
 
 <input
 id="editLocation"
-placeholder="Kosongkan jika online"
->
+placeholder="Lokasi offline atau link meeting">
 
 </div>
 
-<div
-class="field"
-style="margin-top:14px"
->
+
+<div class="field"
+style="margin-top:15px;">
 
 <label for="editNote">
 Catatan Admin
@@ -2135,18 +2018,25 @@ Catatan Admin
 
 <textarea
 id="editNote"
-placeholder="Catatan untuk peserta"
-></textarea>
+placeholder="Catatan untuk peserta...">
+</textarea>
 
 </div>
+
 
 <div class="form-actions">
 
 <button
-class="btn btn-primary"
 type="submit"
->
+class="btn btn-primary">
 Simpan Perubahan
+</button>
+
+<button
+type="button"
+class="btn btn-outline"
+data-close="editModal">
+Batal
 </button>
 
 </div>
@@ -2159,30 +2049,24 @@ Simpan Perubahan
 
 <script>
 
-/* =========================
-   SUPABASE
-========================= */
-
 const SUPABASE_URL =
 "https://qccenzvpncfkkbncfnkh.supabase.co";
 
-const SUPABASE_KEY =
+const SUPABASE_ANON_KEY =
 "sb_publishable_iN8EDDpe6JwELDU7GiWifw_5rFBZHr1";
-
-const { createClient } = supabase;
-
-const db = createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);
 
 const STORAGE_BUCKET =
 "dokumen-pendaftar";
 
+const db =
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_ANON_KEY
+);
 
-/* =========================
-   FILE RULES
-========================= */
+
+const $ = id => document.getElementById(id);
+
 
 const MAX_FILE_SIZE =
 2 * 1024 * 1024;
@@ -2190,19 +2074,13 @@ const MAX_FILE_SIZE =
 const MAX_PHOTO_SIZE =
 3 * 1024 * 1024;
 
+
 const ALLOWED_FILE_TYPES = [
-"application/pdf",
 "image/jpeg",
-"image/png"
+"image/png",
+"application/pdf"
 ];
 
-
-/* =========================
-   GLOBAL
-========================= */
-
-const $ = id =>
-document.getElementById(id);
 
 let pendingRegistration = null;
 
@@ -2211,31 +2089,27 @@ let lastRegisteredCode = "";
 let adminParticipants = [];
 
 
-/* =========================
-   QUIZ
-========================= */
-
 const questions = [
 
-"Apa alasan utama kamu ingin bergabung dengan Muda Bergerak?",
+"Ketika diberi tanggung jawab dengan waktu terbatas, apa yang kamu lakukan?",
 
-"Ketika menemukan masalah di lingkungan sekitar, apa yang kamu lakukan?",
+"Jika rencana kegiatan tidak berjalan sesuai target, bagaimana kamu merespons?",
 
-"Bagaimana cara kamu bekerja dalam tim yang memiliki perbedaan pendapat?",
+"Bagaimana sikapmu ketika menerima kritik dari anggota lain?",
 
-"Apa arti transparansi dalam sebuah organisasi?",
+"Jika organisasi memiliki kegiatan sosial dan kamu sedang memiliki kesibukan, apa yang kamu lakukan?",
 
-"Apa peran anak muda dalam masyarakat?",
+"Apa yang paling kamu cari ketika bergabung dengan organisasi?",
 
-"Jika diberi tanggung jawab, bagaimana kamu menyelesaikannya?",
+"Jika pendapatmu berbeda dengan mayoritas anggota, apa yang kamu lakukan?",
 
-"Apa yang kamu lakukan ketika rencana kegiatan tidak berjalan sesuai harapan?",
+"Bagaimana cara kamu menyelesaikan tugas organisasi yang cukup kompleks?",
 
-"Bagaimana kamu menerima kritik dari anggota lain?",
+"Jika terjadi miskomunikasi antaranggota, apa langkah yang kamu ambil?",
 
-"Apa bentuk kontribusi yang bisa kamu berikan?",
+"Menurutmu, apa yang membuat sebuah organisasi bisa bertahan dan berkembang?",
 
-"Apa harapanmu setelah bergabung dengan Muda Bergerak?"
+"Ketika diberi kesempatan memimpin kegiatan, apa yang paling kamu prioritaskan?"
 
 ];
 
@@ -2243,44 +2117,9 @@ const questions = [
 const options = [
 
 [
-"Menunggu arahan",
-"Mengamati saja",
-"Mengajak berdiskusi",
-"Mengambil langkah dan mengajak kolaborasi"
-],
-
-[
-"Mengabaikan",
-"Menyalahkan pihak lain",
-"Membahas dengan orang terdekat",
-"Mencari solusi bersama"
-],
-
-[
-"Memaksakan pendapat",
-"Menghindari diskusi",
-"Mendengarkan dan berdiskusi",
-"Mencari keputusan bersama secara terbuka"
-],
-
-[
-"Menyembunyikan informasi",
-"Memberi informasi sebagian",
-"Memberi informasi jika diminta",
-"Menyampaikan informasi secara jujur dan bertanggung jawab"
-],
-
-[
-"Hanya sebagai penonton",
-"Mengikuti tren",
-"Memberi pendapat",
-"Berpartisipasi dan menciptakan dampak"
-],
-
-[
-"Menunda",
-"Menyerahkan kepada orang lain",
-"Mengerjakan jika diingatkan",
+"Menunggu instruksi berikutnya",
+"Melakukan sebisanya",
+"Menyusun prioritas dan mulai bekerja",
 "Menyusun langkah dan menyelesaikan tepat waktu"
 ],
 
@@ -2310,22 +2149,51 @@ const options = [
 "Mendapatkan relasi saja",
 "Belajar pengalaman baru",
 "Belajar, berkembang, dan memberi kontribusi"
+],
+
+[
+"Memaksakan pendapat",
+"Diam agar tidak terjadi masalah",
+"Menyampaikan pendapat sekali",
+"Menyampaikan alasan dan tetap menghargai keputusan bersama"
+],
+
+[
+"Menunda sampai mendekati deadline",
+"Mengerjakan bagian termudah",
+"Membagi tugas menjadi beberapa bagian",
+"Membuat prioritas, membagi langkah, dan menyelesaikannya secara terukur"
+],
+
+[
+"Membiarkannya",
+"Menyalahkan salah satu pihak",
+"Menunggu masalah selesai sendiri",
+"Mengklarifikasi informasi dan mencari solusi bersama"
+],
+
+[
+"Memiliki banyak anggota",
+"Sering membuat kegiatan",
+"Memiliki struktur yang jelas",
+"Memiliki tujuan, budaya kerja, evaluasi, dan regenerasi"
+],
+
+[
+"Popularitas",
+"Jumlah anggota",
+"Kecepatan menyelesaikan",
+"Tujuan, koordinasi, tanggung jawab, dan dampak kegiatan"
 ]
 
 ];
 
 
-/* =========================
-   MODAL
-========================= */
-
 function openModal(id){
 
 $(id).classList.add("show");
 
-document.body.classList.add(
-"modal-open"
-);
+document.body.classList.add("modal-open");
 
 }
 
@@ -2334,30 +2202,16 @@ function closeModal(id){
 
 $(id).classList.remove("show");
 
-if(
-!document.querySelector(
-".modal.show"
-)
-){
+if(!document.querySelector(".modal.show")){
 
-document.body.classList.remove(
-"modal-open"
-);
+document.body.classList.remove("modal-open");
 
 }
 
 }
 
 
-/* =========================
-   NOTICE
-========================= */
-
-function notice(
-id,
-message,
-type="info"
-){
+function notice(id,message,type="info"){
 
 $(id).innerHTML =
 message
@@ -2371,10 +2225,6 @@ ${escapeHTML(message)}
 }
 
 
-/* =========================
-   ESCAPE HTML
-========================= */
-
 function escapeHTML(value){
 
 return String(value ?? "")
@@ -2387,10 +2237,6 @@ return String(value ?? "")
 }
 
 
-/* =========================
-   CODE PESERTA
-========================= */
-
 function makeCode(){
 
 const chars =
@@ -2399,11 +2245,7 @@ const chars =
 let output =
 "MB26-";
 
-for(
-let i=0;
-i<6;
-i++
-){
+for(let i=0;i<6;i++){
 
 output +=
 chars[
@@ -2419,14 +2261,7 @@ return output;
 }
 
 
-/* =========================
-   FILE VALIDATION
-========================= */
-
-function prepareFile(
-id,
-jenis
-){
+function prepareFile(id,jenis){
 
 const file =
 $(id).files?.[0];
@@ -2435,67 +2270,57 @@ if(!file){
 
 return {
 ok:false,
-message:
-`${jenis} wajib diupload.`
+message:`${jenis} wajib diupload.`
 };
 
 }
 
-
-const maxSize =
-jenis === "Foto"
-?
-MAX_PHOTO_SIZE
-:
-MAX_FILE_SIZE;
-
-
-if(file.size > maxSize){
-
-return {
-ok:false,
-message:
-`${jenis} melebihi batas ${
-jenis === "Foto"
-?
-"3"
-:
-"2"
-} MB.`
-};
-
-}
-
-
-/* FOTO */
 
 if(jenis === "Foto"){
 
-if(
-!file.type ||
-!file.type.startsWith(
-"image/"
-)
-){
+if(file.size > MAX_PHOTO_SIZE){
 
 return {
 ok:false,
-message:
-"Foto harus berupa file gambar yang dikenali browser."
+message:"Foto melebihi batas 3 MB."
 };
 
 }
 
+if(
+!file.type ||
+!file.type.startsWith("image/")
+){
+
+return {
+ok:false,
+message:"Foto harus berupa file gambar yang dikenali browser."
+};
+
+}
+
+return {
+ok:true,
+jenis,
+name:file.name,
+mimeType:file.type,
+file
+};
+
 }
 
 
-/* KTP / CV */
+if(file.size > MAX_FILE_SIZE){
 
-else if(
-!ALLOWED_FILE_TYPES.includes(
-file.type
-)
-){
+return {
+ok:false,
+message:`${jenis} melebihi batas 2 MB.`
+};
+
+}
+
+
+if(!ALLOWED_FILE_TYPES.includes(file.type)){
 
 return {
 ok:false,
@@ -2510,8 +2335,7 @@ return {
 ok:true,
 jenis,
 name:file.name,
-mimeType:
-file.type ||
+mimeType:file.type ||
 "application/octet-stream",
 file
 };
@@ -2519,42 +2343,22 @@ file
 }
 
 
-/* =========================
-   SAFE FILE NAME
-========================= */
-
 function safeFileName(name){
 
-return String(
-name || "file"
-)
-.replace(
-/[^a-zA-Z0-9._-]/g,
-"_"
-)
+return String(name || "file")
+.replace(/[^a-zA-Z0-9._-]/g,"_")
 .slice(-120);
 
 }
 
 
-/* =========================
-   WHATSAPP
-========================= */
-
-function normalizeWhatsApp(
-value
-){
+function normalizeWhatsApp(value){
 
 let n =
 String(value || "")
-.replace(
-/[^0-9]/g,
-""
-);
+.replace(/[^0-9]/g,"");
 
-if(
-n.startsWith("0")
-){
+if(n.startsWith("0")){
 
 n =
 "62" +
@@ -2562,9 +2366,7 @@ n.slice(1);
 
 }
 
-if(
-!n.startsWith("62")
-){
+if(!n.startsWith("62")){
 
 n =
 "62" +
@@ -2577,9 +2379,7 @@ return n;
 }
 
 
-function validateWhatsApp(
-value
-){
+function validateWhatsApp(value){
 
 const n =
 normalizeWhatsApp(value);
@@ -2590,8 +2390,7 @@ return /^62[0-9]{9,13}$/.test(n);
 
 
 /* =========================
-   UPLOAD SUPABASE STORAGE
-   SEQUENTIAL
+   UPLOAD STORAGE
 ========================= */
 
 async function uploadFileToStorage(
@@ -2599,10 +2398,83 @@ participantId,
 fileInfo
 ){
 
-const path =
-`${participantId}/${Date.now()}-${fileInfo.jenis.toLowerCase()}-${safeFileName(fileInfo.name)}`;
-
 try{
+
+if(!fileInfo || !fileInfo.file){
+
+throw new Error(
+"File tidak ditemukan."
+);
+
+}
+
+
+const file =
+fileInfo.file;
+
+
+if(fileInfo.jenis === "Foto"){
+
+if(
+file.size >
+3 * 1024 * 1024
+){
+
+throw new Error(
+"Foto melebihi batas 3 MB."
+);
+
+}
+
+
+if(
+!file.type ||
+!file.type.startsWith("image/")
+){
+
+throw new Error(
+"Foto harus berupa file gambar yang dikenali browser."
+);
+
+}
+
+}
+
+
+const safeName =
+safeFileName(
+file.name || "file"
+);
+
+
+const jenis =
+String(
+fileInfo.jenis ||
+"dokumen"
+)
+.toLowerCase()
+.replace(
+/[^a-z0-9_-]/g,
+""
+);
+
+
+const path =
+`${participantId}/${jenis}/${Date.now()}_${Math.random()
+.toString(36)
+.substring(2,8)}_${safeName}`;
+
+
+console.log(
+"Upload Storage:",
+{
+bucket:STORAGE_BUCKET,
+path,
+type:file.type,
+size:file.size
+}
+);
+
 
 const {
 data,
@@ -2612,20 +2484,22 @@ await db.storage
 .from(STORAGE_BUCKET)
 .upload(
 path,
-fileInfo.file,
+file,
 {
 cacheControl:"3600",
 upsert:false,
 contentType:
+file.type ||
 fileInfo.mimeType ||
 "application/octet-stream"
 }
 );
 
+
 if(error){
 
 console.error(
-`Storage error ${fileInfo.jenis}:`,
+"Supabase Storage Error:",
 error
 );
 
@@ -2635,19 +2509,32 @@ throw new Error(
 
 }
 
+
+if(
+!data ||
+!data.path
+){
+
+throw new Error(
+`Upload ${fileInfo.jenis} gagal: Storage tidak mengembalikan path file.`
+);
+
+}
+
+
 return {
 ...fileInfo,
-storage_path:
-data?.path ||
-path
+storage_path:data.path
 };
+
 
 }catch(err){
 
 console.error(
-`Upload exception ${fileInfo.jenis}:`,
+"Upload Storage error:",
 err
 );
+
 
 if(
 err instanceof TypeError &&
@@ -2657,10 +2544,11 @@ String(err.message)
 ){
 
 throw new Error(
-`Upload ${fileInfo.jenis} gagal: koneksi ke Supabase Storage terputus (Failed to fetch). Pastikan bucket "${STORAGE_BUCKET}" tersedia dan policy INSERT Storage sudah aktif.`
+`Upload ${fileInfo.jenis} gagal: koneksi ke Supabase Storage gagal. Coba foto JPG/PNG maksimal 3 MB.`
 );
 
 }
+
 
 throw err;
 
@@ -2671,17 +2559,11 @@ throw err;
 
 function fileName(id){
 
-return (
-$(id).files?.[0]?.name ||
-""
-);
+return $(id)
+.files?.[0]?.name || "";
 
 }
 
-
-/* =========================
-   QUIZ RENDER
-========================= */
 
 function renderQuestions(){
 
@@ -2706,9 +2588,7 @@ options[index]
 (option,optionIndex)=>{
 
 const score =
-[1,4,7,10][
-optionIndex
-];
+[1,4,7,10][optionIndex];
 
 return `
 
@@ -2718,8 +2598,7 @@ return `
 type="radio"
 name="q${index}"
 value="${score}"
-required
->
+required>
 
 <span>
 ${escapeHTML(option)}
@@ -2741,14 +2620,11 @@ ${escapeHTML(option)}
 `;
 
 }
-).join("");
+)
+.join("");
 
 }
 
-
-/* =========================
-   VALIDASI DPW / DPD
-========================= */
 
 function validateStructureAndRegion(){
 
@@ -2757,6 +2633,7 @@ $("struktur").value;
 
 const region =
 $("wilayah").value;
+
 
 if(
 structure === "DPW" &&
@@ -2778,13 +2655,10 @@ return true;
 }
 
 
-/* =========================
-   SCORE QUIZ
-========================= */
-
 function scoreQuiz(form){
 
 let total = 0;
+
 
 for(
 let i=0;
@@ -2797,16 +2671,21 @@ form.querySelector(
 `input[name="q${i}"]:checked`
 );
 
+
 if(!selected){
 
 return null;
 
 }
 
+
 total +=
-Number(selected.value);
+Number(
+selected.value
+);
 
 }
+
 
 return total;
 
@@ -2814,7 +2693,7 @@ return total;
 
 
 /* =========================
-   SUBMIT REGISTRATION
+   SUBMIT PENDAFTARAN
 ========================= */
 
 async function submitRegistration(){
@@ -2825,8 +2704,10 @@ notice(
 "info"
 );
 
+
 const code =
 makeCode();
+
 
 const payload = {
 
@@ -2910,36 +2791,34 @@ let uploaded = [];
 
 try{
 
-/*
-UPLOAD SATU PER SATU.
-Tidak lagi Promise.all.
-*/
+notice(
+"quizNotice",
+"Mengupload KTP, CV, dan foto...",
+"info"
+);
 
-uploaded = [];
+
+/*
+Upload satu per satu.
+Ini sengaja dibuat sequential agar
+upload dari HP lebih stabil.
+*/
 
 for(
 const fileInfo
 of pendingRegistration.files
 ){
 
-notice(
-"quizNotice",
-`Mengupload ${fileInfo.jenis}...`,
-"info"
-);
-
-const hasil =
+const result =
 await uploadFileToStorage(
 participant.id,
 fileInfo
 );
 
-uploaded.push(hasil);
+uploaded.push(result);
 
 }
 
-
-/* METADATA */
 
 const docs =
 uploaded.map(
@@ -2989,8 +2868,6 @@ uploadError
 );
 
 
-/* HAPUS FILE YANG SUDAH BERHASIL */
-
 if(uploaded.length){
 
 await db.storage
@@ -3003,8 +2880,6 @@ f => f.storage_path
 
 }
 
-
-/* UPDATE STATUS */
 
 await db
 .from("pendaftar")
@@ -3037,32 +2912,47 @@ return;
 }
 
 
-/* SUKSES */
-
 lastRegisteredCode =
 code;
+
 
 closeModal(
 "quizModal"
 );
 
+
 $("successCode")
 .textContent =
 code;
+
 
 $("successScore")
 .textContent =
 `Skor quiz kamu: ${pendingRegistration.skor}/100`;
 
+
+$("successInterview")
+.textContent =
+pendingRegistration.interviewMethod === "Offline"
+?
+"Interview offline — 11 Oktober 2026"
+:
+"Interview online — 10 Oktober 2026";
+
+
+$("successStatus")
+.textContent =
+"Cek Status Pendaftaran";
+
+
 openModal(
 "successModal"
 );
 
-$("registerForm")
-.reset();
 
-$("quizForm")
-.reset();
+$("registerForm").reset();
+
+$("quizForm").reset();
 
 pendingRegistration =
 null;
@@ -3071,18 +2961,17 @@ null;
 
 
 /* =========================
-   CHECK STATUS
+   CEK STATUS
 ========================= */
 
-async function checkStatus(
-code
-){
+async function checkStatus(code){
 
 notice(
 "statusNotice",
 "Memeriksa data...",
 "info"
 );
+
 
 $("statusResult")
 .innerHTML = "";
@@ -3206,10 +3095,7 @@ ${escapeHTML(d.catatan || "")}
 
 $("statusResult").innerHTML = `
 
-<div
-class="card"
-style="margin-top:15px"
->
+<div class="card" style="margin-top:15px">
 
 <div class="number">
 DATA PESERTA
@@ -3253,17 +3139,20 @@ ${escapeHTML(data.status_dokumen)}
 </b>
 </p>
 
+
 <div class="doc-box">
 
 <div class="number">
 STATUS BERKAS
 </div>
 
-${docHtml ||
+${
+docHtml ||
 "<p>Belum ada data berkas.</p>"
 }
 
 </div>
+
 
 <p>
 Jadwal Interview:
@@ -3304,45 +3193,38 @@ data.catatan_admin ||
 }
 
 
-/* =========================
-   STATUS CLASS
-========================= */
-
 function statusClass(status){
 
-if(
-[
+if([
 "Terverifikasi",
 "Disetujui",
 "Lolos"
-].includes(status)
-){
+].includes(status)){
 
 return "green";
 
 }
 
-if(
-[
+
+if([
 "Perlu Perbaikan",
 "Sedang Diverifikasi"
-].includes(status)
-){
+].includes(status)){
 
 return "yellow";
 
 }
 
-if(
-[
+
+if([
 "Ditolak",
 "Tidak Lolos"
-].includes(status)
-){
+].includes(status)){
 
 return "red";
 
 }
+
 
 return "";
 
@@ -3386,7 +3268,11 @@ ${escapeHTML(p.skor_quiz)}
 <td>
 
 <span class="status-pill ${statusClass(p.status_pendaftaran)}">
-${escapeHTML(p.status_pendaftaran)}
+
+${escapeHTML(
+p.status_pendaftaran
+)}
+
 </span>
 
 </td>
@@ -3397,15 +3283,13 @@ ${escapeHTML(p.status_pendaftaran)}
 
 <button
 class="btn btn-primary btn-small"
-onclick="openParticipant('${p.id}')"
->
+onclick="openParticipant('${p.id}')">
 Lihat Berkas
 </button>
 
 <button
 class="btn btn-outline btn-small"
-onclick="openEdit('${p.id}')"
->
+onclick="openEdit('${p.id}')">
 Kelola
 </button>
 
@@ -3444,10 +3328,6 @@ p.status_pendaftaran ===
 
 }
 
-
-/* =========================
-   LOAD ADMIN
-========================= */
 
 async function loadAdminParticipants(){
 
@@ -3489,6 +3369,7 @@ return;
 adminParticipants =
 data || [];
 
+
 renderAdminTable();
 
 
@@ -3500,10 +3381,6 @@ notice(
 
 }
 
-
-/* =========================
-   OPEN ADMIN
-========================= */
 
 async function openAdmin(){
 
@@ -3530,6 +3407,7 @@ openModal(
 "adminModal"
 );
 
+
 await loadAdminParticipants();
 
 }
@@ -3543,10 +3421,16 @@ async function openParticipant(id){
 
 const p =
 adminParticipants.find(
-item => item.id === id
+item =>
+item.id === id
 );
 
-if(!p) return;
+
+if(!p){
+
+return;
+
+}
 
 
 $("detailTitle")
@@ -3583,60 +3467,6 @@ ${escapeHTML(p.nomor_whatsapp)}
 <b>Email:</b>
 ${escapeHTML(p.email)}
 </p>
-
-<p>
-<b>Skor Quiz:</b>
-${escapeHTML(p.skor_quiz)}
-</p>
-
-<div style="margin-top:15px">
-
-<b>Jawaban Quiz:</b>
-
-<div
-style="margin-top:10px;display:grid;gap:8px"
->
-
-${
-Array.isArray(p.jawaban_quiz)
-?
-p.jawaban_quiz.map(
-(j,index) => `
-
-<div
-style="padding:10px;border:1px solid #3f3f46;border-radius:10px;background:#09090b"
->
-
-<div
-style="font-size:11px;color:#a1a1aa"
->
-${index+1}.
-${escapeHTML(j.question)}
-</div>
-
-<div
-style="font-size:13px;color:#fff;margin-top:3px"
->
-${escapeHTML(j.answer)}
-</div>
-
-<div
-style="font-size:10px;color:#fb923c;margin-top:3px"
->
-Nilai: ${escapeHTML(j.score)}
-</div>
-
-</div>
-
-`
-).join("")
-:
-"<p class='helper'>Jawaban quiz belum tersedia.</p>"
-}
-
-</div>
-
-</div>
 
 </div>
 
@@ -3682,39 +3512,48 @@ d => `
 <div>
 
 <div class="doc-name">
-${escapeHTML(d.jenis_dokumen)}
+${escapeHTML(
+d.jenis_dokumen
+)}
 </div>
 
 <div class="doc-meta">
-${escapeHTML(d.nama_file || "-")}
+${escapeHTML(
+d.nama_file || "-"
+)}
 </div>
 
 </div>
+
 
 <span class="status-pill ${statusClass(d.status_dokumen)}">
-${escapeHTML(d.status_dokumen)}
+
+${escapeHTML(
+d.status_dokumen
+)}
+
 </span>
+
 
 <div class="doc-actions">
 
 <button
 class="btn btn-outline btn-small"
-onclick="viewDocument('${escapeHTML(p.kode_peserta)}','${escapeHTML(d.jenis_dokumen)}')"
->
+onclick="viewDocument('${escapeHTML(p.kode_peserta)}','${escapeHTML(d.jenis_dokumen)}')">
 Lihat Berkas
 </button>
 
+
 <button
 class="btn btn-success btn-small"
-onclick="verifyDocument('${d.id}','${d.pendaftar_id}')"
->
+onclick="verifyDocument('${d.id}','${d.pendaftar_id}')">
 ✓ Verifikasi
 </button>
 
+
 <button
 class="btn btn-warning btn-small"
-onclick="reviseDocument('${d.id}','${d.pendaftar_id}')"
->
+onclick="reviseDocument('${d.id}','${d.pendaftar_id}')">
 ↻ Minta Perbaikan
 </button>
 
@@ -3733,6 +3572,7 @@ notice(
 "detailNotice",
 ""
 );
+
 
 openModal(
 "participantModal"
@@ -3757,7 +3597,12 @@ item =>
 item.kode_peserta === code
 );
 
-if(!p) return;
+
+if(!p){
+
+return;
+
+}
 
 
 const {
@@ -3852,7 +3697,7 @@ participantId,
 
 
 /* =========================
-   REVISE DOCUMENT
+   REQUEST REVISION
 ========================= */
 
 window.reviseDocument =
@@ -3866,7 +3711,12 @@ prompt(
 "Tulis alasan/perbaikan yang harus dilakukan peserta:"
 );
 
-if(note === null) return;
+
+if(note === null){
+
+return;
+
+}
 
 
 await updateDocumentStatus(
@@ -3952,7 +3802,8 @@ return;
 const statuses =
 (docs || [])
 .map(
-d => d.status_dokumen
+d =>
+d.status_dokumen
 );
 
 
@@ -3967,7 +3818,8 @@ if(
 statuses.length &&
 statuses.every(
 x =>
-x === "Terverifikasi"
+x ===
+"Terverifikasi"
 )
 ){
 
@@ -3981,7 +3833,8 @@ docStatus =
 else if(
 statuses.some(
 x =>
-x === "Perlu Perbaikan"
+x ===
+"Perlu Perbaikan"
 )
 ){
 
@@ -4016,9 +3869,11 @@ participantId
 
 await loadAdminParticipants();
 
+
 await openParticipant(
 participantId
 );
+
 
 notice(
 "adminNotice",
@@ -4030,7 +3885,7 @@ notice(
 
 
 /* =========================
-   OPEN EDIT
+   EDIT ADMIN
 ========================= */
 
 window.openEdit =
@@ -4042,7 +3897,12 @@ item =>
 item.id === id
 );
 
-if(!p) return;
+
+if(!p){
+
+return;
+
+}
 
 
 $("editId").value =
@@ -4075,16 +3935,7 @@ p.wilayah_domisili
 
 $("editMethod").value =
 p.metode_interview ||
-(
-["Makassar","Gowa"]
-.includes(
-p.wilayah_domisili
-)
-?
-"Offline"
-:
-"Online"
-);
+"";
 
 
 $("editLocation").value =
@@ -4102,6 +3953,7 @@ notice(
 ""
 );
 
+
 openModal(
 "editModal"
 );
@@ -4110,7 +3962,7 @@ openModal(
 
 
 /* =========================
-   REGISTER FORM
+   REGISTRATION FORM
 ========================= */
 
 $("registerForm")
@@ -4152,14 +4004,16 @@ prepareFile(
 
 if(
 files.some(
-f => !f.ok
+f =>
+!f.ok
 )
 ){
 
 notice(
 "registerNotice",
 files.find(
-f => !f.ok
+f =>
+!f.ok
 ).message,
 "error"
 );
@@ -4231,23 +4085,25 @@ closeModal(
 "registerModal"
 );
 
+
 renderQuestions();
+
 
 notice(
 "quizNotice",
 ""
 );
 
+
 openModal(
 "quizModal"
 );
 
-}
-);
+});
 
 
 /* =========================
-   QUIZ FORM
+   QUIZ SUBMIT
 ========================= */
 
 $("quizForm")
@@ -4290,6 +4146,7 @@ event.target.querySelector(
 `input[name="q${i}"]:checked`
 );
 
+
 return {
 
 question:q,
@@ -4328,8 +4185,7 @@ pendingRegistration.wilayah
 
 submitRegistration();
 
-}
-);
+});
 
 
 /* =========================
@@ -4347,8 +4203,7 @@ checkStatus(
 $("statusCode").value
 );
 
-}
-);
+});
 
 
 /* =========================
@@ -4377,12 +4232,10 @@ await db.auth
 .signInWithPassword({
 
 email:
-$("adminEmail")
-.value.trim(),
+$("adminEmail").value.trim(),
 
 password:
-$("adminPassword")
-.value
+$("adminPassword").value
 
 });
 
@@ -4404,17 +4257,18 @@ closeModal(
 "adminLoginModal"
 );
 
+
 $("adminLoginForm")
 .reset();
 
+
 await openAdmin();
 
-}
-);
+});
 
 
 /* =========================
-   EDIT ADMIN
+   EDIT FORM
 ========================= */
 
 $("editForm")
@@ -4438,23 +4292,19 @@ status_dokumen:
 $("editDocumentStatus").value,
 
 jadwal_interview:
-$("editInterview").value.trim()
-||
+$("editInterview").value.trim() ||
 null,
 
 metode_interview:
-$("editMethod").value
-||
+$("editMethod").value ||
 null,
 
 lokasi_interview:
-$("editLocation").value.trim()
-||
+$("editLocation").value.trim() ||
 null,
 
 catatan_admin:
-$("editNote").value.trim()
-||
+$("editNote").value.trim() ||
 null,
 
 updated_at:
@@ -4492,6 +4342,7 @@ closeModal(
 "editModal"
 );
 
+
 await loadAdminParticipants();
 
 
@@ -4501,8 +4352,7 @@ notice(
 "success"
 );
 
-}
-);
+});
 
 
 /* =========================
@@ -4517,7 +4367,7 @@ loadAdminParticipants
 
 
 /* =========================
-   ADMIN LOGOUT
+   LOGOUT
 ========================= */
 
 $("logoutAdmin")
@@ -4535,12 +4385,11 @@ alert(
 "Admin berhasil logout."
 );
 
-}
-);
+});
 
 
 /* =========================
-   REGISTER BUTTON
+   OPEN REGISTER
 ========================= */
 
 $("heroRegister")
@@ -4557,8 +4406,7 @@ openModal(
 "registerModal"
 );
 
-}
-);
+});
 
 
 $("ctaRegister")
@@ -4575,8 +4423,7 @@ openModal(
 "registerModal"
 );
 
-}
-);
+});
 
 
 $("registerNav")
@@ -4595,12 +4442,11 @@ openModal(
 "registerModal"
 );
 
-}
-);
+});
 
 
 /* =========================
-   ADMIN BUTTON
+   OPEN ADMIN
 ========================= */
 
 $("adminNav")
@@ -4612,8 +4458,7 @@ event.preventDefault();
 
 openAdmin();
 
-}
-);
+});
 
 
 $("heroAdmin")
@@ -4624,7 +4469,7 @@ openAdmin
 
 
 /* =========================
-   STATUS BUTTON
+   OPEN STATUS
 ========================= */
 
 function openStatus(){
@@ -4653,8 +4498,7 @@ event.preventDefault();
 
 openStatus();
 
-}
-);
+});
 
 
 $("ctaStatus")
@@ -4693,8 +4537,7 @@ checkStatus(
 lastRegisteredCode
 );
 
-}
-);
+});
 
 
 /* =========================
@@ -4716,11 +4559,9 @@ closeModal(
 button.dataset.close
 );
 
-}
-);
+});
 
-}
-);
+});
 
 
 /* =========================
@@ -4748,11 +4589,9 @@ modal.id
 
 }
 
-}
-);
+});
 
-}
-);
+});
 
 
 /* =========================
@@ -4780,12 +4619,11 @@ modal.id
 
 }
 
-}
-);
+});
 
 
 /* =========================
-   PREVENT IMAGE CONTEXT
+   PROTECT IMAGE
 ========================= */
 
 document.addEventListener(
@@ -4800,12 +4638,11 @@ event.preventDefault();
 
 }
 
-}
-);
+});
 
 
 /* =========================
-   SUPABASE AUTH
+   AUTH STATE
 ========================= */
 
 db.auth.onAuthStateChange(
@@ -4817,12 +4654,11 @@ event,
 Boolean(session)
 );
 
-}
-);
+});
 
 
 /* =========================
-   AUTO ADMIN HASH
+   ADMIN HASH
 ========================= */
 
 if(
