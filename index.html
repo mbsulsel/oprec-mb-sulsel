@@ -2,814 +2,31 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#f97316">
 <title>OPREC MB SULSEL — Ruangnya Anak Muda Sulsel</title>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
-
-:root {
-  --orange:#f97316;
-  --orange-dark:#c2410c;
-  --black:#0b0b0d;
-  --black-2:#151519;
-  --white:#fff;
-  --muted:#a1a1aa;
-  --line:rgba(255,255,255,.12);
-  --cream:#fff7ed;
-  --text:#18181b;
-  --green:#22c55e;
-  --red:#ef4444;
-  --yellow:#facc15;
-}
-
-* {
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html {
-  scroll-behavior:smooth;
-}
-
-body {
-  background:var(--black);
-  color:var(--white);
-  font-family:"DM Sans",sans-serif;
-  line-height:1.6;
-}
-
-body.modal-open {
-  overflow:hidden;
-}
-
-button,
-input,
-select,
-textarea {
-  font:inherit;
-}
-
-button {
-  cursor:pointer;
-}
-
-a {
-  color:inherit;
-  text-decoration:none;
-}
-
-img {
-  max-width:100%;
-  user-select:none;
-  -webkit-user-drag:none;
-}
-
-.container {
-  width:min(1120px,calc(100% - 36px));
-  margin:auto;
-}
-
-.hidden {
-  display:none!important;
-}
-
-header {
-  position:sticky;
-  top:0;
-  z-index:20;
-  border-bottom:1px solid var(--line);
-  background:rgba(11,11,13,.94);
-  backdrop-filter:blur(16px);
-}
-
-.nav {
-  min-height:76px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:18px;
-}
-
-.brand {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-family:"Space Grotesk",sans-serif;
-  font-weight:700;
-}
-
-.brand img {
-  width:46px;
-  height:46px;
-  object-fit:contain;
-  flex-shrink:0;
-}
-
-.brand-text {
-  display:flex;
-  flex-direction:column;
-  gap:2px;
-  line-height:1.25;
-}
-
-.brand-text strong {
-  color:#fff;
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.5px;
-}
-
-.brand-text span {
-  color:var(--orange);
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:.2px;
-}
-
-nav {
-  display:flex;
-  align-items:center;
-  gap:18px;
-}
-
-nav a {
-  color:#d4d4d8;
-  font-size:13px;
-  font-weight:600;
-}
-
-nav a:hover {
-  color:var(--orange);
-}
-
-.hero {
-  padding:100px 0 90px;
-  background:
-    radial-gradient(circle at 90% 10%,rgba(249,115,22,.22),transparent 32%),
-    radial-gradient(circle at 0% 80%,rgba(249,115,22,.08),transparent 30%);
-}
-
-.eyebrow {
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  color:var(--orange);
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:1.6px;
-  text-transform:uppercase;
-  margin-bottom:22px;
-}
-
-.eyebrow:before {
-  content:"";
-  width:28px;
-  height:2px;
-  background:var(--orange);
-}
-
-h1,
-h2,
-h3 {
-  font-family:"Space Grotesk",sans-serif;
-  line-height:1.12;
-}
-
-h1 {
-  max-width:790px;
-  font-size:clamp(42px,8vw,86px);
-  letter-spacing:-3px;
-}
-
-h1 span {
-  color:var(--orange);
-}
-
-.lead {
-  max-width:650px;
-  color:#c4c4cc;
-  font-size:17px;
-  margin-top:24px;
-}
-
-.actions {
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-top:30px;
-}
-
-.btn {
-  border:1px solid transparent;
-  border-radius:999px;
-  padding:13px 20px;
-  font-weight:800;
-  font-size:13px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  transition:.2s;
-}
-
-.btn-primary {
-  background:var(--orange);
-  color:#fff;
-}
-
-.btn-primary:hover {
-  background:#fb923c;
-  transform:translateY(-1px);
-}
-
-.btn-outline {
-  border-color:rgba(255,255,255,.25);
-  color:#fff;
-  background:transparent;
-}
-
-.btn-outline:hover {
-  border-color:var(--orange);
-  color:var(--orange);
-}
-
-.btn-dark {
-  background:var(--black);
-  color:#fff;
-}
-
-.btn-danger {
-  background:#7f1d1d;
-  color:#fff;
-}
-
-.btn-small {
-  padding:9px 13px;
-  font-size:12px;
-}
-
-section {
-  padding:82px 0;
-}
-
-.section-light {
-  background:var(--cream);
-  color:var(--text);
-}
-
-.section-title {
-  font-size:clamp(30px,5vw,54px);
-  letter-spacing:-1.5px;
-}
-
-.section-copy {
-  color:#71717a;
-  max-width:650px;
-  margin-top:15px;
-}
-
-.section-light .eyebrow {
-  color:var(--orange-dark);
-}
-
-.section-light .eyebrow:before {
-  background:var(--orange-dark);
-}
-
-.grid-2 {
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:22px;
-}
-
-.grid-3 {
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:18px;
-}
-
-.card {
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:25px;
-  background:rgba(255,255,255,.025);
-}
-
-.section-light .card {
-  border-color:#fed7aa;
-  background:#fff;
-}
-
-.card h3 {
-  font-size:20px;
-  margin-bottom:10px;
-}
-
-.card p {
-  color:var(--muted);
-  font-size:14px;
-}
-
-.section-light .card p {
-  color:#71717a;
-}
-
-.number {
-  color:var(--orange);
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:1px;
-  margin-bottom:10px;
-}
-
-.timeline {
-  display:grid;
-  gap:14px;
-  margin-top:30px;
-}
-
-.timeline-item {
-  display:grid;
-  grid-template-columns:150px 1fr;
-  gap:20px;
-  padding:20px;
-  border:1px solid var(--line);
-  border-radius:18px;
-  background:rgba(255,255,255,.025);
-}
-
-.timeline-date {
-  color:var(--orange);
-  font-weight:800;
-  font-size:13px;
-}
-
-.timeline-item h3 {
-  font-size:19px;
-  margin-bottom:5px;
-}
-
-.timeline-item p {
-  color:var(--muted);
-  font-size:14px;
-}
-
-.requirements {
-  display:grid;
-  gap:12px;
-  margin-top:25px;
-}
-
-.requirement {
-  display:flex;
-  align-items:flex-start;
-  gap:12px;
-  padding:15px 0;
-  border-bottom:1px solid #fed7aa;
-}
-
-.requirement b {
-  color:var(--orange-dark);
-}
-
-.requirement p {
-  color:#52525b;
-  font-size:14px;
-}
-
-.cta {
-  padding:70px 0;
-  background:linear-gradient(115deg,#f97316,#c2410c);
-}
-
-.cta h2 {
-  font-size:clamp(30px,5vw,58px);
-  max-width:700px;
-  letter-spacing:-1.5px;
-}
-
-.cta p {
-  max-width:650px;
-  margin-top:15px;
-  color:#ffedd5;
-}
-
-footer {
-  border-top:1px solid var(--line);
-  padding:30px 0;
-  color:var(--muted);
-  font-size:12px;
-}
-
-.footer-row {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  flex-wrap:wrap;
-}
-
-.modal {
-  position:fixed;
-  inset:0;
-  z-index:100;
-  background:rgba(0,0,0,.78);
-  backdrop-filter:blur(8px);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
-}
-
-.modal.show {
-  display:flex;
-}
-
-.modal-box {
-  width:min(760px,100%);
-  max-height:92vh;
-  overflow:auto;
-  border:1px solid #3f3f46;
-  border-radius:24px;
-  background:#18181b;
-  padding:25px;
-}
-
-.modal-header {
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:15px;
-  margin-bottom:22px;
-}
-
-.modal-header h2 {
-  font-size:28px;
-}
-
-.close {
-  border:0;
-  background:#27272a;
-  color:#fff;
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  font-size:20px;
-}
-
-.form-grid {
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:15px;
-}
-
-.field {
-  display:flex;
-  flex-direction:column;
-  gap:7px;
-}
-
-.field.full {
-  grid-column:1/-1;
-}
-
-label {
-  color:#e4e4e7;
-  font-size:12px;
-  font-weight:700;
-}
-
-input,
-select,
-textarea {
-  width:100%;
-  border:1px solid #3f3f46;
-  border-radius:12px;
-  padding:12px 13px;
-  background:#09090b;
-  color:#fff;
-  outline:none;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  border-color:var(--orange);
-}
-
-textarea {
-  min-height:100px;
-  resize:vertical;
-}
-
-.helper {
-  color:#a1a1aa;
-  font-size:11px;
-}
-
-.form-actions {
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:20px;
-}
-
-.notice {
-  padding:13px 15px;
-  border-radius:12px;
-  font-size:13px;
-  margin-bottom:15px;
-}
-
-.notice.error {
-  background:#450a0a;
-  color:#fecaca;
-  border:1px solid #7f1d1d;
-}
-
-.notice.success {
-  background:#052e16;
-  color:#bbf7d0;
-  border:1px solid #166534;
-}
-
-.notice.info {
-  background:#172554;
-  color:#bfdbfe;
-  border:1px solid #1d4ed8;
-}
-
-.quiz-question {
-  border:1px solid #3f3f46;
-  padding:17px;
-  border-radius:16px;
-  margin-bottom:13px;
-}
-
-.quiz-question p {
-  font-weight:700;
-  font-size:14px;
-  margin-bottom:12px;
-}
-
-.quiz-options {
-  display:grid;
-  gap:8px;
-}
-
-.quiz-options label {
-  display:flex;
-  gap:9px;
-  align-items:flex-start;
-  font-weight:500;
-  border:1px solid #3f3f46;
-  border-radius:10px;
-  padding:10px;
-}
-
-.quiz-options input {
-  width:auto;
-  margin-top:4px;
-  accent-color:var(--orange);
-}
-
-.quiz-choice-locked {
-  opacity:.72;
-  pointer-events:none;
-}
-
-.quiz-option-selected {
-  border-color:var(--orange)!important;
-  background:rgba(249,115,22,.08);
-}
-
-#quizNextBtn:disabled {
-  opacity:.45;
-  cursor:not-allowed;
-  transform:none;
-}
-
-.admin-shell {
-  margin-top:20px;
-}
-
-.admin-top {
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-bottom:20px;
-}
-
-.admin-stats {
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:12px;
-  margin-bottom:20px;
-}
-
-.stat {
-  border:1px solid #3f3f46;
-  background:#09090b;
-  border-radius:15px;
-  padding:15px;
-}
-
-.stat b {
-  display:block;
-  font-size:25px;
-  color:var(--orange);
-}
-
-.stat span {
-  font-size:12px;
-  color:var(--muted);
-}
-
-.table-wrap {
-  overflow:auto;
-  border:1px solid #3f3f46;
-  border-radius:15px;
-}
-
-table {
-  width:100%;
-  border-collapse:collapse;
-  min-width:760px;
-}
-
-th,
-td {
-  padding:12px;
-  border-bottom:1px solid #27272a;
-  text-align:left;
-  font-size:12px;
-}
-
-th {
-  color:#fdba74;
-  background:#09090b;
-}
-
-td {
-  color:#d4d4d8;
-}
-
-.status-pill {
-  display:inline-block;
-  border-radius:999px;
-  padding:4px 8px;
-  font-size:10px;
-  background:#3f3f46;
-}
-
-.status-pill.green {
-  background:#14532d;
-  color:#bbf7d0;
-}
-
-.status-pill.yellow {
-  background:#713f12;
-  color:#fef08a;
-}
-
-.status-pill.red {
-  background:#7f1d1d;
-  color:#fecaca;
-}
-
-.doc-box {
-  margin-top:18px;
-  border:1px solid #3f3f46;
-  border-radius:16px;
-  padding:16px;
-  background:#09090b;
-}
-
-.doc-row {
-  display:grid;
-  grid-template-columns:1fr auto auto;
-  gap:10px;
-  align-items:center;
-  padding:12px 0;
-  border-bottom:1px solid #27272a;
-}
-
-.doc-row:last-child {
-  border-bottom:0;
-}
-
-.doc-name {
-  font-weight:700;
-  color:#fff;
-  font-size:13px;
-}
-
-.doc-meta {
-  color:#a1a1aa;
-  font-size:11px;
-}
-
-.doc-actions {
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
-  justify-content:flex-end;
-}
-
-.btn-success {
-  background:#166534;
-  color:#fff;
-}
-
-.btn-warning {
-  background:#92400e;
-  color:#fff;
-}
-
-@media (max-width:800px) {
-  .doc-row {
-    grid-template-columns:1fr;
-  }
-
-  .doc-actions {
-    justify-content:flex-start;
-  }
-}
-
-@media (max-width:600px) {
-  .brand img {
-    width:38px;
-    height:38px;
-  }
-
-  .brand-text strong {
-    font-size:9px;
-  }
-
-  .brand-text span {
-    font-size:8px;
-  }
-}
-
-@media (max-width:800px) {
-  nav {
-    display:none;
-  }
-
-  .hero {
-    padding:75px 0 65px;
-  }
-
-  h1 {
-    letter-spacing:-1.8px;
-  }
-
-  .grid-2,
-  .grid-3 {
-    grid-template-columns:1fr;
-  }
-
-  .timeline-item {
-    grid-template-columns:1fr;
-    gap:6px;
-  }
-
-  .form-grid {
-    grid-template-columns:1fr;
-  }
-
-  .field.full {
-    grid-column:auto;
-  }
-
-  .admin-stats {
-    grid-template-columns:1fr;
-  }
-}
+:root{--orange:#f97316;--orange-dark:#c2410c;--black:#0b0b0d;--black-2:#151519;--white:#fff;--muted:#a1a1aa;--line:rgba(255,255,255,.12);--cream:#fff7ed;--text:#18181b;--green:#22c55e;--red:#ef4444;--yellow:#facc15}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:var(--black);color:var(--white);font-family:"DM Sans",sans-serif;line-height:1.6}body.modal-open{overflow:hidden}button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}img{max-width:100%;user-select:none;-webkit-user-drag:none}.container{width:min(1120px,calc(100% - 36px));margin:auto}.hidden{display:none!important}
+header{position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);background:rgba(11,11,13,.94);backdrop-filter:blur(16px)}.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:12px;font-family:"Space Grotesk",sans-serif;font-weight:700}.brand img{width:46px;height:46px;object-fit:contain;flex-shrink:0}.brand-text{display:flex;flex-direction:column;gap:2px;line-height:1.25}.brand-text strong{color:#fff;font-size:11px;font-weight:800;letter-spacing:.5px}.brand-text span{color:var(--orange);font-size:10px;font-weight:700;letter-spacing:.2px}nav{display:flex;align-items:center;gap:18px}nav a{color:#d4d4d8;font-size:13px;font-weight:600}nav a:hover{color:var(--orange)}
+.hero{padding:100px 0 90px;background:radial-gradient(circle at 90% 10%,rgba(249,115,22,.22),transparent 32%),radial-gradient(circle at 0% 80%,rgba(249,115,22,.08),transparent 30%)}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--orange);font-size:12px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:22px}.eyebrow:before{content:"";width:28px;height:2px;background:var(--orange)}h1,h2,h3{font-family:"Space Grotesk",sans-serif;line-height:1.12}h1{max-width:790px;font-size:clamp(42px,8vw,86px);letter-spacing:-3px}h1 span{color:var(--orange)}.lead{max-width:650px;color:#c4c4cc;font-size:17px;margin-top:24px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{border:1px solid transparent;border-radius:999px;padding:13px 20px;font-weight:800;font-size:13px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.2s}.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:#fb923c;transform:translateY(-1px)}.btn-outline{border-color:rgba(255,255,255,.25);color:#fff;background:transparent}.btn-outline:hover{border-color:var(--orange);color:var(--orange)}.btn-dark{background:var(--black);color:#fff}.btn-danger{background:#7f1d1d;color:#fff}.btn-small{padding:9px 13px;font-size:12px}section{padding:82px 0}.section-light{background:var(--cream);color:var(--text)}.section-title{font-size:clamp(30px,5vw,54px);letter-spacing:-1.5px}.section-copy{color:#71717a;max-width:650px;margin-top:15px}.section-light .eyebrow{color:var(--orange-dark)}.section-light .eyebrow:before{background:var(--orange-dark)}.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.card{border:1px solid var(--line);border-radius:22px;padding:25px;background:rgba(255,255,255,.025)}.section-light .card{border-color:#fed7aa;background:#fff}.card h3{font-size:20px;margin-bottom:10px}.card p{color:var(--muted);font-size:14px}.section-light .card p{color:#71717a}.number{color:var(--orange);font-size:12px;font-weight:800;letter-spacing:1px;margin-bottom:10px}.timeline{display:grid;gap:14px;margin-top:30px}.timeline-item{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:20px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025)}.timeline-date{color:var(--orange);font-weight:800;font-size:13px}.timeline-item h3{font-size:19px;margin-bottom:5px}.timeline-item p{color:var(--muted);font-size:14px}.requirements{display:grid;gap:12px;margin-top:25px}.requirement{display:flex;align-items:flex-start;gap:12px;padding:15px 0;border-bottom:1px solid #fed7aa}.requirement b{color:var(--orange-dark)}.requirement p{color:#52525b;font-size:14px}.cta{padding:70px 0;background:linear-gradient(115deg,#f97316,#c2410c)}.cta h2{font-size:clamp(30px,5vw,58px);max-width:700px;letter-spacing:-1.5px}.cta p{max-width:650px;margin-top:15px;color:#ffedd5}footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:12px}.footer-row{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modal-box{width:min(760px,100%);max-height:92vh;overflow:auto;border:1px solid #3f3f46;border-radius:24px;background:#18181b;padding:25px}.modal-header{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;margin-bottom:22px}.modal-header h2{font-size:28px}.close{border:0;background:#27272a;color:#fff;width:36px;height:36px;border-radius:50%;font-size:20px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}label{color:#e4e4e7;font-size:12px;font-weight:700}input,select,textarea{width:100%;border:1px solid #3f3f46;border-radius:12px;padding:12px 13px;background:#09090b;color:#fff;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--orange)}textarea{min-height:100px;resize:vertical}.helper{color:#a1a1aa;font-size:11px}.form-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.notice{padding:13px 15px;border-radius:12px;font-size:13px;margin-bottom:15px}.notice.error{background:#450a0a;color:#fecaca;border:1px solid #7f1d1d}.notice.success{background:#052e16;color:#bbf7d0;border:1px solid #166534}.notice.info{background:#172554;color:#bfdbfe;border:1px solid #1d4ed8}.quiz-question{border:1px solid #3f3f46;padding:17px;border-radius:16px;margin-bottom:13px}.quiz-question p{font-weight:700;font-size:14px;margin-bottom:12px}.quiz-options{display:grid;gap:8px}.quiz-options label{display:flex;gap:9px;align-items:flex-start;font-weight:500;border:1px solid #3f3f46;border-radius:10px;padding:10px}.quiz-options input{width:auto;margin-top:4px;accent-color:var(--orange)}.quiz-choice-locked{opacity:.72;pointer-events:none}.quiz-option-selected{border-color:var(--orange)!important;background:rgba(249,115,22,.08)}#quizNextBtn:disabled{opacity:.45;cursor:not-allowed;transform:none}.admin-shell{margin-top:20px}.admin-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:20px}.admin-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:20px}.stat{border:1px solid #3f3f46;background:#09090b;border-radius:15px;padding:15px}.stat b{display:block;font-size:25px;color:var(--orange)}.stat span{font-size:12px;color:var(--muted)}.table-wrap{overflow:auto;border:1px solid #3f3f46;border-radius:15px}table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:12px;border-bottom:1px solid #27272a;text-align:left;font-size:12px}th{color:#fdba74;background:#09090b}td{color:#d4d4d8}.status-pill{display:inline-block;border-radius:999px;padding:4px 8px;font-size:10px;background:#3f3f46}.status-pill.green{background:#14532d;color:#bbf7d0}.status-pill.yellow{background:#713f12;color:#fef08a}.status-pill.red{background:#7f1d1d;color:#fecaca}.doc-box{margin-top:18px;border:1px solid #3f3f46;border-radius:16px;padding:16px;background:#09090b}.doc-row{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid #27272a}.doc-row:last-child{border-bottom:0}.doc-name{font-weight:700;color:#fff;font-size:13px}.doc-meta{color:#a1a1aa;font-size:11px}.doc-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.btn-success{background:#166534;color:#fff}.btn-warning{background:#92400e;color:#fff}
+@media(max-width:800px){.doc-row{grid-template-columns:1fr}.doc-actions{justify-content:flex-start}}@media(max-width:600px){.brand img{width:38px;height:38px}.brand-text strong{font-size:9px}.brand-text span{font-size:8px}}@media(max-width:800px){nav{display:none}.hero{padding:75px 0 65px}h1{letter-spacing:-1.8px}.grid-2,.grid-3{grid-template-columns:1fr}.timeline-item{grid-template-columns:1fr;gap:6px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.admin-stats{grid-template-columns:1fr}}
 </style>
 </head>
-
 <body>
 
 <header>
 <div class="container nav">
-
 <a class="brand" href="#">
 <img src="./logo-mb.png" alt="Logo Muda Bergerak">
-
 <div class="brand-text">
 <strong>DEWAN PIMPINAN WILAYAH</strong>
 <span>MUDA BERGERAK - PROV. SULAWESI SELATAN</span>
 </div>
-
 </a>
-
 <nav>
 <a href="#tentang">VISI MISI</a>
 <a href="#nilai">NILAI</a>
@@ -819,4140 +36,1024 @@ td {
 <a href="#" id="registerNav">DAFTAR</a>
 <a href="#" id="adminNav">Login Admin</a>
 </nav>
-
 </div>
 </header>
 
 <main>
-
 <section class="hero">
 <div class="container">
-
 <div class="eyebrow">OPEN RECRUITMENT - 2026</div>
-
-<h1>
-MUDA BERGERAK
-<span>PROV. SULAWESI SELATAN</span>
-</h1>
-
-<p class="lead">
-Saatnya anak muda Sulawesi Selatan belajar, berkembang, berkolaborasi, dan mengambil peran nyata bersama Muda Bergerak.
-</p>
-
+<h1>MUDA BERGERAK <span>PROV. SULAWESI SELATAN</span></h1>
+<p class="lead">Saatnya anak muda Sulawesi Selatan belajar, berkembang, berkolaborasi, dan mengambil peran nyata bersama Muda Bergerak.</p>
 <div class="actions">
-
-<button class="btn btn-primary" id="heroRegister">
-Daftar Sekarang →
-</button>
-
-<a class="btn btn-outline" href="#tentang">
-Visi & Misi Muda Bergerak
-</a>
-
-<button class="btn btn-outline" id="heroStatus">
-Cek Status Pendaftaran
-</button>
-
-<button class="btn btn-outline" id="heroAdmin">
-Login Admin
-</button>
-
+<button class="btn btn-primary" id="heroRegister">Daftar Sekarang →</button>
+<a class="btn btn-outline" href="#tentang">Visi & Misi Muda Bergerak</a>
+<button class="btn btn-outline" id="heroStatus">Cek Status Pendaftaran</button>
+<button class="btn btn-outline" id="heroAdmin">Login Admin</button>
 </div>
-
 </div>
 </section>
 
 <section id="tentang" class="section-light">
 <div class="container">
-
 <div class="eyebrow">Tentang Muda Bergerak</div>
-
-<h2 class="section-title">
-Tempat anak muda bertumbuh dan mengambil peran.
-</h2>
-
-<p class="section-copy">
-Muda Bergerak hadir sebagai ruang bagi anak muda untuk belajar, berkembang, berkolaborasi, menyampaikan aspirasi, dan mengambil peran nyata di tengah masyarakat.
-</p>
-
+<h2 class="section-title">Tempat anak muda bertumbuh dan mengambil peran.</h2>
+<p class="section-copy">Muda Bergerak hadir sebagai ruang bagi anak muda untuk belajar, berkembang, berkolaborasi, menyampaikan aspirasi, dan mengambil peran nyata di tengah masyarakat.</p>
 <div class="grid-2" style="margin-top:30px">
-
 <div class="card">
 <div class="number">01 — VISI</div>
-
-<p>
-Menjadikan Muda Bergerak Indonesia sebagai organisasi yang inklusif dan interaktif, menjadi wadah bagi anak muda untuk belajar, berkembang dan berdinamika dengan mengedepankan transparansi.
-</p>
+<p>Menjadikan Muda Bergerak Indonesia sebagai organisasi yang inklusif dan interaktif, menjadi wadah bagi anak muda untuk belajar, berkembang dan berdinamika dengan mengedepankan transparansi.</p>
 </div>
-
 <div class="card">
 <div class="number">02 — MISI</div>
-
-<p>
-1. Menciptakan hubungan internal dan eksternal dengan mengedepankan transparansi, kekeluargaan dan profesionalisme.
-</p>
-
-<p>
-2. Mengabdi dan melayani masyarakat Indonesia pada fokus politik, ekonomi, pendidikan, kesehatan, dan lingkungan masyarakat.
-</p>
-
-<p>
-3. Menyediakan platform serta wadah yang digunakan untuk menyampaikan aspirasi dan melayani masyarakat secara solutif.
-</p>
-
-<p>
-4. Berkolaborasi dengan membangun kerjasama strategis bersama kelompok-kelompok muda untuk kepentingan masyarakat banyak.
-</p>
-
+<p>1. Menciptakan hubungan internal dan eksternal dengan mengedepankan transparansi, kekeluargaan dan profesionalisme.</p>
+<p>2. Mengabdi dan melayani masyarakat Indonesia pada fokus politik, ekonomi, pendidikan, kesehatan, dan lingkungan masyarakat.</p>
+<p>3. Menyediakan platform serta wadah yang digunakan untuk menyampaikan aspirasi dan melayani masyarakat secara solutif.</p>
+<p>4. Berkolaborasi dengan membangun kerjasama strategis bersama kelompok-kelompok muda untuk kepentingan masyarakat banyak.</p>
 </div>
-
 </div>
-
 </div>
 </section>
 
 <section id="nilai">
 <div class="container">
-
 <div class="eyebrow">Nilai Organisasi</div>
-
-<h2 class="section-title">
-Yang kita bawa bersama.
-</h2>
-
+<h2 class="section-title">Yang kita bawa bersama.</h2>
 <div class="grid-3" style="margin-top:30px">
-
-<div class="card">
-<div class="number">01</div>
-<h3>TRANSPARANSI</h3>
-<p>
-Setiap individu di organisasi Muda Bergerak Indonesia ditekankan untuk menanam prinsip Transparansi, agar keterbukaan dalam melakukan segala kegiatan organisasi mendapatkan kepercayaan oleh masyarakat luas. Hal ini dapat diterapkan dengan cara keterbukaan informasi, komunikasi, dan pertanggung jawaban.
-</p>
+<div class="card"><div class="number">01</div><h3>TRANSPARANSI</h3><p>Setiap individu di organisasi Muda Bergerak Indonesia ditekankan untuk menanam prinsip Transparansi, agar keterbukaan dalam melakukan segala kegiatan organisasi mendapatkan kepercayaan oleh masyarakat luas. Hal ini dapat diterapkan dengan cara keterbukaan informasi, komunikasi, dan pertanggung jawaban.</p></div>
+<div class="card"><div class="number">02</div><h3>SINERGI</h3><p>Memahami kelebihan dan kekurangan (kondisi internal) serta potensi dan ancaman (kondisi eksternal) dari setiap bagian muda bergerak guna menciptakan kolaborasi dan gerakan yang saling mengisi dan melengkapi.</p></div>
+<div class="card"><div class="number">03</div><h3>PROGRESIF</h3><p>Muda Bergerak berorientasi pada perkembangan, perubahan, serta kemajuan dalam melaksanakan fungsi pergerakan dengan harapan dapat membawa perubahan terhadap anak muda di Indonesia bisa lebih peka akan isu politik, ekonomi, pendidikan, kesehatan, dan lingkungan masyarakat untuk membangun rasa semangat gotong royong terhadap lingkungan.</p></div>
 </div>
-
-<div class="card">
-<div class="number">02</div>
-<h3>SINERGI</h3>
-<p>
-Memahami kelebihan dan kekurangan (kondisi internal) serta potensi dan ancaman (kondisi eksternal) dari setiap bagian muda bergerak guna menciptakan kolaborasi dan gerakan yang saling mengisi dan melengkapi.
-</p>
-</div>
-
-<div class="card">
-<div class="number">03</div>
-<h3>PROGRESIF</h3>
-<p>
-Muda Bergerak berorientasi pada perkembangan, perubahan, serta kemajuan dalam melaksanakan fungsi pergerakan dengan harapan dapat membawa perubahan terhadap anak muda di Indonesia bisa lebih peka akan isu politik, ekonomi, pendidikan, kesehatan, dan lingkungan masyarakat untuk membangun rasa semangat gotong royong terhadap lingkungan.
-</p>
-</div>
-
-</div>
-
 </div>
 </section>
 
 <section id="timeline" class="section-light">
 <div class="container">
-
 <div class="eyebrow">Timeline</div>
-
-<h2 class="section-title">
-Proses Open Recruitment.
-</h2>
-
+<h2 class="section-title">Proses Open Recruitment.</h2>
 <div class="timeline">
-
-<div class="timeline-item">
-<div class="timeline-date">1–8 OKTOBER</div>
-<div>
-<h3>Open Recruitment</h3>
-<p>Isi data diri, unggah dokumen, dan lanjut ke The Quiz.</p>
+<div class="timeline-item"><div class="timeline-date">1–8 OKTOBER</div><div><h3>Open Recruitment</h3><p>Isi data diri, unggah dokumen, dan lanjut ke The Quiz.</p></div></div>
+<div class="timeline-item"><div class="timeline-date">10 OKTOBER</div><div><h3>Kenal Lebih Dekat — Online</h3><p>Interview online untuk peserta sesuai wilayah domisili.</p></div></div>
+<div class="timeline-item"><div class="timeline-date">11 OKTOBER</div><div><h3>Kenal Lebih Dekat — Offline</h3><p>Interview offline untuk peserta Makassar dan Gowa.</p></div></div>
+<div class="timeline-item"><div class="timeline-date">17 OKTOBER</div><div><h3>Final Result</h3><p>Pengumuman hasil proses Open Recruitment.</p></div></div>
 </div>
-</div>
-
-<div class="timeline-item">
-<div class="timeline-date">10 OKTOBER</div>
-<div>
-<h3>Kenal Lebih Dekat — Online</h3>
-<p>Interview online untuk peserta sesuai wilayah domisili.</p>
-</div>
-</div>
-
-<div class="timeline-item">
-<div class="timeline-date">11 OKTOBER</div>
-<div>
-<h3>Kenal Lebih Dekat — Offline</h3>
-<p>Interview offline untuk peserta Makassar dan Gowa.</p>
-</div>
-</div>
-
-<div class="timeline-item">
-<div class="timeline-date">17 OKTOBER</div>
-<div>
-<h3>Final Result</h3>
-<p>Pengumuman hasil proses Open Recruitment.</p>
-</div>
-</div>
-
-</div>
-
 </div>
 </section>
 
 <section id="ketentuan" class="section-light">
 <div class="container">
-
 <div class="eyebrow">Ketentuan</div>
-
-<h2 class="section-title">
-Sebelum kamu daftar.
-</h2>
-
+<h2 class="section-title">Sebelum kamu daftar.</h2>
 <div class="requirements">
-
-<div class="requirement">
-<b>01</b>
-<p>Usia maksimal 30 tahun.</p>
+<div class="requirement"><b>01</b><p>Usia maksimal 30 tahun.</p></div>
+<div class="requirement"><b>02</b><p>Seluruh data wajib diisi dengan lengkap dan benar.</p></div>
+<div class="requirement"><b>03</b><p>Lengkapi Foto KTP, CV dan foto diri wajib diunggah sesuai ketentuan.</p></div>
+<div class="requirement"><b>04</b><p>Peserta wajib mengikuti The Quiz yang terdiri dari 10 pertanyaan.</p></div>
+<div class="requirement"><b>05</b><p>PESERTA DPW WAJIB BERDOMISILI DI KOTA MAKASSAR.</p></div>
+<div class="requirement"><b>06</b><p>PESERTA DPD MEMILIH WILAYAH KABUPATEN/KOTA SESUAI DOMISILI.</p></div>
 </div>
-
-<div class="requirement">
-<b>02</b>
-<p>Seluruh data wajib diisi dengan lengkap dan benar.</p>
-</div>
-
-<div class="requirement">
-<b>03</b>
-<p>Lengkapi Foto KTP, CV dan foto diri wajib diunggah sesuai ketentuan.</p>
-</div>
-
-<div class="requirement">
-<b>04</b>
-<p>Peserta wajib mengikuti The Quiz yang terdiri dari 10 pertanyaan.</p>
-</div>
-
-<div class="requirement">
-<b>05</b>
-<p>PESERTA DPW WAJIB BERDOMISILI DI KOTA MAKASSAR.</p>
-</div>
-
-<div class="requirement">
-<b>06</b>
-<p>PESERTA DPD MEMILIH WILAYAH KABUPATEN/KOTA SESUAI DOMISILI.</p>
-</div>
-
-</div>
-
 </div>
 </section>
 
 <section class="cta">
 <div class="container">
-
-<h2>
-Ruangnya sudah ada. Sekarang giliran kamu ambil peran.
-</h2>
-
-<p>
-Bertumbuh, berkolaborasi dan mulai mengambil peran bersama Muda Bergerak Sulawesi Selatan.
-</p>
-
+<h2>Ruangnya sudah ada. Sekarang giliran kamu ambil peran.</h2>
+<p>Bertumbuh, berkolaborasi dan mulai mengambil peran bersama Muda Bergerak Sulawesi Selatan.</p>
 <div class="actions">
-
-<button class="btn btn-dark" id="ctaRegister">
-Daftar Sekarang →
-</button>
-
-<button class="btn btn-outline" id="ctaStatus">
-Cek Status Pendaftaran
-</button>
-
+<button class="btn btn-dark" id="ctaRegister">Daftar Sekarang →</button>
+<button class="btn btn-outline" id="ctaStatus">Cek Status Pendaftaran</button>
 </div>
-
 </div>
 </section>
-
 </main>
 
 <footer>
 <div class="container footer-row">
-
-<div>
-© 2026 Muda Bergerak Sulawesi Selatan
-</div>
-
-<div>
-Ruangnya Anak Muda Sulsel.
-</div>
-
+<div>© 2026 Muda Bergerak Sulawesi Selatan</div>
+<div>Ruangnya Anak Muda Sulsel.</div>
 </div>
 </footer>
 
-
-<!-- REGISTER MODAL -->
-
+<!-- REGISTER -->
 <div class="modal" id="registerModal">
-
 <div class="modal-box">
-
 <div class="modal-header">
-
-<div>
-<div class="eyebrow">Open Recruitment</div>
-<h2>Daftar Sekarang</h2>
-</div>
-
+<div><div class="eyebrow">Open Recruitment</div><h2>Daftar Sekarang</h2></div>
 <button class="close" type="button" data-close="registerModal">×</button>
-
 </div>
-
 <div id="registerNotice"></div>
-
 <form id="registerForm">
-
 <div class="form-grid">
-
-<div class="field">
-<label for="nama">Nama Lengkap *</label>
-<input id="nama" required>
+<div class="field"><label for="nama">Nama Lengkap *</label><input id="nama" required></div>
+<div class="field"><label for="whatsapp">Nomor WhatsApp *</label><input id="whatsapp" required placeholder="08xxxxxxxxxx"></div>
+<div class="field"><label for="email">Email *</label><input id="email" type="email" required></div>
+<div class="field"><label for="tanggalLahir">Tanggal Lahir *</label><input id="tanggalLahir" type="date" required></div>
+<div class="field full"><label for="pendidikan">Pendidikan / Pekerjaan *</label><input id="pendidikan" required></div>
+<div class="field"><label for="struktur">Pilihan Struktur *</label><select id="struktur" required><option value="">Pilih Struktur</option><option value="DPW">DPW</option><option value="DPD">DPD</option></select></div>
+<div class="field"><label for="wilayah">Wilayah Domisili *</label><select id="wilayah" required><option value="">Pilih Wilayah</option><option>Makassar</option><option>Gowa</option><option>Takalar</option><option>Maros</option><option>Pangkajene dan Kepulauan</option><option>Barru</option><option>Bone</option><option>Bulukumba</option><option>Bantaeng</option><option>Jeneponto</option><option>Selayar</option><option>Sinjai</option><option>Soppeng</option><option>Wajo</option><option>Sidrap</option><option>Pinrang</option><option>Enrekang</option><option>Tana Toraja</option><option>Toraja Utara</option><option>Palopo</option><option>Parepare</option><option>Luwu</option><option>Luwu Utara</option><option>Luwu Timur</option></select></div>
+<div class="field full"><label for="pengalaman">Pengalaman Organisasi *</label><textarea id="pengalaman" required placeholder="Ceritakan pengalaman organisasi, komunitas, kepanitiaan, atau kegiatan sosial kamu."></textarea></div>
+<div class="field full"><label for="motivasi">Motivasi Bergabung *</label><textarea id="motivasi" required placeholder="Kenapa kamu ingin bergabung dengan Muda Bergerak?"></textarea></div>
+<div class="field full"><label for="ktp">Upload Foto KTP *</label><input id="ktp" type="file" accept=".jpg,.jpeg,.png,.pdf" required><span class="helper">Maksimal 2 MB. Format: JPG, PNG, PDF.</span></div>
+<div class="field"><label for="cv">Upload CV *</label><input id="cv" type="file" accept=".jpg,.jpeg,.png,.pdf" required><span class="helper">Maksimal 2 MB.</span></div>
+<div class="field"><label for="foto">Upload Foto Diri *</label><input id="foto" type="file" accept=".jpg,.jpeg,.png" required><span class="helper">Maksimal 3 MB.</span></div>
+<div class="field full"><label style="display:flex;gap:9px;align-items:flex-start;font-weight:500"><input id="persetujuan" type="checkbox" required style="width:auto;margin-top:4px">Saya menyatakan data yang saya isi benar dan bersedia mengikuti proses rekrutmen.</label></div>
 </div>
-
-<div class="field">
-<label for="whatsapp">Nomor WhatsApp *</label>
-<input id="whatsapp" required placeholder="08xxxxxxxxxx">
-</div>
-
-<div class="field">
-<label for="email">Email *</label>
-<input id="email" type="email" required>
-</div>
-
-<div class="field">
-<label for="tanggalLahir">Tanggal Lahir *</label>
-<input id="tanggalLahir" type="date" required>
-</div>
-
-<div class="field full">
-<label for="pendidikan">Pendidikan / Pekerjaan *</label>
-<input id="pendidikan" required>
-</div>
-
-<div class="field">
-<label for="struktur">Pilihan Struktur *</label>
-<select id="struktur" required>
-<option value="">Pilih Struktur</option>
-<option value="DPW">DPW</option>
-<option value="DPD">DPD</option>
-</select>
-</div>
-
-<div class="field">
-<label for="wilayah">Wilayah Domisili *</label>
-<select id="wilayah" required>
-<option value="">Pilih Wilayah</option>
-<option>Makassar</option>
-<option>Gowa</option>
-<option>Takalar</option>
-<option>Maros</option>
-<option>Pangkajene dan Kepulauan</option>
-<option>Barru</option>
-<option>Bone</option>
-<option>Bulukumba</option>
-<option>Bantaeng</option>
-<option>Jeneponto</option>
-<option>Selayar</option>
-<option>Sinjai</option>
-<option>Soppeng</option>
-<option>Wajo</option>
-<option>Sidrap</option>
-<option>Pinrang</option>
-<option>Enrekang</option>
-<option>Tana Toraja</option>
-<option>Toraja Utara</option>
-<option>Palopo</option>
-<option>Parepare</option>
-<option>Luwu</option>
-<option>Luwu Utara</option>
-<option>Luwu Timur</option>
-</select>
-</div>
-
-<div class="field full">
-<label for="pengalaman">Pengalaman Organisasi *</label>
-<textarea id="pengalaman" required placeholder="Ceritakan pengalaman organisasi, komunitas, kepanitiaan, atau kegiatan sosial kamu."></textarea>
-</div>
-
-<div class="field full">
-<label for="motivasi">Motivasi Bergabung *</label>
-<textarea id="motivasi" required placeholder="Kenapa kamu ingin bergabung dengan Muda Bergerak?"></textarea>
-</div>
-
-<div class="field full">
-<label for="ktp">Upload Foto KTP *</label>
-<input id="ktp" type="file" accept=".jpg,.jpeg,.png,.pdf" required>
-<span class="helper">Maksimal 2 MB. Format: JPG, PNG, PDF.</span>
-</div>
-
-<div class="field">
-<label for="cv">Upload CV *</label>
-<input id="cv" type="file" accept=".jpg,.jpeg,.png,.pdf" required>
-<span class="helper">Maksimal 2 MB.</span>
-</div>
-
-<div class="field">
-<label for="foto">Upload Foto Diri *</label>
-<input id="foto" type="file" accept=".jpg,.jpeg,.png" required>
-<span class="helper">Maksimal 3 MB.</span>
-</div>
-
-<div class="field full">
-
-<label style="display:flex;gap:9px;align-items:flex-start;font-weight:500">
-
-<input
-id="persetujuan"
-type="checkbox"
-required
-style="width:auto;margin-top:4px"
->
-
-Saya menyatakan data yang saya isi benar dan bersedia mengikuti proses rekrutmen.
-
-</label>
-
-</div>
-
-</div>
-
-<div class="form-actions">
-
-<button class="btn btn-primary" type="submit">
-Lanjut ke Quiz →
-</button>
-
-<button class="btn btn-outline" type="button" data-close="registerModal">
-Batal
-</button>
-
-</div>
-
+<div class="form-actions"><button class="btn btn-primary" type="submit">Lanjut ke Quiz →</button><button class="btn btn-outline" type="button" data-close="registerModal">Batal</button></div>
 </form>
-
 </div>
 </div>
 
-
-<!-- QUIZ MODAL -->
-
+<!-- QUIZ -->
 <div class="modal" id="quizModal">
-
 <div class="modal-box">
-
 <div class="modal-header">
-
-<div>
-<div class="eyebrow">The Quiz</div>
-<h2 id="quizTitle">THE QUIZ</h2>
-</div>
-
+<div><div class="eyebrow">The Quiz</div><h2 id="quizTitle">THE QUIZ</h2></div>
 <button class="close" type="button" data-close="quizModal">×</button>
-
 </div>
-
 <div id="quizNotice"></div>
-
 <form id="quizForm">
-
 <div id="quizStartScreen">
-
 <div class="card" style="text-align:center;padding:32px 24px">
-
-<div class="number">
-THE QUIZ
+<div class="number">THE QUIZ</div>
+<h3 style="font-size:34px;margin-bottom:12px">ARE YOU READY ?</h3>
+<p style="color:#a1a1aa;max-width:540px;margin:0 auto">Ada 10 pertanyaan yang akan melihat cara kamu berpikir, mengambil keputusan, melihat situasi, dan bekerja bersama. Pilih jawaban yang paling menggambarkan cara kamu berpikir.</p>
+<div class="form-actions" style="justify-content:center;margin-top:26px"><button class="btn btn-primary" type="button" id="startQuizBtn">START NOW →</button></div>
 </div>
-
-<h3 style="font-size:34px;margin-bottom:12px">
-ARE YOU READY ?
-</h3>
-
-<p style="color:#a1a1aa;max-width:540px;margin:0 auto">
-Ada 10 pertanyaan yang akan melihat cara kamu berpikir, mengambil keputusan, melihat situasi, dan bekerja bersama. Pilih jawaban yang paling menggambarkan cara kamu berpikir.
-</p>
-
-<div class="form-actions" style="justify-content:center;margin-top:26px">
-
-<button
-class="btn btn-primary"
-type="button"
-id="startQuizBtn"
->
-START NOW →
-</button>
-
 </div>
-
-</div>
-
-</div>
-
 <div id="quizPlayScreen" class="hidden">
-
-<div
-id="quizProgress"
-style="color:#fb923c;font-size:12px;font-weight:800;letter-spacing:1px;margin-bottom:12px"
->
-PERTANYAAN 1 / 10
-</div>
-
+<div id="quizProgress" style="color:#fb923c;font-size:12px;font-weight:800;letter-spacing:1px;margin-bottom:12px">PERTANYAAN 1 / 10</div>
 <div id="quizQuestions"></div>
-
 <div class="form-actions">
-
-<button
-class="btn btn-primary"
-type="button"
-id="quizNextBtn"
-disabled
->
-LANJUT →
-</button>
-
-<button
-class="btn btn-outline"
-type="button"
-data-close="quizModal"
->
-CANCEL
-</button>
-
+<button class="btn btn-primary" type="button" id="quizNextBtn" disabled>LANJUT →</button>
+<button class="btn btn-outline" type="button" data-close="quizModal">CANCEL</button>
 </div>
-
 </div>
-
 </form>
-
 </div>
 </div>
 
-
-<!-- SUCCESS MODAL -->
-
+<!-- SUCCESS -->
 <div class="modal" id="successModal">
-
 <div class="modal-box">
-
 <div class="modal-header">
-
-<div>
-<div class="eyebrow">Pendaftaran Berhasil</div>
-<h2>Data kamu sedang diverifikasi, Stay tune! Tim Rekrutmen akan menghubungi kamu di WhatsApp yang sudah kamu tuliskan</h2>
-</div>
-
+<div><div class="eyebrow">Pendaftaran Berhasil</div><h2>Data kamu sedang diverifikasi, Stay tune! Tim Rekrutmen akan menghubungi kamu di WhatsApp yang sudah kamu tuliskan</h2></div>
 <button class="close" type="button" data-close="successModal">×</button>
-
 </div>
-
-<div class="notice success">
-Simpan kode peserta kamu. Gunakan kode ini untuk mengecek status pendaftaran.
-</div>
-
+<div class="notice success">Simpan kode peserta kamu. Gunakan kode ini untuk mengecek status pendaftaran.</div>
 <div class="card">
-
-<div class="number">
-KODE PESERTA
-</div>
-
-<h3
-id="successCode"
-style="font-size:32px;color:#fb923c"
-></h3>
-
+<div class="number">KODE PESERTA</div>
+<h3 id="successCode" style="font-size:32px;color:#fb923c"></h3>
 <p id="successScore"></p>
-
-<p
-id="successInterview"
-style="margin-top:8px;color:#a1a1aa"
-></p>
-
+<p id="successInterview" style="margin-top:8px;color:#a1a1aa"></p>
 </div>
-
 <div class="form-actions">
-
-<button
-class="btn btn-primary"
-type="button"
-id="successStatus"
->
-Cek Status
-</button>
-
-<button
-class="btn btn-outline"
-type="button"
-data-close="successModal"
->
-Tutup
-</button>
-
+<button class="btn btn-primary" type="button" id="successStatus">Cek Status</button>
+<button class="btn btn-outline" type="button" data-close="successModal">Tutup</button>
+</div>
+</div>
 </div>
 
-</div>
-
-</div>
-
-
-<!-- STATUS MODAL -->
-
+<!-- STATUS -->
 <div class="modal" id="statusModal">
-
 <div class="modal-box">
-
 <div class="modal-header">
-
-<div>
-<div class="eyebrow">Peserta</div>
-<h2>Cek Status Pendaftaran</h2>
-</div>
-
+<div><div class="eyebrow">Peserta</div><h2>Cek Status Pendaftaran</h2></div>
 <button class="close" type="button" data-close="statusModal">×</button>
-
 </div>
-
 <form id="statusForm">
-
-<div class="field">
-
-<label for="statusCode">
-Kode Peserta
-</label>
-
-<input
-id="statusCode"
-placeholder="Contoh: MB26-ABC123"
-required
->
-
-</div>
-
-<div class="form-actions">
-
-<button
-class="btn btn-primary"
-type="submit"
->
-Periksa Status
-</button>
-
-</div>
-
+<div class="field"><label for="statusCode">Kode Peserta</label><input id="statusCode" placeholder="Contoh: MB26-ABC123" required></div>
+<div class="form-actions"><button class="btn btn-primary" type="submit">Periksa Status</button></div>
 </form>
-
 <div id="statusNotice" style="margin-top:18px"></div>
-
 <div id="statusResult"></div>
-
 </div>
-
 </div>
-
 
 <!-- ADMIN LOGIN -->
-
 <div class="modal" id="adminLoginModal">
-
 <div class="modal-box">
-
 <div class="modal-header">
-
-<div>
-<div class="eyebrow">Area Internal</div>
-<h2>Login Admin</h2>
-</div>
-
+<div><div class="eyebrow">Area Internal</div><h2>Login Admin</h2></div>
 <button class="close" type="button" data-close="adminLoginModal">×</button>
-
 </div>
-
 <div id="adminLoginNotice"></div>
-
 <form id="adminLoginForm">
-
-<div class="field">
-
-<label for="adminEmail">
-Email Admin
-</label>
-
-<input
-id="adminEmail"
-type="email"
-required
-autocomplete="username"
->
-
-</div>
-
-<div
-class="field"
-style="margin-top:14px"
->
-
-<label for="adminPassword">
-Password
-</label>
-
-<input
-id="adminPassword"
-type="password"
-required
-autocomplete="current-password"
->
-
-</div>
-
-<div class="form-actions">
-
-<button
-id="adminLoginButton"
-class="btn btn-primary"
-type="submit"
->
-Login Admin
-</button>
-
-</div>
-
+<div class="field"><label for="adminEmail">Email Admin</label><input id="adminEmail" type="email" required autocomplete="username"></div>
+<div class="field" style="margin-top:14px"><label for="adminPassword">Password</label><input id="adminPassword" type="password" required autocomplete="current-password"></div>
+<div class="form-actions"><button id="adminLoginButton" class="btn btn-primary" type="submit">Login Admin</button></div>
 </form>
-
 </div>
-
 </div>
-
 
 <!-- ADMIN DASHBOARD -->
-
 <div class="modal" id="adminModal">
-
-<div
-class="modal-box"
-style="width:min(1100px,100%)"
->
-
+<div class="modal-box" style="width:min(1100px,100%)">
 <div class="modal-header">
-
-<div>
-<div class="eyebrow">Internal Dashboard</div>
-<h2>Dashboard Admin</h2>
+<div><div class="eyebrow">Internal Dashboard</div><h2>Dashboard Admin</h2></div>
+<button class="close" type="button" data-close="adminModal">×</button>
 </div>
-
-<button class="close" type="button" data-close="adminModal">
-×
-</button>
-
-</div>
-
 <div class="admin-top">
-
-<p class="helper">
-Data peserta dari database Supabase.
-</p>
-
-<div
-class="form-actions"
-style="margin-top:0"
->
-
-<button
-class="btn btn-primary btn-small"
-type="button"
-id="refreshAdmin"
->
-Refresh
-</button>
-
-<button
-class="btn btn-danger btn-small"
-type="button"
-id="logoutAdmin"
->
-Logout
-</button>
-
+<p class="helper">Data peserta dari database Supabase.</p>
+<div class="form-actions" style="margin-top:0">
+<button class="btn btn-primary btn-small" type="button" id="refreshAdmin">Refresh</button>
+<button class="btn btn-danger btn-small" type="button" id="logoutAdmin">Logout</button>
 </div>
-
 </div>
-
 <div class="admin-stats">
-
-<div class="stat">
-<b id="statTotal">0</b>
-<span>Total Peserta</span>
+<div class="stat"><b id="statTotal">0</b><span>Total Peserta</span></div>
+<div class="stat"><b id="statPending">0</b><span>Menunggu Verifikasi</span></div>
+<div class="stat"><b id="statVerified">0</b><span>Terverifikasi</span></div>
 </div>
-
-<div class="stat">
-<b id="statPending">0</b>
-<span>Menunggu Verifikasi</span>
-</div>
-
-<div class="stat">
-<b id="statVerified">0</b>
-<span>Terverifikasi</span>
-</div>
-
-</div>
-
 <div id="adminNotice"></div>
-
 <div class="table-wrap">
-
 <table>
-
-<thead>
-
-<tr>
-<th>Kode</th>
-<th>Nama</th>
-<th>Struktur</th>
-<th>Wilayah</th>
-<th>Skor</th>
-<th>Status</th>
-<th>Aksi</th>
-</tr>
-
-</thead>
-
+<thead><tr><th>Kode</th><th>Nama</th><th>Struktur</th><th>Wilayah</th><th>Skor</th><th>Status</th><th>Aksi</th></tr></thead>
 <tbody id="adminTableBody"></tbody>
-
 </table>
-
-</div>
-
 </div>
 </div>
-
+</div>
 
 <!-- PARTICIPANT DETAIL -->
-
 <div class="modal" id="participantModal">
-
-<div
-class="modal-box"
-style="width:min(1100px,100%)"
->
-
+<div class="modal-box" style="width:min(1100px,100%)">
 <div class="modal-header">
-
-<div>
-<div class="eyebrow">Detail Peserta</div>
-<h2 id="detailTitle">Detail Pendaftar</h2>
+<div><div class="eyebrow">Detail Peserta</div><h2 id="detailTitle">Detail Pendaftar</h2></div>
+<button class="close" type="button" data-close="participantModal">×</button>
 </div>
-
-<button
-class="close"
-type="button"
-data-close="participantModal"
->
-×
-</button>
-
-</div>
-
 <div id="detailNotice"></div>
-
 <div id="detailInfo"></div>
-
-<div
-class="doc-box"
-style="margin-top:20px"
->
-
-<div class="number">
-DOKUMEN PESERTA
-</div>
-
+<div class="doc-box" style="margin-top:20px">
+<div class="number">DOKUMEN PESERTA</div>
 <div id="documentList"></div>
-
 </div>
-
 </div>
-
 </div>
-
 
 <!-- EDIT ADMIN -->
-
 <div class="modal" id="editModal">
-
 <div class="modal-box">
-
 <div class="modal-header">
-
-<div>
-<div class="eyebrow">Kelola Peserta</div>
-<h2>Edit Status</h2>
+<div><div class="eyebrow">Kelola Peserta</div><h2>Edit Status</h2></div>
+<button class="close" type="button" data-close="editModal">×</button>
 </div>
-
-<button class="close" type="button" data-close="editModal">
-×
-</button>
-
-</div>
-
 <div id="editNotice"></div>
-
 <form id="editForm">
-
-<input
-type="hidden"
-id="editId"
->
-
-<div class="field">
-
-<label for="editStatus">
-Status Pendaftaran
-</label>
-
-<select id="editStatus" required>
-
-<option>Menunggu Verifikasi</option>
-<option>Perlu Perbaikan</option>
-<option>Terverifikasi</option>
-<option>Ditolak</option>
-<option>Lolos</option>
-<option>Tidak Lolos</option>
-
-</select>
-
-</div>
-
-<div
-class="field"
-style="margin-top:14px"
->
-
-<label for="editDocumentStatus">
-Status Dokumen
-</label>
-
-<select
-id="editDocumentStatus"
-required
->
-
-<option>Belum Diverifikasi</option>
-<option>Sedang Diverifikasi</option>
-<option>Disetujui</option>
-<option>Perlu Perbaikan</option>
-<option>Ditolak</option>
-
-</select>
-
-</div>
-
-<div
-class="field"
-style="margin-top:14px"
->
-
-<label for="editInterview">
-Jadwal Interview
-</label>
-
-<input
-id="editInterview"
-placeholder="Contoh: 10 Oktober 2026, 19.00 WITA"
->
-
-</div>
-
-<div
-class="field"
-style="margin-top:14px"
->
-
-<label for="editMethod">
-Metode Interview
-</label>
-
-<select id="editMethod">
-
-<option value="">
-Belum ditentukan
-</option>
-
-<option>
-Online
-</option>
-
-<option>
-Offline
-</option>
-
-</select>
-
-</div>
-
-<div
-class="field"
-style="margin-top:14px"
->
-
-<label for="editLocation">
-Lokasi Interview
-</label>
-
-<input
-id="editLocation"
-placeholder="Kosongkan jika online"
->
-
-</div>
-
-<div
-class="field"
-style="margin-top:14px"
->
-
-<label for="editNote">
-Catatan Admin
-</label>
-
-<textarea
-id="editNote"
-placeholder="Catatan untuk peserta"
-></textarea>
-
-</div>
-
-<!-- CHAT WA DI DALAM KELOLA -->
-
+<input type="hidden" id="editId">
+<div class="field"><label for="editStatus">Status Pendaftaran</label><select id="editStatus" required><option>Menunggu Verifikasi</option><option>Perlu Perbaikan</option><option>Terverifikasi</option><option>Ditolak</option><option>Lolos</option><option>Tidak Lolos</option></select></div>
+<div class="field" style="margin-top:14px"><label for="editDocumentStatus">Status Dokumen</label><select id="editDocumentStatus" required><option>Belum Diverifikasi</option><option>Sedang Diverifikasi</option><option>Disetujui</option><option>Perlu Perbaikan</option><option>Ditolak</option></select></div>
+<div class="field" style="margin-top:14px"><label for="editInterview">Jadwal Interview</label><input id="editInterview" placeholder="Contoh: 10 Oktober 2026, 19.00 WITA"></div>
+<div class="field" style="margin-top:14px"><label for="editMethod">Metode Interview</label><select id="editMethod"><option value="">Belum ditentukan</option><option>Online</option><option>Offline</option></select></div>
+<div class="field" style="margin-top:14px"><label for="editLocation">Lokasi Interview</label><input id="editLocation" placeholder="Kosongkan jika online"></div>
+<div class="field" style="margin-top:14px"><label for="editNote">Catatan Admin</label><textarea id="editNote" placeholder="Catatan untuk peserta"></textarea></div>
 <div class="form-actions">
-
-<button
-class="btn btn-success"
-type="button"
-id="chatWaKelolaBtn"
->
-💬 Chat WA
-</button>
-
-<button
-class="btn btn-primary"
-type="submit"
->
-Simpan Perubahan
-</button>
-
+<button class="btn btn-success" type="button" id="chatWaKelolaBtn">💬 Chat WA</button>
+<button class="btn btn-primary" type="submit">Simpan Perubahan</button>
 </div>
-
 </form>
-
 </div>
 </div>
-
 
 <script>
+const SUPABASE_URL="https://qccenzvpncfkkbncfnkh.supabase.co";
+const SUPABASE_KEY="sb_publishable_iN8EDDpe6JwELDU7GiWifw_5rFBZHr1";
+const {createClient}=supabase;
+const db=createClient(SUPABASE_URL,SUPABASE_KEY);
+const STORAGE_BUCKET="dokumen-pendaftar";
+const MAX_FILE_SIZE=2*1024*1024;
+const MAX_PHOTO_SIZE=3*1024*1024;
+const ALLOWED_FILE_TYPES=["application/pdf","image/jpeg","image/png"];
+const $=id=>document.getElementById(id);
 
-/* =========================================================
-   SUPABASE
-   ========================================================= */
+let pendingRegistration=null;
+let lastRegisteredCode="";
+let adminParticipants=[];
+let quizCurrentIndex=0;
+let quizAnswers=[];
+let quizStarted=false;
 
-const SUPABASE_URL =
-"https://qccenzvpncfkkbncfnkh.supabase.co";
-
-const SUPABASE_KEY =
-"sb_publishable_iN8EDDpe6JwELDU7GiWifw_5rFBZHr1";
-
-const { createClient } = supabase;
-
-const db = createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);
-
-const STORAGE_BUCKET =
-"dokumen-pendaftar";
-
-const MAX_FILE_SIZE =
-2 * 1024 * 1024;
-
-const MAX_PHOTO_SIZE =
-3 * 1024 * 1024;
-
-const ALLOWED_FILE_TYPES = [
-"application/pdf",
-"image/jpeg",
-"image/png"
-];
-
-const $ = id =>
-document.getElementById(id);
-
-let pendingRegistration = null;
-let lastRegisteredCode = "";
-let adminParticipants = [];
-
-let quizCurrentIndex = 0;
-let quizAnswers = [];
-let quizStarted = false;
-
-
-/* =========================================================
-   UTILITIES
-   ========================================================= */
-
-function escapeHTML(value) {
-
-return String(value ?? "")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
-
-
-function notice(id,message,type="info") {
-
-const box = $(id);
-
-if (!box) return;
-
-if (!message) {
-
-box.innerHTML = "";
-
-return;
-
-}
-
-box.innerHTML = `
-<div class="notice ${escapeHTML(type)}">
-${escapeHTML(message)}
-</div>
-`;
-
-}
-
-
-function openModal(id) {
-
-const modal = $(id);
-
-if (!modal) return;
-
-modal.classList.add("show");
-
-document.body.classList.add("modal-open");
-
-}
-
-
-function closeModal(id) {
-
-const modal = $(id);
-
-if (!modal) return;
-
-modal.classList.remove("show");
-
-if (
-document.querySelectorAll(".modal.show").length === 0
-) {
-
-document.body.classList.remove("modal-open");
-
-}
-
-}
-
-
-function makeCode() {
-
-const chars =
-"ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-
-let random = "";
-
-for (let i = 0; i < 6; i++) {
-
-random +=
-chars.charAt(
-Math.floor(
-Math.random() * chars.length
-)
-);
-
-}
-
-return `MB26-${random}`;
-
-}
-
-
-/* =========================================================
-   THE QUIZ
-   ========================================================= */
-
-const questions = [
-
+function escapeHTML(value){return String(value??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;")}
+function notice(id,message,type="info"){const box=$(id);if(!box)return;if(!message){box.innerHTML="";return}box.innerHTML=`<div class="notice ${escapeHTML(type)}">${escapeHTML(message)}</div>`}
+function openModal(id){const modal=$(id);if(!modal)return;modal.classList.add("show");document.body.classList.add("modal-open")}
+function closeModal(id){const modal=$(id);if(!modal)return;modal.classList.remove("show");if(document.querySelectorAll(".modal.show").length===0)document.body.classList.remove("modal-open")}
+function makeCode(){const chars="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";let random="";for(let i=0;i<6;i++)random+=chars.charAt(Math.floor(Math.random()*chars.length));return`MB26-${random}`}
+ 
+const questions=[
 "Kamu melihat ada masalah di lingkunganmu yang sudah sering dibicarakan. Beberapa orang bahkan sudah pernah mencoba membuat kegiatan untuk mengatasinya, tetapi hasilnya tidak bertahan lama. Kamu belum terlalu memahami masalah tersebut.",
-
 "Kamu mendapatkan informasi yang menurutmu penting. Informasi tersebut berasal dari seseorang yang cukup kamu percaya, tetapi kamu belum menemukan sumber aslinya. Di sisi lain, informasi itu sedang dibicarakan banyak orang.",
-
 "Dalam sebuah kelompok pertemanan, muncul ide membuat kegiatan untuk masyarakat. Semua orang terlihat antusias, tetapi belum ada yang membicarakan siapa yang akan mengerjakan apa. Kamu bukan orang yang mengusulkan ide tersebut.",
-
 "Kamu sedang berdiskusi dengan seseorang yang memiliki pandangan sangat berbeda denganmu. Setelah mendengarkan penjelasannya, kamu menemukan bahwa sebagian alasannya ternyata masuk akal.",
-
 "Kamu diberi kesempatan ikut dalam sebuah kegiatan yang cukup populer. Kamu tertarik, tetapi setelah mengetahui lebih jauh, ternyata peran yang ditawarkan kepadamu cukup kecil dan tidak terlalu terlihat.",
-
 "Seorang teman mengajakmu melakukan sesuatu yang menurutmu sebenarnya baik, tetapi caranya berpotensi menimbulkan masalah bagi orang lain. Dia mengatakan, ‘Yang penting hasil akhirnya bagus.’",
-
 "Kamu memiliki ide yang menurutmu dapat menyelesaikan sebuah masalah. Namun ketika kamu menceritakannya, seseorang menunjukkan kelemahan yang sebelumnya tidak kamu pikirkan.",
-
 "Kamu melihat seseorang yang menurutmu memiliki kemampuan bagus, tetapi dia jarang mendapatkan kesempatan karena tidak terlalu aktif mencari perhatian. Sementara itu, ada orang lain yang lebih sering tampil meskipun kontribusinya belum tentu lebih besar.",
-
 "Kamu harus memilih antara dua kegiatan pada waktu yang sama. Kegiatan pertama menarik, banyak temanmu hadir, dan kamu mungkin mendapat pengalaman baru. Kegiatan kedua lebih sederhana, tetapi ada orang yang memang mengandalkan kehadiranmu.",
-
 "Setelah beberapa waktu terlibat dalam sebuah kegiatan, kamu menyadari bahwa kenyataan yang kamu temui ternyata berbeda dengan bayanganmu ketika pertama kali ikut. Tidak semuanya sesuai dengan harapanmu."
-
 ];
 
-
-const options = [
-
-[
-"Mencari tahu kenapa upaya sebelumnya tidak bertahan sebelum memutuskan perlu melakukan sesuatu.",
-
-"Mengajak beberapa orang mencoba pendekatan berbeda karena masalahnya sudah cukup lama.",
-
-"Mencari orang yang lebih memahami persoalan tersebut lalu melihat apakah ada hal yang bisa kamu bantu.",
-
-"Mengamati terlebih dahulu apakah masalah tersebut memang membutuhkan keterlibatanmu."
-],
-
-[
-"Menyimpannya terlebih dahulu sambil mencari sumber yang dapat mengonfirmasi informasi tersebut.",
-
-"Membagikannya kepada orang terdekat dengan menjelaskan bahwa informasinya belum terverifikasi.",
-
-"Mencari informasi pembanding terlebih dahulu, terutama dari sumber yang berbeda.",
-
-"Menunggu sampai ada pihak yang memiliki kapasitas lebih besar untuk memastikan kebenarannya."
-],
-
-[
-"Menunggu pembagian tugas karena bukan pengusul kegiatan.",
-
-"Menanyakan bagian mana yang paling membutuhkan bantuan sebelum menentukan keterlibatanmu.",
-
-"Mengusulkan pembagian tugas agar pembicaraan tidak berhenti di tahap ide.",
-
-"Melihat terlebih dahulu seberapa serius orang-orang yang mengusulkan kegiatan tersebut."
-],
-
-[
-"Mempertahankan pendapat utama sambil mengakui bahwa ada bagian dari argumennya yang masuk akal.",
-
-"Mengubah pendapat jika alasan yang diberikan memang membuat pandanganmu sebelumnya tidak lagi kuat.",
-
-"Mengambil bagian yang menurutmu benar dari kedua pandangan dan mencari kemungkinan ketiga.",
-
-"Menunda kesimpulan karena kamu merasa masih membutuhkan informasi tambahan."
-],
-
-[
-"Tetap ikut jika pengalaman dan orang-orang yang ditemui bisa memberikan sesuatu yang berarti.",
-
-"Mempertimbangkan apakah kontribusimu benar-benar dibutuhkan sebelum menerima.",
-
-"Menerima terlebih dahulu karena kesempatan seperti itu belum tentu datang dua kali.",
-
-"Menolak jika menurutmu peran tersebut tidak memberi ruang untuk memberikan kontribusi yang berarti."
-],
-
-[
-"Menanyakan apakah ada cara lain untuk mencapai hasil yang sama dengan risiko lebih kecil.",
-
-"Tetap mendukung selama dampak akhirnya lebih banyak membawa manfaat.",
-
-"Menyampaikan keberatan dan melihat apakah cara tersebut dapat diperbaiki.",
-
-"Mempertimbangkan situasinya terlebih dahulu sebelum menentukan apakah caranya memang bermasalah."
-],
-
-[
-"Mempertahankan ide tersebut sambil mencari cara mengatasi kelemahannya.",
-
-"Menganggap kritik tersebut sebagai bahan untuk menguji kembali apakah idemu memang layak.",
-
-"Mengubah bagian yang bermasalah tanpa meninggalkan tujuan awal.",
-
-"Menunda ide tersebut sampai kamu memiliki informasi yang lebih lengkap."
-],
-
-[
-"Kesempatan memang sering diberikan kepada orang yang terlihat aktif.",
-
-"Kemampuan seseorang seharusnya tetap dipertimbangkan meskipun dia tidak banyak tampil.",
-
-"Orang yang ingin mendapat kesempatan juga perlu menunjukkan kemampuannya.",
-
-"Sulit menilai seseorang hanya dari seberapa sering dia terlihat."
-],
-
-[
-"Seberapa besar dampak jika kamu tidak hadir di masing-masing kegiatan.",
-
-"Mana yang lebih sesuai dengan tujuan yang sedang ingin kamu capai.",
-
-"Apakah orang yang membutuhkanmu masih memiliki alternatif lain.",
-
-"Seberapa besar manfaat yang bisa kamu dapatkan dari masing-masing kegiatan."
-],
-
-[
-"Mencari tahu apakah perbedaan tersebut merupakan bagian normal dari proses atau ada sesuatu yang memang perlu diperbaiki.",
-
-"Menyesuaikan ekspektasi karena pengalaman langsung memang berbeda dengan bayangan awal.",
-
-"Membicarakan hal tersebut dengan orang lain untuk mengetahui apakah mereka merasakan hal yang sama.",
-
-"Menilai kembali apakah kegiatan tersebut masih sesuai dengan alasan awal kamu memilih terlibat."
-]
-
+const options=[
+["Mencari tahu kenapa upaya sebelumnya tidak bertahan sebelum memutuskan perlu melakukan sesuatu.","Mengajak beberapa orang mencoba pendekatan berbeda karena masalahnya sudah cukup lama.","Mencari orang yang lebih memahami persoalan tersebut lalu melihat apakah ada hal yang bisa kamu bantu.","Mengamati terlebih dahulu apakah masalah tersebut memang membutuhkan keterlibatanmu."],
+["Menyimpannya terlebih dahulu sambil mencari sumber yang dapat mengonfirmasi informasi tersebut.","Membagikannya kepada orang terdekat dengan menjelaskan bahwa informasinya belum terverifikasi.","Mencari informasi pembanding terlebih dahulu, terutama dari sumber yang berbeda.","Menunggu sampai ada pihak yang memiliki kapasitas lebih besar untuk memastikan kebenarannya."],
+["Menunggu pembagian tugas karena bukan pengusul kegiatan.","Menanyakan bagian mana yang paling membutuhkan bantuan sebelum menentukan keterlibatanmu.","Mengusulkan pembagian tugas agar pembicaraan tidak berhenti di tahap ide.","Melihat terlebih dahulu seberapa serius orang-orang yang mengusulkan kegiatan tersebut."],
+["Mempertahankan pendapat utama sambil mengakui bahwa ada bagian dari argumennya yang masuk akal.","Mengubah pendapat jika alasan yang diberikan memang membuat pandanganmu sebelumnya tidak lagi kuat.","Mengambil bagian yang menurutmu benar dari kedua pandangan dan mencari kemungkinan ketiga.","Menunda kesimpulan karena kamu merasa masih membutuhkan informasi tambahan."],
+["Tetap ikut jika pengalaman dan orang-orang yang ditemui bisa memberikan sesuatu yang berarti.","Mempertimbangkan apakah kontribusimu benar-benar dibutuhkan sebelum menerima.","Menerima terlebih dahulu karena kesempatan seperti itu belum tentu datang dua kali.","Menolak jika menurutmu peran tersebut tidak memberi ruang untuk memberikan kontribusi yang berarti."],
+["Menanyakan apakah ada cara lain untuk mencapai hasil yang sama dengan risiko lebih kecil.","Tetap mendukung selama dampak akhirnya lebih banyak membawa manfaat.","Menyampaikan keberatan dan melihat apakah cara tersebut dapat diperbaiki.","Mempertimbangkan situasinya terlebih dahulu sebelum menentukan apakah caranya memang bermasalah."],
+["Mempertahankan ide tersebut sambil mencari cara mengatasi kelemahannya.","Menganggap kritik tersebut sebagai bahan untuk menguji kembali apakah idemu memang layak.","Mengubah bagian yang bermasalah tanpa meninggalkan tujuan awal.","Menunda ide tersebut sampai kamu memiliki informasi yang lebih lengkap."],
+["Kesempatan memang sering diberikan kepada orang yang terlihat aktif.","Kemampuan seseorang seharusnya tetap dipertimbangkan meskipun dia tidak banyak tampil.","Orang yang ingin mendapat kesempatan juga perlu menunjukkan kemampuannya.","Sulit menilai seseorang hanya dari seberapa sering dia terlihat."],
+["Seberapa besar dampak jika kamu tidak hadir di masing-masing kegiatan.","Mana yang lebih sesuai dengan tujuan yang sedang ingin kamu capai.","Apakah orang yang membutuhkanmu masih memiliki alternatif lain.","Seberapa besar manfaat yang bisa kamu dapatkan dari masing-masing kegiatan."],
+["Mencari tahu apakah perbedaan tersebut merupakan bagian normal dari proses atau ada sesuatu yang memang perlu diperbaiki.","Menyesuaikan ekspektasi karena pengalaman langsung memang berbeda dengan bayangan awal.","Membicarakan hal tersebut dengan orang lain untuk mengetahui apakah mereka merasakan hal yang sama.","Menilai kembali apakah kegiatan tersebut masih sesuai dengan alasan awal kamu memilih terlibat."]
 ];
 
-
-const quizWeights = [
-
-[
-{leadership:7,critical:10,initiative:8,collaboration:7,social:9,decision:10,score:9},
-{leadership:10,critical:7,initiative:10,collaboration:9,social:9,decision:7,score:10},
-{leadership:7,critical:8,initiative:7,collaboration:10,social:10,decision:8,score:9},
-{leadership:5,critical:9,initiative:5,collaboration:6,social:7,decision:10,score:8}
-],
-
-[
-{leadership:7,critical:10,initiative:6,collaboration:7,social:8,decision:10,score:10},
-{leadership:6,critical:6,initiative:7,collaboration:8,social:7,decision:5,score:7},
-{leadership:7,critical:10,initiative:7,collaboration:6,social:8,decision:9,score:10},
-{leadership:6,critical:7,initiative:4,collaboration:7,social:7,decision:8,score:8}
-],
-
-[
-{leadership:5,critical:6,initiative:4,collaboration:7,social:7,decision:6,score:7},
-{leadership:7,critical:8,initiative:7,collaboration:10,social:9,decision:8,score:9},
-{leadership:10,critical:7,initiative:10,collaboration:9,social:8,decision:8,score:10},
-{leadership:7,critical:8,initiative:6,collaboration:6,social:7,decision:9,score:8}
-],
-
-[
-{leadership:8,critical:8,initiative:7,collaboration:8,social:7,decision:8,score:9},
-{leadership:7,critical:10,initiative:6,collaboration:7,social:6,decision:10,score:10},
-{leadership:9,critical:9,initiative:8,collaboration:10,social:8,decision:9,score:10},
-{leadership:5,critical:10,initiative:4,collaboration:6,social:6,decision:10,score:8}
-],
-
-[
-{leadership:7,critical:7,initiative:8,collaboration:7,social:6,decision:7,score:9},
-{leadership:7,critical:9,initiative:6,collaboration:9,social:8,decision:10,score:10},
-{leadership:8,critical:6,initiative:9,collaboration:7,social:5,decision:6,score:8},
-{leadership:6,critical:8,initiative:6,collaboration:5,social:6,decision:9,score:7}
-],
-
-[
-{leadership:8,critical:10,initiative:7,collaboration:8,social:10,decision:10,score:10},
-{leadership:6,critical:6,initiative:7,collaboration:7,social:8,decision:5,score:7},
-{leadership:8,critical:8,initiative:6,collaboration:9,social:9,decision:9,score:9},
-{leadership:6,critical:9,initiative:5,collaboration:7,social:8,decision:10,score:8}
-],
-
-[
-{leadership:9,critical:8,initiative:9,collaboration:7,social:7,decision:8,score:9},
-{leadership:7,critical:10,initiative:6,collaboration:8,social:7,decision:10,score:10},
-{leadership:8,critical:9,initiative:8,collaboration:9,social:7,decision:9,score:10},
-{leadership:5,critical:10,initiative:5,collaboration:6,social:6,decision:10,score:8}
-],
-
-[
-{leadership:7,critical:7,initiative:7,collaboration:6,social:7,decision:6,score:8},
-{leadership:8,critical:9,initiative:6,collaboration:7,social:9,decision:8,score:9},
-{leadership:8,critical:7,initiative:8,collaboration:8,social:7,decision:7,score:9},
-{leadership:6,critical:10,initiative:5,collaboration:7,social:8,decision:9,score:8}
-],
-
-[
-{leadership:9,critical:9,initiative:8,collaboration:8,social:10,decision:10,score:10},
-{leadership:7,critical:8,initiative:8,collaboration:7,social:8,decision:9,score:9},
-{leadership:6,critical:9,initiative:6,collaboration:9,social:10,decision:10,score:9},
-{leadership:8,critical:8,initiative:7,collaboration:6,social:7,decision:8,score:8}
-],
-
-[
-{leadership:8,critical:10,initiative:8,collaboration:7,social:8,decision:10,score:10},
-{leadership:6,critical:8,initiative:6,collaboration:7,social:7,decision:8,score:8},
-{leadership:7,critical:8,initiative:6,collaboration:10,social:9,decision:7,score:9},
-{leadership:8,critical:9,initiative:8,collaboration:6,social:8,decision:9,score:9}
-]
-
+const quizWeights=[
+[{leadership:7,critical:10,initiative:8,collaboration:7,social:9,decision:10,score:9},{leadership:10,critical:7,initiative:10,collaboration:9,social:9,decision:7,score:10},{leadership:7,critical:8,initiative:7,collaboration:10,social:10,decision:8,score:9},{leadership:5,critical:9,initiative:5,collaboration:6,social:7,decision:10,score:8}],
+[{leadership:7,critical:10,initiative:6,collaboration:7,social:8,decision:10,score:10},{leadership:6,critical:6,initiative:7,collaboration:8,social:7,decision:5,score:7},{leadership:7,critical:10,initiative:7,collaboration:6,social:8,decision:9,score:10},{leadership:6,critical:7,initiative:4,collaboration:7,social:7,decision:8,score:8}],
+[{leadership:5,critical:6,initiative:4,collaboration:7,social:7,decision:6,score:7},{leadership:7,critical:8,initiative:7,collaboration:10,social:9,decision:8,score:9},{leadership:10,critical:7,initiative:10,collaboration:9,social:8,decision:8,score:10},{leadership:7,critical:8,initiative:6,collaboration:6,social:7,decision:9,score:8}],
+[{leadership:8,critical:8,initiative:7,collaboration:8,social:7,decision:8,score:9},{leadership:7,critical:10,initiative:6,collaboration:7,social:6,decision:10,score:10},{leadership:9,critical:9,initiative:8,collaboration:10,social:8,decision:9,score:10},{leadership:5,critical:10,initiative:4,collaboration:6,social:6,decision:10,score:8}],
+[{leadership:7,critical:7,initiative:8,collaboration:7,social:6,decision:7,score:9},{leadership:7,critical:9,initiative:6,collaboration:9,social:8,decision:10,score:10},{leadership:8,critical:6,initiative:9,collaboration:7,social:5,decision:6,score:8},{leadership:6,critical:8,initiative:6,collaboration:5,social:6,decision:9,score:7}],
+[{leadership:8,critical:10,initiative:7,collaboration:8,social:10,decision:10,score:10},{leadership:6,critical:6,initiative:7,collaboration:7,social:8,decision:5,score:7},{leadership:8,critical:8,initiative:6,collaboration:9,social:9,decision:9,score:9},{leadership:6,critical:9,initiative:5,collaboration:7,social:8,decision:10,score:8}],
+[{leadership:9,critical:8,initiative:9,collaboration:7,social:7,decision:8,score:9},{leadership:7,critical:10,initiative:6,collaboration:8,social:7,decision:10,score:10},{leadership:8,critical:9,initiative:8,collaboration:9,social:7,decision:9,score:10},{leadership:5,critical:10,initiative:5,collaboration:6,social:6,decision:10,score:8}],
+[{leadership:7,critical:7,initiative:7,collaboration:6,social:7,decision:6,score:8},{leadership:8,critical:9,initiative:6,collaboration:7,social:9,decision:8,score:9},{leadership:8,critical:7,initiative:8,collaboration:8,social:7,decision:7,score:9},{leadership:6,critical:10,initiative:5,collaboration:7,social:8,decision:9,score:8}],
+[{leadership:9,critical:9,initiative:8,collaboration:8,social:10,decision:10,score:10},{leadership:7,critical:8,initiative:8,collaboration:7,social:8,decision:9,score:9},{leadership:6,critical:9,initiative:6,collaboration:9,social:10,decision:10,score:9},{leadership:8,critical:8,initiative:7,collaboration:6,social:7,decision:8,score:8}],
+[{leadership:8,critical:10,initiative:8,collaboration:7,social:8,decision:10,score:10},{leadership:6,critical:8,initiative:6,collaboration:7,social:7,decision:8,score:8},{leadership:7,critical:8,initiative:6,collaboration:10,social:9,decision:7,score:9},{leadership:8,critical:9,initiative:8,collaboration:6,social:8,decision:9,score:9}]
 ];
 
-
-function calculateQuizProfileFromAnswers() {
-
-const totals = {
-leadership:0,
-critical:0,
-initiative:0,
-collaboration:0,
-social:0,
-decision:0
-};
-
-let score = 0;
-
-const answers = [];
-
-for (
-let i = 0;
-i < questions.length;
-i++
-) {
-
-const optionIndex =
-quizAnswers[i];
-
-if (
-optionIndex === null ||
-optionIndex === undefined
-) {
-return null;
+function calculateQuizProfileFromAnswers(){
+const totals={leadership:0,critical:0,initiative:0,collaboration:0,social:0,decision:0};let score=0;const answers=[];
+for(let i=0;i<questions.length;i++){const optionIndex=quizAnswers[i];if(optionIndex===null||optionIndex===undefined)return null;const weight=quizWeights[i][optionIndex];score+=Number(weight.score);Object.keys(totals).forEach(key=>totals[key]+=Number(weight[key]));answers.push({question:questions[i],answer:options[i][optionIndex],option:optionIndex})}
+const profile={};Object.keys(totals).forEach(key=>profile[key]=Math.round(totals[key]/(questions.length*10)*100));return{score,profile,answers}
+}
+function profileLevel(value){if(value>=85)return"Sangat menonjol";if(value>=75)return"Menonjol";if(value>=65)return"Cukup kuat";if(value>=55)return"Cukup";return"Perlu dikembangkan"}
+function generateProfileConclusion(profile){
+const labels={leadership:"kepemimpinan",critical:"cara berpikir kritis",initiative:"inisiatif",collaboration:"kolaborasi",social:"kepedulian sosial",decision:"pengambilan keputusan"};
+const ranked=Object.entries(profile).sort((a,b)=>b[1]-a[1]);const top=ranked[0],second=ranked[1],lower=ranked[ranked.length-1];
+const intro=`Berdasarkan pola respons pada The Quiz, peserta menunjukkan kecenderungan yang paling menonjol pada aspek ${labels[top[0]]} (${top[1]}/100) dan ${labels[second[0]]} (${second[1]}/100).`;
+const map={leadership:"Peserta cenderung nyaman mengambil tanggung jawab ketika situasi membutuhkan arah atau keputusan.",critical:"Peserta cenderung tidak terburu-buru menerima informasi dan mempertimbangkan konteks sebelum menyimpulkan.",initiative:"Peserta cenderung melihat ruang untuk bergerak dan mencari cara agar ide tidak berhenti pada pembicaraan.",collaboration:"Peserta cenderung mempertimbangkan perspektif orang lain dan mencari titik temu ketika menghadapi perbedaan.",social:"Peserta cenderung mempertimbangkan kebutuhan, dampak, dan kondisi orang lain ketika melihat sebuah persoalan.",decision:"Peserta cenderung mempertimbangkan konsekuensi dan informasi yang tersedia sebelum menentukan langkah."};
+const closing=`Aspek yang relatif lebih rendah pada pemetaan ini adalah ${labels[lower[0]]} (${lower[1]}/100), sehingga dapat menjadi area yang menarik untuk dikembangkan melalui pengalaman dan proses belajar.`;
+return`${intro} ${map[top[0]]} ${map[second[0]]} ${closing}`
+}
+function profileHTML(profile){
+const items=[["Leadership Tendency","leadership"],["Critical Thinking","critical"],["Initiative","initiative"],["Collaboration","collaboration"],["Social Awareness","social"],["Decision Making","decision"]];
+return`<div class="doc-box"><div class="number">PROFIL KECENDERUNGAN</div>${items.map(([label,key])=>`<p style="margin:7px 0"><b>${label}:</b> ${profile[key]}/100 — ${profileLevel(profile[key])}</p>`).join("")}<div style="margin-top:14px;padding-top:14px;border-top:1px solid #27272a"><p><b>Kesimpulan:</b> ${escapeHTML(generateProfileConclusion(profile))}</p><p class="helper" style="margin-top:10px">Profil ini merupakan gambaran berdasarkan pola respons pada quiz, bukan penilaian mutlak terhadap karakter peserta.</p></div></div>`
 }
 
-const weight =
-quizWeights[i][optionIndex];
-
-score += Number(weight.score);
-
-Object.keys(totals).forEach(key => {
-
-totals[key] += Number(weight[key]);
-
-});
-
-answers.push({
-
-question:
-questions[i],
-
-answer:
-options[i][optionIndex],
-
-option:
-optionIndex
-
-});
-
+function resetQuizState(){
+quizCurrentIndex=0;quizAnswers=Array(questions.length).fill(null);quizStarted=false;
+$("quizStartScreen").classList.remove("hidden");$("quizPlayScreen").classList.add("hidden");$("quizNextBtn").disabled=true;$("quizNextBtn").textContent="LANJUT →";$("quizQuestions").innerHTML="";$("quizProgress").textContent=`PERTANYAAN 1 / ${questions.length}`;notice("quizNotice","")
+}
+function startQuiz(){quizStarted=true;quizCurrentIndex=0;quizAnswers=Array(questions.length).fill(null);$("quizStartScreen").classList.add("hidden");$("quizPlayScreen").classList.remove("hidden");renderCurrentQuestion()}
+function renderCurrentQuestion(){
+const index=quizCurrentIndex;$("quizProgress").textContent=`PERTANYAAN ${index+1} / ${questions.length}`;$("quizNextBtn").disabled=true;$("quizNextBtn").textContent=index===questions.length-1?"SELESAI & KIRIM →":"LANJUT →";
+$("quizQuestions").innerHTML=`<div class="quiz-question" style="margin-bottom:0"><p>${index+1}. ${escapeHTML(questions[index])}</p><div class="quiz-options">${options[index].map((option,optionIndex)=>`<label data-option="${optionIndex}"><input type="radio" name="currentQuizAnswer" value="${optionIndex}"><span>${escapeHTML(option)}</span></label>`).join("")}</div></div>`
+}
+function lockCurrentAnswer(){
+const selected=$("quizQuestions").querySelector('input[name="currentQuizAnswer"]:checked');
+if(!selected){notice("quizNotice","Pilih satu jawaban terlebih dahulu.","error");return false}
+const selectedIndex=Number(selected.value);quizAnswers[quizCurrentIndex]=selectedIndex;
+$("quizQuestions").querySelectorAll('input[name="currentQuizAnswer"]').forEach(input=>input.disabled=true);
+$("quizQuestions").querySelectorAll("label").forEach(label=>label.classList.add("quiz-choice-locked"));
+const selectedLabel=selected.closest("label");if(selectedLabel)selectedLabel.classList.add("quiz-option-selected");
+return true
+}
+function validateStructureAndRegion(){
+const structure=$("struktur").value,region=$("wilayah").value;
+if(structure==="DPW"&&region!=="Makassar"){notice("registerNotice","Pendaftar DPW wajib berdomisili di Kota Makassar.","error");return false}
+return true
 }
 
-const profile = {};
-
-Object.keys(totals).forEach(key => {
-
-profile[key] =
-Math.round(
-(totals[key] /
-(questions.length * 10)) *
-100
-);
-
-});
-
-return {
-score,
-profile,
-answers
-};
-
+function prepareFile(id,jenis){
+const file=$(id).files?.[0];if(!file)return{ok:false,message:`Dokumen ${jenis} wajib diunggah.`};
+const max=jenis==="Foto"?MAX_PHOTO_SIZE:MAX_FILE_SIZE;
+if(file.size>max)return{ok:false,message:`Ukuran ${jenis} terlalu besar. Maksimal ${max/1024/1024} MB.`};
+if(!ALLOWED_FILE_TYPES.includes(file.type))return{ok:false,message:`Format ${jenis} tidak didukung. Gunakan JPG, PNG, atau PDF.`};
+return{ok:true,jenis,name:file.name,mimeType:file.type||"application/octet-stream",file}
 }
-
-
-function profileLevel(value) {
-
-if (value >= 85)
-return "Sangat menonjol";
-
-if (value >= 75)
-return "Menonjol";
-
-if (value >= 65)
-return "Cukup kuat";
-
-if (value >= 55)
-return "Cukup";
-
-return "Perlu dikembangkan";
-
+function safeFileName(name){return String(name||"file").replace(/[^a-zA-Z0-9._-]/g,"_").slice(-120)}
+function normalizeWhatsApp(value){let n=String(value||"").replace(/[^0-9]/g,"");if(n.startsWith("0"))n="62"+n.slice(1);if(!n.startsWith("62"))n="62"+n;return n}
+function validateWhatsApp(value){return/^62[0-9]{9,13}$/.test(normalizeWhatsApp(value))}
+async function uploadFileToStorage(participantId,fileInfo){
+const path=`${participantId}/${Date.now()}-${fileInfo.jenis.toLowerCase()}-${safeFileName(fileInfo.name)}`;
+const{error}=await db.storage.from(STORAGE_BUCKET).upload(path,fileInfo.file,{cacheControl:"3600",upsert:false,contentType:fileInfo.mimeType});
+if(error)throw new Error(`Upload ${fileInfo.jenis} gagal: ${error.message}`);
+return{...fileInfo,storage_path:path}
 }
-
-
-function generateProfileConclusion(profile) {
-
-const labels = {
-
-leadership:"kepemimpinan",
-critical:"cara berpikir kritis",
-initiative:"inisiatif",
-collaboration:"kolaborasi",
-social:"kepedulian sosial",
-decision:"pengambilan keputusan"
-
-};
-
-const ranked =
-Object.entries(profile)
-.sort((a,b) => b[1] - a[1]);
-
-const top =
-ranked[0];
-
-const second =
-ranked[1];
-
-const lower =
-ranked[ranked.length - 1];
-
-const intro =
-`Berdasarkan pola respons pada The Quiz, peserta menunjukkan kecenderungan yang paling menonjol pada aspek ${labels[top[0]]} (${top[1]}/100) dan ${labels[second[0]]} (${second[1]}/100).`;
-
-const map = {
-
-leadership:
-"Peserta cenderung nyaman mengambil tanggung jawab ketika situasi membutuhkan arah atau keputusan.",
-
-critical:
-"Peserta cenderung tidak terburu-buru menerima informasi dan mempertimbangkan konteks sebelum menyimpulkan.",
-
-initiative:
-"Peserta cenderung melihat ruang untuk bergerak dan mencari cara agar ide tidak berhenti pada pembicaraan.",
-
-collaboration:
-"Peserta cenderung mempertimbangkan perspektif orang lain dan mencari titik temu ketika menghadapi perbedaan.",
-
-social:
-"Peserta cenderung mempertimbangkan kebutuhan, dampak, dan kondisi orang lain ketika melihat sebuah persoalan.",
-
-decision:
-"Peserta cenderung mempertimbangkan konsekuensi dan informasi yang tersedia sebelum menentukan langkah."
-
-};
-
-const closing =
-`Aspek yang relatif lebih rendah pada pemetaan ini adalah ${labels[lower[0]]} (${lower[1]}/100), sehingga dapat menjadi area yang menarik untuk dikembangkan melalui pengalaman dan proses belajar.`;
-
-return `${intro} ${map[top[0]]} ${map[second[0]]} ${closing}`;
-
-}
-
-
-function profileHTML(profile) {
-
-const items = [
-
-["Leadership Tendency","leadership"],
-["Critical Thinking","critical"],
-["Initiative","initiative"],
-["Collaboration","collaboration"],
-["Social Awareness","social"],
-["Decision Making","decision"]
-
-];
-
-return `
-<div class="doc-box">
-
-<div class="number">
-PROFIL KECENDERUNGAN
-</div>
-
-${items.map(([label,key]) => `
-<p style="margin:7px 0">
-<b>${label}:</b>
-${profile[key]}/100 —
-${profileLevel(profile[key])}
-</p>
-`).join("")}
-
-<div
-style="margin-top:14px;padding-top:14px;border-top:1px solid #27272a"
->
-
-<p>
-<b>Kesimpulan:</b>
-${escapeHTML(generateProfileConclusion(profile))}
-</p>
-
-<p
-class="helper"
-style="margin-top:10px"
->
-Profil ini merupakan gambaran berdasarkan pola respons pada quiz, bukan penilaian mutlak terhadap karakter peserta.
-</p>
-
-</div>
-
-</div>
-`;
-
-}
-
 
 /* =========================================================
-   QUIZ FLOW
+   REGISTRATION — RPC VERSION
    ========================================================= */
 
-function resetQuizState() {
+async function submitRegistration(){
 
-quizCurrentIndex = 0;
+notice("quizNotice","Menyimpan data pendaftaran...","info");
 
-quizAnswers =
-Array(questions.length).fill(null);
+const code=makeCode();
 
-quizStarted = false;
-
-$("quizStartScreen")
-.classList.remove("hidden");
-
-$("quizPlayScreen")
-.classList.add("hidden");
-
-$("quizNextBtn").disabled = true;
-
-$("quizNextBtn").textContent =
-"LANJUT →";
-
-$("quizQuestions").innerHTML = "";
-
-$("quizProgress").textContent =
-`PERTANYAAN 1 / ${questions.length}`;
-
-notice(
-"quizNotice",
-""
-);
-
-}
-
-
-function startQuiz() {
-
-quizStarted = true;
-
-quizCurrentIndex = 0;
-
-quizAnswers =
-Array(questions.length).fill(null);
-
-$("quizStartScreen")
-.classList.add("hidden");
-
-$("quizPlayScreen")
-.classList.remove("hidden");
-
-renderCurrentQuestion();
-
-}
-
-
-function renderCurrentQuestion() {
-
-const index =
-quizCurrentIndex;
-
-$("quizProgress").textContent =
-`PERTANYAAN ${index + 1} / ${questions.length}`;
-
-$("quizNextBtn").disabled = true;
-
-$("quizNextBtn").textContent =
-index === questions.length - 1
-? "SELESAI & KIRIM →"
-: "LANJUT →";
-
-$("quizQuestions").innerHTML = `
-
-<div
-class="quiz-question"
-style="margin-bottom:0"
->
-
-<p>
-${index + 1}.
-${escapeHTML(questions[index])}
-</p>
-
-<div class="quiz-options">
-
-${options[index].map(
-(option,optionIndex) => `
-
-<label data-option="${optionIndex}">
-
-<input
-type="radio"
-name="currentQuizAnswer"
-value="${optionIndex}"
->
-
-<span>
-${escapeHTML(option)}
-</span>
-
-</label>
-
-`
-).join("")}
-
-</div>
-
-</div>
-
-`;
-
-}
-
-
-function lockCurrentAnswer() {
-
-const selected =
-$("quizQuestions")
-.querySelector(
-'input[name="currentQuizAnswer"]:checked'
-);
-
-if (!selected) {
-
-notice(
-"quizNotice",
-"Pilih satu jawaban terlebih dahulu.",
-"error"
-);
-
-return false;
-
-}
-
-const selectedIndex =
-Number(selected.value);
-
-quizAnswers[quizCurrentIndex] =
-selectedIndex;
-
-$("quizQuestions")
-.querySelectorAll(
-'input[name="currentQuizAnswer"]'
-)
-.forEach(input => {
-
-input.disabled = true;
-
-});
-
-$("quizQuestions")
-.querySelectorAll("label")
-.forEach(label => {
-
-label.classList.add(
-"quiz-choice-locked"
-);
-
-});
-
-const selectedLabel =
-selected.closest("label");
-
-if (selectedLabel) {
-
-selectedLabel.classList.add(
-"quiz-option-selected"
-);
-
-}
-
-return true;
-
-}
-
-
-function validateStructureAndRegion() {
-
-const structure =
-$("struktur").value;
-
-const region =
-$("wilayah").value;
-
-if (
-structure === "DPW" &&
-region !== "Makassar"
-) {
-
-notice(
-"registerNotice",
-"Pendaftar DPW wajib berdomisili di Kota Makassar.",
-"error"
-);
-
-return false;
-
-}
-
-return true;
-
-}
-
-
-/* =========================================================
-   FILE
-   ========================================================= */
-
-function prepareFile(id,jenis) {
-
-const file =
-$(id).files?.[0];
-
-if (!file) {
-
-return {
-ok:false,
-message:`Dokumen ${jenis} wajib diunggah.`
-};
-
-}
-
-const max =
-jenis === "Foto"
-? MAX_PHOTO_SIZE
-: MAX_FILE_SIZE;
-
-if (file.size > max) {
-
-return {
-ok:false,
-message:`Ukuran ${jenis} terlalu besar. Maksimal ${max / 1024 / 1024} MB.`
-};
-
-}
-
-if (!ALLOWED_FILE_TYPES.includes(file.type)) {
-
-return {
-ok:false,
-message:`Format ${jenis} tidak didukung. Gunakan JPG, PNG, atau PDF.`
-};
-
-}
-
-return {
-
-ok:true,
-
-jenis,
-
-name:file.name,
-
-mimeType:
-file.type ||
-"application/octet-stream",
-
-file
-
-};
-
-}
-
-
-function safeFileName(name) {
-
-return String(name || "file")
-.replace(/[^a-zA-Z0-9._-]/g,"_")
-.slice(-120);
-
-}
-
-
-function normalizeWhatsApp(value) {
-
-let n =
-String(value || "")
-.replace(/[^0-9]/g,"");
-
-if (n.startsWith("0"))
-n = "62" + n.slice(1);
-
-if (!n.startsWith("62"))
-n = "62" + n;
-
-return n;
-
-}
-
-
-function validateWhatsApp(value) {
-
-const n =
-normalizeWhatsApp(value);
-
-return /^62[0-9]{9,13}$/.test(n);
-
-}
-
-
-async function uploadFileToStorage(
-participantId,
-fileInfo
-) {
-
-const path =
-`${participantId}/${Date.now()}-${fileInfo.jenis.toLowerCase()}-${safeFileName(fileInfo.name)}`;
-
-const {
-error
-} =
-await db.storage
-.from(STORAGE_BUCKET)
-.upload(
-path,
-fileInfo.file,
-{
-cacheControl:"3600",
-upsert:false,
-contentType:fileInfo.mimeType
-}
-);
-
-if (error) {
-
-throw new Error(
-`Upload ${fileInfo.jenis} gagal: ${error.message}`
-);
-
-}
-
-return {
-
-...fileInfo,
-
-storage_path:path
-
-};
-
-}
-
-
-/* =========================================================
-   REGISTRATION
-   ========================================================= */
-
-async function submitRegistration() {
-
-notice(
-"quizNotice",
-"Menyimpan data pendaftaran...",
-"info"
-);
-
-const code =
-makeCode();
-
-const payload = {
-
+const payload={
 kode_peserta:code,
-
-nama_lengkap:
-pendingRegistration.nama,
-
-nomor_whatsapp:
-pendingRegistration.whatsapp,
-
-email:
-pendingRegistration.email,
-
-tanggal_lahir:
-pendingRegistration.tanggal_lahir,
-
-pendidikan_pekerjaan:
-pendingRegistration.pendidikan,
-
-struktur_pilihan:
-pendingRegistration.struktur,
-
-wilayah_domisili:
-pendingRegistration.wilayah,
-
-pengalaman_organisasi:
-pendingRegistration.pengalaman,
-
-motivasi:
-pendingRegistration.motivasi,
-
-skor_quiz:
-pendingRegistration.skor,
-
+nama_lengkap:pendingRegistration.nama,
+nomor_whatsapp:pendingRegistration.whatsapp,
+email:pendingRegistration.email,
+tanggal_lahir:pendingRegistration.tanggal_lahir,
+pendidikan_pekerjaan:pendingRegistration.pendidikan,
+struktur_pilihan:pendingRegistration.struktur,
+wilayah_domisili:pendingRegistration.wilayah,
+pengalaman_organisasi:pendingRegistration.pengalaman,
+motivasi:pendingRegistration.motivasi,
+skor_quiz:pendingRegistration.skor,
 jawaban_quiz:{
-answers:
-pendingRegistration.jawaban_quiz,
-
-profile:
-pendingRegistration.profile,
-
-profile_conclusion:
-generateProfileConclusion(
-pendingRegistration.profile
-)
+answers:pendingRegistration.jawaban_quiz,
+profile:pendingRegistration.profile,
+profile_conclusion:generateProfileConclusion(pendingRegistration.profile)
 },
-
 persetujuan_data:true,
-
-status_pendaftaran:
-"Menunggu Verifikasi",
-
-status_dokumen:
-"Belum Diverifikasi"
-
+status_pendaftaran:"Menunggu Verifikasi",
+status_dokumen:"Belum Diverifikasi"
 };
 
-try {
+try{
 
-const {
-data:participant,
-error
-} =
-await db
-.from("pendaftar")
-.insert(payload)
-.select("id")
-.single();
+const{data:participantId,error}=await db.rpc("daftar_peserta",{data:payload});
 
-if (error) {
-
-console.error(error);
-
-notice(
-"quizNotice",
-"Pendaftaran gagal: " +
-error.message,
-"error"
-);
-
-return;
-
+if(error){
+console.error("REGISTRATION RPC ERROR:",error);
+notice("quizNotice","Pendaftaran gagal: "+error.message,"error");
+return
 }
 
-let uploaded = [];
+if(!participantId){
+console.error("RPC tidak mengembalikan ID peserta.");
+notice("quizNotice","Pendaftaran gagal: ID peserta tidak diterima dari database.","error");
+return
+}
 
-try {
+const participant={id:participantId};
 
-notice(
-"quizNotice",
-"Mengupload KTP, CV, dan foto...",
-"info"
+let uploaded=[];
+
+try{
+
+notice("quizNotice","Mengupload KTP, CV, dan foto...","info");
+
+uploaded=await Promise.all(
+pendingRegistration.files.map(f=>uploadFileToStorage(participant.id,f))
 );
 
-uploaded =
-await Promise.all(
-pendingRegistration.files.map(
-f =>
-uploadFileToStorage(
-participant.id,
-f
-)
-)
-);
-
-const docs =
-uploaded.map(f => ({
-
-pendaftar_id:
-participant.id,
-
-jenis_dokumen:
-f.jenis,
-
-nama_file:
-f.name,
-
-storage_path:
-f.storage_path,
-
-status_dokumen:
-"Belum Diverifikasi"
-
+const docs=uploaded.map(f=>({
+pendaftar_id:participant.id,
+jenis_dokumen:f.jenis,
+nama_file:f.name,
+storage_path:f.storage_path,
+status_dokumen:"Belum Diverifikasi"
 }));
 
-const {
-error:docError
-} =
-await db
-.from("dokumen_pendaftar")
-.insert(docs);
+const{error:docError}=await db.from("dokumen_pendaftar").insert(docs);
 
-if (docError) {
-
-throw new Error(
-"Berkas berhasil diupload tetapi metadata gagal dicatat: " +
-docError.message
-);
-
+if(docError){
+throw new Error("Berkas berhasil diupload tetapi metadata gagal dicatat: "+docError.message)
 }
 
+}catch(uploadError){
+
+console.error("UPLOAD ERROR:",uploadError);
+
+if(uploaded.length){
+await db.storage.from(STORAGE_BUCKET).remove(uploaded.map(f=>f.storage_path))
 }
 
-catch (uploadError) {
+await db.from("pendaftar").update({
+status_pendaftaran:"Perlu Perbaikan",
+status_dokumen:"Perlu Perbaikan",
+catatan_admin:uploadError.message
+}).eq("id",participant.id);
 
-console.error(uploadError);
-
-if (uploaded.length) {
-
-await db.storage
-.from(STORAGE_BUCKET)
-.remove(
-uploaded.map(
-f => f.storage_path
-)
-);
-
+notice("quizNotice",uploadError.message,"error");
+return
 }
 
-await db
-.from("pendaftar")
-.update({
-
-status_pendaftaran:
-"Perlu Perbaikan",
-
-status_dokumen:
-"Perlu Perbaikan",
-
-catatan_admin:
-uploadError.message
-
-})
-.eq(
-"id",
-participant.id
-);
-
-notice(
-"quizNotice",
-uploadError.message,
-"error"
-);
-
-return;
-
-}
-
-lastRegisteredCode =
-code;
+lastRegisteredCode=code;
 
 closeModal("quizModal");
 
-$("successCode").textContent =
-code;
-
-$("successScore").textContent =
-`Skor quiz kamu: ${pendingRegistration.skor}/100`;
-
-$("successInterview").textContent =
-["Makassar","Gowa"]
-.includes(pendingRegistration.wilayah)
-?
-"Interview offline — 11 Oktober 2026"
-:
-"Interview online — 10 Oktober 2026";
+$("successCode").textContent=code;
+$("successScore").textContent=`Skor quiz kamu: ${pendingRegistration.skor}/100`;
+$("successInterview").textContent=["Makassar","Gowa"].includes(pendingRegistration.wilayah)?"Interview offline — 11 Oktober 2026":"Interview online — 10 Oktober 2026";
 
 openModal("successModal");
 
 $("registerForm").reset();
-
 $("quizForm").reset();
+pendingRegistration=null;
 
-pendingRegistration = null;
+}catch(error){
 
-}
-
-catch (error) {
-
-console.error(error);
-
-notice(
-"quizNotice",
-"Terjadi kesalahan: " +
-error.message,
-"error"
-);
+console.error("SUBMIT REGISTRATION ERROR:",error);
+notice("quizNotice","Terjadi kesalahan: "+error.message,"error");
 
 }
 
 }
 
+/* STATUS */
 
-/* =========================================================
-   STATUS
-   ========================================================= */
+async function checkStatus(code){
 
-async function checkStatus(code) {
+if(!code){notice("statusNotice","Masukkan kode peserta.","error");return}
 
-if (!code) {
+notice("statusNotice","Mengecek status...","info");
 
-notice(
-"statusNotice",
-"Masukkan kode peserta.",
-"error"
-);
+const{data,error}=await db.from("pendaftar").select("id,kode_peserta,nama_lengkap,struktur_pilihan,wilayah_domisili,skor_quiz,status_pendaftaran,status_dokumen,jadwal_interview,metode_interview,lokasi_interview,catatan_admin").eq("kode_peserta",code.trim().toUpperCase()).maybeSingle();
 
-return;
+if(error){notice("statusNotice",error.message,"error");return}
 
+if(!data){notice("statusNotice","Kode peserta tidak ditemukan.","error");$("statusResult").innerHTML="";return}
+
+const{data:docs,error:docsError}=await db.from("dokumen_pendaftar").select("jenis_dokumen,nama_file,status_dokumen,catatan").eq("pendaftar_id",data.id).order("jenis_dokumen");
+
+if(docsError){notice("statusNotice",docsError.message,"error");return}
+
+const docHtml=(docs||[]).map(d=>`<p style="margin:8px 0"><b>${escapeHTML(d.jenis_dokumen)}</b> — ${escapeHTML(d.status_dokumen||"Belum Diverifikasi")}${d.catatan?`<br><span class="helper">${escapeHTML(d.catatan)}</span>`:""}</p>`).join("");
+
+$("statusResult").innerHTML=`<div class="card" style="margin-top:15px"><div class="number">DATA PESERTA</div><h3>${escapeHTML(data.nama_lengkap)}</h3><p>Kode: ${escapeHTML(data.kode_peserta)}</p><p>Struktur: ${escapeHTML(data.struktur_pilihan)}</p><p>Wilayah: ${escapeHTML(data.wilayah_domisili)}</p><p>Skor Quiz: ${escapeHTML(data.skor_quiz)}</p><p>Status Pendaftaran: <b>${escapeHTML(data.status_pendaftaran)}</b></p><p>Status Dokumen: <b>${escapeHTML(data.status_dokumen)}</b></p><div class="doc-box"><div class="number">STATUS BERKAS</div>${docHtml||"<p>Belum ada data berkas.</p>"}</div><p>Jadwal Interview: ${escapeHTML(data.jadwal_interview||"Belum ditentukan")}</p><p>Metode: ${escapeHTML(data.metode_interview||"Belum ditentukan")}</p><p>Lokasi: ${escapeHTML(data.lokasi_interview||"Belum ditentukan")}</p><p>Catatan Admin: ${escapeHTML(data.catatan_admin||"Belum ada catatan")}</p></div>`;
+
+notice("statusNotice","Status berhasil ditemukan.","success")
 }
 
-notice(
-"statusNotice",
-"Mengecek status...",
-"info"
-);
+/* ADMIN */
 
-const {
-data,
-error
-} =
-await db
-.from("pendaftar")
-.select(
-"id,kode_peserta,nama_lengkap,struktur_pilihan,wilayah_domisili,skor_quiz,status_pendaftaran,status_dokumen,jadwal_interview,metode_interview,lokasi_interview,catatan_admin"
-)
-.eq(
-"kode_peserta",
-code.trim().toUpperCase()
-)
-.maybeSingle();
-
-if (error) {
-
-notice(
-"statusNotice",
-error.message,
-"error"
-);
-
-return;
-
+function statusClass(status){
+if(["Terverifikasi","Disetujui","Lolos Interview"].includes(status))return"green";
+if(["Perlu Perbaikan","Sedang Diverifikasi"].includes(status))return"yellow";
+if(["Ditolak","Tidak Lolos"].includes(status))return"red";
+return""
 }
 
-if (!data) {
+function renderAdminTable(){
 
-notice(
-"statusNotice",
-"Kode peserta tidak ditemukan.",
-"error"
-);
+$("adminTableBody").innerHTML=adminParticipants.map(p=>`<tr><td>${escapeHTML(p.kode_peserta)}</td><td>${escapeHTML(p.nama_lengkap)}</td><td>${escapeHTML(p.struktur_pilihan)}</td><td>${escapeHTML(p.wilayah_domisili)}</td><td>${escapeHTML(p.skor_quiz)}</td><td><span class="status-pill ${statusClass(p.status_pendaftaran)}">${escapeHTML(p.status_pendaftaran)}</span></td><td><div class="doc-actions"><button class="btn btn-primary btn-small" type="button" data-participant="${escapeHTML(p.id)}">Lihat Berkas</button><button class="btn btn-outline btn-small" type="button" data-edit="${escapeHTML(p.id)}">Kelola</button></div></td></tr>`).join("");
 
-$("statusResult").innerHTML = "";
-
-return;
-
+$("statTotal").textContent=adminParticipants.length;
+$("statPending").textContent=adminParticipants.filter(p=>p.status_pendaftaran==="Menunggu Verifikasi").length;
+$("statVerified").textContent=adminParticipants.filter(p=>p.status_pendaftaran==="Terverifikasi").length
 }
 
-const {
-data:docs,
-error:docsError
-} =
-await db
-.from("dokumen_pendaftar")
-.select(
-"jenis_dokumen,nama_file,status_dokumen,catatan"
-)
-.eq(
-"pendaftar_id",
-data.id
-)
-.order(
-"jenis_dokumen"
-);
+async function loadAdminParticipants(){
 
-if (docsError) {
+notice("adminNotice","Memuat data peserta...","info");
 
-notice(
-"statusNotice",
-docsError.message,
-"error"
-);
+const{data,error}=await db.from("pendaftar").select("*").order("created_at",{ascending:false});
 
-return;
+if(error){notice("adminNotice",error.message,"error");return}
 
-}
-
-const docHtml =
-(docs || [])
-.map(d => `
-<p style="margin:8px 0">
-<b>${escapeHTML(d.jenis_dokumen)}</b> —
-${escapeHTML(d.status_dokumen || "Belum Diverifikasi")}
-${d.catatan
-? `<br><span class="helper">${escapeHTML(d.catatan)}</span>`
-: ""}
-</p>
-`)
-.join("");
-
-$("statusResult").innerHTML = `
-
-<div
-class="card"
-style="margin-top:15px"
->
-
-<div class="number">
-DATA PESERTA
-</div>
-
-<h3>
-${escapeHTML(data.nama_lengkap)}
-</h3>
-
-<p>
-Kode:
-${escapeHTML(data.kode_peserta)}
-</p>
-
-<p>
-Struktur:
-${escapeHTML(data.struktur_pilihan)}
-</p>
-
-<p>
-Wilayah:
-${escapeHTML(data.wilayah_domisili)}
-</p>
-
-<p>
-Skor Quiz:
-${escapeHTML(data.skor_quiz)}
-</p>
-
-<p>
-Status Pendaftaran:
-<b>
-${escapeHTML(data.status_pendaftaran)}
-</b>
-</p>
-
-<p>
-Status Dokumen:
-<b>
-${escapeHTML(data.status_dokumen)}
-</b>
-</p>
-
-<div class="doc-box">
-
-<div class="number">
-STATUS BERKAS
-</div>
-
-${docHtml ||
-"<p>Belum ada data berkas.</p>"}
-
-</div>
-
-<p>
-Jadwal Interview:
-${escapeHTML(
-data.jadwal_interview ||
-"Belum ditentukan"
-)}
-</p>
-
-<p>
-Metode:
-${escapeHTML(
-data.metode_interview ||
-"Belum ditentukan"
-)}
-</p>
-
-<p>
-Lokasi:
-${escapeHTML(
-data.lokasi_interview ||
-"Belum ditentukan"
-)}
-</p>
-
-<p>
-Catatan Admin:
-${escapeHTML(
-data.catatan_admin ||
-"Belum ada catatan"
-)}
-</p>
-
-</div>
-
-`;
-
-notice(
-"statusNotice",
-"Status berhasil ditemukan.",
-"success"
-);
-
-}
-
-
-/* =========================================================
-   ADMIN
-   ========================================================= */
-
-function statusClass(status) {
-
-if (
-[
-"Terverifikasi",
-"Disetujui",
-"Lolos Interview"
-].includes(status)
-)
-return "green";
-
-if (
-[
-"Perlu Perbaikan",
-"Sedang Diverifikasi"
-].includes(status)
-)
-return "yellow";
-
-if (
-[
-"Ditolak",
-"Tidak Lolos"
-].includes(status)
-)
-return "red";
-
-return "";
-
-}
-
-
-function renderAdminTable() {
-
-$("adminTableBody").innerHTML =
-adminParticipants
-.map(p => `
-
-<tr>
-
-<td>
-${escapeHTML(p.kode_peserta)}
-</td>
-
-<td>
-${escapeHTML(p.nama_lengkap)}
-</td>
-
-<td>
-${escapeHTML(p.struktur_pilihan)}
-</td>
-
-<td>
-${escapeHTML(p.wilayah_domisili)}
-</td>
-
-<td>
-${escapeHTML(p.skor_quiz)}
-</td>
-
-<td>
-<span
-class="status-pill ${statusClass(p.status_pendaftaran)}"
->
-${escapeHTML(p.status_pendaftaran)}
-</span>
-</td>
-
-<td>
-
-<div class="doc-actions">
-
-<button
-class="btn btn-primary btn-small"
-type="button"
-data-participant="${escapeHTML(p.id)}"
->
-Lihat Berkas
-</button>
-
-<button
-class="btn btn-outline btn-small"
-type="button"
-data-edit="${escapeHTML(p.id)}"
->
-Kelola
-</button>
-
-</div>
-
-</td>
-
-</tr>
-
-`)
-.join("");
-
-$("statTotal").textContent =
-adminParticipants.length;
-
-$("statPending").textContent =
-adminParticipants.filter(
-p =>
-p.status_pendaftaran ===
-"Menunggu Verifikasi"
-).length;
-
-$("statVerified").textContent =
-adminParticipants.filter(
-p =>
-p.status_pendaftaran ===
-"Terverifikasi"
-).length;
-
-}
-
-
-async function loadAdminParticipants() {
-
-notice(
-"adminNotice",
-"Memuat data peserta...",
-"info"
-);
-
-const {
-data,
-error
-} =
-await db
-.from("pendaftar")
-.select("*")
-.order(
-"created_at",
-{ascending:false}
-);
-
-if (error) {
-
-notice(
-"adminNotice",
-error.message,
-"error"
-);
-
-return;
-
-}
-
-adminParticipants =
-data || [];
-
+adminParticipants=data||[];
 renderAdminTable();
-
-notice(
-"adminNotice",
-"Data peserta berhasil dimuat.",
-"success"
-);
-
+notice("adminNotice","Data peserta berhasil dimuat.","success")
 }
 
+async function openAdmin(){
 
-async function openAdmin() {
+try{
 
-try {
+const{data:{session}}=await db.auth.getSession();
 
-const {
-data:{
-session
-}
-} =
-await db.auth.getSession();
-
-if (!session) {
-
-openModal(
-"adminLoginModal"
-);
-
-return;
-
-}
+if(!session){openModal("adminLoginModal");return}
 
 openModal("adminModal");
-
 await loadAdminParticipants();
 
-}
-
-catch (error) {
+}catch(error){
 
 console.error(error);
-
-notice(
-"adminLoginNotice",
-"Terjadi kesalahan saat membuka area admin.",
-"error"
-);
+notice("adminLoginNotice","Terjadi kesalahan saat membuka area admin.","error")
 
 }
 
 }
 
+window.openAdmin=openAdmin;
 
-window.openAdmin =
-openAdmin;
+async function openParticipant(id){
 
+const p=adminParticipants.find(item=>String(item.id)===String(id));
+if(!p)return;
 
-async function openParticipant(id) {
+$("detailTitle").textContent=p.nama_lengkap||"Detail Pendaftar";
 
-const p =
-adminParticipants.find(
-item =>
-String(item.id) === String(id)
-);
+const quizData=p.jawaban_quiz&&typeof p.jawaban_quiz==="object"?p.jawaban_quiz:{};
+const quizProfile=quizData.profile||null;
 
-if (!p) return;
+$("detailInfo").innerHTML=`<div class="card"><p><b>Kode:</b> ${escapeHTML(p.kode_peserta)}</p><p><b>Struktur:</b> ${escapeHTML(p.struktur_pilihan)}</p><p><b>Wilayah:</b> ${escapeHTML(p.wilayah_domisili)}</p><p><b>WhatsApp:</b> ${escapeHTML(p.nomor_whatsapp)}</p><p><b>Email:</b> ${escapeHTML(p.email)}</p><p><b>Skor Quiz:</b> ${escapeHTML(p.skor_quiz||0)}/100</p>${quizProfile?profileHTML(quizProfile):""}<div class="doc-box"><div class="number">JAWABAN QUIZ</div>${(quizData.answers||[]).map((a,i)=>`<div style="padding:10px 0;border-bottom:1px solid #27272a"><p><b>${i+1}. ${escapeHTML(a.question||"")}</b></p><p style="margin-top:4px;color:#a1a1aa">${escapeHTML(a.answer||"-")}</p></div>`).join("")||"<p class='helper'>Data jawaban quiz lama belum memiliki rincian.</p>"}</div></div>`;
 
-$("detailTitle").textContent =
-p.nama_lengkap ||
-"Detail Pendaftar";
+const{data:docs,error}=await db.from("dokumen_pendaftar").select("*").eq("pendaftar_id",id).order("jenis_dokumen");
 
-const quizData =
-p.jawaban_quiz &&
-typeof p.jawaban_quiz === "object"
-?
-p.jawaban_quiz
-:
-{};
+if(error){notice("detailNotice",error.message,"error");return}
 
-const quizProfile =
-quizData.profile || null;
+$("documentList").innerHTML=(docs||[]).map(d=>`<div class="doc-row"><div><div class="doc-name">${escapeHTML(d.jenis_dokumen)}</div><div class="doc-meta">${escapeHTML(d.nama_file||"-")}</div></div><span class="status-pill ${statusClass(d.status_dokumen)}">${escapeHTML(d.status_dokumen||"Belum Diverifikasi")}</span><div class="doc-actions"><button class="btn btn-outline btn-small" type="button" data-view-document="true" data-code="${escapeHTML(p.kode_peserta)}" data-type="${escapeHTML(d.jenis_dokumen)}">Lihat Berkas</button><button class="btn btn-success btn-small" type="button" data-verify-document="${escapeHTML(d.id)}" data-participant-id="${escapeHTML(d.pendaftar_id)}">✓ Verifikasi</button><button class="btn btn-warning btn-small" type="button" data-revise-document="${escapeHTML(d.id)}" data-participant-id="${escapeHTML(d.pendaftar_id)}">↻ Minta Perbaikan</button></div></div>`).join("")||"<p class='helper'>Belum ada berkas tercatat.</p>";
 
-$("detailInfo").innerHTML = `
-
-<div class="card">
-
-<p>
-<b>Kode:</b>
-${escapeHTML(p.kode_peserta)}
-</p>
-
-<p>
-<b>Struktur:</b>
-${escapeHTML(p.struktur_pilihan)}
-</p>
-
-<p>
-<b>Wilayah:</b>
-${escapeHTML(p.wilayah_domisili)}
-</p>
-
-<p>
-<b>WhatsApp:</b>
-${escapeHTML(p.nomor_whatsapp)}
-</p>
-
-<p>
-<b>Email:</b>
-${escapeHTML(p.email)}
-</p>
-
-<p>
-<b>Skor Quiz:</b>
-${escapeHTML(p.skor_quiz || 0)}/100
-</p>
-
-${quizProfile
-? profileHTML(quizProfile)
-: ""}
-
-<div class="doc-box">
-
-<div class="number">
-JAWABAN QUIZ
-</div>
-
-${
-(quizData.answers || [])
-.map(
-(a,i) =>
-`
-<div
-style="padding:10px 0;border-bottom:1px solid #27272a"
->
-
-<p>
-<b>
-${i+1}.
-${escapeHTML(a.question || "")}
-</b>
-</p>
-
-<p
-style="margin-top:4px;color:#a1a1aa"
->
-${escapeHTML(a.answer || "-")}
-</p>
-
-</div>
-`
-)
-.join("")
-||
-"<p class='helper'>Data jawaban quiz lama belum memiliki rincian.</p>"
+notice("detailNotice","");
+openModal("participantModal")
 }
 
-</div>
+window.openParticipant=openParticipant;
 
-</div>
-`;
+async function viewDocument(code,jenis){
 
+const p=adminParticipants.find(item=>item.kode_peserta===code);
+if(!p)return;
 
-const {
-data:docs,
-error
-} =
-await db
-.from("dokumen_pendaftar")
-.select("*")
-.eq(
-"pendaftar_id",
-id
-)
-.order(
-"jenis_dokumen"
-);
+const{data:doc,error}=await db.from("dokumen_pendaftar").select("storage_path,nama_file").eq("pendaftar_id",p.id).eq("jenis_dokumen",jenis).maybeSingle();
 
-if (error) {
+if(error||!doc?.storage_path){notice("detailNotice",error?.message||"Lokasi berkas tidak ditemukan.","error");return}
 
-notice(
-"detailNotice",
-error.message,
-"error"
-);
+const{data:signed,error:signedError}=await db.storage.from(STORAGE_BUCKET).createSignedUrl(doc.storage_path,300);
 
-return;
+if(signedError){notice("detailNotice",signedError.message,"error");return}
 
+window.open(signed.signedUrl,"_blank","noopener")
 }
 
-$("documentList").innerHTML =
-(docs || [])
-.map(d => `
+async function verifyDocument(docId,participantId){await updateDocumentStatus(docId,participantId,"Terverifikasi","")}
 
-<div class="doc-row">
+async function reviseDocument(docId,participantId){
 
-<div>
+const note=prompt("Tulis alasan/perbaikan yang harus dilakukan peserta:");
+if(note===null)return;
 
-<div class="doc-name">
-${escapeHTML(d.jenis_dokumen)}
-</div>
+if(!note.trim()){notice("detailNotice","Alasan perbaikan wajib diisi.","error");return}
 
-<div class="doc-meta">
-${escapeHTML(d.nama_file || "-")}
-</div>
-
-</div>
-
-<span
-class="status-pill ${statusClass(d.status_dokumen)}"
->
-${escapeHTML(d.status_dokumen || "Belum Diverifikasi")}
-</span>
-
-<div class="doc-actions">
-
-<button
-class="btn btn-outline btn-small"
-type="button"
-data-view-document="true"
-data-code="${escapeHTML(p.kode_peserta)}"
-data-type="${escapeHTML(d.jenis_dokumen)}"
->
-Lihat Berkas
-</button>
-
-<button
-class="btn btn-success btn-small"
-type="button"
-data-verify-document="${escapeHTML(d.id)}"
-data-participant-id="${escapeHTML(d.pendaftar_id)}"
->
-✓ Verifikasi
-</button>
-
-<button
-class="btn btn-warning btn-small"
-type="button"
-data-revise-document="${escapeHTML(d.id)}"
-data-participant-id="${escapeHTML(d.pendaftar_id)}"
->
-↻ Minta Perbaikan
-</button>
-
-</div>
-
-</div>
-
-`)
-.join("")
-||
-"<p class='helper'>Belum ada berkas tercatat.</p>";
-
-notice(
-"detailNotice",
-""
-);
-
-openModal(
-"participantModal"
-);
-
+await updateDocumentStatus(docId,participantId,"Perlu Perbaikan",note.trim())
 }
 
+async function updateDocumentStatus(docId,participantId,status,catatan){
 
-window.openParticipant =
-openParticipant;
+const{error}=await db.from("dokumen_pendaftar").update({status_dokumen:status,catatan:catatan||null}).eq("id",docId);
 
+if(error){notice("detailNotice",error.message,"error");return}
 
-async function viewDocument(code,jenis) {
+const{data:docs,error:docsError}=await db.from("dokumen_pendaftar").select("status_dokumen").eq("pendaftar_id",participantId);
 
-const p =
-adminParticipants.find(
-item =>
-item.kode_peserta === code
-);
+if(docsError){notice("detailNotice",docsError.message,"error");return}
 
-if (!p) return;
+const statuses=(docs||[]).map(d=>d.status_dokumen);
+let parentStatus="Menunggu Verifikasi";
+let docStatus="Sedang Diverifikasi";
 
-const {
-data:doc,
-error
-} =
-await db
-.from("dokumen_pendaftar")
-.select(
-"storage_path,nama_file"
-)
-.eq(
-"pendaftar_id",
-p.id
-)
-.eq(
-"jenis_dokumen",
-jenis
-)
-.maybeSingle();
+if(statuses.length&&statuses.every(x=>x==="Terverifikasi")){parentStatus="Terverifikasi";docStatus="Disetujui"}
+else if(statuses.some(x=>x==="Perlu Perbaikan")){parentStatus="Perlu Perbaikan";docStatus="Perlu Perbaikan"}
 
-if (
-error ||
-!doc?.storage_path
-) {
-
-notice(
-"detailNotice",
-error?.message ||
-"Lokasi berkas tidak ditemukan.",
-"error"
-);
-
-return;
-
-}
-
-const {
-data:signed,
-error:signedError
-} =
-await db.storage
-.from(STORAGE_BUCKET)
-.createSignedUrl(
-doc.storage_path,
-300
-);
-
-if (signedError) {
-
-notice(
-"detailNotice",
-signedError.message,
-"error"
-);
-
-return;
-
-}
-
-window.open(
-signed.signedUrl,
-"_blank",
-"noopener"
-);
-
-}
-
-
-async function verifyDocument(
-docId,
-participantId
-) {
-
-await updateDocumentStatus(
-docId,
-participantId,
-"Terverifikasi",
-""
-);
-
-}
-
-
-async function reviseDocument(
-docId,
-participantId
-) {
-
-const note =
-prompt(
-"Tulis alasan/perbaikan yang harus dilakukan peserta:"
-);
-
-if (note === null)
-return;
-
-if (!note.trim()) {
-
-notice(
-"detailNotice",
-"Alasan perbaikan wajib diisi.",
-"error"
-);
-
-return;
-
-}
-
-await updateDocumentStatus(
-docId,
-participantId,
-"Perlu Perbaikan",
-note.trim()
-);
-
-}
-
-
-async function updateDocumentStatus(
-docId,
-participantId,
-status,
-catatan
-) {
-
-const {
-error
-} =
-await db
-.from("dokumen_pendaftar")
-.update({
-
-status_dokumen:
-status,
-
-catatan:
-catatan || null
-
-})
-.eq(
-"id",
-docId
-);
-
-if (error) {
-
-notice(
-"detailNotice",
-error.message,
-"error"
-);
-
-return;
-
-}
-
-const {
-data:docs,
-error:docsError
-} =
-await db
-.from("dokumen_pendaftar")
-.select("status_dokumen")
-.eq(
-"pendaftar_id",
-participantId
-);
-
-if (docsError) {
-
-notice(
-"detailNotice",
-docsError.message,
-"error"
-);
-
-return;
-
-}
-
-const statuses =
-(docs || [])
-.map(
-d => d.status_dokumen
-);
-
-let parentStatus =
-"Menunggu Verifikasi";
-
-let docStatus =
-"Sedang Diverifikasi";
-
-if (
-statuses.length &&
-statuses.every(
-x => x === "Terverifikasi"
-)
-) {
-
-parentStatus =
-"Terverifikasi";
-
-docStatus =
-"Disetujui";
-
-}
-
-else if (
-statuses.some(
-x => x === "Perlu Perbaikan"
-)
-) {
-
-parentStatus =
-"Perlu Perbaikan";
-
-docStatus =
-"Perlu Perbaikan";
-
-}
-
-await db
-.from("pendaftar")
-.update({
-
-status_pendaftaran:
-parentStatus,
-
-status_dokumen:
-docStatus,
-
-updated_at:
-new Date().toISOString()
-
-})
-.eq(
-"id",
-participantId
-);
+await db.from("pendaftar").update({status_pendaftaran:parentStatus,status_dokumen:docStatus,updated_at:new Date().toISOString()}).eq("id",participantId);
 
 await loadAdminParticipants();
-
-await openParticipant(
-participantId
-);
-
-notice(
-"adminNotice",
-"Status berkas berhasil diperbarui.",
-"success"
-);
-
+await openParticipant(participantId);
+notice("adminNotice","Status berkas berhasil diperbarui.","success")
 }
 
+/* CHAT WA */
 
-/* =========================================================
-   CHAT WHATSAPP DARI KELOLA
-   ========================================================= */
+function chatWhatsAppFromKelola(id){
 
-function chatWhatsAppFromKelola(id) {
+const p=adminParticipants.find(item=>String(item.id)===String(id));
 
-const p =
-adminParticipants.find(
-item =>
-String(item.id) === String(id)
-);
+if(!p){notice("editNotice","Data peserta tidak ditemukan.","error");return}
+if(!p.nomor_whatsapp){notice("editNotice","Nomor WhatsApp peserta tidak tersedia.","error");return}
 
-if (!p) {
+const phone=normalizeWhatsApp(p.nomor_whatsapp);
 
-notice(
-"editNotice",
-"Data peserta tidak ditemukan.",
-"error"
-);
+if(!/^62[0-9]{9,13}$/.test(phone)){notice("editNotice","Nomor WhatsApp peserta tidak valid.","error");return}
 
-return;
+const nama=p.nama_lengkap||"Kak";
+const status=p.status_pendaftaran||"Belum Ada Status";
+const catatan=p.catatan_admin||"";
 
-}
-
-if (!p.nomor_whatsapp) {
-
-notice(
-"editNotice",
-"Nomor WhatsApp peserta tidak tersedia.",
-"error"
-);
-
-return;
-
-}
-
-const phone =
-normalizeWhatsApp(
-p.nomor_whatsapp
-);
-
-if (
-!/^62[0-9]{9,13}$/.test(phone)
-) {
-
-notice(
-"editNotice",
-"Nomor WhatsApp peserta tidak valid.",
-"error"
-);
-
-return;
-
-}
-
-const nama =
-p.nama_lengkap ||
-"Kak";
-
-const status =
-p.status_pendaftaran ||
-"Belum Ada Status";
-
-const catatan =
-p.catatan_admin ||
-"";
-
-let message =
-`Halo Kak ${nama}! 👋
+let message=`Halo Kak ${nama}! 👋
 
 Kami dari Muda Bergerak Sulsel mau menginformasikan terkait pendaftaran Kakak.
 
 Status pendaftaran Kakak saat ini: ${status}`;
 
-if (
-String(catatan).trim() !== ""
-) {
-
-message +=
-`
+if(String(catatan).trim()!=="")message+=`
 
 Catatan dari tim:
 ${catatan}`;
 
-}
-
-message +=
-`
+message+=`
 
 Silakan cek informasi selengkapnya melalui website yaa.
 
 Terima kasih, Kak! 🙌`;
 
-const url =
-`https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-
-window.open(
-url,
-"_blank",
-"noopener,noreferrer"
-);
-
+const url=`https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+window.open(url,"_blank","noopener,noreferrer")
 }
 
+function openEdit(id){
 
-function openEdit(id) {
+const p=adminParticipants.find(item=>String(item.id)===String(id));
+if(!p)return;
 
-const p =
-adminParticipants.find(
-item =>
-String(item.id) === String(id)
-);
+$("editId").value=p.id;
+$("editStatus").value=p.status_pendaftaran||"Menunggu Verifikasi";
+$("editDocumentStatus").value=p.status_dokumen||"Belum Diverifikasi";
+$("editInterview").value=p.jadwal_interview||(["Makassar","Gowa"].includes(p.wilayah_domisili)?"11 Oktober 2026":"10 Oktober 2026");
+$("editMethod").value=p.metode_interview||"";
+$("editLocation").value=p.lokasi_interview||"";
+$("editNote").value=p.catatan_admin||"";
 
-if (!p) return;
+notice("editNotice","");
 
-$("editId").value =
-p.id;
+$("chatWaKelolaBtn").onclick=()=>chatWhatsAppFromKelola(p.id);
 
-$("editStatus").value =
-p.status_pendaftaran ||
-"Menunggu Verifikasi";
-
-$("editDocumentStatus").value =
-p.status_dokumen ||
-"Belum Diverifikasi";
-
-$("editInterview").value =
-p.jadwal_interview ||
-(
-["Makassar","Gowa"]
-.includes(p.wilayah_domisili)
-?
-"11 Oktober 2026"
-:
-"10 Oktober 2026"
-);
-
-$("editMethod").value =
-p.metode_interview || "";
-
-$("editLocation").value =
-p.lokasi_interview || "";
-
-$("editNote").value =
-p.catatan_admin || "";
-
-notice(
-"editNotice",
-""
-);
-
-
-/*
-  Tombol Chat WA selalu mengacu
-  ke peserta yang sedang dibuka.
-*/
-
-$("chatWaKelolaBtn").onclick =
-() => {
-
-chatWhatsAppFromKelola(
-p.id
-);
-
-};
-
-openModal("editModal");
-
+openModal("editModal")
 }
 
+window.openEdit=openEdit;
 
-window.openEdit =
-openEdit;
+/* REGISTER */
 
-
-/* =========================================================
-   REGISTER
-   ========================================================= */
-
-$("registerForm")
-.addEventListener(
-"submit",
-async event => {
+$("registerForm").addEventListener("submit",async event=>{
 
 event.preventDefault();
 
-if (!validateStructureAndRegion())
-return;
+if(!validateStructureAndRegion())return;
 
-const files = [
+const files=[prepareFile("ktp","KTP"),prepareFile("cv","CV"),prepareFile("foto","Foto")];
+const invalidFile=files.find(f=>!f.ok);
 
-prepareFile(
-"ktp",
-"KTP"
-),
+if(invalidFile){notice("registerNotice",invalidFile.message,"error");return}
 
-prepareFile(
-"cv",
-"CV"
-),
+if(!validateWhatsApp($("whatsapp").value)){notice("registerNotice","Nomor WhatsApp tidak valid. Gunakan format 08xxxxxxxxxx.","error");return}
 
-prepareFile(
-"foto",
-"Foto"
-)
+notice("registerNotice","Menyiapkan berkas...","info");
 
-];
-
-const invalidFile =
-files.find(
-f => !f.ok
-);
-
-if (invalidFile) {
-
-notice(
-"registerNotice",
-invalidFile.message,
-"error"
-);
-
-return;
-
-}
-
-if (
-!validateWhatsApp(
-$("whatsapp").value
-)
-) {
-
-notice(
-"registerNotice",
-"Nomor WhatsApp tidak valid. Gunakan format 08xxxxxxxxxx.",
-"error"
-);
-
-return;
-
-}
-
-notice(
-"registerNotice",
-"Menyiapkan berkas...",
-"info"
-);
-
-pendingRegistration = {
-
-nama:
-$("nama").value.trim(),
-
-whatsapp:
-$("whatsapp").value.trim(),
-
-email:
-$("email").value.trim(),
-
-tanggal_lahir:
-$("tanggalLahir").value,
-
-pendidikan:
-$("pendidikan").value.trim(),
-
-struktur:
-$("struktur").value,
-
-wilayah:
-$("wilayah").value,
-
-pengalaman:
-$("pengalaman").value.trim(),
-
-motivasi:
-$("motivasi").value.trim(),
-
+pendingRegistration={
+nama:$("nama").value.trim(),
+whatsapp:$("whatsapp").value.trim(),
+email:$("email").value.trim(),
+tanggal_lahir:$("tanggalLahir").value,
+pendidikan:$("pendidikan").value.trim(),
+struktur:$("struktur").value,
+wilayah:$("wilayah").value,
+pengalaman:$("pengalaman").value.trim(),
+motivasi:$("motivasi").value.trim(),
 files
-
 };
 
-closeModal(
-"registerModal"
-);
-
+closeModal("registerModal");
 resetQuizState();
-
-openModal(
-"quizModal"
-);
+openModal("quizModal");
 
 });
 
+/* START QUIZ */
 
-/* =========================================================
-   START QUIZ
-   ========================================================= */
+$("startQuizBtn").addEventListener("click",()=>{notice("quizNotice","");startQuiz()});
 
-$("startQuizBtn")
-.addEventListener(
-"click",
-() => {
+/* QUIZ ANSWER */
 
-notice(
-"quizNotice",
-""
-);
-
-startQuiz();
-
+$("quizQuestions").addEventListener("change",event=>{
+if(event.target.matches('input[name="currentQuizAnswer"]')){notice("quizNotice","");$("quizNextBtn").disabled=false}
 });
 
+/* NEXT QUIZ */
 
-/* =========================================================
-   PILIH JAWABAN
-   ========================================================= */
+$("quizNextBtn").addEventListener("click",async()=>{
 
-$("quizQuestions")
-.addEventListener(
-"change",
-event => {
+if(!quizStarted)return;
 
-if (
-event.target.matches(
-'input[name="currentQuizAnswer"]'
-)
-) {
+if(!lockCurrentAnswer())return;
 
-notice(
-"quizNotice",
-""
-);
+notice("quizNotice","");
 
-$("quizNextBtn").disabled =
-false;
-
-}
-
-});
-
-
-/* =========================================================
-   LANJUT QUIZ
-   ========================================================= */
-
-$("quizNextBtn")
-.addEventListener(
-"click",
-async () => {
-
-if (!quizStarted)
-return;
-
-if (!lockCurrentAnswer())
-return;
-
-notice(
-"quizNotice",
-""
-);
-
-if (
-quizCurrentIndex <
-questions.length - 1
-) {
-
+if(quizCurrentIndex<questions.length-1){
 quizCurrentIndex++;
-
 renderCurrentQuestion();
-
-return;
-
+return
 }
 
-const result =
-calculateQuizProfileFromAnswers();
+const result=calculateQuizProfileFromAnswers();
 
-if (!result) {
+if(!result){notice("quizNotice","Semua pertanyaan harus dijawab.","error");return}
 
-notice(
-"quizNotice",
-"Semua pertanyaan harus dijawab.",
-"error"
-);
-
-return;
-
-}
-
-pendingRegistration.skor =
-result.score;
-
-pendingRegistration.jawaban_quiz =
-result.answers;
-
-pendingRegistration.profile =
-result.profile;
-
-pendingRegistration.interviewMethod =
-["Makassar","Gowa"]
-.includes(
-pendingRegistration.wilayah
-)
-?
-"Offline"
-:
-"Online";
+pendingRegistration.skor=result.score;
+pendingRegistration.jawaban_quiz=result.answers;
+pendingRegistration.profile=result.profile;
+pendingRegistration.interviewMethod=["Makassar","Gowa"].includes(pendingRegistration.wilayah)?"Offline":"Online";
 
 await submitRegistration();
 
 });
 
+$("quizForm").addEventListener("submit",event=>event.preventDefault());
 
-$("quizForm")
-.addEventListener(
-"submit",
-event => {
+/* STATUS */
+
+$("statusForm").addEventListener("submit",event=>{
+event.preventDefault();
+checkStatus($("statusCode").value)
+});
+
+function openStatus(){
+notice("statusNotice","");
+$("statusResult").innerHTML="";
+openModal("statusModal")
+}
+
+/* ADMIN LOGIN */
+
+$("adminLoginForm").addEventListener("submit",async event=>{
 
 event.preventDefault();
 
-});
+const email=$("adminEmail").value.trim();
+const password=$("adminPassword").value;
 
+if(!email||!password){notice("adminLoginNotice","Email dan password wajib diisi.","error");return}
 
-/* =========================================================
-   STATUS
-   ========================================================= */
+notice("adminLoginNotice","Memproses login...","info");
+$("adminLoginButton").disabled=true;
 
-$("statusForm")
-.addEventListener(
-"submit",
-event => {
+try{
 
-event.preventDefault();
+const{data,error}=await db.auth.signInWithPassword({email,password});
 
-checkStatus(
-$("statusCode").value
-);
+if(error){notice("adminLoginNotice",error.message,"error");$("adminLoginButton").disabled=false;return}
 
-});
-
-
-function openStatus() {
-
-notice(
-"statusNotice",
-""
-);
-
-$("statusResult").innerHTML =
-"";
-
-openModal(
-"statusModal"
-);
-
-}
-
-
-/* =========================================================
-   ADMIN LOGIN
-   ========================================================= */
-
-$("adminLoginForm")
-.addEventListener(
-"submit",
-async event => {
-
-event.preventDefault();
-
-const email =
-$("adminEmail").value.trim();
-
-const password =
-$("adminPassword").value;
-
-if (!email || !password) {
-
-notice(
-"adminLoginNotice",
-"Email dan password wajib diisi.",
-"error"
-);
-
-return;
-
-}
-
-notice(
-"adminLoginNotice",
-"Memproses login...",
-"info"
-);
-
-$("adminLoginButton").disabled = true;
-
-try {
-
-const {
-data,
-error
-} =
-await db.auth.signInWithPassword({
-
-email,
-password
-
-});
-
-if (error) {
-
-notice(
-"adminLoginNotice",
-error.message,
-"error"
-);
-
-$("adminLoginButton").disabled = false;
-
-return;
-
-}
-
-if (!data?.session) {
-
-notice(
-"adminLoginNotice",
-"Login gagal. Session tidak ditemukan.",
-"error"
-);
-
-$("adminLoginButton").disabled = false;
-
-return;
-
-}
+if(!data?.session){notice("adminLoginNotice","Login gagal. Session tidak ditemukan.","error");$("adminLoginButton").disabled=false;return}
 
 $("adminLoginForm").reset();
-
-notice(
-"adminLoginNotice",
-""
-);
-
-closeModal(
-"adminLoginModal"
-);
-
-openModal(
-"adminModal"
-);
-
+notice("adminLoginNotice","");
+closeModal("adminLoginModal");
+openModal("adminModal");
 await loadAdminParticipants();
 
-}
+}catch(error){
 
-catch (error) {
+console.error("ADMIN LOGIN ERROR:",error);
+notice("adminLoginNotice","Terjadi kesalahan saat login.","error");
 
-console.error(
-"ADMIN LOGIN ERROR:",
-error
-);
-
-notice(
-"adminLoginNotice",
-"Terjadi kesalahan saat login.",
-"error"
-);
-
-}
-
-finally {
-
-$("adminLoginButton").disabled = false;
-
-}
+}finally{$("adminLoginButton").disabled=false}
 
 });
 
+/* ADMIN EDIT */
 
-/* =========================================================
-   ADMIN EDIT
-   ========================================================= */
-
-$("editForm")
-.addEventListener(
-"submit",
-async event => {
+$("editForm").addEventListener("submit",async event=>{
 
 event.preventDefault();
 
-const id =
-$("editId").value;
+const id=$("editId").value;
 
-const update = {
-
-status_pendaftaran:
-$("editStatus").value,
-
-status_dokumen:
-$("editDocumentStatus").value,
-
-jadwal_interview:
-$("editInterview").value.trim() ||
-null,
-
-metode_interview:
-$("editMethod").value ||
-null,
-
-lokasi_interview:
-$("editLocation").value.trim() ||
-null,
-
-catatan_admin:
-$("editNote").value.trim() ||
-null,
-
-updated_at:
-new Date().toISOString()
-
+const update={
+status_pendaftaran:$("editStatus").value,
+status_dokumen:$("editDocumentStatus").value,
+jadwal_interview:$("editInterview").value.trim()||null,
+metode_interview:$("editMethod").value||null,
+lokasi_interview:$("editLocation").value.trim()||null,
+catatan_admin:$("editNote").value.trim()||null,
+updated_at:new Date().toISOString()
 };
 
-notice(
-"editNotice",
-"Menyimpan perubahan...",
-"info"
-);
+notice("editNotice","Menyimpan perubahan...","info");
 
-const {
-error
-} =
-await db
-.from("pendaftar")
-.update(update)
-.eq("id",id);
+const{error}=await db.from("pendaftar").update(update).eq("id",id);
 
-if (error) {
+if(error){notice("editNotice",error.message,"error");return}
 
-notice(
-"editNotice",
-error.message,
-"error"
-);
-
-return;
-
-}
-
-closeModal(
-"editModal"
-);
-
+closeModal("editModal");
 await loadAdminParticipants();
-
-notice(
-"adminNotice",
-"Perubahan peserta berhasil disimpan.",
-"success"
-);
+notice("adminNotice","Perubahan peserta berhasil disimpan.","success");
 
 });
 
+/* ADMIN BUTTONS */
 
-/* =========================================================
-   ADMIN BUTTONS
-   ========================================================= */
+$("refreshAdmin").addEventListener("click",async()=>{await loadAdminParticipants()});
 
-$("refreshAdmin")
-.addEventListener(
-"click",
-async () => {
+$("logoutAdmin").addEventListener("click",async()=>{
 
-await loadAdminParticipants();
+const{error}=await db.auth.signOut();
 
-});
+if(error){notice("adminNotice",error.message,"error");return}
 
-
-$("logoutAdmin")
-.addEventListener(
-"click",
-async () => {
-
-const {
-error
-} =
-await db.auth.signOut();
-
-if (error) {
-
-notice(
-"adminNotice",
-error.message,
-"error"
-);
-
-return;
-
-}
-
-closeModal(
-"adminModal"
-);
+closeModal("adminModal");
 
 });
 
+/* NAVIGATION */
 
-/* =========================================================
-   NAVIGATION BUTTONS
-   ========================================================= */
+$("heroRegister").addEventListener("click",()=>{notice("registerNotice","");openModal("registerModal")});
+$("ctaRegister").addEventListener("click",()=>{notice("registerNotice","");openModal("registerModal")});
 
-$("heroRegister")
-.addEventListener(
-"click",
-() => {
+$("registerNav").addEventListener("click",event=>{event.preventDefault();notice("registerNotice","");openModal("registerModal")});
+$("adminNav").addEventListener("click",event=>{event.preventDefault();openAdmin()});
+$("heroAdmin").addEventListener("click",()=>openAdmin());
+$("statusNav").addEventListener("click",event=>{event.preventDefault();openStatus()});
+$("ctaStatus").addEventListener("click",openStatus);
+$("heroStatus").addEventListener("click",openStatus);
 
-notice(
-"registerNotice",
-""
-);
+$("successStatus").addEventListener("click",()=>{
 
-openModal(
-"registerModal"
-);
-
-});
-
-
-$("ctaRegister")
-.addEventListener(
-"click",
-() => {
-
-notice(
-"registerNotice",
-""
-);
-
-openModal(
-"registerModal"
-);
-
-});
-
-
-$("registerNav")
-.addEventListener(
-"click",
-event => {
-
-event.preventDefault();
-
-notice(
-"registerNotice",
-""
-);
-
-openModal(
-"registerModal"
-);
-
-});
-
-
-$("adminNav")
-.addEventListener(
-"click",
-event => {
-
-event.preventDefault();
-
-openAdmin();
-
-});
-
-
-$("heroAdmin")
-.addEventListener(
-"click",
-() => {
-
-openAdmin();
-
-});
-
-
-$("statusNav")
-.addEventListener(
-"click",
-event => {
-
-event.preventDefault();
-
+closeModal("successModal");
+$("statusCode").value=lastRegisteredCode;
 openStatus();
+checkStatus(lastRegisteredCode);
 
 });
 
+/* ADMIN TABLE */
 
-$("ctaStatus")
-.addEventListener(
-"click",
-openStatus
-);
+$("adminTableBody").addEventListener("click",event=>{
 
+const participantButton=event.target.closest("[data-participant]");
 
-$("heroStatus")
-.addEventListener(
-"click",
-openStatus
-);
-
-
-$("successStatus")
-.addEventListener(
-"click",
-() => {
-
-closeModal(
-"successModal"
-);
-
-$("statusCode").value =
-lastRegisteredCode;
-
-openStatus();
-
-checkStatus(
-lastRegisteredCode
-);
-
-});
-
-
-/* =========================================================
-   ADMIN TABLE EVENTS
-   ========================================================= */
-
-$("adminTableBody")
-.addEventListener(
-"click",
-event => {
-
-const participantButton =
-event.target.closest(
-"[data-participant]"
-);
-
-if (participantButton) {
-
-const id =
-participantButton.dataset.participant;
-
-openParticipant(id);
-
-return;
-
+if(participantButton){
+openParticipant(participantButton.dataset.participant);
+return
 }
 
-const editButton =
-event.target.closest(
-"[data-edit]"
-);
+const editButton=event.target.closest("[data-edit]");
 
-if (editButton) {
+if(editButton)openEdit(editButton.dataset.edit);
 
-const id =
-editButton.dataset.edit;
+});
 
-openEdit(id);
+/* DOCUMENT EVENTS */
 
+$("documentList").addEventListener("click",async event=>{
+
+const viewButton=event.target.closest("[data-view-document]");
+
+if(viewButton){
+await viewDocument(viewButton.dataset.code,viewButton.dataset.type);
+return
+}
+
+const verifyButton=event.target.closest("[data-verify-document]");
+
+if(verifyButton){
+await verifyDocument(verifyButton.dataset.verifyDocument,verifyButton.dataset.participantId);
+return
+}
+
+const reviseButton=event.target.closest("[data-revise-document]");
+
+if(reviseButton){
+await reviseDocument(reviseButton.dataset.reviseDocument,reviseButton.dataset.participantId);
 }
 
 });
 
+/* MODAL CLOSE */
 
-/* =========================================================
-   DOCUMENT EVENTS
-   ========================================================= */
+document.querySelectorAll("[data-close]").forEach(button=>{
 
-$("documentList")
-.addEventListener(
-"click",
-async event => {
-
-const viewButton =
-event.target.closest(
-"[data-view-document]"
-);
-
-if (viewButton) {
-
-await viewDocument(
-viewButton.dataset.code,
-viewButton.dataset.type
-);
-
-return;
-
-}
-
-const verifyButton =
-event.target.closest(
-"[data-verify-document]"
-);
-
-if (verifyButton) {
-
-await verifyDocument(
-verifyButton.dataset.verifyDocument,
-verifyButton.dataset.participantId
-);
-
-return;
-
-}
-
-const reviseButton =
-event.target.closest(
-"[data-revise-document]"
-);
-
-if (reviseButton) {
-
-await reviseDocument(
-reviseButton.dataset.reviseDocument,
-reviseButton.dataset.participantId
-);
-
-}
-
-});
-
-
-/* =========================================================
-   MODAL CLOSE
-   ========================================================= */
-
-document
-.querySelectorAll("[data-close]")
-.forEach(button => {
-
-button.addEventListener(
-"click",
-event => {
+button.addEventListener("click",event=>{
 
 event.preventDefault();
 
-const modalId =
-button.getAttribute(
-"data-close"
-);
-
+const modalId=button.getAttribute("data-close");
 closeModal(modalId);
 
-}
-);
+});
 
 });
 
+document.querySelectorAll(".modal").forEach(modal=>{
 
-document
-.querySelectorAll(".modal")
-.forEach(modal => {
+modal.addEventListener("click",event=>{
 
-modal.addEventListener(
-"click",
-event => {
-
-if (
-event.target === modal
-) {
-
-closeModal(
-modal.id
-);
-
-}
-
-}
-);
+if(event.target===modal)closeModal(modal.id);
 
 });
 
+});
 
-document.addEventListener(
-"keydown",
-event => {
+document.addEventListener("keydown",event=>{
 
-if (
-event.key !== "Escape"
-) return;
+if(event.key!=="Escape")return;
 
-document
-.querySelectorAll(".modal.show")
-.forEach(
-modal =>
-closeModal(
-modal.id
-)
-);
+document.querySelectorAll(".modal.show").forEach(modal=>closeModal(modal.id));
 
 });
 
+/* IMAGE PROTECTION */
 
-/* =========================================================
-   PROTECTION IMAGE
-   ========================================================= */
+document.addEventListener("contextmenu",event=>{
 
-document.addEventListener(
-"contextmenu",
-event => {
-
-if (
-event.target.tagName === "IMG"
-) {
-
-event.preventDefault();
-
-}
+if(event.target.tagName==="IMG")event.preventDefault();
 
 });
 
+/* AUTH */
 
-/* =========================================================
-   SUPABASE AUTH
-   ========================================================= */
+db.auth.onAuthStateChange((event,session)=>{
 
-db.auth.onAuthStateChange(
-(event,session) => {
-
-console.log(
-"Auth event:",
-event,
-Boolean(session)
-);
+console.log("Auth event:",event,Boolean(session));
 
 });
 
+/* ADMIN HASH */
 
-/* =========================================================
-   HASH ADMIN
-   ========================================================= */
-
-if (
-location.hash === "#admin"
-) {
-
-setTimeout(
-openAdmin,
-500
-);
-
-}
+if(location.hash==="#admin")setTimeout(openAdmin,500);
 
 </script>
-
 </body>
 </html>
