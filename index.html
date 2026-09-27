@@ -4552,7 +4552,7 @@ openAdmin,
 );
 
 }
-  <script>
+
 /* =========================================================
    FINAL FIX — 3 TOMBOL UTAMA
    TIDAK MENGUBAH DESAIN / HTML / CSS
@@ -4776,6 +4776,42 @@ openAdmin,
 
 
 })();
+
+document.getElementById("heroRegister").onclick = function () {
+    document.getElementById("registerModal").classList.add("show");
+};
+
+document.getElementById("ctaRegister").onclick = function () {
+    document.getElementById("registerModal").classList.add("show");
+};
+
+document.getElementById("registerNav").onclick = function (e) {
+    e.preventDefault();
+    document.getElementById("registerModal").classList.add("show");
+};
+
+document.getElementById("heroStatus").onclick = function () {
+    document.getElementById("statusModal").classList.add("show");
+};
+
+document.getElementById("ctaStatus").onclick = function () {
+    document.getElementById("statusModal").classList.add("show");
+};
+
+document.getElementById("statusNav").onclick = function (e) {
+    e.preventDefault();
+    document.getElementById("statusModal").classList.add("show");
+};
+
+document.getElementById("heroAdmin").onclick = function () {
+    document.getElementById("adminLoginModal").classList.add("show");
+};
+
+document.getElementById("adminNav").onclick = function (e) {
+    e.preventDefault();
+    document.getElementById("adminLoginModal").classList.add("show");
+};
+</script>
 </script>
 
 </body>
