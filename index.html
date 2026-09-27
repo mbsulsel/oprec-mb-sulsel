@@ -554,29 +554,274 @@ notice("quizNotice","Terjadi kesalahan: "+error.message,"error");
 
 /* STATUS */
 
+
 async function checkStatus(code){
 
-if(!code){notice("statusNotice","Masukkan kode peserta.","error");return}
+    const cleanCode = String(code || "").trim().toUpperCase();
 
-notice("statusNotice","Mengecek status...","info");
+    if(!cleanCode){
+        notice(
+            "statusNotice",
+            "Masukkan kode peserta.",
+            "error"
+        );
+        return;
+    }
 
-const{data,error}=await db.from("pendaftar").select("id,kode_peserta,nama_lengkap,struktur_pilihan,wilayah_domisili,skor_quiz,status_pendaftaran,status_dokumen,jadwal_interview,metode_interview,lokasi_interview,catatan_admin").eq("kode_peserta",code.trim().toUpperCase()).maybeSingle();
+    notice(
+        "statusNotice",
+        "Mengecek status...",
+        "info"
+    );
 
-if(error){notice("statusNotice",error.message,"error");return}
+    $("statusResult").innerHTML = "";
 
-if(!data){notice("statusNotice","Kode peserta tidak ditemukan.","error");$("statusResult").innerHTML="";return}
+    try{
 
-const{data:docs,error:docsError}=await db.from("dokumen_pendaftar").select("jenis_dokumen,nama_file,status_dokumen,catatan").eq("pendaftar_id",data.id).order("jenis_dokumen");
+        const {
+            data,
+            error
+        } = await db.rpc(
+            "cek_status_peserta",
+            {
+                kode_input: cleanCode
+            }
+        );
 
-if(docsError){notice("statusNotice",docsError.message,"error");return}
+        if(error){
 
-const docHtml=(docs||[]).map(d=>`<p style="margin:8px 0"><b>${escapeHTML(d.jenis_dokumen)}</b> — ${escapeHTML(d.status_dokumen||"Belum Diverifikasi")}${d.catatan?`<br><span class="helper">${escapeHTML(d.catatan)}</span>`:""}</p>`).join("");
+            console.error(
+                "CEK STATUS ERROR:",
+                error
+            );
 
-$("statusResult").innerHTML=`<div class="card" style="margin-top:15px"><div class="number">DATA PESERTA</div><h3>${escapeHTML(data.nama_lengkap)}</h3><p>Kode: ${escapeHTML(data.kode_peserta)}</p><p>Struktur: ${escapeHTML(data.struktur_pilihan)}</p><p>Wilayah: ${escapeHTML(data.wilayah_domisili)}</p><p>Skor Quiz: ${escapeHTML(data.skor_quiz)}</p><p>Status Pendaftaran: <b>${escapeHTML(data.status_pendaftaran)}</b></p><p>Status Dokumen: <b>${escapeHTML(data.status_dokumen)}</b></p><div class="doc-box"><div class="number">STATUS BERKAS</div>${docHtml||"<p>Belum ada data berkas.</p>"}</div><p>Jadwal Interview: ${escapeHTML(data.jadwal_interview||"Belum ditentukan")}</p><p>Metode: ${escapeHTML(data.metode_interview||"Belum ditentukan")}</p><p>Lokasi: ${escapeHTML(data.lokasi_interview||"Belum ditentukan")}</p><p>Catatan Admin: ${escapeHTML(data.catatan_admin||"Belum ada catatan")}</p></div>`;
+            notice(
+                "statusNotice",
+                "Gagal mengecek status: " + error.message,
+                "error"
+            );
 
-notice("statusNotice","Status berhasil ditemukan.","success")
+            return;
+        }
+
+        if(!data){
+
+            notice(
+                "statusNotice",
+                "Kode peserta tidak ditemukan.",
+                "error"
+            );
+
+            return;
+        }
+
+        const participant = data;
+
+        const {
+            data: docs,
+            error: docsError
+        } = await db
+            .from("dokumen_pendaftar")
+            .select(
+                "jenis_dokumen,nama_file,status_dokumen,catatan"
+            )
+            .eq(
+                "pendaftar_id",
+                participant.id
+            )
+            .order(
+                "jenis_dokumen"
+            );
+
+        let docHtml = "";
+
+        if(docsError){
+
+            console.error(
+                "DOKUMEN STATUS ERROR:",
+                docsError
+            );
+
+            docHtml = `
+                <p class="helper">
+                    Status dokumen belum dapat dimuat.
+                </p>
+            `;
+
+        }else{
+
+            docHtml = (docs || [])
+                .map(d => `
+                    <p style="margin:8px 0">
+                        <b>
+                            ${escapeHTML(
+                                d.jenis_dokumen
+                            )}
+                        </b>
+                        —
+                        ${escapeHTML(
+                            d.status_dokumen ||
+                            "Belum Diverifikasi"
+                        )}
+
+                        ${
+                            d.catatan
+                            ? `
+                                <br>
+                                <span class="helper">
+                                    ${escapeHTML(
+                                        d.catatan
+                                    )}
+                                </span>
+                            `
+                            : ""
+                        }
+                    </p>
+                `)
+                .join("");
+
+            if(!docHtml){
+
+                docHtml = `
+                    <p class="helper">
+                        Belum ada data berkas.
+                    </p>
+                `;
+
+            }
+
+        }
+
+        $("statusResult").innerHTML = `
+
+            <div class="card" style="margin-top:15px">
+
+                <div class="number">
+                    DATA PESERTA
+                </div>
+
+                <h3>
+                    ${escapeHTML(
+                        participant.nama_lengkap
+                    )}
+                </h3>
+
+                <p>
+                    Kode:
+                    <b>
+                        ${escapeHTML(
+                            participant.kode_peserta
+                        )}
+                    </b>
+                </p>
+
+                <p>
+                    Struktur:
+                    ${escapeHTML(
+                        participant.struktur_pilihan
+                    )}
+                </p>
+
+                <p>
+                    Wilayah:
+                    ${escapeHTML(
+                        participant.wilayah_domisili
+                    )}
+                </p>
+
+                <p>
+                    Skor Quiz:
+                    ${escapeHTML(
+                        participant.skor_quiz || 0
+                    )}
+                </p>
+
+                <p>
+                    Status Pendaftaran:
+                    <b>
+                        ${escapeHTML(
+                            participant.status_pendaftaran ||
+                            "Belum Ada Status"
+                        )}
+                    </b>
+                </p>
+
+                <p>
+                    Status Dokumen:
+                    <b>
+                        ${escapeHTML(
+                            participant.status_dokumen ||
+                            "Belum Diverifikasi"
+                        )}
+                    </b>
+                </p>
+
+                <div class="doc-box">
+
+                    <div class="number">
+                        STATUS BERKAS
+                    </div>
+
+                    ${docHtml}
+
+                </div>
+
+                <p>
+                    Jadwal Interview:
+                    ${escapeHTML(
+                        participant.jadwal_interview ||
+                        "Belum ditentukan"
+                    )}
+                </p>
+
+                <p>
+                    Metode:
+                    ${escapeHTML(
+                        participant.metode_interview ||
+                        "Belum ditentukan"
+                    )}
+                </p>
+
+                <p>
+                    Lokasi:
+                    ${escapeHTML(
+                        participant.lokasi_interview ||
+                        "Belum ditentukan"
+                    )}
+                </p>
+
+                <p>
+                    Catatan Admin:
+                    ${escapeHTML(
+                        participant.catatan_admin ||
+                        "Belum ada catatan"
+                    )}
+                </p>
+
+            </div>
+        `;
+
+        notice(
+            "statusNotice",
+            "Status berhasil ditemukan.",
+            "success"
+        );
+
+    }catch(error){
+
+        console.error(
+            "CHECK STATUS EXCEPTION:",
+            error
+        );
+
+        notice(
+            "statusNotice",
+            "Terjadi kesalahan saat mengecek status.",
+            "error"
+        );
+
+    }
 }
-
 /* ADMIN */
 
 function statusClass(status){
