@@ -3,48 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f97316">
 <title>OPREC MB SULSEL — Ruangnya Anak Muda Sulsel</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
-
-:root{
-  --orange:#f97316;
-  --orange-dark:#c2410c;
-  --black:#0b0b0d;
-  --black-2:#151519;
-  --white:#fff;
-  --muted:#a1a1aa;
-  --line:rgba(255,255,255,.12);
-  --cream:#fff7ed;
-  --text:#18181b;
-  --green:#22c55e;
-  --red:#ef4444;
-  --yellow:#facc15;
-}
-
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
 }
 
-html{
-  scroll-behavior:smooth;
-}
-
 body{
-  background:var(--black);
-  color:var(--white);
-  font-family:"DM Sans",sans-serif;
-  line-height:1.6;
-}
-
-body.modal-open{
-  overflow:hidden;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#0b0b0b;
+  color:#fff;
+  line-height:1.5;
 }
 
 button,input,select,textarea{
@@ -55,740 +29,722 @@ button{
   cursor:pointer;
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-img{
-  max-width:100%;
-  user-select:none;
-  -webkit-user-drag:none;
-}
-
 .container{
-  width:min(1120px,calc(100% - 36px));
+  width:min(1100px,92%);
   margin:auto;
 }
 
-.hidden{
-  display:none!important;
-}
+/* ================= HEADER ================= */
 
 header{
   position:sticky;
   top:0;
-  z-index:20;
-  border-bottom:1px solid var(--line);
-  background:rgba(11,11,13,.94);
-  backdrop-filter:blur(16px);
+  z-index:100;
+  background:rgba(11,11,11,.96);
+  border-bottom:1px solid #252525;
+  backdrop-filter:blur(10px);
 }
 
 .nav{
-  min-height:76px;
+  min-height:72px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:18px;
+  gap:20px;
 }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-family:"Space Grotesk",sans-serif;
-  font-weight:700;
+.logo{
+  font-size:24px;
+  font-weight:900;
+  color:#ff5a1f;
+  letter-spacing:-1px;
 }
 
-.brand img{
-  width:46px;
-  height:46px;
-  object-fit:contain;
-  flex-shrink:0;
-}
-
-.brand-text{
-  display:flex;
-  flex-direction:column;
-  gap:2px;
-  line-height:1.25;
-}
-
-.brand-text strong{
+.logo span{
   color:#fff;
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.5px;
 }
 
-.brand-text span{
-  color:var(--orange);
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:.2px;
-}
-
-nav{
+.nav-buttons{
   display:flex;
-  align-items:center;
-  gap:18px;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
 }
 
-nav a{
-  color:#d4d4d8;
+.nav-buttons button{
+  border:1px solid #444;
+  background:#171717;
+  color:#fff;
+  padding:10px 15px;
+  border-radius:10px;
+  font-weight:700;
   font-size:13px;
-  font-weight:600;
 }
 
-nav a:hover{
-  color:var(--orange);
+.nav-buttons button:hover{
+  border-color:#ff5a1f;
+  color:#ff5a1f;
 }
+
+.btn-admin{
+  background:#ff5a1f !important;
+  border-color:#ff5a1f !important;
+  color:#fff !important;
+}
+
+/* ================= HERO ================= */
 
 .hero{
-  padding:100px 0 90px;
+  padding:85px 0 70px;
   background:
-    radial-gradient(circle at 90% 10%,rgba(249,115,22,.22),transparent 32%),
-    radial-gradient(circle at 0% 80%,rgba(249,115,22,.08),transparent 30%);
+    radial-gradient(circle at 80% 20%,rgba(255,90,31,.18),transparent 35%),
+    #0b0b0b;
 }
 
-.eyebrow{
-  display:inline-flex;
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.4fr .8fr;
+  gap:50px;
   align-items:center;
-  gap:8px;
-  color:var(--orange);
-  font-size:12px;
+}
+
+.badge{
+  display:inline-block;
+  background:#1c1c1c;
+  color:#ff5a1f;
+  border:1px solid #333;
+  border-radius:100px;
+  padding:8px 15px;
+  font-size:13px;
   font-weight:800;
-  letter-spacing:1.6px;
-  text-transform:uppercase;
+  margin-bottom:20px;
+}
+
+.hero h1{
+  font-size:clamp(42px,7vw,78px);
+  line-height:.95;
+  letter-spacing:-4px;
   margin-bottom:22px;
 }
 
-.eyebrow:before{
-  content:"";
-  width:28px;
-  height:2px;
-  background:var(--orange);
+.hero h1 span{
+  color:#ff5a1f;
 }
 
-h1,h2,h3{
-  font-family:"Space Grotesk",sans-serif;
-  line-height:1.12;
-}
-
-h1{
-  max-width:790px;
-  font-size:clamp(42px,8vw,86px);
-  letter-spacing:-3px;
-}
-
-h1 span{
-  color:var(--orange);
-}
-
-.lead{
+.hero p{
+  color:#bdbdbd;
+  font-size:18px;
   max-width:650px;
-  color:#c4c4cc;
-  font-size:17px;
-  margin-top:24px;
 }
 
-.actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-top:30px;
+.hero-card{
+  border:1px solid #292929;
+  background:#121212;
+  border-radius:25px;
+  padding:30px;
 }
 
-.btn{
-  border:1px solid transparent;
-  border-radius:999px;
-  padding:13px 20px;
-  font-weight:800;
-  font-size:13px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  transition:.2s;
+.hero-card h3{
+  font-size:25px;
+  margin-bottom:10px;
 }
 
-.btn-primary{
-  background:var(--orange);
-  color:#fff;
+.hero-card p{
+  font-size:15px;
 }
 
-.btn-primary:hover{
-  background:#fb923c;
-  transform:translateY(-1px);
-}
-
-.btn-outline{
-  border-color:rgba(255,255,255,.25);
-  color:#fff;
-  background:transparent;
-}
-
-.btn-outline:hover{
-  border-color:var(--orange);
-  color:var(--orange);
-}
-
-.btn-dark{
-  background:var(--black);
-  color:#fff;
-}
-
-.btn-danger{
-  background:#7f1d1d;
-  color:#fff;
-}
-
-.btn-small{
-  padding:9px 13px;
-  font-size:12px;
-}
-
-.btn-success{
-  background:#166534;
-  color:#fff;
-}
-
-.btn-warning{
-  background:#92400e;
-  color:#fff;
-}
+/* ================= SECTION ================= */
 
 section{
-  padding:82px 0;
-}
-
-.section-light{
-  background:var(--cream);
-  color:var(--text);
+  padding:70px 0;
 }
 
 .section-title{
-  font-size:clamp(30px,5vw,54px);
-  letter-spacing:-1.5px;
+  font-size:38px;
+  line-height:1;
+  margin-bottom:12px;
 }
 
-.section-copy{
-  color:#71717a;
-  max-width:650px;
-  margin-top:15px;
+.section-desc{
+  color:#999;
+  margin-bottom:30px;
 }
 
-.section-light .eyebrow{
-  color:var(--orange-dark);
+/* ================= BUTTON ================= */
+
+.btn-primary{
+  border:0;
+  background:#ff5a1f;
+  color:#fff;
+  padding:14px 20px;
+  border-radius:11px;
+  font-weight:800;
+  transition:.2s;
 }
 
-.section-light .eyebrow:before{
-  background:var(--orange-dark);
+.btn-primary:hover{
+  background:#e94b13;
+  transform:translateY(-1px);
 }
 
-.grid-2{
+.btn-secondary{
+  border:1px solid #444;
+  background:#171717;
+  color:#fff;
+  padding:13px 18px;
+  border-radius:11px;
+  font-weight:800;
+}
+
+.btn-danger{
+  background:#c62828;
+  border:0;
+  color:#fff;
+  padding:12px 16px;
+  border-radius:10px;
+  font-weight:800;
+}
+
+.btn-success{
+  background:#168a4a;
+  border:0;
+  color:#fff;
+  padding:12px 16px;
+  border-radius:10px;
+  font-weight:800;
+}
+
+/* ================= FORM ================= */
+
+.form-card{
+  background:#121212;
+  border:1px solid #292929;
+  border-radius:22px;
+  padding:28px;
+}
+
+.form-grid{
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:22px;
-}
-
-.grid-3{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-columns:1fr 1fr;
   gap:18px;
 }
 
-.card{
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:25px;
-  background:rgba(255,255,255,.025);
+.form-group{
+  margin-bottom:17px;
 }
 
-.section-light .card{
-  border-color:#fed7aa;
-  background:#fff;
+.form-group.full{
+  grid-column:1/-1;
 }
 
-.card h3{
-  font-size:20px;
-  margin-bottom:10px;
+label{
+  display:block;
+  margin-bottom:7px;
+  font-weight:700;
+  color:#ddd;
 }
 
-.card p{
-  color:var(--muted);
-  font-size:14px;
+.required{
+  color:#ff5a1f;
 }
 
-.section-light .card p{
-  color:#71717a;
+input,
+select,
+textarea{
+  width:100%;
+  border:1px solid #393939;
+  background:#0d0d0d;
+  color:#fff;
+  border-radius:10px;
+  padding:13px 14px;
+  outline:none;
 }
 
-.number{
-  color:var(--orange);
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:#ff5a1f;
+}
+
+textarea{
+  min-height:110px;
+  resize:vertical;
+}
+
+.help{
+  color:#777;
   font-size:12px;
+  margin-top:5px;
+}
+
+/* ================= QUIZ ================= */
+
+.quiz-card{
+  background:#121212;
+  border:1px solid #292929;
+  border-radius:20px;
+  padding:22px;
+  margin-bottom:15px;
+}
+
+.quiz-card h4{
+  margin-bottom:14px;
+}
+
+.option{
+  display:block;
+  padding:12px;
+  background:#191919;
+  border:1px solid #292929;
+  border-radius:10px;
+  margin:8px 0;
+  cursor:pointer;
+}
+
+.option:hover{
+  border-color:#ff5a1f;
+}
+
+.option input{
+  width:auto;
+  margin-right:8px;
+}
+
+/* ================= STATUS ================= */
+
+.status-section{
+  background:#101010;
+}
+
+.status-search{
+  max-width:700px;
+  margin-bottom:35px;
+}
+
+.status-search-row{
+  display:flex;
+  gap:10px;
+}
+
+.status-search-row input{
+  font-size:17px;
+  padding:16px;
+}
+
+.status-search-row button{
+  min-width:150px;
+}
+
+/* STATUS CARD */
+
+.status-card{
+  background:#121212;
+  border:1px solid #303030;
+  border-radius:25px;
+  padding:30px;
+  max-width:900px;
+  margin:auto;
+  box-shadow:0 15px 45px rgba(0,0,0,.25);
+}
+
+.status-header{
+  border-bottom:1px solid #292929;
+  padding-bottom:25px;
+  margin-bottom:25px;
+}
+
+.status-header small{
+  display:block;
+  color:#999;
+  font-size:15px;
   font-weight:800;
   letter-spacing:1px;
-  margin-bottom:10px;
+  margin-bottom:8px;
 }
 
-.timeline{
-  display:grid;
-  gap:14px;
-  margin-top:30px;
+.status-header h3{
+  font-size:36px;
+  line-height:1.1;
+  color:#ff5a1f;
 }
 
-.timeline-item{
+/* INFO STATUS DIBESARKAN */
+
+.status-info{
   display:grid;
-  grid-template-columns:150px 1fr;
-  gap:20px;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.status-row{
+  background:#1a1a1a;
+  border:1px solid #303030;
+  border-radius:15px;
   padding:20px;
-  border:1px solid var(--line);
-  border-radius:18px;
-  background:rgba(255,255,255,.025);
 }
 
-.timeline-date{
-  color:var(--orange);
+.status-row span{
+  display:block;
+  color:#999;
+  font-size:16px;
   font-weight:800;
-  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.4px;
+  margin-bottom:7px;
 }
 
-.timeline-item h3{
-  font-size:19px;
-  margin-bottom:5px;
+.status-row strong{
+  display:block;
+  color:#fff;
+  font-size:23px;
+  line-height:1.25;
+  word-break:break-word;
 }
 
-.timeline-item p{
-  color:var(--muted);
-  font-size:14px;
+/* STATUS UTAMA LEBIH BESAR */
+
+.status-row.status-main{
+  grid-column:1/-1;
+  background:#1b130f;
+  border-color:#ff5a1f;
 }
 
-.requirements{
-  display:grid;
-  gap:12px;
+.status-row.status-main span{
+  color:#ff9b78;
+}
+
+.status-row.status-main strong{
+  color:#ff5a1f;
+  font-size:30px;
+}
+
+/* CATATAN */
+
+.admin-note{
+  border:1px solid #8b571e;
+  background:#21180e;
+  border-radius:15px;
+  padding:20px;
+  margin-top:20px;
+}
+
+.admin-note-title{
+  font-size:18px;
+  font-weight:900;
+  color:#ffb15c;
+  margin-bottom:9px;
+}
+
+.admin-note-content{
+  font-size:16px;
+  color:#eee;
+}
+
+/* INTERVIEW */
+
+.interview-box{
+  margin-top:22px;
+  background:#151515;
+  border:1px solid #353535;
+  border-radius:17px;
+  padding:22px;
+}
+
+.interview-box h4{
+  font-size:22px;
+  margin-bottom:15px;
+  color:#ff5a1f;
+}
+
+.interview-row{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:13px 0;
+  border-bottom:1px solid #292929;
+}
+
+.interview-row:last-child{
+  border-bottom:0;
+}
+
+.interview-row span{
+  color:#999;
+  font-weight:700;
+}
+
+.interview-row strong{
+  text-align:right;
+  color:#fff;
+}
+
+.status-message{
+  margin-top:22px;
+  padding:18px;
+  border-radius:13px;
+  background:#191919;
+  border:1px solid #303030;
+  font-size:16px;
+}
+
+.success-message{
+  border-color:#237b49;
+  background:#0e2117;
+}
+
+.danger-message{
+  border-color:#8a2e2e;
+  background:#220f0f;
+}
+
+.revision-box{
+  margin-top:22px;
+  padding:22px;
+  border-radius:17px;
+  background:#20160f;
+  border:1px solid #ff5a1f;
+}
+
+.revision-box h4{
+  color:#ff8b60;
+  font-size:21px;
+  margin-bottom:8px;
+}
+
+.revision-box p{
+  color:#ccc;
+  margin-bottom:16px;
+}
+
+.status-refresh{
+  text-align:center;
   margin-top:25px;
 }
 
-.requirement{
-  display:flex;
-  align-items:flex-start;
-  gap:12px;
-  padding:15px 0;
-  border-bottom:1px solid #fed7aa;
-}
-
-.requirement b{
-  color:var(--orange-dark);
-}
-
-.requirement p{
-  color:#52525b;
-  font-size:14px;
-}
-
-.cta{
-  padding:70px 0;
-  background:linear-gradient(115deg,#f97316,#c2410c);
-}
-
-.cta h2{
-  font-size:clamp(30px,5vw,58px);
+.status-box{
   max-width:700px;
-  letter-spacing:-1.5px;
+  margin:20px auto;
+  padding:22px;
+  border-radius:15px;
+  text-align:center;
 }
 
-.cta p{
-  max-width:650px;
-  margin-top:15px;
-  color:#ffedd5;
+.status-box.error{
+  background:#220f0f;
+  border:1px solid #7b2929;
 }
 
-footer{
-  border-top:1px solid var(--line);
-  padding:30px 0;
-  color:var(--muted);
-  font-size:12px;
+.status-box.loading{
+  background:#171717;
+  border:1px solid #333;
 }
 
-.footer-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  flex-wrap:wrap;
+.spinner{
+  width:28px;
+  height:28px;
+  border:3px solid #333;
+  border-top-color:#ff5a1f;
+  border-radius:50%;
+  animation:spin .7s linear infinite;
+  margin:0 auto 10px;
 }
+
+@keyframes spin{
+  to{transform:rotate(360deg);}
+}
+
+/* ================= MODAL ================= */
 
 .modal{
   position:fixed;
   inset:0;
-  z-index:100;
-  background:rgba(0,0,0,.78);
-  backdrop-filter:blur(8px);
+  background:rgba(0,0,0,.82);
+  z-index:999;
   display:none;
   align-items:center;
   justify-content:center;
-  padding:18px;
+  padding:20px;
+  overflow:auto;
 }
 
-.modal.show{
+.modal.active{
   display:flex;
 }
 
 .modal-box{
-  width:min(760px,100%);
+  width:min(900px,100%);
   max-height:92vh;
   overflow:auto;
-  border:1px solid #3f3f46;
-  border-radius:24px;
-  background:#18181b;
+  background:#111;
+  border:1px solid #333;
+  border-radius:22px;
   padding:25px;
 }
 
 .modal-header{
   display:flex;
-  align-items:flex-start;
   justify-content:space-between;
-  gap:15px;
-  margin-bottom:22px;
+  align-items:center;
+  gap:20px;
+  margin-bottom:20px;
 }
 
 .modal-header h2{
-  font-size:28px;
+  font-size:26px;
 }
 
 .close{
-  border:0;
-  background:#27272a;
-  color:#fff;
-  width:36px;
-  height:36px;
+  width:40px;
+  height:40px;
   border-radius:50%;
+  border:1px solid #444;
+  background:#191919;
+  color:#fff;
   font-size:20px;
 }
 
-.form-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:15px;
+/* ================= ADMIN ================= */
+
+.admin-table-wrap{
+  overflow-x:auto;
 }
 
-.field{
-  display:flex;
-  flex-direction:column;
-  gap:7px;
-}
-
-.field.full{
-  grid-column:1/-1;
-}
-
-label{
-  color:#e4e4e7;
-  font-size:12px;
-  font-weight:700;
-}
-
-input,select,textarea{
-  width:100%;
-  border:1px solid #3f3f46;
-  border-radius:12px;
-  padding:12px 13px;
-  background:#09090b;
-  color:#fff;
-  outline:none;
-}
-
-input:focus,select:focus,textarea:focus{
-  border-color:var(--orange);
-}
-
-textarea{
-  min-height:100px;
-  resize:vertical;
-}
-
-.helper{
-  color:#a1a1aa;
-  font-size:11px;
-}
-
-.form-actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:20px;
-}
-
-.notice{
-  padding:13px 15px;
-  border-radius:12px;
-  font-size:13px;
-  margin-bottom:15px;
-}
-
-.notice.error{
-  background:#450a0a;
-  color:#fecaca;
-  border:1px solid #7f1d1d;
-}
-
-.notice.success{
-  background:#052e16;
-  color:#bbf7d0;
-  border:1px solid #166534;
-}
-
-.notice.info{
-  background:#172554;
-  color:#bfdbfe;
-  border:1px solid #1d4ed8;
-}
-
-.quiz-question{
-  border:1px solid #3f3f46;
-  padding:17px;
-  border-radius:16px;
-  margin-bottom:13px;
-}
-
-.quiz-question p{
-  font-weight:700;
-  font-size:14px;
-  margin-bottom:12px;
-}
-
-.quiz-options{
-  display:grid;
-  gap:8px;
-}
-
-.quiz-options label{
-  display:flex;
-  gap:9px;
-  align-items:flex-start;
-  font-weight:500;
-  border:1px solid #3f3f46;
-  border-radius:10px;
-  padding:10px;
-}
-
-.quiz-options input{
-  width:auto;
-  margin-top:4px;
-  accent-color:var(--orange);
-}
-
-.admin-shell{
-  margin-top:20px;
-}
-
-.admin-top{
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-bottom:20px;
-}
-
-.admin-stats{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:12px;
-  margin-bottom:20px;
-}
-
-.stat{
-  border:1px solid #3f3f46;
-  background:#09090b;
-  border-radius:15px;
-  padding:15px;
-}
-
-.stat b{
-  display:block;
-  font-size:25px;
-  color:var(--orange);
-}
-
-.stat span{
-  font-size:12px;
-  color:var(--muted);
-}
-
-.table-wrap{
-  overflow:auto;
-  border:1px solid #3f3f46;
-  border-radius:15px;
-}
-
-table{
+.admin-table{
   width:100%;
   border-collapse:collapse;
-  min-width:760px;
+  min-width:900px;
 }
 
-th,td{
-  padding:12px;
-  border-bottom:1px solid #27272a;
+.admin-table th,
+.admin-table td{
+  padding:13px;
+  border-bottom:1px solid #292929;
   text-align:left;
-  font-size:12px;
+  vertical-align:top;
 }
 
-th{
-  color:#fdba74;
-  background:#09090b;
+.admin-table th{
+  color:#ff5a1f;
 }
 
-td{
-  color:#d4d4d8;
-}
-
-.status-pill{
-  display:inline-block;
-  border-radius:999px;
-  padding:4px 8px;
-  font-size:10px;
-  background:#3f3f46;
-}
-
-.status-pill.green{
-  background:#14532d;
-  color:#bbf7d0;
-}
-
-.status-pill.yellow{
-  background:#713f12;
-  color:#fef08a;
-}
-
-.status-pill.red{
-  background:#7f1d1d;
-  color:#fecaca;
-}
-
-.doc-box{
-  margin-top:18px;
-  border:1px solid #3f3f46;
-  border-radius:16px;
-  padding:16px;
-  background:#09090b;
-}
-
-.doc-row{
-  display:grid;
-  grid-template-columns:1fr auto auto;
-  gap:10px;
-  align-items:center;
-  padding:12px 0;
-  border-bottom:1px solid #27272a;
-}
-
-.doc-row:last-child{
-  border-bottom:0;
-}
-
-.doc-name{
-  font-weight:700;
-  color:#fff;
-  font-size:13px;
-}
-
-.doc-meta{
-  color:#a1a1aa;
-  font-size:11px;
-}
-
-.doc-actions{
+.admin-actions{
   display:flex;
   gap:7px;
   flex-wrap:wrap;
-  justify-content:flex-end;
 }
 
-.revision-box{
-  margin-top:15px;
-  padding:16px;
-  border:1px solid #7f1d1d;
-  border-radius:16px;
-  background:#2a0b0b;
+.admin-actions button{
+  padding:8px 11px;
+  border-radius:8px;
+  border:0;
+  color:#fff;
+  font-weight:700;
 }
 
-.revision-box h4{
-  font-family:"Space Grotesk",sans-serif;
-  color:#fca5a5;
-  margin-bottom:7px;
+.action-view{
+  background:#333;
 }
 
-.revision-box p{
-  font-size:13px;
-  color:#fecaca;
+.action-verify{
+  background:#168a4a;
 }
 
-.file-current{
-  font-size:11px;
-  color:#a1a1aa;
-  margin-top:4px;
+.action-revision{
+  background:#a96813;
 }
 
-@media (max-width:800px){
-  .doc-row{
-    grid-template-columns:1fr;
+.action-reject{
+  background:#9d2929;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  border-top:1px solid #242424;
+  padding:35px 0;
+  color:#777;
+  text-align:center;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:760px){
+
+  .nav{
+    min-height:auto;
+    padding:14px 0;
+    align-items:flex-start;
   }
 
-  .doc-actions{
-    justify-content:flex-start;
-  }
-}
-
-@media (max-width:600px){
-  .brand img{
-    width:38px;
-    height:38px;
+  .nav-buttons{
+    max-width:230px;
   }
 
-  .brand-text strong{
-    font-size:9px;
-  }
-
-  .brand-text span{
-    font-size:8px;
-  }
-}
-
-@media (max-width:800px){
-  nav{
-    display:none;
+  .nav-buttons button{
+    padding:8px 10px;
+    font-size:11px;
   }
 
   .hero{
-    padding:75px 0 65px;
+    padding:60px 0;
   }
 
-  h1{
-    letter-spacing:-1.8px;
-  }
-
-  .grid-2,
-  .grid-3{
+  .hero-grid{
     grid-template-columns:1fr;
   }
 
-  .timeline-item{
-    grid-template-columns:1fr;
-    gap:6px;
+  .hero h1{
+    letter-spacing:-2px;
   }
 
   .form-grid{
     grid-template-columns:1fr;
   }
 
-  .field.full{
+  .form-group.full{
     grid-column:auto;
   }
 
-  .admin-stats{
+  .status-search-row{
+    flex-direction:column;
+  }
+
+  .status-search-row button{
+    width:100%;
+  }
+
+  .status-card{
+    padding:18px;
+  }
+
+  .status-info{
     grid-template-columns:1fr;
+  }
+
+  .status-row.status-main{
+    grid-column:auto;
+  }
+
+  .status-header h3{
+    font-size:29px;
+  }
+
+  .status-row strong{
+    font-size:21px;
+  }
+
+  .status-row span{
+    font-size:14px;
+  }
+
+  .interview-row{
+    flex-direction:column;
+    gap:4px;
+  }
+
+  .interview-row strong{
+    text-align:left;
   }
 }
 </style>
@@ -797,4381 +753,2794 @@ td{
 <body>
 
 <header>
-<div class="container nav">
+  <div class="container nav">
 
-<a class="brand" href="#">
-<img src="./logo-mb.png" alt="Logo Muda Bergerak">
-<div class="brand-text">
-<strong>DEWAN PIMPINAN WILAYAH</strong>
-<span>MUDA BERGERAK - PROV. SULAWESI SELATAN</span>
-</div>
-</a>
+    <div class="logo">
+      MB <span>SULSEL</span>
+    </div>
 
-<nav>
-<a href="#tentang">VISI & MISI</a>
-<a href="#nilai">NILAI</a>
-<a href="#timeline">TIMELINE</a>
-<a href="#ketentuan">KETENTUAN</a>
-<a href="#" id="statusNav">CEK STATUS</a>
-<a href="#" id="registerNav">DAFTAR</a>
-<a href="#" id="adminNav">LOGIN ADMIN</a>
-</nav>
+    <div class="nav-buttons">
+      <button onclick="scrollToSection('daftar')">
+        Daftar Sekarang
+      </button>
 
-</div>
+      <button onclick="scrollToSection('visi')">
+        Visi & Misi
+      </button>
+
+      <button onclick="scrollToSection('status')">
+        Cek Status
+      </button>
+
+      <button class="btn-admin" onclick="openAdmin()">
+        Admin
+      </button>
+    </div>
+
+  </div>
 </header>
 
-<main>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
 
 <section class="hero">
-<div class="container">
+  <div class="container hero-grid">
 
-<div class="eyebrow">OPEN RECRUITMENT - 2026</div>
+    <div>
+      <div class="badge">
+        OPEN RECRUITMENT MB SULSEL
+      </div>
 
-<h1>
-MUDA BERGERAK 
-<span>PROV. SULAWESI SELATAN</span>
-</h1>
+      <h1>
+        RUANGNYA<br>
+        <span>ANAK MUDA</span><br>
+        SULSEL.
+      </h1>
 
-<p class="lead">
-Saatnya anak muda Sulawesi Selatan belajar, berkembang,
-berkolaborasi, dan mengambil peran nyata bersama Muda Bergerak.
-</p>
+      <p>
+        Tempat kamu bertumbuh, berkolaborasi,
+        dan mulai mengambil peran.
+      </p>
 
-<div class="actions">
-<button class="btn btn-primary" id="heroRegister">
-DAFTAR SEKARANG →
-</button>
+      <div style="margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;">
+        <button class="btn-primary" onclick="scrollToSection('daftar')">
+          Daftar Sekarang
+        </button>
 
-<a class="btn btn-outline" href="#tentang">
-VISI &amp; MISI MUDA BERGERAK
-</a>
+        <button class="btn-secondary" onclick="scrollToSection('status')">
+          Cek Status
+        </button>
+      </div>
+    </div>
 
-<button class="btn btn-outline" id="heroStatus">
-CEK STATUS PENDAFTARAN
-</button>
+    <div class="hero-card">
+      <h3>Ruang untuk bergerak.</h3>
+      <p>
+        Muda Bergerak Sulawesi Selatan membuka ruang
+        untuk anak muda yang ingin belajar, berkolaborasi,
+        dan mengambil peran.
+      </p>
+    </div>
 
-<button class="btn btn-outline" id="heroAdmin">
-LOGIN ADMIN 
-</button>
-</div>
-
-</div>
+  </div>
 </section>
 
-<section id="tentang" class="section-light">
-<div class="container">
 
-<div class="eyebrow">TENTANG KAMI</div>
+<!-- ============================================================
+     VISI MISI
+============================================================ -->
 
-<h2 class="section-title">
-Visi & Misi Kami.
-</h2>
+<section id="visi">
+  <div class="container">
 
-<p class="section-copy">
-Muda Bergerak hadir sebagai ruang kolaborasi anak muda
-yang inklusif, interaktif, dan terbuka untuk belajar serta berkembang bersama.
-</p>
+    <h2 class="section-title">
+      Visi & Misi Muda Bergerak
+    </h2>
 
-<div class="grid-2" style="margin-top:30px">
+    <p class="section-desc">
+      Bertumbuh bersama, bergerak bersama, dan memberi dampak.
+    </p>
 
-<div class="card">
-<div class="number">VISI</div>
-<p>
-Menjadikan Muda Bergerak Indonesia sebagai organisasi yang inklusif
-dan interaktif terhadap masyarakat untuk meningkatkan kolaborasi agar
-mampu menjadi wadah untuk belajar, berkembang dan berdinamika bagi
-seluruh masyarakat muda Indonesia dengan mengedepankan Transparansi.
-</p>
-</div>
+    <div class="form-card">
 
-<div class="card">
+      <h3 style="color:#ff5a1f;margin-bottom:10px;">
+        Visi
+      </h3>
 
-<div class="number">MISI</div>
+      <p style="color:#ccc;margin-bottom:25px;">
+        Menjadikan Muda Bergerak Indonesia sebagai organisasi
+        yang inklusif dan interaktif, sebagai wadah untuk belajar,
+        berkembang dan berdinamika dengan mengedepankan transparansi.
+      </p>
 
-<ol style="padding-left:20px;color:#71717a;font-size:14px;display:grid;gap:10px">
+      <h3 style="color:#ff5a1f;margin-bottom:10px;">
+        Misi
+      </h3>
 
-<li>
-Menciptakan hubungan internal dan eksternal dengan mengedepankan
-transparansi, kekeluargaan dan profesionalisme.
-</li>
+      <p style="color:#ccc;">
+        Membangun organisasi yang mengedepankan transparansi,
+        kekeluargaan dan profesionalisme; berfokus pada isu politik,
+        ekonomi, pendidikan, kesehatan dan lingkungan; menjadi ruang
+        aspirasi serta solusi; dan membangun kolaborasi strategis
+        bersama anak muda.
+      </p>
 
-<li>
-Mengabdi dan melayani masyarakat Indonesia pada fokus politik,
-ekonomi, pendidikan, kesehatan, dan lingkungan masyarakat.
-</li>
+    </div>
 
-<li>
-Menyediakan platform serta wadah yang digunakan untuk menyampaikan
-aspirasi dan melayani masyarakat secara solutif.
-</li>
-
-<li>
-Berkolaborasi dengan membangun kerjasama strategis bersama
-kelompok-kelompok muda untuk kepentingan masyarakat banyak.
-</li>
-
-</ol>
-
-</div>
-</div>
-</div>
+  </div>
 </section>
 
-<section id="nilai" class="section-light">
-<div class="container">
-  
-<h2 class="section-title">
-Nilai Organisasi.
-</h2>
 
-<p class="section-copy">
-Nilai yang menjadi dasar gerak Muda Bergerak Indonesia
-dalam membangun organisasi dan memberi dampak bagi masyarakat.
-</p>
+<!-- ============================================================
+     FORM PENDAFTARAN
+============================================================ -->
 
-<div class="grid-3" style="margin-top:30px">
+<section id="daftar">
+  <div class="container">
 
-<div class="card">
-<div class="number">01</div>
-<h3>Transparansi</h3>
-<p>
-Setiap individu di organisasi Muda Bergerak Indonesia ditekankan
-untuk menanam prinsip Transparansi, agar keterbukaan dalam melakukan
-segala kegiatan organisasi mendapatkan kepercayaan oleh masyarakat luas.
-Hal ini dapat diterapkan dengan cara keterbukaan informasi, komunikasi,
-dan pertanggung jawaban.
-</p>
-</div>
+    <h2 class="section-title">
+      Daftar Sekarang
+    </h2>
 
-<div class="card">
-<div class="number">02</div>
-<h3>Sinergi</h3>
-<p>
-Memahami kelebihan dan kekurangan kondisi internal serta potensi dan
-ancaman kondisi eksternal dari setiap bagian Muda Bergerak guna
-menciptakan kolaborasi dan gerakan yang saling mengisi dan melengkapi.
-</p>
-</div>
+    <p class="section-desc">
+      Isi seluruh data dengan benar. Semua kolom wajib diisi.
+    </p>
 
-<div class="card">
-<div class="number">03</div>
-<h3>Progresif</h3>
-<p>
-Muda Bergerak berorientasi pada perkembangan, perubahan, serta kemajuan
-dalam melaksanakan fungsi pergerakan dengan harapan dapat membawa
-perubahan terhadap anak muda di Indonesia.
-</p>
-</div>
+    <form id="registrationForm" class="form-card">
 
-</div>
-</div>
+      <div class="form-grid">
+
+        <div class="form-group full">
+          <label>
+            Nama Lengkap <span class="required">*</span>
+          </label>
+          <input id="nama" required>
+        </div>
+
+        <div class="form-group">
+          <label>
+            Nomor WhatsApp <span class="required">*</span>
+          </label>
+          <input
+            id="whatsapp"
+            type="tel"
+            placeholder="08xxxxxxxxxx"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label>
+            Email <span class="required">*</span>
+          </label>
+          <input id="email" type="email" required>
+        </div>
+
+        <div class="form-group">
+          <label>
+            Tanggal Lahir <span class="required">*</span>
+          </label>
+          <input id="tanggal_lahir" type="date" required>
+        </div>
+
+        <div class="form-group">
+          <label>
+            Pendidikan / Pekerjaan <span class="required">*</span>
+          </label>
+          <input id="pendidikan_pekerjaan" required>
+        </div>
+
+        <div class="form-group">
+          <label>
+            Pilihan Kepengurusan <span class="required">*</span>
+          </label>
+
+          <select id="struktur" required>
+            <option value="">Pilih</option>
+            <option>DPW</option>
+            <option>DPD</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>
+            Kabupaten / Kota <span class="required">*</span>
+          </label>
+
+          <input
+            id="wilayah"
+            placeholder="Contoh: Kota Makassar"
+            required
+          >
+        </div>
+
+        <div class="form-group full">
+          <label>
+            Pengalaman Organisasi <span class="required">*</span>
+          </label>
+
+          <textarea id="pengalaman" required></textarea>
+        </div>
+
+        <div class="form-group full">
+          <label>
+            Motivasi Bergabung <span class="required">*</span>
+          </label>
+
+          <textarea id="motivasi" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>
+            KTP / Identitas <span class="required">*</span>
+          </label>
+
+          <input
+            id="ktp"
+            type="file"
+            accept=".pdf,.jpg,.jpeg,.png"
+            required
+          >
+
+          <div class="help">
+            PDF/JPG/JPEG/PNG maksimal 2 MB.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>
+            CV <span class="required">*</span>
+          </label>
+
+          <input
+            id="cv"
+            type="file"
+            accept=".pdf,.jpg,.jpeg,.png"
+            required
+          >
+
+          <div class="help">
+            PDF/JPG/JPEG/PNG maksimal 2 MB.
+          </div>
+        </div>
+
+        <div class="form-group full">
+          <label>
+            Foto Diri <span class="required">*</span>
+          </label>
+
+          <input
+            id="foto"
+            type="file"
+            accept="image/*"
+            required
+          >
+
+          <div class="help">
+            Semua format gambar yang dikenali browser, maksimal 3 MB.
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- QUIZ -->
+
+      <div style="margin-top:35px;">
+
+        <h3 style="font-size:26px;margin-bottom:8px;">
+          The Quiz
+        </h3>
+
+        <p style="color:#999;margin-bottom:20px;">
+          Jawab semua pertanyaan.
+        </p>
+
+        <div id="quizContainer"></div>
+
+      </div>
+
+
+      <div id="registrationNotice"></div>
+
+      <button
+        type="submit"
+        class="btn-primary"
+        style="width:100%;margin-top:20px;"
+      >
+        Kirim Pendaftaran
+      </button>
+
+    </form>
+
+  </div>
 </section>
 
-<section id="timeline">
-<div class="container">
 
-<div class="eyebrow">Catat Tanggalnya</div>
+<!-- ============================================================
+     CEK STATUS
+============================================================ -->
 
-<h2 class="section-title">
-Timeline Rekrutmen.
-</h2>
+<section id="status" class="status-section">
 
-<p class="section-copy">
-Ikuti setiap tahap dan pastikan data yang kamu masukkan sudah benar.
-</p>
+  <div class="container">
 
-<div class="timeline">
+    <h2 class="section-title">
+      Cek Status Pendaftaran
+    </h2>
 
-<div class="timeline-item">
-<div class="timeline-date">1–8 OKTOBER</div>
-<div>
-<h3>Open Recruitment & The Quiz</h3>
-<p>
-Pendaftaran, pengisian quiz, dan verifikasi awal data serta dokumen.
-</p>
-</div>
-</div>
+    <p class="section-desc">
+      Masukkan kode pendaftaran untuk melihat status terbaru.
+    </p>
 
-<div class="timeline-item">
-<div class="timeline-date">10 OKTOBER</div>
-<div>
-<h3>Kenal Lebih Dekat — Online</h3>
-<p>
-Interview online untuk peserta di luar Makassar dan Gowa sesuai ketentuan.
-</p>
-</div>
-</div>
+    <div class="status-search">
 
-<div class="timeline-item">
-<div class="timeline-date">11 OKTOBER</div>
-<div>
-<h3>Kenal Lebih Dekat — Offline</h3>
-<p>
-Interview offline untuk peserta wilayah Makassar dan Gowa.
-</p>
-</div>
-</div>
+      <form id="statusForm">
 
-<div class="timeline-item">
-<div class="timeline-date">17 OKTOBER</div>
-<div>
-<h3>Final Result</h3>
-<p>
-Pengumuman hasil akhir rekrutmen.
-</p>
-</div>
-</div>
+        <div class="status-search-row">
 
-</div>
-</div>
+          <input
+            id="statusKode"
+            placeholder="Masukkan kode pendaftaran"
+            autocomplete="off"
+            required
+          >
+
+          <button
+            type="submit"
+            class="btn-primary"
+          >
+            Cek Status
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+
+    <div id="statusResult"></div>
+
+  </div>
+
 </section>
 
-<section id="ketentuan" class="section-light">
-<div class="container">
-
-<div class="eyebrow">Sebelum Mendaftar</div>
-
-<h2 class="section-title">
-Ketentuan Pendaftaran.
-</h2>
-
-<div class="requirements">
-
-<div class="requirement">
-<b>01.</b>
-<p>
-Calon pengurus DPW wajib berdomisili di Kota Makassar.
-</p>
-</div>
-
-<div class="requirement">
-<b>02.</b>
-<p>
-Calon pengurus DPD memilih kabupaten/kota sesuai domisili
-atau wilayah yang ditentukan organisasi.
-</p>
-</div>
-
-<div class="requirement">
-<b>03.</b>
-<p>
-Data yang diisi harus benar dan dapat dipertanggungjawabkan.
-</p>
-</div>
-
-<div class="requirement">
-<b>04.</b>
-<p>
-Peserta wajib mengikuti tahap quiz, verifikasi, dan interview
-sesuai jadwal.
-</p>
-</div>
-
-<div class="requirement">
-<b>05.</b>
-<p>
-Pendaftaran tidak otomatis menjamin peserta lolos sebagai pengurus.
-</p>
-</div>
-
-</div>
-</div>
-</section>
-
-<section class="cta">
-<div class="container">
-
-<h2>
-Ini ruangmu. Saatnya ambil peran.
-</h2>
-
-<p>
-Jangan hanya menjadi penonton.
-Mari belajar, bergerak, dan bertumbuh bersama.
-</p>
-
-<div class="actions">
-<button class="btn btn-dark" id="ctaRegister">
-DAFTAR SEKARANG →
-</button>
-
-<button class="btn btn-outline" id="ctaStatus">
-CEK STATUS
-</button>
-</div>
-
-</div>
-</section>
-
-</main>
 
 <footer>
-<div class="container footer-row">
+  <div class="container">
+    <strong style="color:#ff5a1f;">
+      MUDA BERGERAK SULAWESI SELATAN
+    </strong>
 
-<div>
-<span>
-© 2026 DPW Muda Bergerak Sulawesi Selatan
-</span>
+    <br>
 
-<br>
-
-<span>
-Instagram:
-<a href="https://www.instagram.com/mudabergeraksulsel"
-target="_blank"
-rel="noopener noreferrer">
-@mudabergeraksulsel
-</a>
-</span>
-
-<br>
-
-<span>
-CP. Jumardi:
-<a href="https://wa.me/6285314241908"
-target="_blank"
-rel="noopener noreferrer">
-+62 853-1424-1908
-</a>
-(Ketua Bidang Keorganisasian)
-</span>
-</div>
-
-<span>
-Ruangnya Anak Muda Sulsel.
-</span>
-
-</div>
+    <span>
+      Ruangnya Anak Muda Sulsel.
+    </span>
+  </div>
 </footer>
 
-<!-- REGISTER MODAL -->
-<div class="modal" id="registerModal">
-<div class="modal-box">
 
-<div class="modal-header">
-<div>
-<div class="eyebrow">Pendaftaran</div>
-<h2>Gabung Muda Bergerak</h2>
-</div>
+<!-- ============================================================
+     MODAL ADMIN LOGIN
+============================================================ -->
 
-<button class="close" data-close="registerModal">×</button>
-</div>
-
-<div id="registerNotice"></div>
-
-<form id="registerForm">
-
-<div class="form-grid">
-
-<div class="field full">
-<label for="nama">Nama Lengkap *</label>
-<input id="nama" required maxlength="150">
-</div>
-
-<div class="field">
-<label for="whatsapp">Nomor WhatsApp *</label>
-<input id="whatsapp" required placeholder="08xxxxxxxxxx">
-</div>
-
-<div class="field">
-<label for="email">Email *</label>
-<input id="email" type="email" required>
-</div>
-
-<div class="field">
-<label for="tanggalLahir">Tanggal Lahir *</label>
-<input id="tanggalLahir" type="date" required>
-</div>
-
-<div class="field">
-<label for="pendidikan">Pendidikan / Pekerjaan *</label>
-<input id="pendidikan" required>
-</div>
-
-<div class="field">
-<label for="struktur">Pilihan Struktur *</label>
-
-<select id="struktur" required>
-<option value="">Pilih struktur</option>
-<option value="DPW">Pengurus DPW</option>
-<option value="DPD">Pengurus DPD</option>
-</select>
-
-</div>
-
-<div class="field">
-
-<label for="wilayah">
-Domisili Kabupaten/Kota *
-</label>
-
-<select id="wilayah" required>
-
-<option value="">Pilih wilayah</option>
-<option>Makassar</option>
-<option>Gowa</option>
-<option>Takalar</option>
-<option>Maros</option>
-<option>Pangkajene dan Kepulauan</option>
-<option>Barru</option>
-<option>Bone</option>
-<option>Bulukumba</option>
-<option>Enrekang</option>
-<option>Jeneponto</option>
-<option>Kepulauan Selayar</option>
-<option>Luwu</option>
-<option>Luwu Timur</option>
-<option>Luwu Utara</option>
-<option>Palopo</option>
-<option>Pinrang</option>
-<option>Sidenreng Rappang</option>
-<option>Sinjai</option>
-<option>Soppeng</option>
-<option>Wajo</option>
-<option>Tana Toraja</option>
-<option>Toraja Utara</option>
-
-</select>
-
-</div>
-
-<div class="field full">
-<label for="pengalaman">
-Pengalaman Organisasi / Komunitas *
-</label>
-
-<textarea id="pengalaman" required></textarea>
-</div>
-
-<div class="field full">
-<label for="motivasi">
-Motivasi Bergabung *
-</label>
-
-<textarea id="motivasi" required></textarea>
-</div>
-
-<div class="field">
-
-<label for="ktp">KTP *</label>
-
-<input
-id="ktp"
-type="file"
-accept="application/pdf,image/jpeg,image/png"
-required
->
-
-<div class="helper">
-PDF/JPG/PNG maksimal 2 MB
-</div>
-
-</div>
-
-<div class="field">
-
-<label for="cv">CV *</label>
-
-<input
-id="cv"
-type="file"
-accept="application/pdf,image/jpeg,image/png"
-required
->
-
-<div class="helper">
-PDF/JPG/PNG maksimal 2 MB
-</div>
-
-</div>
-
-<div class="field full">
-
-<label for="foto">
-Foto *
-</label>
-
-<input
-id="foto"
-type="file"
-accept="image/*"
-required
->
-
-<div class="helper">
-Semua format gambar yang dikenali browser, maksimal 3 MB.
-</div>
-
-</div>
-
-<div class="field full">
-
-<label style="display:flex;gap:8px;align-items:flex-start">
-
-<input
-id="persetujuan"
-type="checkbox"
-required
-style="width:auto;margin-top:4px"
->
-
-<span>
-Saya menyatakan data yang saya isi benar dan bersedia
-mengikuti proses Open Recruitment Muda Bergerak Sulawesi Selatan.
-</span>
-
-</label>
-
-</div>
-
-</div>
-
-<div class="form-actions">
-
-<button
-class="btn btn-primary"
-type="submit">
-Lanjut ke Quiz →
-</button>
-
-</div>
-
-</form>
-
-</div>
-</div>
-
-<!-- QUIZ MODAL -->
-<div class="modal" id="quizModal">
-<div class="modal-box">
-
-<div class="modal-header">
-
-<div>
-<div class="eyebrow">The Quiz</div>
-<h2>Kenal Lebih Dekat</h2>
-</div>
-
-<button class="close" data-close="quizModal">×</button>
-
-</div>
-
-<div id="quizNotice"></div>
-
-<form id="quizForm">
-
-<div id="quizQuestions"></div>
-
-<div class="form-actions">
-
-<button
-class="btn btn-primary"
-type="submit">
-Kirim Jawaban & Daftar →
-</button>
-
-</div>
-
-</form>
-
-</div>
-</div>
-
-<!-- SUCCESS MODAL -->
-<div class="modal" id="successModal">
-<div class="modal-box">
-
-<div class="modal-header">
-
-<div>
-<div class="eyebrow">Berhasil</div>
-<h2>Yes, kamu sudah masuk!</h2>
-</div>
-
-<button class="close" data-close="successModal">×</button>
-
-</div>
-
-<div class="notice success">
-Simpan kode peserta kamu.
-Gunakan kode ini untuk mengecek status pendaftaran.
-</div>
-
-<div class="card">
-
-<div class="number">
-KODE PESERTA
-</div>
-
-<h3
-id="successCode"
-style="font-size:32px;color:#fb923c">
-</h3>
-
-<p id="successScore"></p>
-
-</div>
-
-<div class="form-actions">
-
-<button
-class="btn btn-primary"
-id="successStatus">
-Cek Status
-</button>
-
-<button
-class="btn btn-outline"
-data-close="successModal">
-Tutup
-</button>
-
-</div>
-
-</div>
-</div>
-
-<!-- STATUS MODAL -->
-<div class="modal" id="statusModal">
-<div class="modal-box">
-
-<div class="modal-header">
-
-<div>
-<div class="eyebrow">Peserta</div>
-<h2>Cek Status Pendaftaran</h2>
-</div>
-
-<button class="close" data-close="statusModal">×</button>
-
-</div>
-
-<form id="statusForm">
-
-<div class="field">
-
-<label for="statusCode">
-Kode Peserta
-</label>
-
-<input
-id="statusCode"
-placeholder="Contoh: MB26-ABC123"
-required
->
-
-</div>
-
-<div class="form-actions">
-
-<button
-class="btn btn-primary"
-type="submit">
-Periksa Status
-</button>
-
-</div>
-
-</form>
-
-<div
-id="statusNotice"
-style="margin-top:18px">
-</div>
-
-<div id="statusResult"></div>
-
-</div>
-</div>
-
-<!-- REVISION MODAL -->
-<div class="modal" id="revisionModal">
-<div class="modal-box">
-
-<div class="modal-header">
-
-<div>
-<div class="eyebrow">Revisi Pendaftaran</div>
-<h2>Edit & Kirim Revisi</h2>
-</div>
-
-<button
-class="close"
-data-close="revisionModal">
-×
-</button>
-
-</div>
-
-<div id="revisionNotice"></div>
-
-<div
-id="revisionReason"
-class="revision-box hidden">
-</div>
-
-<form id="revisionForm">
-
-<input
-type="hidden"
-id="revisionId"
->
-
-<div class="form-grid">
-
-<div class="field full">
-
-<label for="revisionNama">
-Nama Lengkap *
-</label>
-
-<input
-id="revisionNama"
-required
-maxlength="150"
->
-
-</div>
-
-<div class="field">
-
-<label for="revisionWhatsapp">
-Nomor WhatsApp *
-</label>
-
-<input
-id="revisionWhatsapp"
-required
-placeholder="08xxxxxxxxxx"
->
-
-</div>
-
-<div class="field">
-
-<label for="revisionEmail">
-Email *
-</label>
-
-<input
-id="revisionEmail"
-type="email"
-required
->
-
-</div>
-
-<div class="field">
-
-<label for="revisionTanggalLahir">
-Tanggal Lahir *
-</label>
-
-<input
-id="revisionTanggalLahir"
-type="date"
-required
->
-
-</div>
-
-<div class="field">
-
-<label for="revisionPendidikan">
-Pendidikan / Pekerjaan *
-</label>
-
-<input
-id="revisionPendidikan"
-required
->
-
-</div>
-
-<div class="field">
-
-<label for="revisionStruktur">
-Pilihan Struktur *
-</label>
-
-<select id="revisionStruktur" required>
-
-<option value="">
-Pilih struktur
-</option>
-
-<option value="DPW">
-Pengurus DPW
-</option>
-
-<option value="DPD">
-Pengurus DPD
-</option>
-
-</select>
-
-</div>
-
-<div class="field">
-
-<label for="revisionWilayah">
-Domisili Kabupaten/Kota *
-</label>
-
-<select id="revisionWilayah" required>
-
-<option value="">
-Pilih wilayah
-</option>
-
-<option>Makassar</option>
-<option>Gowa</option>
-<option>Takalar</option>
-<option>Maros</option>
-<option>Pangkajene dan Kepulauan</option>
-<option>Barru</option>
-<option>Bone</option>
-<option>Bulukumba</option>
-<option>Enrekang</option>
-<option>Jeneponto</option>
-<option>Kepulauan Selayar</option>
-<option>Luwu</option>
-<option>Luwu Timur</option>
-<option>Luwu Utara</option>
-<option>Palopo</option>
-<option>Pinrang</option>
-<option>Sidenreng Rappang</option>
-<option>Sinjai</option>
-<option>Soppeng</option>
-<option>Wajo</option>
-<option>Tana Toraja</option>
-<option>Toraja Utara</option>
-
-</select>
-
-</div>
-
-<div class="field full">
-
-<label for="revisionPengalaman">
-Pengalaman Organisasi / Komunitas *
-</label>
-
-<textarea
-id="revisionPengalaman"
-required>
-</textarea>
-
-</div>
-
-<div class="field full">
-
-<label for="revisionMotivasi">
-Motivasi Bergabung *
-</label>
-
-<textarea
-id="revisionMotivasi"
-required>
-</textarea>
-
-</div>
-
-<div class="field">
-
-<label for="revisionKtp">
-KTP *
-</label>
-
-<input
-id="revisionKtp"
-type="file"
-accept="application/pdf,image/jpeg,image/png"
-required
->
-
-<div
-id="revisionKtpCurrent"
-class="file-current">
-</div>
-
-</div>
-
-<div class="field">
-
-<label for="revisionCv">
-CV *
-</label>
-
-<input
-id="revisionCv"
-type="file"
-accept="application/pdf,image/jpeg,image/png"
-required
->
-
-<div
-id="revisionCvCurrent"
-class="file-current">
-</div>
-
-</div>
-
-<div class="field full">
-
-<label for="revisionFoto">
-Foto *
-</label>
-
-<input
-id="revisionFoto"
-type="file"
-accept="image/*"
-required
->
-
-<div
-id="revisionFotoCurrent"
-class="file-current">
-</div>
-
-</div>
-
-</div>
-
-<div class="helper" style="margin-top:12px">
-Berkas revisi: KTP/CV maksimal 2 MB
-(PDF/JPG/PNG), Foto maksimal 3 MB dan wajib berupa gambar.
-</div>
-
-<div class="form-actions">
-
-<button
-class="btn btn-primary"
-type="submit">
-Kirim Revisi →
-</button>
-
-<button
-class="btn btn-outline"
-type="button"
-data-close="revisionModal">
-Batal
-</button>
-
-</div>
-
-</form>
-
-</div>
-</div>
-
-<!-- ADMIN LOGIN -->
 <div class="modal" id="adminLoginModal">
-<div class="modal-box">
 
-<div class="modal-header">
+  <div class="modal-box" style="max-width:450px;">
 
-<div>
-<div class="eyebrow">Area Internal</div>
-<h2>Login Admin</h2>
-</div>
+    <div class="modal-header">
 
-<button
-class="close"
-data-close="adminLoginModal">
-×
-</button>
+      <h2>Login Admin</h2>
 
-</div>
+      <button
+        class="close"
+        onclick="closeModal('adminLoginModal')"
+      >
+        ×
+      </button>
 
-<div id="adminLoginNotice"></div>
+    </div>
 
-<form id="adminLoginForm">
+    <form id="adminLoginForm">
 
-<div class="field">
+      <div class="form-group">
 
-<label for="adminEmail">
-Email Admin
-</label>
+        <label>Email</label>
 
-<input
-id="adminEmail"
-type="email"
-required
->
+        <input
+          id="adminEmail"
+          type="email"
+          required
+        >
 
-</div>
+      </div>
 
-<div
-class="field"
-style="margin-top:14px">
+      <div class="form-group">
 
-<label for="adminPassword">
-Password
-</label>
+        <label>Password</label>
 
-<input
-id="adminPassword"
-type="password"
-required
->
+        <input
+          id="adminPassword"
+          type="password"
+          required
+        >
 
-</div>
+      </div>
 
-<div class="form-actions">
+      <div id="adminLoginNotice"></div>
 
-<button
-class="btn btn-primary"
-type="submit">
-Login Admin
-</button>
+      <button
+        class="btn-primary"
+        style="width:100%;"
+        type="submit"
+      >
+        Login
+      </button>
+
+    </form>
+
+  </div>
 
 </div>
 
-</form>
 
-</div>
-</div>
+<!-- ============================================================
+     MODAL ADMIN
+============================================================ -->
 
-<!-- ADMIN DASHBOARD -->
 <div class="modal" id="adminModal">
-<div
-class="modal-box"
-style="width:min(1100px,100%)">
 
-<div class="modal-header">
+  <div class="modal-box">
 
-<div>
-<div class="eyebrow">Internal Dashboard</div>
-<h2>Dashboard Admin</h2>
-</div>
+    <div class="modal-header">
 
-<button
-class="close"
-data-close="adminModal">
-×
-</button>
+      <h2>Dashboard Admin</h2>
 
-</div>
+      <div style="display:flex;gap:8px;">
 
-<div class="admin-top">
+        <button
+          class="btn-secondary"
+          onclick="loadAdminParticipants()"
+        >
+          🔄 Refresh
+        </button>
 
-<p class="helper">
-Data peserta dari database Supabase.
-</p>
+        <button
+          class="close"
+          onclick="closeModal('adminModal')"
+        >
+          ×
+        </button>
 
-<div
-class="form-actions"
-style="margin-top:0">
+      </div>
 
-<button
-class="btn btn-primary btn-small"
-id="refreshAdmin">
-Refresh
-</button>
+    </div>
 
-<button
-class="btn btn-danger btn-small"
-id="logoutAdmin">
-Logout
-</button>
+    <div id="adminNotice"></div>
 
-</div>
+    <div class="admin-table-wrap">
 
-</div>
+      <table class="admin-table">
 
-<div class="admin-stats">
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Kode</th>
+            <th>Status</th>
+            <th>Dokumen</th>
+            <th>Skor</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
 
-<div class="stat">
-<b id="statTotal">0</b>
-<span>Total Peserta</span>
-</div>
+        <tbody id="adminParticipantsBody"></tbody>
 
-<div class="stat">
-<b id="statPending">0</b>
-<span>Menunggu Verifikasi</span>
-</div>
+      </table>
 
-<div class="stat">
-<b id="statVerified">0</b>
-<span>Terverifikasi</span>
-</div>
+    </div>
+
+  </div>
 
 </div>
 
-<div id="adminNotice"></div>
 
-<div class="table-wrap">
+<!-- ============================================================
+     MODAL DETAIL ADMIN
+============================================================ -->
 
-<table>
+<div class="modal" id="adminDetailModal">
 
-<thead>
+  <div class="modal-box">
 
-<tr>
-<th>Kode</th>
-<th>Nama</th>
-<th>Struktur</th>
-<th>Wilayah</th>
-<th>Skor</th>
-<th>Status</th>
-<th>Aksi</th>
-</tr>
+    <div class="modal-header">
 
-</thead>
+      <h2>Detail Pendaftar</h2>
 
-<tbody id="adminTableBody">
-</tbody>
+      <button
+        class="close"
+        onclick="closeModal('adminDetailModal')"
+      >
+        ×
+      </button>
 
-</table>
+    </div>
 
-</div>
+    <div id="adminDetailContent"></div>
 
-</div>
-</div>
-
-<!-- PARTICIPANT DETAIL -->
-<div class="modal" id="participantModal">
-<div
-class="modal-box"
-style="width:min(1000px,100%)">
-
-<div class="modal-header">
-
-<div>
-<div class="eyebrow">Detail Peserta</div>
-<h2 id="detailTitle">
-Detail Pendaftar
-</h2>
-</div>
-
-<button
-class="close"
-data-close="participantModal">
-×
-</button>
+  </div>
 
 </div>
 
-<div id="detailNotice"></div>
 
-<div id="detailInfo"></div>
+<!-- ============================================================
+     MODAL REVISI PESERTA
+============================================================ -->
 
-<div class="doc-box">
+<div class="modal" id="revisionModal">
 
-<div class="number">
-VERIFIKASI BERKAS
-</div>
+  <div class="modal-box">
 
-<div id="documentList"></div>
+    <div class="modal-header">
 
-</div>
+      <h2>Edit & Kirim Revisi</h2>
 
-</div>
-</div>
+      <button
+        class="close"
+        onclick="closeModal('revisionModal')"
+      >
+        ×
+      </button>
 
-<!-- EDIT ADMIN -->
-<div class="modal" id="editModal">
-<div class="modal-box">
+    </div>
 
-<div class="modal-header">
+    <form id="revisionForm">
 
-<div>
-<div class="eyebrow">Kelola Peserta</div>
-<h2>Perbarui Status</h2>
-</div>
+      <input id="revisionId" type="hidden">
 
-<button
-class="close"
-data-close="editModal">
-×
-</button>
+      <div class="form-grid">
 
-</div>
+        <div class="form-group full">
+          <label>Nama Lengkap</label>
+          <input id="revisionNama" required>
+        </div>
 
-<div id="editNotice"></div>
+        <div class="form-group">
+          <label>WhatsApp</label>
+          <input id="revisionWhatsapp" required>
+        </div>
 
-<form id="editForm">
+        <div class="form-group">
+          <label>Email</label>
+          <input id="revisionEmail" type="email" required>
+        </div>
 
-<input
-type="hidden"
-id="editId"
->
+        <div class="form-group">
+          <label>Tanggal Lahir</label>
+          <input id="revisionTanggalLahir" type="date" required>
+        </div>
 
-<div class="field">
+        <div class="form-group">
+          <label>Pendidikan / Pekerjaan</label>
+          <input id="revisionPendidikan" required>
+        </div>
 
-<label for="editStatus">
-Status Pendaftaran
-</label>
+        <div class="form-group">
+          <label>Struktur</label>
 
-<select id="editStatus" required>
+          <select id="revisionStruktur" required>
+            <option value="">Pilih</option>
+            <option>DPW</option>
+            <option>DPD</option>
+          </select>
+        </div>
 
-<option>
-Menunggu Verifikasi
-</option>
+        <div class="form-group">
+          <label>Kabupaten / Kota</label>
+          <input id="revisionWilayah" required>
+        </div>
 
-<option>
-Perlu Perbaikan
-</option>
+        <div class="form-group full">
+          <label>Pengalaman Organisasi</label>
+          <textarea id="revisionPengalaman" required></textarea>
+        </div>
 
-<option>
-Terverifikasi
-</option>
+        <div class="form-group full">
+          <label>Motivasi</label>
+          <textarea id="revisionMotivasi" required></textarea>
+        </div>
 
-<option>
-Ditolak
-</option>
+        <div class="form-group">
+          <label>Upload KTP Baru</label>
+          <input
+            id="revisionKtp"
+            type="file"
+            accept=".pdf,.jpg,.jpeg,.png"
+            required
+          >
+        </div>
 
-<option>
-Lolos
-</option>
+        <div class="form-group">
+          <label>Upload CV Baru</label>
+          <input
+            id="revisionCv"
+            type="file"
+            accept=".pdf,.jpg,.jpeg,.png"
+            required
+          >
+        </div>
 
-<option>
-Tidak Lolos
-</option>
+        <div class="form-group full">
+          <label>Upload Foto Baru</label>
+          <input
+            id="revisionFoto"
+            type="file"
+            accept="image/*"
+            required
+          >
+        </div>
 
-</select>
+      </div>
 
-</div>
+      <div id="revisionNotice"></div>
 
-<div
-class="field"
-style="margin-top:14px">
+      <button
+        type="submit"
+        class="btn-primary"
+        style="width:100%;margin-top:15px;"
+      >
+        Kirim Revisi
+      </button>
 
-<label for="editDocumentStatus">
-Status Dokumen
-</label>
+    </form>
 
-<select
-id="editDocumentStatus"
-required>
-
-<option>
-Belum Diverifikasi
-</option>
-
-<option>
-Sedang Diverifikasi
-</option>
-
-<option>
-Disetujui
-</option>
-
-<option>
-Perlu Perbaikan
-</option>
-
-<option>
-Ditolak
-</option>
-
-</select>
-
-</div>
-
-<div
-class="field"
-style="margin-top:14px">
-
-<label for="editInterview">
-Jadwal Interview
-</label>
-
-<input
-id="editInterview"
-placeholder="Contoh: 10 Oktober 2026, 19.00 WITA"
->
+  </div>
 
 </div>
 
-<div
-class="field"
-style="margin-top:14px">
-
-<label for="editMethod">
-Metode Interview
-</label>
-
-<select id="editMethod">
-
-<option value="">
-Belum ditentukan
-</option>
-
-<option>
-Online
-</option>
-
-<option>
-Offline
-</option>
-
-</select>
-
-</div>
-
-<div
-class="field"
-style="margin-top:14px">
-
-<label for="editLocation">
-Lokasi Interview
-</label>
-
-<input
-id="editLocation"
-placeholder="Kosongkan jika online"
->
-
-</div>
-
-<div
-class="field"
-style="margin-top:14px">
-
-<label for="editNote">
-Catatan Admin
-</label>
-
-<textarea
-id="editNote"
-placeholder="Catatan untuk peserta">
-</textarea>
-
-</div>
-
-<div class="form-actions">
-
-<button
-class="btn btn-primary"
-type="submit">
-Simpan Perubahan
-</button>
-
-</div>
-
-</form>
-
-</div>
-</div>
 
 <script>
 
+/* ============================================================
+   SUPABASE
+============================================================ */
+
 const SUPABASE_URL =
-"https://qccenzvpncfkkbncfnkh.supabase.co";
+  "https://qccenzvpncfkkbncfnkh.supabase.co";
 
 const SUPABASE_KEY =
-"sb_publishable_iN8EDDpe6JwELDU7GiWifw_5rFBZHr1";
+  "sb_publishable_iN8EDDpe6JwELDU7GiWifw_5rFBZHr1";
+
+const STORAGE_BUCKET =
+  "dokumen-pendaftar";
 
 const { createClient } = supabase;
 
-const db =
-createClient(SUPABASE_URL,SUPABASE_KEY);
+const db = createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
-const STORAGE_BUCKET =
-"dokumen-pendaftar";
 
-const MAX_FILE_SIZE =
-2 * 1024 * 1024;
+/* ============================================================
+   HELPER
+============================================================ */
 
-const MAX_PHOTO_SIZE =
-3 * 1024 * 1024;
+function $(id){
+  return document.getElementById(id);
+}
 
-const ALLOWED_FILE_TYPES = [
-"application/pdf",
-"image/jpeg",
-"image/png"
-];
+function escapeHtml(value){
 
-const $ =
-(id)=>document.getElementById(id);
+  if(value === null || value === undefined){
+    return "";
+  }
 
-let pendingRegistration =
-null;
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
 
-let lastRegisteredCode =
-"";
+function scrollToSection(id){
 
-let adminParticipants =
-[];
+  const el = $(id);
 
-const questions = [
-
-"Apa alasan utama kamu ingin bergabung dengan Muda Bergerak?",
-
-"Ketika menemukan masalah di lingkungan sekitar, apa yang kamu lakukan?",
-
-"Bagaimana cara kamu bekerja dalam tim yang memiliki perbedaan pendapat?",
-
-"Apa arti transparansi dalam sebuah organisasi?",
-
-"Apa peran anak muda dalam masyarakat?",
-
-"Jika diberi tanggung jawab, bagaimana kamu menyelesaikannya?",
-
-"Apa yang kamu lakukan ketika rencana kegiatan tidak berjalan sesuai harapan?",
-
-"Bagaimana kamu menerima kritik dari anggota lain?",
-
-"Apa bentuk kontribusi yang bisa kamu berikan?",
-
-"Apa harapanmu setelah bergabung dengan Muda Bergerak?"
-
-];
-
-const options = [
-
-[
-"Menunggu arahan",
-"Mengamati saja",
-"Mengajak berdiskusi",
-"Mengambil langkah dan mengajak kolaborasi"
-],
-
-[
-"Mengabaikan",
-"Menyalahkan pihak lain",
-"Membahas dengan orang terdekat",
-"Mencari solusi bersama"
-],
-
-[
-"Memaksakan pendapat",
-"Menghindari diskusi",
-"Mendengarkan dan berdiskusi",
-"Mencari keputusan bersama secara terbuka"
-],
-
-[
-"Menyembunyikan informasi",
-"Memberi informasi sebagian",
-"Memberi informasi jika diminta",
-"Menyampaikan informasi secara jujur dan bertanggung jawab"
-],
-
-[
-"Hanya sebagai penonton",
-"Mengikuti tren",
-"Memberi pendapat",
-"Berpartisipasi dan menciptakan dampak"
-],
-
-[
-"Menunda",
-"Menyerahkan kepada orang lain",
-"Mengerjakan jika diingatkan",
-"Menyusun langkah dan menyelesaikan tepat waktu"
-],
-
-[
-"Menyerah",
-"Menyalahkan keadaan",
-"Mengubah sebagian rencana",
-"Mengevaluasi dan menyusun solusi alternatif"
-],
-
-[
-"Menolak",
-"Diam dan menjauh",
-"Menerima sebagian",
-"Mendengarkan dan menggunakan kritik untuk berkembang"
-],
-
-[
-"Hanya hadir",
-"Membagikan informasi",
-"Membantu jika diminta",
-"Aktif sesuai kemampuan dan kebutuhan organisasi"
-],
-
-[
-"Mendapatkan jabatan",
-"Mendapatkan relasi saja",
-"Belajar pengalaman baru",
-"Belajar, berkembang, dan memberi kontribusi"
-]
-
-];
+  if(el){
+    el.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+  }
+}
 
 function openModal(id){
-
-$(id).classList.add("show");
-
-document.body.classList.add("modal-open");
-
+  $(id).classList.add("active");
 }
 
 function closeModal(id){
-
-$(id).classList.remove("show");
-
-if(!document.querySelector(".modal.show")){
-
-document.body.classList.remove("modal-open");
-
+  $(id).classList.remove("active");
 }
 
+function notice(id,message,type="info"){
+
+  const el = $(id);
+
+  if(!el) return;
+
+  let bg = "#171717";
+  let border = "#333";
+  let color = "#fff";
+
+  if(type === "error"){
+    bg = "#220f0f";
+    border = "#8a2e2e";
+  }
+
+  if(type === "success"){
+    bg = "#0e2117";
+    border = "#237b49";
+  }
+
+  el.innerHTML = `
+    <div style="
+      background:${bg};
+      border:1px solid ${border};
+      color:${color};
+      padding:14px;
+      border-radius:10px;
+      margin:12px 0;
+    ">
+      ${escapeHtml(message)}
+    </div>
+  `;
 }
 
-function notice(
-id,
-message,
-type="info"
-){
 
-$(id).innerHTML =
-message
-? `<div class="notice ${type}">
-${escapeHTML(message)}
-</div>`
-: "";
-
-}
-
-function escapeHTML(value){
-
-return String(value ?? "")
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
-
-}
-
-function makeCode(){
-
-const chars =
-"ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-
-let output =
-"MB26-";
-
-for(
-let i=0;
-i<6;
-i++
-){
-
-output +=
-chars[
-Math.floor(
-Math.random()*chars.length
-)
-];
-
-}
-
-return output;
-
-}
-
-function prepareFile(id,jenis){
-
-const file =
-$(id).files?.[0];
-
-if(!file){
-
-return {
-ok:false,
-message:`${jenis} wajib diupload.`
-};
-
-}
-
-const maxSize =
-jenis === "Foto"
-? MAX_PHOTO_SIZE
-: MAX_FILE_SIZE;
-
-if(file.size > maxSize){
-
-return {
-ok:false,
-message:
-`${jenis} melebihi batas ${
-jenis === "Foto" ? "3" : "2"
-} MB.`
-};
-
-}
-
-if(jenis === "Foto"){
-
-if(
-!file.type ||
-!file.type.startsWith("image/")
-){
-
-return {
-ok:false,
-message:
-"Foto harus berupa file gambar yang dikenali browser."
-};
-
-}
-
-}else if(
-!ALLOWED_FILE_TYPES.includes(file.type)
-){
-
-return {
-ok:false,
-message:
-`Format ${jenis} tidak didukung. Gunakan JPG, PNG, atau PDF.`
-};
-
-}
-
-return {
-ok:true,
-jenis,
-name:file.name,
-mimeType:file.type ||
-"application/octet-stream",
-file
-};
-
-}
-
-function safeFileName(name){
-
-return String(name || "file")
-.replace(/[^a-zA-Z0-9._-]/g,"_")
-.slice(-120);
-
-}
-
-function normalizeWhatsApp(value){
-
-let n =
-String(value || "")
-.replace(/[^0-9]/g,"");
-
-if(n.startsWith("0"))
-n =
-"62"+n.slice(1);
-
-if(!n.startsWith("62"))
-n =
-"62"+n;
-
-return n;
-
-}
-
-function validateWhatsApp(value){
-
-const n =
-normalizeWhatsApp(value);
-
-return /^62[0-9]{9,13}$/.test(n);
-
-}
-
-function createWhatsAppInterviewText(p){
-
-const nama =
-p.nama_lengkap || "Kak";
-
-const kode =
-p.kode_peserta || "-";
-
-const jadwal =
-p.jadwal_interview ||
-"Belum ditentukan";
-
-const metode =
-p.metode_interview ||
-"Belum ditentukan";
-
-const lokasi =
-p.lokasi_interview ||
-"Belum ditentukan";
-
-const catatan =
-p.catatan_admin || "";
-
-let text =
-`Halo Kak ${nama},
-
-Kami dari Muda Bergerak Sulawesi Selatan ingin mengonfirmasi jadwal interview kamu.
-
-Kode Peserta: ${kode}
-Jadwal: ${jadwal}
-Metode: ${metode}`;
-
-if(metode === "Online"){
-
-text +=
-`\n\nLink Interview:
-${lokasi}`;
-
-}else{
-
-text +=
-`\n\nLokasi Interview:
-${lokasi}`;
-
-}
-
-if(catatan){
-
-text +=
-`\n\nCatatan:
-${catatan}`;
-
-}
-
-text +=
-`\n\nMohon konfirmasi kehadiran kamu melalui WhatsApp ini.
-
-Terima kasih.
-Muda Bergerak Sulawesi Selatan`;
-
-return text;
-
-}
-
-window.openWhatsAppInterview =
-function(id){
-
-const p =
-adminParticipants.find(
-item=>item.id===id
-);
-
-if(!p)
-return;
-
-const nomor =
-normalizeWhatsApp(
-p.nomor_whatsapp
-);
-
-if(
-!/^62[0-9]{9,13}$/.test(nomor)
-){
-
-alert(
-"Nomor WhatsApp peserta tidak valid."
-);
-
-return;
-
-}
-
-if(
-!p.jadwal_interview ||
-!p.metode_interview
-){
-
-alert(
-"Jadwal dan metode interview belum ditentukan. Silakan Kelola Jadwal terlebih dahulu."
-);
-
-return;
-
-}
-
-const text =
-createWhatsAppInterviewText(p);
-
-const url =
-`https://wa.me/${nomor}?text=${encodeURIComponent(text)}`;
-
-window.open(
-url,
-"_blank",
-"noopener,noreferrer"
-);
-
-};
-
-async function uploadFileToStorage(
-participantId,
-fileInfo
-){
-
-const path =
-`${participantId}/${Date.now()}-${fileInfo.jenis.toLowerCase()}-${safeFileName(fileInfo.name)}`;
-
-try{
-
-const {data,error} =
-await db.storage
-.from(STORAGE_BUCKET)
-.upload(
-path,
-fileInfo.file,
-{
-cacheControl:"3600",
-upsert:false,
-contentType:
-fileInfo.mimeType ||
-"application/octet-stream"
-}
-);
-
-if(error){
-
-console.error(
-`Storage error ${fileInfo.jenis}:`,
-error
-);
-
-throw new Error(
-`Upload ${fileInfo.jenis} gagal: ${error.message}`
-);
-
-}
-
-return {
-...fileInfo,
-storage_path:
-data?.path || path
-};
-
-}catch(err){
-
-console.error(
-`Upload exception ${fileInfo.jenis}:`,
-err
-);
-
-if(
-err instanceof TypeError &&
-String(err.message)
-.toLowerCase()
-.includes("fetch")
-){
-
-throw new Error(
-`Upload ${fileInfo.jenis} gagal: koneksi ke Supabase Storage terputus (Failed to fetch). Pastikan bucket "${STORAGE_BUCKET}" tersedia dan policy INSERT Storage sudah aktif.`
-);
-
-}
-
-throw err;
-
-}
-
-}
-
-function renderQuestions(){
-
-$("quizQuestions").innerHTML =
-questions.map(
-(question,index)=>{
-
-return `
-
-<div class="quiz-question">
-
-<p>
-${index+1}. ${escapeHTML(question)}
-</p>
-
-<div class="quiz-options">
-
-${options[index].map(
-(option,optionIndex)=>{
-
-const score =
-[1,4,7,10][optionIndex];
-
-return `
-
-<label>
-
-<input
-type="radio"
-name="q${index}"
-value="${score}"
-required
->
-
-<span>
-${escapeHTML(option)}
-</span>
-
-</label>
-
-`;
-
-}).join("")}
-
-</div>
-
-</div>
-
-`;
-
-}).join("");
-
-}
-
-function validateStructureAndRegion(){
-
-const structure =
-$("struktur").value;
-
-const region =
-$("wilayah").value;
-
-if(
-structure === "DPW" &&
-region !== "Makassar"
-){
-
-notice(
-"registerNotice",
-"Pendaftar DPW wajib berdomisili di Kota Makassar.",
-"error"
-);
-
-return false;
-
-}
-
-return true;
-
-}
-
-function scoreQuiz(form){
-
-let total = 0;
-
-for(
-let i=0;
-i<questions.length;
-i++
-){
-
-const selected =
-form.querySelector(
-`input[name="q${i}"]:checked`
-);
-
-if(!selected)
-return null;
-
-total +=
-Number(selected.value);
-
-}
-
-return total;
-
-}
-
-async function submitRegistration(){
-
-notice(
-"quizNotice",
-"Menyimpan data pendaftaran...",
-"info"
-);
-
-const code =
-makeCode();
-
-const payload = {
-
-kode_peserta:code,
-
-nama_lengkap:
-pendingRegistration.nama,
-
-nomor_whatsapp:
-pendingRegistration.whatsapp,
-
-email:
-pendingRegistration.email,
-
-tanggal_lahir:
-pendingRegistration.tanggal_lahir,
-
-pendidikan_pekerjaan:
-pendingRegistration.pendidikan,
-
-struktur_pilihan:
-pendingRegistration.struktur,
-
-wilayah_domisili:
-pendingRegistration.wilayah,
-
-pengalaman_organisasi:
-pendingRegistration.pengalaman,
-
-motivasi:
-pendingRegistration.motivasi,
-
-skor_quiz:
-pendingRegistration.skor,
-
-jawaban_quiz:
-pendingRegistration.jawaban_quiz,
-
-persetujuan_data:true,
-
-status_pendaftaran:
-"Menunggu Verifikasi",
-
-status_dokumen:
-"Belum Diverifikasi"
-
-};
-
-const {
-data:participant,
-error
-} =
-await db
-.from("pendaftar")
-.insert(payload)
-.select("id")
-.single();
-
-if(error){
-
-console.error(error);
-
-notice(
-"quizNotice",
-"Pendaftaran gagal: "+error.message,
-"error"
-);
-
-return;
-
-}
-
-let uploaded = [];
-
-try{
-
-uploaded = [];
-
-for(
-const fileInfo of
-pendingRegistration.files
-){
-
-notice(
-"quizNotice",
-`Mengupload ${fileInfo.jenis}...`,
-"info"
-);
-
-const hasil =
-await uploadFileToStorage(
-participant.id,
-fileInfo
-);
-
-uploaded.push(hasil);
-
-}
-
-const docs =
-uploaded.map(
-f=>({
-
-pendaftar_id:
-participant.id,
-
-jenis_dokumen:
-f.jenis,
-
-nama_file:
-f.name,
-
-storage_path:
-f.storage_path,
-
-status_dokumen:
-"Belum Diverifikasi"
-
-})
-);
-
-const {
-error:docError
-} =
-await db
-.from("dokumen_pendaftar")
-.insert(docs);
-
-if(docError){
-
-throw new Error(
-"Berkas berhasil diupload tetapi metadata gagal dicatat: "
-+
-docError.message
-);
-
-}
-
-lastRegisteredCode =
-code;
-
-closeModal("quizModal");
-
-$("successCode").textContent =
-code;
-
-$("successScore").textContent =
-`Skor Quiz: ${pendingRegistration.skor}`;
-
-openModal("successModal");
-
-}catch(uploadError){
-
-console.error(uploadError);
-
-if(uploaded.length){
-
-await db.storage
-.from(STORAGE_BUCKET)
-.remove(
-uploaded.map(
-f=>f.storage_path
-)
-);
-
-}
-
-await db
-.from("pendaftar")
-.update({
-status_pendaftaran:
-"Perlu Perbaikan",
-
-status_dokumen:
-"Perlu Perbaikan",
-
-catatan_admin:
-uploadError.message
-})
-.eq(
-"id",
-participant.id
-);
-
-notice(
-"quizNotice",
-uploadError.message,
-"error"
-);
-
-}
-
-}
-
-async function checkStatus(code){
-
-notice(
-"statusNotice",
-"Memeriksa data...",
-"info"
-);
-
-$("statusResult").innerHTML =
-"";
-
-const cleanCode =
-code.trim().toUpperCase();
-
-const {
-data,
-error
-} =
-await db
-.from("pendaftar")
-.select(
-"id,kode_peserta,nama_lengkap,nomor_whatsapp,email,tanggal_lahir,pendidikan_pekerjaan,struktur_pilihan,wilayah_domisili,pengalaman_organisasi,motivasi,skor_quiz,status_pendaftaran,status_dokumen,jadwal_interview,metode_interview,lokasi_interview,catatan_admin"
-)
-.eq(
-"kode_peserta",
-cleanCode
-)
-.maybeSingle();
-
-if(error){
-
-notice(
-"statusNotice",
-error.message,
-"error"
-);
-
-return;
-
-}
-
-if(!data){
-
-notice(
-"statusNotice",
-"Kode peserta tidak ditemukan.",
-"error"
-);
-
-return;
-
-}
-
-const {
-data:docs,
-error:docError
-} =
-await db
-.from("dokumen_pendaftar")
-.select(
-"id,jenis_dokumen,nama_file,status_dokumen,catatan"
-)
-.eq(
-"pendaftar_id",
-data.id
-)
-.order(
-"jenis_dokumen"
-);
-
-if(docError){
-
-notice(
-"statusNotice",
-docError.message,
-"error"
-);
-
-return;
-
-}
-
-notice(
-"statusNotice",
-"Data peserta ditemukan.",
-"success"
-);
-
-const needsRevision =
-data.status_pendaftaran === "Perlu Perbaikan" ||
-data.status_dokumen === "Perlu Perbaikan" ||
-(docs || []).some(
-d=>d.status_dokumen === "Perlu Perbaikan"
-);
-
-const docHtml =
-(docs || []).map(
-d=>`
-
-<div class="doc-row">
-
-<div>
-
-<div class="doc-name">
-${escapeHTML(d.jenis_dokumen)}
-</div>
-
-<div class="doc-meta">
-${escapeHTML(d.nama_file || "-")}
-</div>
-
-</div>
-
-<span
-class="status-pill ${statusClass(d.status_dokumen)}">
-
-${escapeHTML(d.status_dokumen)}
-
-</span>
-
-<div class="doc-meta">
-${escapeHTML(d.catatan || "")}
-</div>
-
-</div>
-
-`
-).join("");
-
-const revisionHtml =
-needsRevision
-?
-
-`
-
-<div class="revision-box">
-
-<h4>
-⚠ Perlu Perbaikan
-</h4>
-
-<p>
-${escapeHTML(
-data.catatan_admin ||
-"Ada data/berkas yang perlu diperbaiki sesuai catatan admin."
-)}
-</p>
-
-<div class="form-actions">
-
-<button
-class="btn btn-primary btn-small"
-onclick="openRevision('${data.id}')">
-
-✏ Edit & Kirim Revisi
-
-</button>
-
-</div>
-
-</div>
-
-`
-
-:
-
-"";
-
-$("statusResult").innerHTML =
-
-`
-
-<div
-class="card"
-style="margin-top:15px">
-
-<div class="number">
-DATA PESERTA
-</div>
-
-<h3>
-${escapeHTML(data.nama_lengkap)}
-</h3>
-
-<p>
-Kode:
-${escapeHTML(data.kode_peserta)}
-</p>
-
-<p>
-Struktur:
-${escapeHTML(data.struktur_pilihan)}
-</p>
-
-<p>
-Wilayah:
-${escapeHTML(data.wilayah_domisili)}
-</p>
-
-<p>
-Skor Quiz:
-${escapeHTML(data.skor_quiz)}
-</p>
-
-<p>
-Status Pendaftaran:
-<b>
-${escapeHTML(data.status_pendaftaran)}
-</b>
-</p>
-
-<p>
-Status Dokumen:
-<b>
-${escapeHTML(data.status_dokumen)}
-</b>
-</p>
-
-${revisionHtml}
-
-<div class="doc-box">
-
-<div class="number">
-STATUS BERKAS
-</div>
-
-${docHtml ||
-"<p>Belum ada data berkas.</p>"}
-
-</div>
-
-<p>
-Jadwal Interview:
-${escapeHTML(
-data.jadwal_interview ||
-"Belum ditentukan"
-)}
-</p>
-
-<p>
-Metode:
-${escapeHTML(
-data.metode_interview ||
-"Belum ditentukan"
-)}
-</p>
-
-<p>
-Lokasi:
-${escapeHTML(
-data.lokasi_interview ||
-"Belum ditentukan"
-)}
-</p>
-
-<p>
-Catatan Admin:
-${escapeHTML(
-data.catatan_admin ||
-"Belum ada catatan"
-)}
-</p>
-
-</div>
-
-`;
-
-}
-
-function statusClass(status){
-
-if(
-[
-"Terverifikasi",
-"Disetujui",
-"Lolos"
-].includes(status)
-)
-return "green";
-
-if(
-[
-"Perlu Perbaikan",
-"Sedang Diverifikasi"
-].includes(status)
-)
-return "yellow";
-
-if(
-[
-"Ditolak",
-"Tidak Lolos"
-].includes(status)
-)
-return "red";
-
-return "";
-
-}
-
-async function getParticipantForRevision(id){
-
-const {
-data,
-error
-} =
-await db
-.from("pendaftar")
-.select(
-"id,kode_peserta,nama_lengkap,nomor_whatsapp,email,tanggal_lahir,pendidikan_pekerjaan,struktur_pilihan,wilayah_domisili,pengalaman_organisasi,motivasi,status_pendaftaran,status_dokumen,catatan_admin"
-)
-.eq(
-"id",
-id
-)
-.maybeSingle();
-
-if(
-error ||
-!data
-){
-
-throw new Error(
-error?.message ||
-"Data peserta tidak ditemukan."
-);
-
-}
-
-const {
-data:docs,
-error:docError
-} =
-await db
-.from("dokumen_pendaftar")
-.select(
-"id,jenis_dokumen,nama_file,storage_path,status_dokumen,catatan"
-)
-.eq(
-"pendaftar_id",
-id
-)
-.order(
-"jenis_dokumen"
-);
-
-if(docError){
-
-throw new Error(
-docError.message
-);
-
-}
-
-return {
-...data,
-docs:docs || []
-};
-
-}
-
-window.openRevision =
-async function(id){
-
-try{
-
-notice(
-"statusNotice",
-"Menyiapkan formulir revisi...",
-"info"
-);
-
-const p =
-await getParticipantForRevision(id);
-
-lastRegisteredCode =
-p.kode_peserta ||
-lastRegisteredCode;
-
-$("revisionId").value =
-p.id;
-
-$("revisionNama").value =
-p.nama_lengkap || "";
-
-$("revisionWhatsapp").value =
-p.nomor_whatsapp || "";
-
-$("revisionEmail").value =
-p.email || "";
-
-$("revisionTanggalLahir").value =
-p.tanggal_lahir || "";
-
-$("revisionPendidikan").value =
-p.pendidikan_pekerjaan || "";
-
-$("revisionStruktur").value =
-p.struktur_pilihan || "";
-
-$("revisionWilayah").value =
-p.wilayah_domisili || "";
-
-$("revisionPengalaman").value =
-p.pengalaman_organisasi || "";
-
-$("revisionMotivasi").value =
-p.motivasi || "";
-
-$("revisionKtpCurrent").textContent =
-"Berkas saat ini: " +
-(
-p.docs.find(
-d=>d.jenis_dokumen==="KTP"
-)?.nama_file ||
-"Belum ada"
-);
-
-$("revisionCvCurrent").textContent =
-"Berkas saat ini: " +
-(
-p.docs.find(
-d=>d.jenis_dokumen==="CV"
-)?.nama_file ||
-"Belum ada"
-);
-
-$("revisionFotoCurrent").textContent =
-"Berkas saat ini: " +
-(
-p.docs.find(
-d=>d.jenis_dokumen==="Foto"
-)?.nama_file ||
-"Belum ada"
-);
-
-$("revisionReason").innerHTML =
-
-`
-
-<h4>
-Catatan Admin
-</h4>
-
-<p>
-${escapeHTML(
-p.catatan_admin ||
-"Silakan periksa dan perbaiki data/berkas yang diperlukan."
-)}
-</p>
-
-`;
-
-$("revisionReason")
-.classList
-.remove("hidden");
-
-notice(
-"revisionNotice",
-""
-);
-
-closeModal(
-"statusModal"
-);
-
-openModal(
-"revisionModal"
-);
-
-}catch(err){
-
-notice(
-"statusNotice",
-err.message,
-"error"
-);
-
-}
-
-};
-
-function prepareRevisionFile(
-id,
-jenis
-){
-
-const input =
-$(id);
-
-const file =
-input.files?.[0];
-
-if(!file){
-
-return {
-ok:false,
-message:
-`${jenis} wajib dipilih untuk dikirim ulang.`
-};
-
-}
-
-const maxSize =
-jenis === "Foto"
-? MAX_PHOTO_SIZE
-: MAX_FILE_SIZE;
-
-if(
-file.size > maxSize
-){
-
-return {
-ok:false,
-message:
-`${jenis} melebihi batas ${
-jenis === "Foto"
-? "3"
-: "2"
-} MB.`
-};
-
-}
-
-if(jenis === "Foto"){
-
-if(
-!file.type ||
-!file.type.startsWith("image/")
-){
-
-return {
-ok:false,
-message:
-"Foto harus berupa file gambar yang dikenali browser."
-};
-
-}
-
-}else if(
-!ALLOWED_FILE_TYPES.includes(
-file.type
-)
-){
-
-return {
-ok:false,
-message:
-`Format ${jenis} tidak didukung. Gunakan JPG, PNG, atau PDF.`
-};
-
-}
-
-return {
-ok:true,
-jenis,
-name:file.name,
-mimeType:
-file.type ||
-"application/octet-stream",
-file
-};
-
-}
-
-async function submitRevision(){
-
-const id =
-$("revisionId").value;
-
-if(!id)
-return;
-
-if(
-!validateWhatsApp(
-$("revisionWhatsapp").value
-)
-){
-
-notice(
-"revisionNotice",
-"Nomor WhatsApp tidak valid. Gunakan format 08xxxxxxxxxx.",
-"error"
-);
-
-return;
-
-}
-
-if(
-$("revisionStruktur").value === "DPW" &&
-$("revisionWilayah").value !== "Makassar"
-){
-
-notice(
-"revisionNotice",
-"Pendaftar DPW wajib berdomisili di Kota Makassar.",
-"error"
-);
-
-return;
-
-}
-
-const files = [
-
-prepareRevisionFile(
-"revisionKtp",
-"KTP"
-),
-
-prepareRevisionFile(
-"revisionCv",
-"CV"
-),
-
-prepareRevisionFile(
-"revisionFoto",
-"Foto"
-)
+/* ============================================================
+   QUIZ
+============================================================ */
+
+const quizQuestions = [
+
+  {
+    q:"Apa alasan utama kamu ingin bergabung dengan Muda Bergerak?",
+    options:[
+      "Ingin belajar dan berkembang",
+      "Ingin memperluas relasi",
+      "Ingin mengambil peran",
+      "Semua benar"
+    ]
+  },
+
+  {
+    q:"Menurut kamu, organisasi anak muda harus...",
+    options:[
+      "Terbuka",
+      "Kolaboratif",
+      "Adaptif",
+      "Semua benar"
+    ]
+  },
+
+  {
+    q:"Apa yang paling penting dalam sebuah organisasi?",
+    options:[
+      "Transparansi",
+      "Kekeluargaan",
+      "Profesionalisme",
+      "Semua benar"
+    ]
+  },
+
+  {
+    q:"Ketika memiliki perbedaan pendapat, kamu akan...",
+    options:[
+      "Mencari titik temu",
+      "Menyampaikan pendapat dengan baik",
+      "Mendengarkan pihak lain",
+      "Semua benar"
+    ]
+  },
+
+  {
+    q:"Anak muda sebaiknya mengambil peran dalam...",
+    options:[
+      "Politik",
+      "Sosial",
+      "Ekonomi",
+      "Semua bidang"
+    ]
+  },
+
+  {
+    q:"Apa arti kolaborasi bagi kamu?",
+    options:[
+      "Bekerja bersama",
+      "Berbagi gagasan",
+      "Saling mendukung",
+      "Semua benar"
+    ]
+  },
+
+  {
+    q:"Ketika diberi tanggung jawab, kamu akan...",
+    options:[
+      "Mengerjakannya tepat waktu",
+      "Berkoordinasi",
+      "Bertanggung jawab",
+      "Semua benar"
+    ]
+  },
+
+  {
+    q:"Menurut kamu, ruang anak muda harus...",
+    options:[
+      "Aman untuk berdiskusi",
+      "Terbuka untuk semua",
+      "Mendorong kreativitas",
+      "Semua benar"
+    ]
+  },
+
+  {
+    q:"Apa yang ingin kamu kembangkan melalui organisasi?",
+    options:[
+      "Leadership",
+      "Komunikasi",
+      "Relasi",
+      "Semua benar"
+    ]
+  },
+
+  {
+    q:"Apa yang ingin kamu lakukan setelah bergabung?",
+    options:[
+      "Belajar",
+      "Bergerak",
+      "Berkolaborasi",
+      "Berdampak"
+    ]
+  }
 
 ];
 
-const bad =
-files.find(
-f=>!f.ok
+
+function renderQuiz(){
+
+  const container = $("quizContainer");
+
+  if(!container) return;
+
+  container.innerHTML = quizQuestions.map((item,index)=>{
+
+    return `
+      <div class="quiz-card">
+
+        <h4>
+          ${index + 1}. ${escapeHtml(item.q)}
+        </h4>
+
+        ${item.options.map((option,optIndex)=>{
+
+          return `
+            <label class="option">
+
+              <input
+                type="radio"
+                name="quiz_${index}"
+                value="${optIndex + 1}"
+                required
+              >
+
+              ${escapeHtml(option)}
+
+            </label>
+          `;
+
+        }).join("")}
+
+      </div>
+    `;
+
+  }).join("");
+}
+
+
+/* ============================================================
+   FILE VALIDATION
+============================================================ */
+
+function validateFile(file,maxMB,imagesOnly=false){
+
+  if(!file){
+    return "File wajib dipilih.";
+  }
+
+  const maxBytes =
+    maxMB * 1024 * 1024;
+
+  if(file.size > maxBytes){
+
+    return `
+      Ukuran file ${file.name}
+      melebihi ${maxMB} MB.
+    `;
+  }
+
+  if(imagesOnly && !file.type.startsWith("image/")){
+
+    return `
+      File ${file.name}
+      harus berupa gambar.
+    `;
+  }
+
+  return null;
+}
+
+
+/* ============================================================
+   NORMALIZE WHATSAPP
+============================================================ */
+
+function normalizeWhatsApp(number){
+
+  let n = String(number || "")
+    .replace(/\D/g,"");
+
+  if(n.startsWith("0")){
+    n = "62" + n.substring(1);
+  }
+
+  if(!n.startsWith("62")){
+    n = "62" + n;
+  }
+
+  return n;
+}
+
+
+/* ============================================================
+   UPLOAD STORAGE
+============================================================ */
+
+async function uploadFile(file,prefix){
+
+  const ext =
+    file.name.includes(".")
+      ? file.name.split(".").pop().toLowerCase()
+      : "bin";
+
+  const filename =
+    `${prefix}_${Date.now()}_${Math.random()
+      .toString(36)
+      .substring(2,8)}.${ext}`;
+
+  const path =
+    `pendaftar/${filename}`;
+
+  const {error} =
+    await db.storage
+      .from(STORAGE_BUCKET)
+      .upload(path,file,{
+        upsert:false
+      });
+
+  if(error){
+    throw error;
+  }
+
+  return path;
+}
+
+
+/* ============================================================
+   REGISTRATION
+============================================================ */
+
+$("registrationForm").addEventListener(
+  "submit",
+  async function(event){
+
+    event.preventDefault();
+
+    const nama =
+      $("nama").value.trim();
+
+    const whatsapp =
+      $("whatsapp").value.trim();
+
+    const email =
+      $("email").value.trim();
+
+    const tanggalLahir =
+      $("tanggal_lahir").value;
+
+    const pendidikan =
+      $("pendidikan_pekerjaan").value.trim();
+
+    const struktur =
+      $("struktur").value;
+
+    const wilayah =
+      $("wilayah").value.trim();
+
+    const pengalaman =
+      $("pengalaman").value.trim();
+
+    const motivasi =
+      $("motivasi").value.trim();
+
+    const ktp =
+      $("ktp").files[0];
+
+    const cv =
+      $("cv").files[0];
+
+    const foto =
+      $("foto").files[0];
+
+
+    const ktpError =
+      validateFile(ktp,2,false);
+
+    const cvError =
+      validateFile(cv,2,false);
+
+    const fotoError =
+      validateFile(foto,3,true);
+
+
+    if(ktpError || cvError || fotoError){
+
+      notice(
+        "registrationNotice",
+        ktpError || cvError || fotoError,
+        "error"
+      );
+
+      return;
+    }
+
+
+    let jawaban = {};
+    let skor = 0;
+
+
+    for(let i=0;i<quizQuestions.length;i++){
+
+      const selected =
+        document.querySelector(
+          `input[name="quiz_${i}"]:checked`
+        );
+
+      if(!selected){
+
+        notice(
+          "registrationNotice",
+          `Pertanyaan quiz nomor ${i+1} belum dijawab.`,
+          "error"
+        );
+
+        return;
+      }
+
+      const value =
+        Number(selected.value);
+
+      jawaban[`q${i+1}`] =
+        value;
+
+      skor += value;
+    }
+
+
+    try{
+
+      notice(
+        "registrationNotice",
+        "Mengirim pendaftaran...",
+        "info"
+      );
+
+
+      const kode =
+        "MB" +
+        new Date()
+          .getFullYear()
+          .toString()
+          .slice(-2) +
+        Math.random()
+          .toString(36)
+          .substring(2,8)
+          .toUpperCase();
+
+
+      const {data:participant,error:participantError} =
+        await db
+          .from("pendaftar")
+          .insert({
+
+            kode_pendaftaran:kode,
+
+            nama_lengkap:nama,
+
+            whatsapp:normalizeWhatsApp(whatsapp),
+
+            email:email,
+
+            tanggal_lahir:tanggalLahir,
+
+            pendidikan_pekerjaan:pendidikan,
+
+            struktur:struktur,
+
+            wilayah:wilayah,
+
+            pengalaman_organisasi:pengalaman,
+
+            motivasi:motivasi,
+
+            skor_quiz:skor,
+
+            jawaban_quiz:jawaban,
+
+            status_pendaftaran:"Menunggu Verifikasi",
+
+            status_dokumen:"Belum Diverifikasi"
+
+          })
+          .select()
+          .single();
+
+
+      if(participantError){
+        throw participantError;
+      }
+
+
+      const id =
+        participant.id;
+
+
+      const ktpPath =
+        await uploadFile(
+          ktp,
+          `ktp_${id}`
+        );
+
+
+      const cvPath =
+        await uploadFile(
+          cv,
+          `cv_${id}`
+        );
+
+
+      const fotoPath =
+        await uploadFile(
+          foto,
+          `foto_${id}`
+        );
+
+
+      const documents = [
+
+        {
+          pendaftar_id:id,
+          jenis_dokumen:"KTP",
+          nama_file:ktp.name,
+          storage_path:ktpPath,
+          status:"Belum Diverifikasi"
+        },
+
+        {
+          pendaftar_id:id,
+          jenis_dokumen:"CV",
+          nama_file:cv.name,
+          storage_path:cvPath,
+          status:"Belum Diverifikasi"
+        },
+
+        {
+          pendaftar_id:id,
+          jenis_dokumen:"Foto",
+          nama_file:foto.name,
+          storage_path:fotoPath,
+          status:"Belum Diverifikasi"
+        }
+
+      ];
+
+
+      const {error:docError} =
+        await db
+          .from("dokumen_pendaftar")
+          .insert(documents);
+
+
+      if(docError){
+        throw docError;
+      }
+
+
+      $("registrationForm").reset();
+
+      notice(
+        "registrationNotice",
+        `Pendaftaran berhasil. Kode pendaftaran kamu: ${kode}`,
+        "success"
+      );
+
+
+      setTimeout(()=>{
+
+        $("statusKode").value =
+          kode;
+
+        scrollToSection("status");
+
+      },800);
+
+
+    }catch(error){
+
+      console.error(error);
+
+      notice(
+        "registrationNotice",
+        error.message ||
+        "Pendaftaran gagal.",
+        "error"
+      );
+    }
+
+  }
 );
 
-if(bad){
 
-notice(
-"revisionNotice",
-bad.message,
-"error"
+/* ============================================================
+   CEK STATUS
+============================================================ */
+
+$("statusForm").addEventListener(
+  "submit",
+  async function(event){
+
+    event.preventDefault();
+
+    await cekStatusPendaftaran();
+
+  }
 );
 
-return;
+
+async function cekStatusPendaftaran(){
+
+  const kodeInput =
+    $("statusKode");
+
+  const resultBox =
+    $("statusResult");
+
+  const kode =
+    kodeInput.value.trim();
+
+
+  if(!kode){
+
+    resultBox.innerHTML = `
+      <div class="status-box error">
+        <b>Kode pendaftaran wajib diisi.</b>
+      </div>
+    `;
+
+    return;
+  }
+
+
+  resultBox.innerHTML = `
+    <div class="status-box loading">
+      <div class="spinner"></div>
+      <p>Mengecek status terbaru...</p>
+    </div>
+  `;
+
+
+  try{
+
+    /*
+      select("*") sengaja digunakan supaya
+      status terbaru dari database selalu terbaca,
+      termasuk kolom tambahan.
+    */
+
+    const {
+      data,
+      error
+    } =
+      await db
+        .from("pendaftar")
+        .select("*")
+        .eq("kode_pendaftaran",kode)
+        .maybeSingle();
+
+
+    if(error){
+
+      console.error(
+        "CEK STATUS ERROR:",
+        error
+      );
+
+      resultBox.innerHTML = `
+        <div class="status-box error">
+          <b>Gagal mengecek status.</b>
+          <p>${escapeHtml(error.message)}</p>
+        </div>
+      `;
+
+      return;
+    }
+
+
+    if(!data){
+
+      resultBox.innerHTML = `
+        <div class="status-box error">
+          <b>Kode pendaftaran tidak ditemukan.</b>
+          <p>
+            Periksa kembali kode pendaftaran kamu.
+          </p>
+        </div>
+      `;
+
+      return;
+    }
+
+
+    tampilkanStatusPeserta(data);
+
+  }catch(error){
+
+    console.error(error);
+
+    resultBox.innerHTML = `
+      <div class="status-box error">
+        <b>Terjadi kesalahan.</b>
+        <p>Silakan coba lagi.</p>
+      </div>
+    `;
+  }
 
 }
 
-notice(
-"revisionNotice",
-"Menyimpan revisi data...",
-"info"
-);
 
-let uploaded = [];
+function tampilkanStatusPeserta(data){
 
-try{
+  const status =
+    data.status_pendaftaran ||
+    "Menunggu Verifikasi";
 
-const {
-data:oldDocs,
-error:oldError
-} =
-await db
-.from("dokumen_pendaftar")
-.select(
-"id,storage_path,jenis_dokumen"
-)
-.eq(
-"pendaftar_id",
-id
-);
+  let icon = "⏳";
 
-if(oldError){
+  if(status === "Terverifikasi"){
+    icon = "✅";
+  }
 
-throw new Error(
-oldError.message
-);
+  if(status === "Perlu Perbaikan"){
+    icon = "✏️";
+  }
+
+  if(status === "Ditolak"){
+    icon = "❌";
+  }
+
+  if(status === "Lolos Interview"){
+    icon = "🎉";
+  }
+
+  if(status === "Tidak Lolos"){
+    icon = "❌";
+  }
+
+  if(status === "Selesai"){
+    icon = "✅";
+  }
+
+
+  let html = `
+
+    <div class="status-card">
+
+      <div class="status-header">
+
+        <small>
+          STATUS PENDAFTARAN
+        </small>
+
+        <h3>
+          ${icon}
+          ${escapeHtml(status)}
+        </h3>
+
+      </div>
+
+
+      <div class="status-info">
+
+        <div class="status-row">
+          <span>Nama Peserta</span>
+
+          <strong>
+            ${escapeHtml(
+              data.nama_lengkap || "-"
+            )}
+          </strong>
+        </div>
+
+
+        <div class="status-row">
+          <span>Kode Pendaftaran</span>
+
+          <strong>
+            ${escapeHtml(
+              data.kode_pendaftaran || "-"
+            )}
+          </strong>
+        </div>
+
+
+        <div class="status-row status-main">
+
+          <span>
+            Status
+          </span>
+
+          <strong>
+            ${icon}
+            ${escapeHtml(status)}
+          </strong>
+
+        </div>
+
+
+        <div class="status-row">
+
+          <span>
+            Dokumen
+          </span>
+
+          <strong>
+            ${escapeHtml(
+              data.status_dokumen ||
+              "Belum Diverifikasi"
+            )}
+          </strong>
+
+        </div>
+
+
+        <div class="status-row">
+
+          <span>
+            Skor Quiz
+          </span>
+
+          <strong>
+            ${data.skor_quiz ?? 0}
+          </strong>
+
+        </div>
+
+      </div>
+  `;
+
+
+  /* CATATAN ADMIN */
+
+  if(data.catatan_admin){
+
+    html += `
+
+      <div class="admin-note">
+
+        <div class="admin-note-title">
+          📝 Catatan Admin
+        </div>
+
+        <div class="admin-note-content">
+          ${escapeHtml(
+            data.catatan_admin
+          )}
+        </div>
+
+      </div>
+
+    `;
+  }
+
+
+  /* REVISI */
+
+  if(status === "Perlu Perbaikan"){
+
+    html += `
+
+      <div class="revision-box">
+
+        <h4>
+          ✏️ Data Perlu Diperbaiki
+        </h4>
+
+        <p>
+          Admin meminta kamu memperbaiki
+          data atau dokumen pendaftaran.
+        </p>
+
+        <button
+          class="btn-primary"
+          onclick="openRevision('${escapeHtml(data.id)}')"
+        >
+          ✏ Edit & Kirim Revisi
+        </button>
+
+      </div>
+
+    `;
+  }
+
+
+  /* INTERVIEW */
+
+  if(
+    data.jadwal_interview ||
+    data.metode_interview ||
+    data.lokasi_interview
+  ){
+
+    html += `
+
+      <div class="interview-box">
+
+        <h4>
+          📅 Jadwal Interview
+        </h4>
+
+    `;
+
+
+    if(data.jadwal_interview){
+
+      html += `
+
+        <div class="interview-row">
+
+          <span>
+            Jadwal
+          </span>
+
+          <strong>
+            ${formatTanggalInterview(
+              data.jadwal_interview
+            )}
+          </strong>
+
+        </div>
+
+      `;
+    }
+
+
+    if(data.metode_interview){
+
+      html += `
+
+        <div class="interview-row">
+
+          <span>
+            Metode
+          </span>
+
+          <strong>
+            ${escapeHtml(
+              data.metode_interview
+            )}
+          </strong>
+
+        </div>
+
+      `;
+    }
+
+
+    if(data.lokasi_interview){
+
+      html += `
+
+        <div class="interview-row">
+
+          <span>
+            Lokasi / Link
+          </span>
+
+          <strong>
+            ${escapeHtml(
+              data.lokasi_interview
+            )}
+          </strong>
+
+        </div>
+
+      `;
+    }
+
+
+    html += `
+      </div>
+    `;
+  }
+
+
+  /* PESAN STATUS */
+
+  if(status === "Menunggu Verifikasi"){
+
+    html += `
+
+      <div class="status-message">
+
+        ⏳ Data kamu sedang
+        dalam proses verifikasi admin.
+
+      </div>
+
+    `;
+  }
+
+
+  if(status === "Terverifikasi"){
+
+    html += `
+
+      <div class="status-message success-message">
+
+        ✅ Data dan dokumen kamu
+        telah diverifikasi.
+
+      </div>
+
+    `;
+  }
+
+
+  if(status === "Lolos Interview"){
+
+    html += `
+
+      <div class="status-message success-message">
+
+        🎉 Selamat! Kamu dinyatakan
+        lolos ke tahap berikutnya.
+
+      </div>
+
+    `;
+  }
+
+
+  if(
+    status === "Ditolak" ||
+    status === "Tidak Lolos"
+  ){
+
+    html += `
+
+      <div class="status-message danger-message">
+
+        ${status === "Ditolak"
+          ? "Data pendaftaran kamu dinyatakan tidak dapat dilanjutkan."
+          : "Hasil seleksi kamu belum dapat dilanjutkan ke tahap berikutnya."
+        }
+
+      </div>
+
+    `;
+  }
+
+
+  html += `
+
+      <div class="status-refresh">
+
+        <button
+          class="btn-secondary"
+          onclick="cekStatusPendaftaran()"
+        >
+          🔄 Cek Status Terbaru
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  $("statusResult").innerHTML =
+    html;
+}
+
+
+function formatTanggalInterview(value){
+
+  if(!value){
+    return "-";
+  }
+
+  const date =
+    new Date(value);
+
+  if(isNaN(date.getTime())){
+    return escapeHtml(value);
+  }
+
+  return date.toLocaleString(
+    "id-ID",
+    {
+      weekday:"long",
+      day:"2-digit",
+      month:"long",
+      year:"numeric",
+      hour:"2-digit",
+      minute:"2-digit"
+    }
+  ) + " WITA";
+}
+
+
+/* ============================================================
+   REVISI PESERTA
+============================================================ */
+
+async function openRevision(id){
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await db
+        .from("pendaftar")
+        .select("*")
+        .eq("id",id)
+        .single();
+
+
+    if(error){
+      throw error;
+    }
+
+
+    $("revisionId").value =
+      data.id;
+
+    $("revisionNama").value =
+      data.nama_lengkap || "";
+
+    $("revisionWhatsapp").value =
+      data.whatsapp || "";
+
+    $("revisionEmail").value =
+      data.email || "";
+
+    $("revisionTanggalLahir").value =
+      data.tanggal_lahir || "";
+
+    $("revisionPendidikan").value =
+      data.pendidikan_pekerjaan || "";
+
+    $("revisionStruktur").value =
+      data.struktur || "";
+
+    $("revisionWilayah").value =
+      data.wilayah || "";
+
+    $("revisionPengalaman").value =
+      data.pengalaman_organisasi || "";
+
+    $("revisionMotivasi").value =
+      data.motivasi || "";
+
+
+    $("revisionKtp").value = "";
+    $("revisionCv").value = "";
+    $("revisionFoto").value = "";
+
+
+    $("revisionNotice").innerHTML = "";
+
+
+    openModal("revisionModal");
+
+  }catch(error){
+
+    alert(
+      error.message ||
+      "Data revisi tidak dapat dibuka."
+    );
+  }
 
 }
 
-for(
-const fileInfo of files
-){
 
-notice(
-"revisionNotice",
-`Mengupload revisi ${fileInfo.jenis}...`,
-"info"
+/* ============================================================
+   KIRIM REVISI
+============================================================ */
+
+$("revisionForm").addEventListener(
+  "submit",
+  async function(event){
+
+    event.preventDefault();
+
+
+    const id =
+      $("revisionId").value;
+
+    const ktp =
+      $("revisionKtp").files[0];
+
+    const cv =
+      $("revisionCv").files[0];
+
+    const foto =
+      $("revisionFoto").files[0];
+
+
+    const ktpError =
+      validateFile(ktp,2,false);
+
+    const cvError =
+      validateFile(cv,2,false);
+
+    const fotoError =
+      validateFile(foto,3,true);
+
+
+    if(ktpError || cvError || fotoError){
+
+      notice(
+        "revisionNotice",
+        ktpError || cvError || fotoError,
+        "error"
+      );
+
+      return;
+    }
+
+
+    try{
+
+      notice(
+        "revisionNotice",
+        "Mengirim revisi...",
+        "info"
+      );
+
+
+      const ktpPath =
+        await uploadFile(
+          ktp,
+          `revisi_ktp_${id}`
+        );
+
+      const cvPath =
+        await uploadFile(
+          cv,
+          `revisi_cv_${id}`
+        );
+
+      const fotoPath =
+        await uploadFile(
+          foto,
+          `revisi_foto_${id}`
+        );
+
+
+      const {
+        data:oldDocs,
+        error:oldDocsError
+      } =
+        await db
+          .from("dokumen_pendaftar")
+          .select("*")
+          .eq("pendaftar_id",id);
+
+
+      if(oldDocsError){
+        throw oldDocsError;
+      }
+
+
+      /*
+        Masukkan metadata dokumen baru
+        terlebih dahulu.
+      */
+
+      const {
+        error:newDocsError
+      } =
+        await db
+          .from("dokumen_pendaftar")
+          .insert([
+
+            {
+              pendaftar_id:id,
+              jenis_dokumen:"KTP",
+              nama_file:ktp.name,
+              storage_path:ktpPath,
+              status:"Belum Diverifikasi"
+            },
+
+            {
+              pendaftar_id:id,
+              jenis_dokumen:"CV",
+              nama_file:cv.name,
+              storage_path:cvPath,
+              status:"Belum Diverifikasi"
+            },
+
+            {
+              pendaftar_id:id,
+              jenis_dokumen:"Foto",
+              nama_file:foto.name,
+              storage_path:fotoPath,
+              status:"Belum Diverifikasi"
+            }
+
+          ]);
+
+
+      if(newDocsError){
+        throw newDocsError;
+      }
+
+
+      /*
+        Update data peserta.
+      */
+
+      const {
+        error:updateError
+      } =
+        await db
+          .from("pendaftar")
+          .update({
+
+            nama_lengkap:
+              $("revisionNama").value.trim(),
+
+            whatsapp:
+              normalizeWhatsApp(
+                $("revisionWhatsapp").value.trim()
+              ),
+
+            email:
+              $("revisionEmail").value.trim(),
+
+            tanggal_lahir:
+              $("revisionTanggalLahir").value,
+
+            pendidikan_pekerjaan:
+              $("revisionPendidikan").value.trim(),
+
+            struktur:
+              $("revisionStruktur").value,
+
+            wilayah:
+              $("revisionWilayah").value.trim(),
+
+            pengalaman_organisasi:
+              $("revisionPengalaman").value.trim(),
+
+            motivasi:
+              $("revisionMotivasi").value.trim(),
+
+            status_pendaftaran:
+              "Menunggu Verifikasi",
+
+            status_dokumen:
+              "Belum Diverifikasi",
+
+            catatan_admin:
+              null,
+
+            updated_at:
+              new Date().toISOString()
+
+          })
+          .eq("id",id);
+
+
+      if(updateError){
+        throw updateError;
+      }
+
+
+      /*
+        Hapus metadata dokumen lama.
+      */
+
+      if(oldDocs && oldDocs.length){
+
+        const {
+          error:deleteDocsError
+        } =
+          await db
+            .from("dokumen_pendaftar")
+            .delete()
+            .eq("pendaftar_id",id)
+            .neq("storage_path",ktpPath)
+            .neq("storage_path",cvPath)
+            .neq("storage_path",fotoPath);
+
+
+        if(deleteDocsError){
+          console.warn(
+            "Metadata lama tidak terhapus:",
+            deleteDocsError
+          );
+        }
+
+
+        /*
+          Hapus file lama dari Storage.
+        */
+
+        const oldPaths =
+          oldDocs
+            .map(x=>x.storage_path)
+            .filter(Boolean);
+
+
+        if(oldPaths.length){
+
+          const {
+            error:storageDeleteError
+          } =
+            await db
+              .storage
+              .from(STORAGE_BUCKET)
+              .remove(oldPaths);
+
+
+          if(storageDeleteError){
+
+            console.warn(
+              "File lama tidak terhapus:",
+              storageDeleteError
+            );
+
+          }
+        }
+
+      }
+
+
+      closeModal("revisionModal");
+
+
+      notice(
+        "statusResult",
+        "Revisi berhasil dikirim. Data kamu kembali ke proses verifikasi.",
+        "success"
+      );
+
+
+      $("statusKode").value =
+        await getKodeById(id);
+
+
+      await cekStatusPendaftaran();
+
+
+    }catch(error){
+
+      console.error(error);
+
+      notice(
+        "revisionNotice",
+        error.message ||
+        "Revisi gagal dikirim.",
+        "error"
+      );
+    }
+
+  }
 );
 
-uploaded.push(
-await uploadFileToStorage(
-id,
-fileInfo
-)
-);
 
+async function getKodeById(id){
+
+  const {
+    data,
+    error
+  } =
+    await db
+      .from("pendaftar")
+      .select("kode_pendaftaran")
+      .eq("id",id)
+      .single();
+
+
+  if(error){
+    return "";
+  }
+
+  return data.kode_pendaftaran;
 }
 
-const newDocs =
-uploaded.map(
-f=>({
 
-pendaftar_id:id,
+/* ============================================================
+   ADMIN LOGIN
+============================================================ */
 
-jenis_dokumen:f.jenis,
+$("adminLoginForm").addEventListener(
+  "submit",
+  async function(event){
 
-nama_file:f.name,
+    event.preventDefault();
 
-storage_path:
-f.storage_path,
 
-status_dokumen:
-"Belum Diverifikasi",
+    notice(
+      "adminLoginNotice",
+      "Memproses login...",
+      "info"
+    );
 
-catatan:null
 
-})
+    const email =
+      $("adminEmail")
+        .value
+        .trim();
+
+    const password =
+      $("adminPassword")
+        .value;
+
+
+    const {
+      error
+    } =
+      await db.auth.signInWithPassword({
+
+        email:email,
+
+        password:password
+
+      });
+
+
+    if(error){
+
+      notice(
+        "adminLoginNotice",
+        error.message,
+        "error"
+      );
+
+      return;
+    }
+
+
+    closeModal(
+      "adminLoginModal"
+    );
+
+    $("adminLoginForm").reset();
+
+
+    await openAdmin();
+
+  }
 );
 
-const {
-error:insertError
-} =
-await db
-.from("dokumen_pendaftar")
-.insert(
-newDocs
-);
 
-if(insertError){
-
-throw new Error(
-"Berkas revisi berhasil diupload tetapi metadata gagal dicatat: "
-+
-insertError.message
-);
-
-}
-
-if(
-oldDocs?.length
-){
-
-const oldIds =
-oldDocs.map(
-d=>d.id
-);
-
-await db
-.from("dokumen_pendaftar")
-.delete()
-.in(
-"id",
-oldIds
-);
-
-const oldPaths =
-oldDocs
-.map(
-d=>d.storage_path
-)
-.filter(Boolean);
-
-if(oldPaths.length){
-
-await db
-.storage
-.from(STORAGE_BUCKET)
-.remove(
-oldPaths
-);
-
-}
-
-}
-
-const update = {
-
-nama_lengkap:
-$("revisionNama").value.trim(),
-
-nomor_whatsapp:
-$("revisionWhatsapp").value.trim(),
-
-email:
-$("revisionEmail").value.trim(),
-
-tanggal_lahir:
-$("revisionTanggalLahir").value,
-
-pendidikan_pekerjaan:
-$("revisionPendidikan").value.trim(),
-
-struktur_pilihan:
-$("revisionStruktur").value,
-
-wilayah_domisili:
-$("revisionWilayah").value,
-
-pengalaman_organisasi:
-$("revisionPengalaman").value.trim(),
-
-motivasi:
-$("revisionMotivasi").value.trim(),
-
-status_pendaftaran:
-"Menunggu Verifikasi",
-
-status_dokumen:
-"Belum Diverifikasi",
-
-catatan_admin:
-null,
-
-updated_at:
-new Date().toISOString()
-
-};
-
-const {
-error:updateError
-} =
-await db
-.from("pendaftar")
-.update(update)
-.eq(
-"id",
-id
-);
-
-if(updateError){
-
-throw new Error(
-"Data berhasil diproses tetapi status revisi gagal disimpan: "
-+
-updateError.message
-);
-
-}
-
-notice(
-"revisionNotice",
-"Revisi berhasil dikirim. Data dan berkas kamu kembali menunggu verifikasi admin.",
-"success"
-);
-
-$("revisionForm").reset();
-
-setTimeout(
-()=>{
-
-closeModal(
-"revisionModal"
-);
-
-$("statusCode").value =
-lastRegisteredCode;
-
-openStatus();
-
-if(lastRegisteredCode){
-
-checkStatus(
-lastRegisteredCode
-);
-
-}
-
-},
-1200
-);
-
-}catch(err){
-
-console.error(err);
-
-if(uploaded.length){
-
-await db.storage
-.from(STORAGE_BUCKET)
-.remove(
-uploaded.map(
-f=>f.storage_path
-)
-);
-
-}
-
-notice(
-"revisionNotice",
-err.message,
-"error"
-);
-
-}
-
-}
-
-function renderAdminTable(){
-
-$("adminTableBody").innerHTML =
-
-adminParticipants.map(
-p=>`
-
-<tr>
-
-<td>
-${escapeHTML(p.kode_peserta)}
-</td>
-
-<td>
-${escapeHTML(p.nama_lengkap)}
-</td>
-
-<td>
-${escapeHTML(p.struktur_pilihan)}
-</td>
-
-<td>
-${escapeHTML(p.wilayah_domisili)}
-</td>
-
-<td>
-${escapeHTML(p.skor_quiz)}
-</td>
-
-<td>
-
-<span
-class="status-pill ${statusClass(
-p.status_pendaftaran
-)}">
-
-${escapeHTML(
-p.status_pendaftaran
-)}
-
-</span>
-
-</td>
-
-<td>
-
-<div class="doc-actions">
-
-<button
-class="btn btn-primary btn-small"
-onclick="openParticipant('${p.id}')">
-
-Lihat Berkas
-
-</button>
-
-<button
-class="btn btn-outline btn-small"
-onclick="openEdit('${p.id}')">
-
-Kelola
-
-</button>
-
-</div>
-
-</td>
-
-</tr>
-
-`
-).join("");
-
-$("statTotal").textContent =
-adminParticipants.length;
-
-$("statPending").textContent =
-adminParticipants.filter(
-p=>p.status_pendaftaran ===
-"Menunggu Verifikasi"
-).length;
-
-$("statVerified").textContent =
-adminParticipants.filter(
-p=>p.status_pendaftaran ===
-"Terverifikasi"
-).length;
-
-}
-
-async function loadAdminParticipants(){
-
-notice(
-"adminNotice",
-"Memuat data peserta...",
-"info"
-);
-
-const {
-data,
-error
-} =
-await db
-.from("pendaftar")
-.select("*")
-.order(
-"created_at",
-{ascending:false}
-);
-
-if(error){
-
-notice(
-"adminNotice",
-error.message,
-"error"
-);
-
-return;
-
-}
-
-adminParticipants =
-data || [];
-
-renderAdminTable();
-
-notice(
-"adminNotice",
-"Data peserta berhasil dimuat.",
-"success"
-);
-
-}
+/* ============================================================
+   OPEN ADMIN
+============================================================ */
 
 async function openAdmin(){
 
-const {
-data:{
-session
-}
-} =
-await db.auth.getSession();
+  const {
+    data:{
+      session
+    }
+  } =
+    await db.auth.getSession();
 
-if(!session){
 
-openModal(
-"adminLoginModal"
-);
+  if(!session){
 
-return;
+    openModal(
+      "adminLoginModal"
+    );
 
-}
+    return;
+  }
 
-openModal(
-"adminModal"
-);
 
-await loadAdminParticipants();
+  openModal(
+    "adminModal"
+  );
 
-}
 
-async function openParticipant(id){
-
-const p =
-adminParticipants.find(
-item=>item.id===id
-);
-
-if(!p)
-return;
-
-$("detailTitle").textContent =
-p.nama_lengkap ||
-"Detail Pendaftar";
-
-$("detailInfo").innerHTML =
-
-`
-
-<div class="card">
-
-<p>
-<b>Kode:</b>
-${escapeHTML(p.kode_peserta)}
-</p>
-
-<p>
-<b>Nama:</b>
-${escapeHTML(p.nama_lengkap)}
-</p>
-
-<p>
-<b>Struktur:</b>
-${escapeHTML(p.struktur_pilihan)}
-</p>
-
-<p>
-<b>Wilayah:</b>
-${escapeHTML(p.wilayah_domisili)}
-</p>
-
-<p>
-<b>WhatsApp:</b>
-${escapeHTML(p.nomor_whatsapp)}
-</p>
-
-<p>
-<b>Email:</b>
-${escapeHTML(p.email)}
-</p>
-
-<p>
-<b>Skor Quiz:</b>
-${escapeHTML(p.skor_quiz)}
-</p>
-
-<p>
-<b>Status Pendaftaran:</b>
-
-<span
-class="status-pill ${statusClass(
-p.status_pendaftaran
-)}">
-
-${escapeHTML(
-p.status_pendaftaran
-)}
-
-</span>
-
-</p>
-
-<p>
-<b>Jadwal Interview:</b>
-${escapeHTML(
-p.jadwal_interview ||
-"Belum ditentukan"
-)}
-</p>
-
-<p>
-<b>Metode:</b>
-${escapeHTML(
-p.metode_interview ||
-"Belum ditentukan"
-)}
-</p>
-
-<p>
-<b>Lokasi / Link:</b>
-${escapeHTML(
-p.lokasi_interview ||
-"Belum ditentukan"
-)}
-</p>
-
-<p>
-<b>Catatan Admin:</b>
-${escapeHTML(
-p.catatan_admin ||
-"Belum ada catatan"
-)}
-</p>
-
-<div class="form-actions">
-
-<button
-class="btn btn-success btn-small"
-onclick="openWhatsAppInterview('${p.id}')">
-
-📱 Konfirmasi via WhatsApp
-
-</button>
-
-<button
-class="btn btn-primary btn-small"
-onclick="openEdit('${p.id}')">
-
-⚙ Kelola Jadwal
-
-</button>
-
-</div>
-
-</div>
-
-`;
-
-const {
-data:docs,
-error
-} =
-await db
-.from("dokumen_pendaftar")
-.select("*")
-.eq(
-"pendaftar_id",
-id
-)
-.order(
-"jenis_dokumen"
-);
-
-if(error){
-
-notice(
-"detailNotice",
-error.message,
-"error"
-);
-
-return;
+  await loadAdminParticipants();
 
 }
 
-$("documentList").innerHTML =
 
-(docs || []).map(
-d=>`
+/* ============================================================
+   LOAD ADMIN
+============================================================ */
 
-<div class="doc-row">
+async function loadAdminParticipants(){
 
-<div>
+  const body =
+    $("adminParticipantsBody");
 
-<div class="doc-name">
-${escapeHTML(d.jenis_dokumen)}
-</div>
 
-<div class="doc-meta">
-${escapeHTML(d.nama_file || "-")}
-</div>
+  body.innerHTML = `
 
-</div>
+    <tr>
+      <td colspan="6">
+        Memuat data...
+      </td>
+    </tr>
 
-<span
-class="status-pill ${statusClass(
-d.status_dokumen
-)}">
+  `;
 
-${escapeHTML(
-d.status_dokumen
-)}
 
-</span>
+  const {
+    data,
+    error
+  } =
+    await db
+      .from("pendaftar")
+      .select("*")
+      .order(
+        "created_at",
+        {
+          ascending:false
+        }
+      );
 
-<div class="doc-actions">
 
-<button
-class="btn btn-outline btn-small"
-onclick="viewDocument(
-'${escapeHTML(p.kode_peserta)}',
-'${escapeHTML(d.jenis_dokumen)}'
-)">
+  if(error){
 
-Lihat Berkas
+    body.innerHTML = `
 
-</button>
+      <tr>
+        <td colspan="6">
+          ${escapeHtml(error.message)}
+        </td>
+      </tr>
 
-<button
-class="btn btn-success btn-small"
-onclick="verifyDocument(
-'${d.id}',
-'${d.pendaftar_id}'
-)">
+    `;
 
-✓ Verifikasi
+    return;
+  }
 
-</button>
 
-<button
-class="btn btn-warning btn-small"
-onclick="reviseDocument(
-'${d.id}',
-'${d.pendaftar_id}'
-)">
+  if(!data || !data.length){
 
-↻ Minta Perbaikan
+    body.innerHTML = `
 
-</button>
+      <tr>
+        <td colspan="6">
+          Belum ada pendaftar.
+        </td>
+      </tr>
 
-</div>
+    `;
 
-</div>
+    return;
+  }
 
-`
-).join("")
-||
-"<p class='helper'>Belum ada berkas tercatat.</p>";
 
-notice(
-"detailNotice",
-""
-);
+  body.innerHTML =
+    data.map(item=>{
 
-openModal(
-"participantModal"
-);
+      return `
 
-}
+        <tr>
 
-window.viewDocument =
-async function(code,jenis){
+          <td>
+            <strong>
+              ${escapeHtml(
+                item.nama_lengkap || "-"
+              )}
+            </strong>
+            <br>
+            <small>
+              ${escapeHtml(
+                item.whatsapp || ""
+              )}
+            </small>
+          </td>
 
-const p =
-adminParticipants.find(
-item=>item.kode_peserta===code
-);
+          <td>
+            ${escapeHtml(
+              item.kode_pendaftaran || "-"
+            )}
+          </td>
 
-if(!p)
-return;
+          <td>
+            ${escapeHtml(
+              item.status_pendaftaran ||
+              "-"
+            )}
+          </td>
 
-const {
-data:doc,
-error
-} =
-await db
-.from("dokumen_pendaftar")
-.select(
-"storage_path,nama_file"
-)
-.eq(
-"pendaftar_id",
-p.id
-)
-.eq(
-"jenis_dokumen",
-jenis
-)
-.maybeSingle();
+          <td>
+            ${escapeHtml(
+              item.status_dokumen ||
+              "-"
+            )}
+          </td>
 
-if(
-error ||
-!doc?.storage_path
-){
+          <td>
+            <strong>
+              ${item.skor_quiz ?? 0}
+            </strong>
+          </td>
 
-notice(
-"detailNotice",
-error?.message ||
-"Lokasi berkas tidak ditemukan.",
-"error"
-);
+          <td>
 
-return;
+            <div class="admin-actions">
 
-}
+              <button
+                class="action-view"
+                onclick="openAdminDetail('${item.id}')"
+              >
+                Lihat
+              </button>
 
-const {
-data:signed,
-error:signedError
-} =
-await db.storage
-.from(STORAGE_BUCKET)
-.createSignedUrl(
-doc.storage_path,
-300
-);
+              <button
+                class="action-verify"
+                onclick="setStatus('${item.id}','Terverifikasi')"
+              >
+                Verifikasi
+              </button>
 
-if(signedError){
+              <button
+                class="action-revision"
+                onclick="requestRevision('${item.id}')"
+              >
+                Revisi
+              </button>
 
-notice(
-"detailNotice",
-signedError.message,
-"error"
-);
+              <button
+                class="action-reject"
+                onclick="setStatus('${item.id}','Ditolak')"
+              >
+                Tolak
+              </button>
 
-return;
+            </div>
 
-}
+          </td>
 
-window.open(
-signed.signedUrl,
-"_blank",
-"noopener"
-);
+        </tr>
 
-};
+      `;
 
-window.verifyDocument =
-async function(
-docId,
-participantId
-){
-
-await updateDocumentStatus(
-docId,
-participantId,
-"Terverifikasi",
-""
-);
-
-};
-
-window.reviseDocument =
-async function(
-docId,
-participantId
-){
-
-const note =
-prompt(
-"Tulis alasan/perbaikan yang harus dilakukan peserta:"
-);
-
-if(note === null)
-return;
-
-await updateDocumentStatus(
-docId,
-participantId,
-"Perlu Perbaikan",
-note
-);
-
-};
-
-async function updateDocumentStatus(
-docId,
-participantId,
-status,
-catatan
-){
-
-const {
-error
-} =
-await db
-.from("dokumen_pendaftar")
-.update({
-
-status_dokumen:
-status,
-
-catatan:
-catatan || null
-
-})
-.eq(
-"id",
-docId
-);
-
-if(error){
-
-notice(
-"detailNotice",
-error.message,
-"error"
-);
-
-return;
+    }).join("");
 
 }
 
-const {
-data:docs,
-error:docsError
-} =
-await db
-.from("dokumen_pendaftar")
-.select("status_dokumen")
-.eq(
-"pendaftar_id",
-participantId
-);
 
-if(docsError){
+/* ============================================================
+   ADMIN DETAIL
+============================================================ */
 
-notice(
-"detailNotice",
-docsError.message,
-"error"
-);
+async function openAdminDetail(id){
 
-return;
+  const content =
+    $("adminDetailContent");
+
+
+  content.innerHTML =
+    "Memuat detail...";
+
+
+  openModal(
+    "adminDetailModal"
+  );
+
+
+  const {
+    data,
+    error
+  } =
+    await db
+      .from("pendaftar")
+      .select("*")
+      .eq("id",id)
+      .single();
+
+
+  if(error){
+
+    content.innerHTML =
+      `<p>${escapeHtml(error.message)}</p>`;
+
+    return;
+  }
+
+
+  const {
+    data:docs
+  } =
+    await db
+      .from("dokumen_pendaftar")
+      .select("*")
+      .eq("pendaftar_id",id);
+
+
+  content.innerHTML = `
+
+    <div class="status-info">
+
+      <div class="status-row">
+        <span>Nama</span>
+        <strong>
+          ${escapeHtml(
+            data.nama_lengkap || "-"
+          )}
+        </strong>
+      </div>
+
+      <div class="status-row">
+        <span>Kode</span>
+        <strong>
+          ${escapeHtml(
+            data.kode_pendaftaran || "-"
+          )}
+        </strong>
+      </div>
+
+      <div class="status-row status-main">
+        <span>Status</span>
+        <strong>
+          ${escapeHtml(
+            data.status_pendaftaran || "-"
+          )}
+        </strong>
+      </div>
+
+      <div class="status-row">
+        <span>Dokumen</span>
+        <strong>
+          ${escapeHtml(
+            data.status_dokumen || "-"
+          )}
+        </strong>
+      </div>
+
+      <div class="status-row">
+        <span>Skor Quiz</span>
+        <strong>
+          ${data.skor_quiz ?? 0}
+        </strong>
+      </div>
+
+      <div class="status-row">
+        <span>WhatsApp</span>
+        <strong>
+          ${escapeHtml(
+            data.whatsapp || "-"
+          )}
+        </strong>
+      </div>
+
+      <div class="status-row">
+        <span>Email</span>
+        <strong>
+          ${escapeHtml(
+            data.email || "-"
+          )}
+        </strong>
+      </div>
+
+      <div class="status-row">
+        <span>Pendidikan/Pekerjaan</span>
+        <strong>
+          ${escapeHtml(
+            data.pendidikan_pekerjaan || "-"
+          )}
+        </strong>
+      </div>
+
+      <div class="status-row">
+        <span>Wilayah</span>
+        <strong>
+          ${escapeHtml(
+            data.wilayah || "-"
+          )}
+        </strong>
+      </div>
+
+    </div>
+
+
+    <h3 style="margin:25px 0 15px;color:#ff5a1f;">
+      Dokumen Peserta
+    </h3>
+
+    <div>
+
+      ${
+        docs && docs.length
+          ? docs.map(doc=>`
+
+            <div style="
+              padding:15px;
+              background:#191919;
+              border:1px solid #303030;
+              border-radius:12px;
+              margin-bottom:10px;
+            ">
+
+              <strong>
+                ${escapeHtml(
+                  doc.jenis_dokumen || "-"
+                )}
+              </strong>
+
+              <br>
+
+              <small>
+                ${escapeHtml(
+                  doc.nama_file || "-"
+                )}
+              </small>
+
+              <br>
+
+              <small>
+                Status:
+                ${escapeHtml(
+                  doc.status || "-"
+                )}
+              </small>
+
+            </div>
+
+          `).join("")
+          : "<p>Dokumen tidak ditemukan.</p>"
+      }
+
+    </div>
+
+
+    <h3 style="margin:25px 0 15px;color:#ff5a1f;">
+      Jawaban Quiz
+    </h3>
+
+    <pre style="
+      background:#080808;
+      padding:15px;
+      border-radius:10px;
+      overflow:auto;
+      color:#ddd;
+    ">${escapeHtml(
+      JSON.stringify(
+        data.jawaban_quiz || {},
+        null,
+        2
+      )
+    )}</pre>
+
+
+    <div style="
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:25px;
+    ">
+
+      <button
+        class="btn-success"
+        onclick="setStatus('${data.id}','Terverifikasi')"
+      >
+        ✓ Verifikasi
+      </button>
+
+      <button
+        class="btn-secondary"
+        onclick="requestRevision('${data.id}')"
+      >
+        ✏ Minta Perbaikan
+      </button>
+
+      <button
+        class="btn-danger"
+        onclick="setStatus('${data.id}','Ditolak')"
+      >
+        ✕ Tolak
+      </button>
+
+    </div>
+
+  `;
 
 }
 
-const statuses =
-(docs || [])
-.map(
-d=>d.status_dokumen
-);
 
-let parentStatus =
-"Menunggu Verifikasi";
+/* ============================================================
+   SET STATUS ADMIN
+============================================================ */
 
-let docStatus =
-"Sedang Diverifikasi";
+async function setStatus(id,status){
 
-if(
-statuses.length &&
-statuses.every(
-x=>x === "Terverifikasi"
-)
-){
+  if(!confirm(
+    `Ubah status peserta menjadi "${status}"?`
+  )){
+    return;
+  }
 
-parentStatus =
-"Terverifikasi";
 
-docStatus =
-"Disetujui";
+  const {
+    error
+  } =
+    await db
+      .from("pendaftar")
+      .update({
 
-}else if(
-statuses.some(
-x=>x === "Perlu Perbaikan"
-)
-){
+        status_pendaftaran:status,
 
-parentStatus =
-"Perlu Perbaikan";
+        updated_at:
+          new Date().toISOString()
 
-docStatus =
-"Perlu Perbaikan";
+      })
+      .eq("id",id);
 
-}
 
-await db
-.from("pendaftar")
-.update({
+  if(error){
 
-status_pendaftaran:
-parentStatus,
+    alert(
+      "Gagal mengubah status:\n" +
+      error.message
+    );
 
-status_dokumen:
-docStatus,
+    return;
+  }
 
-updated_at:
-new Date().toISOString()
 
-})
-.eq(
-"id",
-participantId
-);
+  alert(
+    "Status berhasil diperbarui."
+  );
 
-await loadAdminParticipants();
 
-await openParticipant(
-participantId
-);
+  closeModal(
+    "adminDetailModal"
+  );
 
-notice(
-"adminNotice",
-"Status berkas berhasil diperbarui.",
-"success"
-);
+
+  await loadAdminParticipants();
 
 }
 
-window.openEdit =
-function(id){
 
-const p =
-adminParticipants.find(
-item=>item.id===id
-);
+/* ============================================================
+   REQUEST REVISION
+============================================================ */
 
-if(!p)
-return;
+async function requestRevision(id){
 
-$("editId").value =
-p.id;
+  const catatan =
+    prompt(
+      "Tuliskan catatan perbaikan untuk peserta:"
+    );
 
-$("editStatus").value =
-p.status_pendaftaran ||
-"Menunggu Verifikasi";
 
-$("editDocumentStatus").value =
-p.status_dokumen ||
-"Belum Diverifikasi";
+  if(catatan === null){
+    return;
+  }
 
-$("editInterview").value =
-p.jadwal_interview ||
-(
-["Makassar","Gowa"]
-.includes(p.wilayah_domisili)
-?
-"11 Oktober 2026"
-:
-"10 Oktober 2026"
-);
 
-$("editMethod").value =
-p.metode_interview ||
-"";
+  if(!catatan.trim()){
 
-$("editLocation").value =
-p.lokasi_interview ||
-"";
+    alert(
+      "Catatan perbaikan wajib diisi."
+    );
 
-$("editNote").value =
-p.catatan_admin ||
-"";
+    return;
+  }
 
-notice(
-"editNotice",
-""
-);
 
-openModal(
-"editModal"
-);
+  const {
+    error
+  } =
+    await db
+      .from("pendaftar")
+      .update({
 
-};
+        status_pendaftaran:
+          "Perlu Perbaikan",
 
-$("registerForm")
-.addEventListener(
-"submit",
-async event=>{
+        status_dokumen:
+          "Perlu Perbaikan",
 
-event.preventDefault();
+        catatan_admin:
+          catatan.trim(),
 
-if(
-!validateStructureAndRegion()
-)
-return;
+        updated_at:
+          new Date().toISOString()
 
-const files = [
+      })
+      .eq("id",id);
 
-prepareFile(
-"ktp",
-"KTP"
-),
 
-prepareFile(
-"cv",
-"CV"
-),
+  if(error){
 
-prepareFile(
-"foto",
-"Foto"
-)
+    alert(
+      "Gagal meminta revisi:\n" +
+      error.message
+    );
 
-];
+    return;
+  }
 
-if(
-files.some(
-f=>!f.ok
-)
-){
 
-notice(
-"registerNotice",
-files.find(
-f=>!f.ok
-).message,
-"error"
-);
+  alert(
+    "Permintaan perbaikan berhasil dikirim."
+  );
 
-return;
+
+  closeModal(
+    "adminDetailModal"
+  );
+
+
+  await loadAdminParticipants();
 
 }
 
-if(
-!validateWhatsApp(
-$("whatsapp").value
-)
-){
 
-notice(
-"registerNotice",
-"Nomor WhatsApp tidak valid. Gunakan format 08xxxxxxxxxx.",
-"error"
-);
+/* ============================================================
+   INIT
+============================================================ */
 
-return;
+renderQuiz();
 
-}
 
-notice(
-"registerNotice",
-"Menyiapkan berkas...",
-"info"
-);
-
-pendingRegistration = {
-
-nama:
-$("nama").value.trim(),
-
-whatsapp:
-$("whatsapp").value.trim(),
-
-email:
-$("email").value.trim(),
-
-tanggal_lahir:
-$("tanggalLahir").value,
-
-pendidikan:
-$("pendidikan").value.trim(),
-
-struktur:
-$("struktur").value,
-
-wilayah:
-$("wilayah").value,
-
-pengalaman:
-$("pengalaman").value.trim(),
-
-motivasi:
-$("motivasi").value.trim(),
-
-files
-
-};
-
-closeModal(
-"registerModal"
-);
-
-renderQuestions();
-
-notice(
-"quizNotice",
-""
-);
-
-openModal(
-"quizModal"
-);
-
-}
-);
-
-$("quizForm")
-.addEventListener(
-"submit",
-event=>{
-
-event.preventDefault();
-
-const score =
-scoreQuiz(
-event.target
-);
-
-if(score === null){
-
-notice(
-"quizNotice",
-"Jawab seluruh pertanyaan terlebih dahulu.",
-"error"
-);
-
-return;
-
-}
-
-pendingRegistration.skor =
-score;
-
-pendingRegistration.jawaban_quiz =
-questions.map(
-(q,i)=>({
-
-question:q,
-
-answer:
-event.target
-.querySelector(
-`input[name="q${i}"]:checked`
-)
-?.parentElement
-?.innerText ||
-"",
-
-score:
-Number(
-event.target
-.querySelector(
-`input[name="q${i}"]:checked`
-)
-?.value ||
-0
-)
-
-})
-);
-
-pendingRegistration.interviewMethod =
-[
-"Makassar",
-"Gowa"
-].includes(
-pendingRegistration.wilayah
-)
-?
-"Offline"
-:
-"Online";
-
-submitRegistration();
-
-}
-);
-
-$("revisionForm")
-.addEventListener(
-"submit",
-async event=>{
-
-event.preventDefault();
-
-await submitRevision();
-
-}
-);
-
-$("statusForm")
-.addEventListener(
-"submit",
-event=>{
-
-event.preventDefault();
-
-checkStatus(
-$("statusCode").value
-);
-
-}
-);
-
-$("adminLoginForm")
-.addEventListener(
-"submit",
-async event=>{
-
-event.preventDefault();
-
-notice(
-"adminLoginNotice",
-"Memproses login...",
-"info"
-);
-
-const {
-error
-} =
-await db.auth.signInWithPassword({
-
-email:
-$("adminEmail").value.trim(),
-
-password:
-$("adminPassword").value
-
-});
-
-if(error){
-
-notice(
-"adminLoginNotice",
-error.message,
-"error"
-);
-
-return;
-
-}
-
-closeModal(
-"adminLoginModal"
-);
-
-$("adminLoginForm").reset();
-
-await openAdmin();
-
-}
-);
-
-$("editForm")
-.addEventListener(
-"submit",
-async event=>{
-
-event.preventDefault();
-
-const id =
-$("editId").value;
-
-const update = {
-
-status_pendaftaran:
-$("editStatus").value,
-
-status_dokumen:
-$("editDocumentStatus").value,
-
-jadwal_interview:
-$("editInterview").value.trim()
-||
-null,
-
-metode_interview:
-$("editMethod").value ||
-null,
-
-lokasi_interview:
-$("editLocation").value.trim()
-||
-null,
-
-catatan_admin:
-$("editNote").value.trim()
-||
-null,
-
-updated_at:
-new Date().toISOString()
-
-};
-
-const {
-error
-} =
-await db
-.from("pendaftar")
-.update(update)
-.eq(
-"id",
-id
-);
-
-if(error){
-
-notice(
-"editNotice",
-error.message,
-"error"
-);
-
-return;
-
-}
-
-closeModal(
-"editModal"
-);
-
-await loadAdminParticipants();
-
-notice(
-"adminNotice",
-"Perubahan peserta berhasil disimpan.",
-"success"
-);
-
-}
-);
-
-$("refreshAdmin")
-.addEventListener(
-"click",
-loadAdminParticipants
-);
-
-$("logoutAdmin")
-.addEventListener(
-"click",
-async ()=>{
-
-await db.auth.signOut();
-
-closeModal(
-"adminModal"
-);
-
-alert(
-"Admin berhasil logout."
-);
-
-}
-);
-
-$("heroRegister")
-.addEventListener(
-"click",
-()=>{
-
-notice(
-"registerNotice",
-""
-);
-
-openModal(
-"registerModal"
-);
-
-}
-);
-
-$("ctaRegister")
-.addEventListener(
-"click",
-()=>{
-
-notice(
-"registerNotice",
-""
-);
-
-openModal(
-"registerModal"
-);
-
-}
-);
-
-$("registerNav")
-.addEventListener(
-"click",
-event=>{
-
-event.preventDefault();
-
-notice(
-"registerNotice",
-""
-);
-
-openModal(
-"registerModal"
-);
-
-}
-);
-
-$("adminNav")
-.addEventListener(
-"click",
-event=>{
-
-event.preventDefault();
-
-openAdmin();
-
-}
-);
-
-$("heroAdmin")
-.addEventListener(
-"click",
-openAdmin
-);
-
-function openStatus(){
-
-notice(
-"statusNotice",
-""
-);
-
-$("statusResult").innerHTML =
-"";
-
-openModal(
-"statusModal"
-);
-
-}
-
-$("statusNav")
-.addEventListener(
-"click",
-event=>{
-
-event.preventDefault();
-
-openStatus();
-
-}
-);
-
-$("ctaStatus")
-.addEventListener(
-"click",
-openStatus
-);
-
-$("heroStatus")
-.addEventListener(
-"click",
-openStatus
-);
-
-$("successStatus")
-.addEventListener(
-"click",
-()=>{
-
-closeModal(
-"successModal"
-);
-
-$("statusCode").value =
-lastRegisteredCode;
-
-openStatus();
-
-checkStatus(
-lastRegisteredCode
-);
-
-}
-);
-
-document
-.querySelectorAll("[data-close]")
-.forEach(
-button=>{
-
-button.addEventListener(
-"click",
-()=>{
-
-closeModal(
-button.dataset.close
-);
-
-}
-);
-
-}
-);
-
-document
-.querySelectorAll(".modal")
-.forEach(
-modal=>{
-
-modal.addEventListener(
-"click",
-event=>{
-
-if(
-event.target === modal
-){
-
-closeModal(
-modal.id
-);
-
-}
-
-}
-);
-
-}
-);
-
-document.addEventListener(
-"keydown",
-event=>{
-
-if(
-event.key === "Escape"
-){
-
-document
-.querySelectorAll(".modal.show")
-.forEach(
-modal=>
-closeModal(
-modal.id
-)
-);
-
-}
-
-}
-);
-
-document.addEventListener(
-"contextmenu",
-event=>{
-
-if(
-event.target.tagName === "IMG"
-)
-event.preventDefault();
-
-}
-);
+/*
+  Saat halaman dibuka,
+  cek session Supabase tanpa otomatis
+  membuka dashboard admin.
+*/
 
 db.auth.onAuthStateChange(
-(event,session)=>{
+  (event,session)=>{
 
-console.log(
-"Auth event:",
-event,
-Boolean(session)
+    console.log(
+      "AUTH:",
+      event,
+      session ? "LOGIN" : "LOGOUT"
+    );
+
+  }
 );
-
-}
-);
-
-if(
-location.hash === "#admin"
-){
-
-setTimeout(
-openAdmin,
-500
-);
-
-}
 
 </script>
 
