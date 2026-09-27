@@ -4974,6 +4974,127 @@ document.addEventListener("submit", async function (event) {
 
 }, true);
 
+/* =========================================================
+   FIX FINAL — TOMBOL LOGIN DI MODAL ADMIN
+   ========================================================= */
+
+document.addEventListener("click", async function (event) {
+
+  const button = event.target.closest(
+    "#adminLoginForm button"
+  );
+
+  if (!button) return;
+
+  event.preventDefault();
+  event.stopPropagation();
+  event.stopImmediatePropagation();
+
+  const email =
+    document.getElementById("adminEmail")?.value.trim();
+
+  const password =
+    document.getElementById("adminPassword")?.value;
+
+  const noticeBox =
+    document.getElementById("adminLoginNotice");
+
+  if (!email || !password) {
+
+    if (noticeBox) {
+      noticeBox.textContent =
+        "Email dan password wajib diisi.";
+      noticeBox.className =
+        "notice error";
+    }
+
+    return;
+  }
+
+  if (noticeBox) {
+    noticeBox.textContent =
+      "Memproses login...";
+    noticeBox.className =
+      "notice info";
+  }
+
+  try {
+
+    const result =
+      await db.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
+
+    if (result.error) {
+
+      console.error(result.error);
+
+      if (noticeBox) {
+        noticeBox.textContent =
+          result.error.message;
+        noticeBox.className =
+          "notice error";
+      }
+
+      return;
+    }
+
+    /* LOGIN BERHASIL */
+
+    const loginModal =
+      document.getElementById(
+        "adminLoginModal"
+      );
+
+    if (loginModal) {
+      loginModal.classList.remove("show");
+    }
+
+    const loginForm =
+      document.getElementById(
+        "adminLoginForm"
+      );
+
+    if (loginForm) {
+      loginForm.reset();
+    }
+
+    /* BUKA DASHBOARD */
+
+    if (
+      typeof openAdmin === "function"
+    ) {
+
+      await openAdmin();
+
+    } else {
+
+      const adminModal =
+        document.getElementById(
+          "adminModal"
+        );
+
+      if (adminModal) {
+        adminModal.classList.add("show");
+      }
+
+    }
+
+  } catch (error) {
+
+    console.error(error);
+
+    if (noticeBox) {
+      noticeBox.textContent =
+        "Terjadi kesalahan saat login.";
+      noticeBox.className =
+        "notice error";
+    }
+
+  }
+
+}, true);
 </script>
 
 </body>
