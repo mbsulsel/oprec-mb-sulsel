@@ -817,7 +817,7 @@ td {
 <a href="#ketentuan">KETENTUAN</a>
 <a href="#" id="statusNav">CEK STATUS</a>
 <a href="#" id="registerNav">DAFTAR</a>
-<a href="#" id="adminNav">LOGIN ADMIN</a>
+<a href="#" id="adminNav">Login Admin</a>
 </nav>
 
 </div>
@@ -842,19 +842,19 @@ Saatnya anak muda Sulawesi Selatan belajar, berkembang, berkolaborasi, dan menga
 <div class="actions">
 
 <button class="btn btn-primary" id="heroRegister">
-DAFTAR SEKARANG →
+Daftar Sekarang →
 </button>
 
 <a class="btn btn-outline" href="#tentang">
-VISI & MISI MUDA BERGERAK
+Visi & Misi Muda Bergerak
 </a>
 
 <button class="btn btn-outline" id="heroStatus">
-CEK STATUS PENDAFTARAN
+Cek Status Pendaftaran
 </button>
 
 <button class="btn btn-outline" id="heroAdmin">
-LOGIN ADMIN
+Login Admin
 </button>
 
 </div>
@@ -1824,7 +1824,17 @@ placeholder="Catatan untuk peserta"
 
 </div>
 
+<!-- CHAT WA DI DALAM KELOLA -->
+
 <div class="form-actions">
+
+<button
+class="btn btn-success"
+type="button"
+id="chatWaKelolaBtn"
+>
+💬 Chat WA
+</button>
 
 <button
 class="btn btn-primary"
@@ -3890,6 +3900,111 @@ notice(
 }
 
 
+/* =========================================================
+   CHAT WHATSAPP DARI KELOLA
+   ========================================================= */
+
+function chatWhatsAppFromKelola(id) {
+
+const p =
+adminParticipants.find(
+item =>
+String(item.id) === String(id)
+);
+
+if (!p) {
+
+notice(
+"editNotice",
+"Data peserta tidak ditemukan.",
+"error"
+);
+
+return;
+
+}
+
+if (!p.nomor_whatsapp) {
+
+notice(
+"editNotice",
+"Nomor WhatsApp peserta tidak tersedia.",
+"error"
+);
+
+return;
+
+}
+
+const phone =
+normalizeWhatsApp(
+p.nomor_whatsapp
+);
+
+if (
+!/^62[0-9]{9,13}$/.test(phone)
+) {
+
+notice(
+"editNotice",
+"Nomor WhatsApp peserta tidak valid.",
+"error"
+);
+
+return;
+
+}
+
+const nama =
+p.nama_lengkap ||
+"Kak";
+
+const status =
+p.status_pendaftaran ||
+"Belum Ada Status";
+
+const catatan =
+p.catatan_admin ||
+"";
+
+let message =
+`Halo Kak ${nama}! 👋
+
+Kami dari Muda Bergerak Sulsel mau menginformasikan terkait pendaftaran Kakak.
+
+Status pendaftaran Kakak saat ini: ${status}`;
+
+if (
+String(catatan).trim() !== ""
+) {
+
+message +=
+`
+
+Catatan dari tim:
+${catatan}`;
+
+}
+
+message +=
+`
+
+Silakan cek informasi selengkapnya melalui website yaa.
+
+Terima kasih, Kak! 🙌`;
+
+const url =
+`https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+window.open(
+url,
+"_blank",
+"noopener,noreferrer"
+);
+
+}
+
+
 function openEdit(id) {
 
 const p =
@@ -3935,6 +4050,21 @@ notice(
 "editNotice",
 ""
 );
+
+
+/*
+  Tombol Chat WA selalu mengacu
+  ke peserta yang sedang dibuka.
+*/
+
+$("chatWaKelolaBtn").onclick =
+() => {
+
+chatWhatsAppFromKelola(
+p.id
+);
+
+};
 
 openModal("editModal");
 
@@ -4473,7 +4603,6 @@ closeModal(
 );
 
 });
-
 
 
 /* =========================================================
