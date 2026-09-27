@@ -4552,84 +4552,230 @@ openAdmin,
 );
 
 }
-
-  /* =========================================================
-   FIX 3 TOMBOL UTAMA
-   TANPA MENGUBAH DESAIN / KODE LAIN
+  <script>
+/* =========================================================
+   FINAL FIX — 3 TOMBOL UTAMA
+   TIDAK MENGUBAH DESAIN / HTML / CSS
    ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+(function () {
 
-  const registerButtons = [
-    $("heroRegister"),
-    $("ctaRegister"),
-    $("registerNav")
-  ];
+  function forceButton(id, action) {
 
-  registerButtons.forEach(button => {
+    const button = document.getElementById(id);
 
     if (!button) return;
 
-    button.onclick = function(event) {
+    button.addEventListener(
+      "click",
+      function (event) {
 
-      event.preventDefault();
+        event.preventDefault();
+        event.stopImmediatePropagation();
 
-      notice(
-        "registerNotice",
-        ""
+        try {
+          action();
+        } catch (error) {
+          console.error(
+            "Button error:",
+            id,
+            error
+          );
+        }
+
+      },
+      true
+    );
+
+  }
+
+
+  /* =========================
+     DAFTAR
+     ========================= */
+
+  forceButton(
+    "heroRegister",
+    function () {
+
+      const modal =
+        document.getElementById(
+          "registerModal"
+        );
+
+      if (!modal) return;
+
+      modal.classList.add("show");
+
+      const noticeBox =
+        document.getElementById(
+          "registerNotice"
+        );
+
+      if (noticeBox) {
+        noticeBox.innerHTML = "";
+      }
+
+    }
+  );
+
+
+  forceButton(
+    "ctaRegister",
+    function () {
+
+      const modal =
+        document.getElementById(
+          "registerModal"
+        );
+
+      if (!modal) return;
+
+      modal.classList.add("show");
+
+      const noticeBox =
+        document.getElementById(
+          "registerNotice"
+        );
+
+      if (noticeBox) {
+        noticeBox.innerHTML = "";
+      }
+
+    }
+  );
+
+
+  forceButton(
+    "registerNav",
+    function () {
+
+      const modal =
+        document.getElementById(
+          "registerModal"
+        );
+
+      if (!modal) return;
+
+      modal.classList.add("show");
+
+      const noticeBox =
+        document.getElementById(
+          "registerNotice"
+        );
+
+      if (noticeBox) {
+        noticeBox.innerHTML = "";
+      }
+
+    }
+  );
+
+
+  /* =========================
+     CEK STATUS
+     ========================= */
+
+  function showStatus() {
+
+    const modal =
+      document.getElementById(
+        "statusModal"
       );
 
-      openModal(
-        "registerModal"
+    if (!modal) return;
+
+    const result =
+      document.getElementById(
+        "statusResult"
       );
 
-    };
+    if (result) {
+      result.innerHTML = "";
+    }
 
-  });
+    const noticeBox =
+      document.getElementById(
+        "statusNotice"
+      );
 
+    if (noticeBox) {
+      noticeBox.innerHTML = "";
+    }
 
-  const statusButtons = [
-    $("heroStatus"),
-    $("ctaStatus"),
-    $("statusNav")
-  ];
+    modal.classList.add("show");
 
-  statusButtons.forEach(button => {
-
-    if (!button) return;
-
-    button.onclick = function(event) {
-
-      event.preventDefault();
-
-      openStatus();
-
-    };
-
-  });
+  }
 
 
-  const adminButtons = [
-    $("heroAdmin"),
-    $("adminNav")
-  ];
+  forceButton(
+    "heroStatus",
+    showStatus
+  );
 
-  adminButtons.forEach(button => {
+  forceButton(
+    "ctaStatus",
+    showStatus
+  );
 
-    if (!button) return;
+  forceButton(
+    "statusNav",
+    showStatus
+  );
 
-    button.onclick = function(event) {
 
-      event.preventDefault();
+  /* =========================
+     LOGIN ADMIN
+     ========================= */
 
-      openAdmin();
+  function showAdmin() {
 
-    };
+    /*
+      Gunakan fungsi openAdmin yang sudah
+      ada agar Supabase Auth tetap berjalan.
+    */
 
-  });
+    if (
+      typeof window.openAdmin ===
+      "function"
+    ) {
 
-});
-  
+      window.openAdmin();
+
+      return;
+
+    }
+
+
+    /*
+      Fallback jika fungsi utama gagal
+      terpasang.
+    */
+
+    const modal =
+      document.getElementById(
+        "adminLoginModal"
+      );
+
+    if (!modal) return;
+
+    modal.classList.add("show");
+
+  }
+
+
+  forceButton(
+    "heroAdmin",
+    showAdmin
+  );
+
+  forceButton(
+    "adminNav",
+    showAdmin
+  );
+
+
+})();
 </script>
 
 </body>
