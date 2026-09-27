@@ -4837,6 +4837,143 @@ document.addEventListener("click", function (event) {
   modal.classList.remove("show");
 
 });
+  
+/* =========================================================
+   FIX LOGIN ADMIN
+   ========================================================= */
+
+document.addEventListener("submit", async function (event) {
+
+  if (event.target.id !== "adminLoginForm") {
+    return;
+  }
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  const email =
+    document.getElementById("adminEmail")?.value.trim();
+
+  const password =
+    document.getElementById("adminPassword")?.value;
+
+  const noticeBox =
+    document.getElementById("adminLoginNotice");
+
+  if (!email || !password) {
+
+    if (noticeBox) {
+      noticeBox.innerHTML =
+        "Email dan password wajib diisi.";
+      noticeBox.className =
+        "notice error";
+    }
+
+    return;
+  }
+
+  if (noticeBox) {
+    noticeBox.innerHTML =
+      "Memproses login...";
+    noticeBox.className =
+      "notice info";
+  }
+
+  try {
+
+    const {
+      data,
+      error
+    } =
+    await db.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
+
+    if (error) {
+
+      console.error(
+        "Login admin:",
+        error
+      );
+
+      if (noticeBox) {
+        noticeBox.innerHTML =
+          error.message;
+        noticeBox.className =
+          "notice error";
+      }
+
+      return;
+    }
+
+    if (noticeBox) {
+      noticeBox.innerHTML =
+        "Login berhasil.";
+      noticeBox.className =
+        "notice success";
+    }
+
+    const loginModal =
+      document.getElementById(
+        "adminLoginModal"
+      );
+
+    if (loginModal) {
+      loginModal.classList.remove("show");
+    }
+
+    const loginForm =
+      document.getElementById(
+        "adminLoginForm"
+      );
+
+    if (loginForm) {
+      loginForm.reset();
+    }
+
+    /*
+      Buka dashboard admin
+    */
+
+    if (
+      typeof window.openAdmin ===
+      "function"
+    ) {
+
+      await window.openAdmin();
+
+    } else {
+
+      const adminModal =
+        document.getElementById(
+          "adminModal"
+        );
+
+      if (adminModal) {
+        adminModal.classList.add("show");
+      }
+
+    }
+
+  } catch (error) {
+
+    console.error(
+      "Login error:",
+      error
+    );
+
+    if (noticeBox) {
+      noticeBox.innerHTML =
+        "Terjadi kesalahan saat login.";
+      noticeBox.className =
+        "notice error";
+    }
+
+  }
+
+}, true);
+
 </script>
 
 </body>
