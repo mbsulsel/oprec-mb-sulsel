@@ -4553,6 +4553,83 @@ openAdmin,
 
 }
 
+  /* =========================================================
+   FIX 3 TOMBOL UTAMA
+   TANPA MENGUBAH DESAIN / KODE LAIN
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const registerButtons = [
+    $("heroRegister"),
+    $("ctaRegister"),
+    $("registerNav")
+  ];
+
+  registerButtons.forEach(button => {
+
+    if (!button) return;
+
+    button.onclick = function(event) {
+
+      event.preventDefault();
+
+      notice(
+        "registerNotice",
+        ""
+      );
+
+      openModal(
+        "registerModal"
+      );
+
+    };
+
+  });
+
+
+  const statusButtons = [
+    $("heroStatus"),
+    $("ctaStatus"),
+    $("statusNav")
+  ];
+
+  statusButtons.forEach(button => {
+
+    if (!button) return;
+
+    button.onclick = function(event) {
+
+      event.preventDefault();
+
+      openStatus();
+
+    };
+
+  });
+
+
+  const adminButtons = [
+    $("heroAdmin"),
+    $("adminNav")
+  ];
+
+  adminButtons.forEach(button => {
+
+    if (!button) return;
+
+    button.onclick = function(event) {
+
+      event.preventDefault();
+
+      openAdmin();
+
+    };
+
+  });
+
+});
+  
 </script>
 
 </body>
