@@ -5092,86 +5092,15 @@ document.addEventListener("click", async function (event) {
       noticeBox.className =
         "notice error";
     }
+document
+  .getElementById("adminLoginForm")
+  .addEventListener("submit", function(e) {
 
-  }
+    e.preventDefault();
 
-}, true);
-
-  document
-.getElementById("adminLoginButton")
-.addEventListener("click", async function () {
-
-  const email =
-    document
-    .getElementById("adminEmail")
-    .value
-    .trim();
-
-  const password =
-    document
-    .getElementById("adminPassword")
-    .value;
-
-  if (!email || !password) {
-
-    notice(
-      "adminLoginNotice",
-      "Email dan password wajib diisi.",
-      "error"
-    );
-
-    return;
-
-  }
-
-  notice(
-    "adminLoginNotice",
-    "Memproses login...",
-    "info"
-  );
-
-  const {
-    error
-  } =
-  await db.auth.signInWithPassword({
-
-    email: email,
-
-    password: password
+    alert("TOMBOL LOGIN ADMIN TERDETEKSI");
 
   });
-
-  if (error) {
-
-    notice(
-      "adminLoginNotice",
-      error.message,
-      "error"
-    );
-
-    return;
-
-  }
-
-  notice(
-    "adminLoginNotice",
-    "Login berhasil.",
-    "success"
-  );
-
-  closeModal(
-    "adminLoginModal"
-  );
-
-  document
-  .getElementById(
-    "adminLoginForm"
-  )
-  .reset();
-
-  await openAdmin();
-
-});
 </script>
 
 </body>
